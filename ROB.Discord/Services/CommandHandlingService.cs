@@ -34,6 +34,7 @@ namespace ROB.Discord.Services
         }
 
 
+
         public async Task MessageReceivedAsync(SocketMessage rawMessage)
         {
             // Ignore system messages, or messages from other bots
