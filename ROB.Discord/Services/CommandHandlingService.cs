@@ -33,6 +33,7 @@ namespace ROB.Discord.Services
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
         }
 
+
         public async Task MessageReceivedAsync(SocketMessage rawMessage)
         {
             // Ignore system messages, or messages from other bots
