@@ -1,0 +1,96 @@
+﻿@model ROBaspCore.Models.SpellModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SpellModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArcaneSphere)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArcaneSphere.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Range)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Range.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Area.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SizeLimit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SizeLimit.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Save)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Save.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CastingTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CastingTime.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Damage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Damage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Armor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Armor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Movement)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Movement)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

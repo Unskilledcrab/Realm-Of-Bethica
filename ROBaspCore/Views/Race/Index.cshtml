@@ -1,0 +1,120 @@
+﻿@model IEnumerable<ROBaspCore.Models.RaceModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Race Gif / Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionBrief)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightInches)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeightLBS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LifeSpanYears)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Walk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tactical)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sprint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Luck)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstModifiedAttribute)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstAttributeModifier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondModifiedAttribute)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondAttributeModifier)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="/Images/GetRace?name=@item.Name" class="d-block w-100" alt="@Html.DisplayFor(modelItem => item.Name) image">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescriptionBrief)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeightInches)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WeightLBS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LifeSpanYears)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Walk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tactical)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sprint)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Luck)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstModifiedAttribute.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstAttributeModifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondModifiedAttribute.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondAttributeModifier)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

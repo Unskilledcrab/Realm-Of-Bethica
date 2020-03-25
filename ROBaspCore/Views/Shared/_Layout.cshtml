@@ -1,0 +1,179 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Realm of Bethica Website">
+    <meta name="author" content="Jeremy Buentello">
+    <title>@ViewData["Title"] - ROB</title>
+
+    <script src="https://kit.fontawesome.com/ba0a8dbb41.js"></script>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Almendra">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=UnifrakturMaguntia">
+
+    <!-- Icons and Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+
+    <!-- Internal -->
+    <environment include="Development">
+        @*<link rel="stylesheet" href="~/css/site.css" />
+            <link rel="stylesheet" href="~/css/characterSheet.css" />*@
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body class="bgc-clr" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+
+    <!-- Dark Overlay element -->
+    <div onclick="closeNav()" class="overlay"></div>
+    <div id="mySidebar" class="sidebar" style="width: 0px;">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <div id="sidebarTitle" class="text-light">
+            <h2>Title</h2>
+        </div>
+
+        <div id="sidebarContent" class="text-light">
+            <p1>
+                This marks your character experience and signifies your current level out of 10. In order to see how much more experience you need to level check out the slider below.
+            </p1>
+        </div>
+
+        <div id="Beta-Block">
+            <hr />
+            <div class="alert alert-success" role="alert">
+                Welcome BETA Testers! If you have any comments or suggestions please <a href="mailto:beta_suggestions@ubunlimited.com?subject=Beta%20Suggestions&body=Hello%20UB%20Unlimited%20Team!" class="alert-link">click here</a>.
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-light navbar-expand-md hd-bgc-blk">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img class="RB-Logo" src="~/images/_BStudio/Frames/2Logo.png">
+            </a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon" style="background-color: #dfa34e;"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-bar-font dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hero Sheets
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item disabled" asp-area="" asp-controller="Home" asp-action="Index">Create</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="CharacterCreation" asp-action="CharacterSheetManager">My Characters</a>
+                            </div>
+                        </li>
+
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link nav-bar-font dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Editor
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Attribute" asp-action="Index">Update Attributes Details</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="LanguageGroupType" asp-action="Index">Language Groups</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Languages" asp-action="Index">Languages</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="TechniqueGroupType" asp-action="Index">Technique Groups</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Technique" asp-action="Index">Techniques</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ParentSkill" asp-action="Index">Parent Skills</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ChildSkill" asp-action="Index">Child Skills</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="TalentGroupType" asp-action="Index">Talent Groups</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Talent" asp-action="Index">Talents</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Race" asp-action="Index">Races</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Modifier" asp-action="Index">Modifiers</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PregenProfessionArchetype" asp-action="Index">Make Pregen Professional Archetypes</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="WeaponSize" asp-action="Index">Weapon Size</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="WeaponType" asp-action="Index">Weapon Type</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="DamageType" asp-action="Index">Damage Type</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Weapons" asp-action="Index">Weapons</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Shield" asp-action="Index">Shields</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Item" asp-action="Index">Items</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ItemCategory" asp-action="Index">Item Category</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ItemPack" asp-action="Index">Item Packs</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Poison" asp-action="Index">Poisons</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PoisonType" asp-action="Index">Poison Type</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PoisonClass" asp-action="Index">Poison Class</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Spell" asp-action="Index">Spells</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ArcaneSphere" asp-action="Index">Arcane Spheres</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SpellRange" asp-action="Index">Spells Range</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SpellArea" asp-action="Index">Spells Area</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SpellDuration" asp-action="Index">Spells Duration</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SpellSave" asp-action="Index">Spells Save</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SpellSizeLimit" asp-action="Index">Spells Size Limit</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SpellCastingTime" asp-action="Index">Spells Casting Time</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Armor" asp-action="Index">Armor</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ArmorRestriction" asp-action="Index">Armor Restriction</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="ArmorRestoration" asp-action="Index">Armor Restoration</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link nav-bar-font dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administration
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="ListUsers">Users</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="ListRoles">User Roles</a>
+                                </div>
+                            </li>
+                            <li class="nav-item active"><a class="nav-link nav-bar-font" asp-area="" asp-controller="Beta" asp-action="Index">Beta Features</a></li>
+                        }
+                    }
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+
+    @*<partial name="_CookieConsentPartial" />*@
+
+    @RenderBody()
+
+    <partial name="_FooterPartial" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <environment include="Development">
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/sideBar.js" asp-append-version="true"></script>
+        <script src="~/js/_BStudio/bs-init.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

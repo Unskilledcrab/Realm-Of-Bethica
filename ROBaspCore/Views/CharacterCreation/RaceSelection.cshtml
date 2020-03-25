@@ -1,0 +1,92 @@
+﻿@model ROBaspCore.ViewModels.RaceSelection
+@using System.Text.RegularExpressions;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Race Selection</h2>
+
+<div id="accordion">
+
+    @foreach (var item in Model.Races)
+    {
+        <form asp-action="RaceSelection" asp-route-id="@Model.CharacterSheetId">
+            <input type="hidden" value="@item.Id" name="RaceId" />
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#race-@item.Id">
+                        <strong>@item.Name</strong> @item.DescriptionBrief
+                    </a>
+                </div>
+                <div id="race-@item.Id" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <img src="/api/images/race/?id=@item.Id" class="d-block w-100 {max-height: 500px;}" alt="@item.Name picture">
+                                <br />
+                                <h4>@item.Name</h4><span> - @item.DescriptionBrief</span>
+                                <br />
+                                <p><h5>Description:</h5> </p>
+                                <p id="tab-once">@item.Description</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                @if (item.FirstAttributeModifier != 0)
+                                {
+                                    <p><h5>Attribute Modifiers:</h5> </p>
+                                    <p id="tab-once">@item.FirstModifiedAttribute.AttributeType +@item.FirstAttributeModifier</p>
+                                }
+                                @if (item.SecondAttributeModifier != 0)
+                                {
+                                    <p id="tab-once">@item.SecondModifiedAttribute.AttributeType +@item.SecondAttributeModifier</p>
+                                }
+                                <p><h5>Average Height, Weight, & Life Span:</h5> </p>
+                                <p id="tab-once"><span class="stat-header-bold">Height:</span> @item.HeightInches</p>
+                                <p id="tab-once"><span class="stat-header-bold">Weight:</span> @item.WeightLBS</p>
+                                <p id="tab-once"><span class="stat-header-bold">Life Span:</span> @item.LifeSpanYears</p>
+                                <p><h5>Movement Rate per Phase:</h5> </p>
+                                <p id="tab-once"><span class="stat-header-bold">Walk:</span> @item.Walk sq.; <span class="stat-header-bold">Tactical:</span> @item.Tactical sq.; <span class="stat-header-bold">Sprint:</span> @item.Sprint sq.</p>
+                                <p id="tab-once"><span class="stat-header-bold">Luck:</span> @item.Luck</p>
+                                <p id="tab-once"><span class="stat-header-bold">Size:</span> @item.Size</p>
+                                <p><h5>Racial Abilities:</h5> </p>
+                                @foreach (var modifier in item.Modifiers)
+                                {
+                                    var toModify = "";
+                                    var toModifySufix = "";
+                                    if (modifier.Modifier.AttributeToModifyId != null)
+                                    {
+                                        toModify = modifier.Modifier.AttributeToModify.AttributeType.ToString();
+                                    }
+                                    else if (modifier.Modifier.ChildSkillToModifyId != null)
+                                    {
+                                        toModify = modifier.Modifier.ChildSkillToModify.Name;
+                                    }
+                                    else if (modifier.Modifier.ParentSkillToModifyId != null)
+                                    {
+                                        toModify = modifier.Modifier.ParentSkillToModify.Name;
+                                    }
+                                    else if (modifier.Modifier.IsStatic)
+                                    {
+                                        toModify = modifier.Modifier.StaticSkillToModify;
+                                        toModifySufix = modifier.Modifier.StaticSkillSufix;
+                                    }
+                                    <p id="tab-once"><span class="stat-header-bold">@toModify:</span> +@modifier.Modifier.Modifier</p>
+                                    if (modifier.Modifier.AdditionalModifiers != null)
+                                    {
+                                        <p id="tab-once"><span>NOTE:</span> @modifier.Modifier.AdditionalModifiers</p>
+                                    }
+                                }
+                                <br>
+                                <br>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Select" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+</div>

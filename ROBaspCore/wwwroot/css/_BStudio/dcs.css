@@ -1,0 +1,127 @@
+.bg-img2 {
+  background: url(DCS/Backcover_final_No_LogoEdit_300dpi_02.jpg);
+  height: 1331px;
+  margin-top: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.container2 {
+  height: 1331px;
+  background-color: rgba(21,19,18,0.69);
+  margin-top: 15px;
+  /*width: 1700px;*/
+  max-width: 2286px;
+}
+
+#STR5 {
+  padding: 0px;
+  height: 67px;
+  font-size: 60px;
+  text-align: center;
+  border-color: #ffffff;
+}
+
+#STR3 {
+  background: #ffffff;
+  color: #000000;
+  background-size: contain;
+  font-size: 12px;
+  width: 83px;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 9px;
+  height: 21px;
+  /*background-color: rgba(255,255,255,0);*/
+}
+
+#Movement {
+  border: 4px double #000000!important;
+  background: #ffffff;
+}
+
+#PC-Race {
+  border: #000000;
+  background: #000000;
+}
+
+#luck5 {
+  border: 4px double #000000!important;
+  background: #ffffff;
+}
+
+body {
+}
+
+.btn.btn-block.btn-sm.text-black-50 {
+  border: #ffffff;
+}
+
+.warren {
+  font-size: larger;
+}
+
+.Color-Grey {
+  background: #efeeee;
+}
+
+.container3 {
+  /*height: 1000px;*/
+  width: 2180px;
+  max-width: 2000px;
+  background-color: #000000;
+}
+
+.padding-col {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 1000px;
+  width: 513px;
+}
+
+.col-padding {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.dcs-h-4 {
+  color: #dfa34e;
+  font-size: 25px;
+}
+
+.font-wgt-400 {
+  font-weight: 400!important;
+}
+
+.c1 {
+}
+
+.hd-c1 {
+  margin-bottom: 0px;
+  color: #dfa34e;
+}
+
+.hd-18-c1 {
+  font-size: 18px;
+  color: #dfa34e;
+  font-weight: 400;
+}
+
+.hd-22-c1 {
+  font-size: 22px;
+  color: #dfa34e;
+  font-weight: 400;
+}
+
+.container.bgc-blk {
+  border: groove;
+  border-width: 5px;
+  border-color: #ffffff;
+  background-color: rgba(0,0,0,0.85);
+}
+

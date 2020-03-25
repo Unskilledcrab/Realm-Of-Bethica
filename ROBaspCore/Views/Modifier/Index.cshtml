@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ROBaspCore.Models.ModifierModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildSkillToModify)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentSkillToModify)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttributeToModify)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EffectAllParentSkills)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EffectAllTrainedParentSkills)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MultiplyByLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalModifiers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modifier)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChildSkillToModify.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentSkillToModify.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AttributeToModify.AttributeType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EffectAllParentSkills)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EffectAllTrainedParentSkills)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MultiplyByLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdditionalModifiers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modifier)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

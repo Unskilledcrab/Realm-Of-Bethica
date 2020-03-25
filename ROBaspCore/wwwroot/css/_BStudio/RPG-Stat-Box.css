@@ -1,0 +1,27 @@
+.body-c2 {
+  color: #b8b2ad;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.col-sm-6.col-md-4 {
+}
+
+.BG-Image-1 {
+  background: url(../../images/_BStudio/DCS/Backcover_final_No_LogoEdit_72dpi_01.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.c1 {
+  color: #dfa34e!important;
+}
+
+.separator-1 {
+  height: 30px;
+  background-image: url(../../images/_BStudio/Shared/CharacterCreate_Separator.png);
+  background-size: cover;
+  background-position: center;
+}
+

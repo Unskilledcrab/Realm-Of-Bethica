@@ -1,0 +1,119 @@
+﻿@model IEnumerable<ROBaspCore.Models.WeaponModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DamageType.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeaponType.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Handed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RateOfAttack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DamageValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DamageFactor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReactionModifier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PenetrationValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Range)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evasion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DamageType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeaponType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Handed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RateOfAttack)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DamageValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DamageFactor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReactionModifier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PenetrationValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Range)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evasion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

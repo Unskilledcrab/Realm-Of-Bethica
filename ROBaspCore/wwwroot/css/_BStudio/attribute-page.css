@@ -1,0 +1,119 @@
+.agi-pre1 {
+  background-color: rgba(0,0,0,0.75);
+  border: groove 1px;
+  color: #17a2b8;
+  margin-top: 10px;
+}
+
+#btn-dexterous:hover {
+  background-color: rgba(0,117,255,0.3);
+}
+
+#btn-mighty:hover {
+  background-color: rgba(0,255,56,0.3);
+}
+
+#btn-intellectual:hover {
+  background-color: rgba(255,107,0,0.3);
+}
+
+#btn-influential:hover {
+  background-color: rgba(255,0,0,0.3);
+}
+
+.cha-att1 {
+  background-color: rgba(0,0,0,0.75);
+  border: groove 1px;
+  color: #dc3545;
+  margin-top: 10px;
+}
+
+.dexterous1 {
+  background-color: rgba(0,0,0,0.75);
+  border: groove 1px;
+  color: #17a2b8;
+  /*margin-left: 5px;*/
+  margin-bottom: 10px;
+  height: 120px;
+}
+
+.img-btn1 {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100px;
+  background-color: rgba(255,255,255,0);
+}
+
+.influential1 {
+  background-color: rgba(0,0,0,0.75);
+  border: groove 1px;
+  color: #dc3545;
+  /*margin-left: 5px;*/
+  margin-bottom: 10px;
+  height: 120px;
+}
+
+.intellectual1 {
+  background-color: rgba(0,0,0,0.75);
+  border: groove 1px;
+  color: #ffc107;
+  /*margin-left: 5px;*/
+  margin-bottom: 10px;
+  height: 120px;
+}
+
+.kno-hea1 {
+  background-color: rgba(0,0,0,0.75);
+  border: groove 1px;
+  color: #ffc107;
+  margin-top: 10px;
+}
+
+.mighty1 {
+  background-color: rgba(0,0,0,0.75);
+  border: groove 1px;
+  color: #31d93c;
+  /*margin-left: 5px;*/
+  margin-bottom: 10px;
+  height: 120px;
+}
+
+.str-rob1 {
+  background-color: rgba(0,0,0,0.75);
+  border: groove 1px;
+  color: #31d93c;
+}
+
+.att-cs-btn-pd-bt-20 {
+  /*padding-bottom: 20px;*/
+}
+
+.BG-Image-a2 {
+  background: url(../../images/_BStudio/BG/BG-Mage-1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-attachment: fixed;
+}
+
+.attr-h30 {
+  font-size: 30px;
+  color: #dfa34e;
+}
+
+.par-20-c1 {
+  font-size: 20px;
+  color: #dfa34e;
+  font-weight: 400;
+}
+
+.separator-2 {
+  height: 30px;
+  background-image: url(../../images/_BStudio/Shared/CharacterCreate_Separator.png);
+  background-size: cover;
+  background-position: center;
+  margin-top: 7px;
+}
+

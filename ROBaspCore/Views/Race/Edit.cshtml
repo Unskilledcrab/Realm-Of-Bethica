@@ -1,0 +1,108 @@
+﻿@model ROBaspCore.Models.RaceModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>RaceModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionBrief" class="control-label"></label>
+                <input asp-for="DescriptionBrief" class="form-control" />
+                <span asp-validation-for="DescriptionBrief" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeightInches" class="control-label"></label>
+                <input asp-for="HeightInches" class="form-control" />
+                <span asp-validation-for="HeightInches" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeightLBS" class="control-label"></label>
+                <input asp-for="WeightLBS" class="form-control" />
+                <span asp-validation-for="WeightLBS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LifeSpanYears" class="control-label"></label>
+                <input asp-for="LifeSpanYears" class="form-control" />
+                <span asp-validation-for="LifeSpanYears" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Walk" class="control-label"></label>
+                <input asp-for="Walk" class="form-control" />
+                <span asp-validation-for="Walk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tactical" class="control-label"></label>
+                <input asp-for="Tactical" class="form-control" />
+                <span asp-validation-for="Tactical" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sprint" class="control-label"></label>
+                <input asp-for="Sprint" class="form-control" />
+                <span asp-validation-for="Sprint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Luck" class="control-label"></label>
+                <input asp-for="Luck" class="form-control" />
+                <span asp-validation-for="Luck" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <select asp-for="Size" asp-items="Html.GetEnumSelectList<SizeModel>()" class="form-control"></select>
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstModifiedAttributeId" class="control-label"></label>
+                <select asp-for="FirstModifiedAttributeId" class="form-control" asp-items="ViewBag.FirstModifiedAttributeId"></select>
+                <span asp-validation-for="FirstModifiedAttributeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstAttributeModifier" class="control-label"></label>
+                <input asp-for="FirstAttributeModifier" class="form-control" />
+                <span asp-validation-for="FirstAttributeModifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondModifiedAttributeId" class="control-label"></label>
+                <select asp-for="SecondModifiedAttributeId" class="form-control" asp-items="ViewBag.SecondModifiedAttributeId"></select>
+                <span asp-validation-for="SecondModifiedAttributeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondAttributeModifier" class="control-label"></label>
+                <input asp-for="SecondAttributeModifier" class="form-control" />
+                <span asp-validation-for="SecondAttributeModifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Upload Race Picture / GIF</label>
+                <input type="file" name="file" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

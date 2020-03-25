@@ -1,0 +1,119 @@
+.archetype-img {
+  margin-top: 20px;
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 300px;
+}
+
+#btn-strong:hover {
+  background-color: rgba(0,255,56,0.3);
+}
+
+#btn-robust:hover {
+  background-color: rgba(0,255,56,0.3);
+}
+
+#btn-precise:hover {
+  background-color: rgba(0,117,255,0.3);
+}
+
+#btn-agile:hover {
+  background-color: rgba(0,117,255,0.3);
+}
+
+#btn-precision:hover {
+  background-color: rgba(0,117,255,0.3);
+}
+
+#btn-know:hover {
+  background-color: rgba(255,107,0,0.3);
+}
+
+#btn-head:hover {
+  background-color: rgba(255,107,0,0.3);
+}
+
+#btn-charismatic:hover {
+  background-color: rgba(255,0,0,0.3);
+}
+
+#btn-attractive:hover {
+  background-color: rgba(255,0,0,0.3);
+}
+
+@media (min-width: 768px) {
+  .body-c2 {
+    color: #b8b2ad;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.body-c2 {
+  color: #b8b2ad;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: Amarante, cursive;
+}
+
+.dcs-pd-1 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.BG-Image-a3 {
+  background: url(../../images/_BStudio/BG/BG-Fighter-1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-attachment: fixed;
+}
+
+.h30-c1 {
+  font-size: 30px;
+  color: #dfa34e;
+}
+
+.par16-wt400 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.text-center.h30-c1 {
+}
+
+.h20-c1 {
+  font-size: 20px;
+  color: #dfa34e;
+}
+
+.margin-top-181 {
+  /*margin-top: 180px;*/
+}
+
+.margin-top-27 {
+  margin-top: 27px;
+}
+
+.margin-top-171 {
+  /*margin-top: 171px;*/
+}
+
+.h18-c1 {
+  font-size: 18px;
+  color: #dfa34e;
+}
+
+.BG-Image-b3 {
+  background: url(../../images/_BStudio/BG/BG-Rogue-1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-attachment: fixed;
+}
+

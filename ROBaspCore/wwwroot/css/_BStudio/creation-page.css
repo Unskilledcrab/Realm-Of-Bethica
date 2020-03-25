@@ -1,0 +1,83 @@
+.h-30 {
+  height: 30px;
+}
+
+.h-40 {
+  height: 40px;
+}
+
+.m-10 {
+  /*margin: 10px;*/
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.mt-100 {
+  margin-top: 100px;
+}
+
+.w-45 {
+  width: 45px;
+}
+
+.w-600 {
+  width: 200px;
+}
+
+.img-backdrop1 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 600px;
+}
+
+.glow1 {
+  background-image: url(../../images/_BStudio/Buttons/CharacterSelect_Glow.png);
+  width: 200px;
+}
+
+.par-15-c1 {
+  font-size: 15px;
+  color: #dfa34e;
+}
+
+.charname {
+  color: #dfa34e;
+  font-family: Amarante, cursive;
+}
+
+.select-pargraph {
+  font-family: Amarante, cursive;
+  color: #b8b2ad;
+  font-size: 20px;
+}
+
+.container-select-char {
+  background-color: rgba(0,0,0,0.5);
+  border: groove;
+  border-width: 5px;
+  border-color: #b8b2ad;
+}
+
+.mt-174 {
+  /*margin-top: 174px;*/
+}
+
+.BG-Image-3 {
+  background: url(../../images/_BStudio/BG/BG-Paladin-1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1331px;
+  padding-top: 90px;
+  background-attachment: fixed;
+}
+
+.div-line2 {
+  background-color: #b8b2ad;
+  height: 2px;
+}
+

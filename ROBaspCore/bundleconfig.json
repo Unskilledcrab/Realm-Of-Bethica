@@ -1,0 +1,92 @@
+[
+  // Site Specific Files
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/css/characterSheet.css",
+
+      // All Bootstrap Studio CSS Files
+      "wwwroot/css/_BStudio/share.css",
+      "wwwroot/css/_BStudio/RPG-Stat-Box.css",
+      "wwwroot/css/_BStudio/races-img.css",
+      "wwwroot/css/_BStudio/Race-Page.css",
+      "wwwroot/css/_BStudio/login-page.css",
+      "wwwroot/css/_BStudio/landing-page.css",
+      "wwwroot/css/_BStudio/Footer-Dark.css",
+      "wwwroot/css/_BStudio/Footer-Dark-1.css",
+      "wwwroot/css/_BStudio/dcs.css",
+      "wwwroot/css/_BStudio/creation-page.css",
+      "wwwroot/css/_BStudio/attribute-page.css",
+      "wwwroot/css/_BStudio/Article-List.css",
+      "wwwroot/css/_BStudio/archetype-page.css",
+      "wwwroot/css/_BStudio/16-scrollbar-styles.css",
+      "wwwroot/css/_BStudio/16-scrollbar-styles-1.css",
+      "wwwroot/css/_BStudio/Other/Search-Field-With-Icon.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js",
+      "wwwroot/js/sideBar.js",
+
+      // All Bootstrap Studio JS Files
+      "wwwroot/js/_BStudio/bs-init.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  // Page Specific Files
+  {
+    "outputFileName": "wwwroot/js/attribute.min.js",
+    "inputFiles": [
+      "wwwroot/js/attribute.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/CombatCalculator.min.js",
+    "inputFiles": [
+      "wwwroot/js/CombatCalculator.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/characterSheetCalcs.min.js",
+    "inputFiles": [
+      "wwwroot/js/characterSheetCalcs.js",
+      "wwwroot/js/PlayerRepoBase.js",
+      "wwwroot/js/PlayerRepoBuilder.js",
+      "wwwroot/js/CalculationsBase.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  // Shhh don't tell anyone about this
+  {
+    "outputFileName": "wwwroot/js/UPick.min.js",
+    "inputFiles": [
+      "wwwroot/js/UPick.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
