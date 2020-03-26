@@ -59,6 +59,7 @@ namespace ROB.Discord
                 .AddSingleton<CommandHandlingService>()
                 .AddSingleton<HttpClient>()
                 .AddSingleton<PictureService>()
+                .AddSingleton<TrelloService>()
                 .BuildServiceProvider();
         }
 

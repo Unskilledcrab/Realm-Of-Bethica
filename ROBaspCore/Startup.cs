@@ -43,19 +43,10 @@ namespace ROBaspCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //if (environment.IsDevelopment())
-            //{
-            //    services.AddDbContext<Data.ApplicationDbContext>(options =>
-            //        options.UseSqlServer(
-            //            Configuration.GetConnectionString("DevelopmentConnection")));
-            //}
-            //else
-            //{
-                services.AddDbContext<Data.ApplicationDbContext>(options =>
+            services.AddDbContext<Data.ApplicationDbContext>(options =>
                     options.UseSqlServer(
                         Configuration.GetConnectionString("DefaultConnection")));
-            //}
-
+            
             services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers().AddNewtonsoftJson();
