@@ -66,6 +66,10 @@
     <Compile Remove="Data\Migrations\20191027170515_test3.Designer.cs" />
     <Compile Remove="Data\Migrations\20191105010515_TestingSpells.cs" />
     <Compile Remove="Data\Migrations\20191105010515_TestingSpells.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200326201125_allowDeletingUser.cs" />
+    <Compile Remove="Data\Migrations\20200326201125_allowDeletingUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200326201621_allowDeletingUser.cs" />
+    <Compile Remove="Data\Migrations\20200326201621_allowDeletingUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

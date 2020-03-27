@@ -6,6 +6,7 @@ using Discord;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ROB.Discord.API;
+using ROB.Discord.Services;
 
 namespace ROB.API.Controllers
 {
@@ -13,6 +14,8 @@ namespace ROB.API.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        public TrelloService TrelloService { get; set; }
+
         [HttpGet("embed")]
         public string Embed()
         {
@@ -23,8 +26,8 @@ namespace ROB.API.Controllers
                 .WithFooter(footer => footer.Text = "UB Unlimited")
                 .WithCurrentTimestamp()
                 .Build();
-            var apiHandler = new APIHandler();
-            apiHandler.AnnouncementAsync(embed);
+
+            TrelloService.SendUBAnnouncement(embed);
 
             return "Success";
         }

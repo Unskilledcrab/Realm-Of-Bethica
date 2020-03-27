@@ -1,4 +1,8 @@
-﻿using ROB.Core;
+﻿using Discord;
+using Discord.WebSocket;
+using Microsoft.Extensions.DependencyInjection;
+using ROB.Core;
+using ROB.Discord.Models.Secrets;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,17 +14,20 @@ namespace ROB.Discord.Services
 {
     public class TrelloService
     {
+        private readonly DiscordSocketClient _discord;
         private readonly HttpClient _http;
 
-        public TrelloService(HttpClient http)
-            => _http = http;
-
-        public async Task<Stream> GetCatPictureAsync()
+        public TrelloService(HttpClient http, IServiceProvider services)
         {
-            var url = "";
-            
-            var resp = await _http.GetAsync("https://cataas.com/cat");
-            return await resp.Content.ReadAsStreamAsync();
+            _discord = services.GetRequiredService<DiscordSocketClient>();
+            _http = http; ;
+        }
+
+        public Task SendUBAnnouncement(Embed embed)
+        {
+            var guild = _discord.GetGuild(DiscordSecrets.GuildId);
+            var announcementChannel = guild.GetTextChannel(DiscordSecrets.AnnouncementChannelId);
+            return announcementChannel.SendMessageAsync(embed: embed);
         }
     }
 }

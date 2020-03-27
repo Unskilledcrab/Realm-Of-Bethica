@@ -71,27 +71,32 @@ namespace ROBaspCore.Data
             builder.Entity<ApplicationUser>()
                 .HasMany<WorldModel>(p => p.CreatedWorlds)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId);
+                .HasForeignKey(c => c.CreatorId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<TownModel>(p => p.CreatedTowns)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId);
+                .HasForeignKey(c => c.CreatorId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<BuildingModel>(p => p.CreatedBuildings)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId);
+                .HasForeignKey(c => c.CreatorId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<CharacterSheetModel>(p => p.CreatedCharacterSheets)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId);
+                .HasForeignKey(c => c.CreatorId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<QuestGroupModel>(p => p.CreatedQuestGroups)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId);
+                .HasForeignKey(c => c.CreatorId)
+                .OnDelete(DeleteBehavior.Cascade);
             #endregion
 
             #region Quest Group

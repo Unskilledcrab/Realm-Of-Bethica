@@ -9,5 +9,6 @@ namespace ROB.Discord.Models.Secrets
         public static ulong AnnouncementChannelId { get; set; }
         public static ulong BethicaChatId { get; set; }
         public static ulong StaffId { get; set; }
+        public static ulong GuildId { get; set; }
     }
 }

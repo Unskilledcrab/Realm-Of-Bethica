@@ -22,8 +22,6 @@ namespace ROBaspCore.Services
 
         public Task Execute(string apiKey, string subject, string message, string email)
         {
-            /// NOTE: Have to move this out of code base if a larger team begins working on this application
-            ///       will need to generate a new KEY
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
