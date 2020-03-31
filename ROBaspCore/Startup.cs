@@ -43,7 +43,7 @@ namespace ROBaspCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<Data.ApplicationDbContext>(options =>
+            services.AddDbContextPool<ApplicationDbContext>(options =>
                     options.UseSqlServer(
                         Configuration.GetConnectionString("DefaultConnection")));
             

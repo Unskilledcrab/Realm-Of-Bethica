@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ROB.Discord.API;
 using ROB.Discord.Services;
@@ -17,7 +18,7 @@ namespace ROB.API.Controllers
         public TrelloService TrelloService { get; set; }
 
         [HttpGet("embed")]
-        public string Embed()
+        public async Task<string> Embed()
         {
             var embed = new EmbedBuilder()
                 .WithTitle("Test Title")
@@ -27,7 +28,10 @@ namespace ROB.API.Controllers
                 .WithCurrentTimestamp()
                 .Build();
 
-            TrelloService.SendUBAnnouncement(embed);
+            
+            var sp = (ServiceProvider)ROB.Discord.Worker.Services;
+            var trello = sp.GetRequiredService<TrelloService>();
+            await trello.SendUBAnnouncement(embed);
 
             return "Success";
         }
