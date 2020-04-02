@@ -14,14 +14,14 @@ namespace ROBaspCore.Models
         public int SpellLevel {
             get
             {
-                int sl = 0;
-                sl = ArcaneTargetNumber / 10;
-                if (sl % 2 == 0)
-                    return sl;
+                int spellLevel = 0;
+                spellLevel = ArcaneTargetNumber / 10;
+                if (spellLevel % 2 == 0)
+                    return spellLevel;
                 else
                 {
-                    sl += 1;
-                    return sl;
+                    spellLevel += 1;
+                    return spellLevel;
                 }
             }
         }
@@ -61,22 +61,25 @@ namespace ROBaspCore.Models
         {
             get
             {
-                int atn = 0;
+                int arcaneTargetNumber = 0;
                 if (Range != null)
-                    atn += Range.ArcaneValue;
+                    arcaneTargetNumber += Range.ArcaneValue;
                 if (Area != null)
-                    atn += Area.ArcaneValue;
+                    arcaneTargetNumber += Area.ArcaneValue;
                 if (Duration != null)
-                    atn += Duration.ArcaneValue;
+                    arcaneTargetNumber += Duration.ArcaneValue;
                 if (Save != null)
-                    atn += Save.ArcaneValue;
+                    arcaneTargetNumber += Save.ArcaneValue;
                 if (SizeLimit != null)
-                    atn += SizeLimit.ArcaneValue;
+                    arcaneTargetNumber += SizeLimit.ArcaneValue;
                 if (CastingTime != null)
-                    atn += CastingTime.ArcaneValue;
-                foreach(var element in ArcanePowerAttributes)
-                    atn += element.ArcanePowerAttribute.ArcaneValue;
-                return atn;
+                    arcaneTargetNumber += CastingTime.ArcaneValue;
+                if (ArcanePowerAttributes.Count > 0)
+                {
+                    foreach (var element in ArcanePowerAttributes)
+                        arcaneTargetNumber += element.ArcanePowerAttribute.ArcaneValue;
+                }
+                return arcaneTargetNumber;
             }
         }
         

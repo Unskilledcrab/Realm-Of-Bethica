@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using ROB.Discord.Helpers;
 using ROB.Discord.Models.Secrets;
+using ROB.Discord.Preconditions;
 using ROB.Discord.Services;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,15 @@ using System.Threading.Tasks;
 
 namespace ROB.Discord.Commands
 {
+    [RequireRole(UBRoles.Founders)]
     public class Test : ModuleBase<SocketCommandContext>
     {
         public TrelloService TrelloService { get; set; }
 
         [Command("testPing")]
-        [RequireUserPermission(GuildPermission.Administrator, Group = "Permission")]
         public Task PingAsync() => ReplyAsync("pong!");
 
         [Command("testEmbed")]
-        [RequireUserPermission(GuildPermission.Administrator, Group = "Permission")]
         public Task TestEmbed()
         {
             var embed = new EmbedBuilder()
@@ -36,16 +36,14 @@ namespace ROB.Discord.Commands
         }
 
         [Command("meetingReminder")]
-        [RequireUserPermission(GuildPermission.Administrator, Group = "Permission")]
         public Task MeetingReminder(string meetingAgendaURL)
         {
-            var embed = UB.GetEmbedTemplate()
+            var embed = UBTemplates.GetEmbedTemplate()
                 .WithTitle("Meeting Reminder")
                 .WithDescription("Meeting is at 6PM")
                 .AddField("Meeting Agenda", $"Click [here]({meetingAgendaURL}) to view the meeting agenda")
                 .Build();
 
-            //return ReplyAsync($"<@&{DiscordSecrets.StaffId}>", embed: embed);
             return Context.Guild
                 .GetTextChannel(DiscordSecrets.BethicaChatId)
                 .SendMessageAsync($"<@&{DiscordSecrets.StaffId}>", embed: embed);

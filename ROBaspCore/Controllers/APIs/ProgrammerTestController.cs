@@ -21,13 +21,26 @@ namespace ROBaspCore.Controllers
             public int Key { get; set; }
         }
 
-        [HttpGet]
-        public string GetSecretCode(TestClass test)
+        public static TestClass test { get; set; } = new TestClass
         {
-            if (test.Version == "1.2.3" && test.Message == "I will pass" && test.Key == 32)
-                return "Secrets Secrets Are No Fun";
+            Version = "3.2.0.A",
+            Message = "<test-helper name='Titan' attribute='Tough'/>",
+            Key = 6128
+        };
+
+        [HttpGet]
+        public ActionResult<TestClass> GetSecretCode()
+        {
+            return Ok(test);
+        }
+
+        [HttpGet("SubmitAnswer")]
+        public ActionResult<string> TrySecretCode(TestClass attempt)
+        {
+            if (attempt.Version == test.Version && attempt.Message == test.Message && attempt.Key == test.Key)
+                return Ok("Secrets Secrets Are No Fun");
             else
-                return "Try again :)";
-        }     
+                return NotFound("Try again :)");
+        }
     }
 }

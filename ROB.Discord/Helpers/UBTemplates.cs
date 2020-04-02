@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ROB.Discord.Helpers
 {
-    class UB
+    class UBTemplates
     {
         public static EmbedBuilder GetEmbedTemplate()
         {

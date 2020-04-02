@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using ROBaspCore.Services;
 using ROBaspCore.Attributes;
 using AutoMapper;
+using ROBaspCore.Hubs;
 
 namespace ROBaspCore
 {
@@ -46,7 +47,8 @@ namespace ROBaspCore
             services.AddDbContextPool<ApplicationDbContext>(options =>
                     options.UseSqlServer(
                         Configuration.GetConnectionString("DefaultConnection")));
-            
+
+            services.AddSignalR();
             services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers().AddNewtonsoftJson();
@@ -76,11 +78,6 @@ namespace ROBaspCore
                     policy => policy.RequireClaim("Create Role"));
             });
 
-            services.AddMvc(option =>
-            {
-                option.EnableEndpointRouting = false;
-            });
-
             services.AddScoped<AuthorizeSheetOwnerAttribute>();
         }
 
@@ -102,13 +99,22 @@ namespace ROBaspCore
             app.UseHttpsRedirection();  
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseAuthentication();
+            app.UseRouting();
 
-            app.UseMvc(routes =>
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapHub<ChatHub>("/chatHub");
+                endpoints.MapControllers();
+                endpoints.MapAreaControllerRoute(
+                    "Identity",
+                    "Identity",
+                    "Identity/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
