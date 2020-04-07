@@ -48,5 +48,19 @@ namespace ROB.Discord.Commands
                 .GetTextChannel(DiscordSecrets.BethicaChatId)
                 .SendMessageAsync($"<@&{DiscordSecrets.StaffId}>", embed: embed);
         }
+
+        [Command("poll")]
+        public Task Poll(string meetingAgendaURL)
+        {
+            var embed = UBTemplates.GetEmbedTemplate()
+                .WithTitle("New Poll")
+                .WithDescription("Please let me know what ")
+                .AddField("Meeting Agenda", $"Click [here]({meetingAgendaURL}) to view the meeting agenda")                
+                .Build();
+                        
+            return Context.Guild
+                .GetTextChannel(DiscordSecrets.BethicaChatId)
+                .SendMessageAsync($"<@&{DiscordSecrets.StaffId}>", embed: embed);
+        }
     }
 }
