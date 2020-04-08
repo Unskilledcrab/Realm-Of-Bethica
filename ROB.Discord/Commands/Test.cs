@@ -2,7 +2,7 @@
 using Discord.Commands;
 using Discord.WebSocket;
 using ROB.Discord.Helpers;
-using ROB.Discord.Models.Secrets;
+using ROB.Discord.Secrets;
 using ROB.Discord.Preconditions;
 using ROB.Discord.Services;
 using System;
@@ -45,22 +45,38 @@ namespace ROB.Discord.Commands
                 .Build();
 
             return Context.Guild
-                .GetTextChannel(DiscordSecrets.BethicaChatId)
-                .SendMessageAsync($"<@&{DiscordSecrets.StaffId}>", embed: embed);
+                .GetTextChannel(DiscordSecrets.BethicaChatChannel)
+                .SendMessageAsync($"<@&{DiscordSecrets.Staff}>", embed: embed);
         }
 
         [Command("poll")]
-        public Task Poll(string meetingAgendaURL)
+        public Task Poll([Remainder] string suggestion)
         {
-            var embed = UBTemplates.GetEmbedTemplate()
-                .WithTitle("New Poll")
-                .WithDescription("Please let me know what ")
-                .AddField("Meeting Agenda", $"Click [here]({meetingAgendaURL}) to view the meeting agenda")                
-                .Build();
-                        
+            suggestion += ";title: New Poll!";
+            suggestion += ";description: I'd love to get your input on part of the Realm I'm working on. \nPlease let me know what you think below";
+
+            var embed = UBTemplates.CreateEmbedFromCommand(suggestion);
+
             return Context.Guild
-                .GetTextChannel(DiscordSecrets.BethicaChatId)
-                .SendMessageAsync($"<@&{DiscordSecrets.StaffId}>", embed: embed);
+                .GetTextChannel(DiscordSecrets.BotTestChannel)
+                .SendMessageAsync($"<@&{DiscordSecrets.Realm_Creator}>", embed: embed.Build());
+        }
+
+        [Command("makeEmbed")]
+        public Task MakeEmbed([Remainder] string command)
+        {
+            var embed = UBTemplates.CreateEmbedFromCommand(command);
+            var rolePings = UBTemplates.GetRolePingsFromCommand(command);
+            var channelId = UBTemplates.GetChannelFromCommand(command);
+
+            if (channelId != 1)
+            {
+                return Context.Guild
+                    .GetTextChannel(channelId)
+                    .SendMessageAsync(rolePings, embed: embed.Build());
+            }
+            else
+                return ReplyAsync(rolePings, embed: embed.Build());
         }
     }
 }

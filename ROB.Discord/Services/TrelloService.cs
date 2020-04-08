@@ -2,7 +2,7 @@
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using ROB.Core;
-using ROB.Discord.Models.Secrets;
+using ROB.Discord.Secrets;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +26,7 @@ namespace ROB.Discord.Services
         public Task SendUBAnnouncement(Embed embed)
         {
             var guild = _discord.GetGuild(DiscordSecrets.GuildId);
-            var announcementChannel = guild.GetTextChannel(DiscordSecrets.AnnouncementChannelId);
+            var announcementChannel = guild.GetTextChannel(DiscordSecrets.AnnouncementChannel);
             return announcementChannel.SendMessageAsync(embed: embed);
         }
     }

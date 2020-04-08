@@ -112,4 +112,8 @@
     <None Include="wwwroot\js\_BStudio\cjs\Profession.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ROB.Discord\ROB.Discord.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ROB.Discord.Models.Secrets
+namespace ROB.Discord.Secrets
 {
     class TrelloSecrets
     {

@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using ROB.Discord.Models.Secrets;
+using ROB.Discord.Secrets;
 using ROB.Discord.Services;
 
 namespace ROB.Discord
@@ -37,7 +37,7 @@ namespace ROB.Discord
                 Services.GetRequiredService<CommandService>().Log += LogAsync;
 
                 // Setup globally used secrets
-                _configuration.GetSection("UB").Get<DiscordSecrets>();
+                //_configuration.GetSection("UB").Get<DiscordSecrets>();
                 _configuration.GetSection("Trello").Get<TrelloSecrets>();
 
                 // Start up the bot
