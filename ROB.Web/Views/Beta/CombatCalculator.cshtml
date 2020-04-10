@@ -1,0 +1,224 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<div class="modal fade" role="dialog" tabindex="-1" id="combatModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Combat Results</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>The content of your modal.</p>
+            </div>
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="container">
+        <h1 class="strange-font">Combat Tracker<button onclick="createCharacterSheet()" class="btn btn-sm text-success" type="button"><i class="fas fa-user-ninja" style="font-size: 24px;"></i></button></h1>
+        <h1></h1>
+        <h1 style="background-color: #000000;padding: 0px;font-size: 5px;color: rgb(0,0,0);">Heading</h1>
+    </div>
+</div>
+<div id="character-container">
+    <div class="container" style="background-color: #ffffff;" character-id="1">
+        <div class="row" id="Row-Container">
+            <div class="col text-left" id="Col-Container-Name">
+                <div class="row" id="Row-Label1">
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-left" style="font-size: 12px;"><strong><span style="text-decoration: underline;">Name</span></strong></label></div>
+                </div>
+                <div class="row" id="Input1">
+                    <div class="col text-left" id="Col-Input1"><input type="text" class="form-control" minlength="3" maxlength="15" style="width: 110px;height: 20px;" character-name value="test" onclick="setPlayer(this,1)" /></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-Demeanor">
+                <div class="row" id="Row-Button-Label1">
+                    <div class="col text-center" id="Col-Button-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">Dem</span></strong></label></div>
+                </div>
+                <div class="row" id="Row-Button1">
+                    <div class="col text-center" id="Col-Button1"><button class="btn btn-primary btn-sm text-center text-warning border-white" type="button" style="background-color: rgb(255,255,255);width: 30px;height: 29px;font-size: 14px;"><i class="fas fa-user-ninja" style="width: 17px;height: 11px;background-color: #ffffff;color: rgb(0,130,13);"></i></button></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-RM">
+                <div class="row" id="Row-Label1">
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;text-align: center;"><strong><span style="text-decoration: underline;">RM</span></strong></label></div>
+                </div>
+                <div class="row" id="Input1">
+                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" rm="" value="10"></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-EVA">
+                <div class="row" id="Row-Label1">
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">EVA</span></strong></label></div>
+                </div>
+                <div class="row" id="Input1">
+                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" eva="" value="12"></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-AR">
+                <div class="row" id="Row-Label1">
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">AR</span></strong></label></div>
+                </div>
+                <div class="row" id="Input1">
+                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control user-input" maxlength="2" ar="6" value="6"></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-PDR">
+                <div class="row" id="Row-Label1">
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 11px;"><strong><span style="text-decoration: underline;">PDR</span></strong></label></div>
+                </div>
+                <div class="row" id="Input1">
+                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" pdr="" value="2"></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-HP">
+                <div class="row" id="Row-Label1">
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">HP</span></strong></label></div>
+                </div>
+                <div class="row" id="Input1">
+                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" hp="" value="15"></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-TMP">
+                <div class="row" id="Row-Label1">
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">Tmp</span></strong></label></div>
+                </div>
+                <div class="row" id="Input1">
+                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" temp-hp="" value="2"></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-END">
+                <div class="row" id="Row-Label1">
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;text-align: center;"><strong><span style="text-decoration: underline;">Wnd</span></strong></label></div>
+                </div>
+                <div class="row" id="Input1">
+                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" wound="" value="0"></div>
+                </div>
+            </div>
+            <div class="col" id="Col-Container-Delete">
+                <div class="row" id="Row-Button-Label1">
+                    <div class="col text-center" id="Col-Button-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">Delete</span></strong></label></div>
+                </div>
+                <div class="row" id="Row-Button1">
+                    <div class="col text-center" id="Col-Button1"><button onclick="deleteCharacter(1)" delete-character-btn class="btn btn-primary btn-sm border-white" type="button" style="background-color: rgb(255,255,255);width: 30px;height: 29px;"><i class="fa fa-times-circle" style="width: 17px;height: 14px;background-color: #ffffff;color: rgb(255,0,0);"></i></button></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a class="btn btn-primary btn-sm text-center" data-toggle="collapse" aria-expanded="true" aria-controls="wcollapse-1" href="#wcollapse-1" role="button" w-col-btn="">Wpn</a>
+            <div class="collapse show" id="wcollapse-1" w-col-show="">
+                <div class="row">
+                    <div class="col-2 text-center" id="Col-Label"><label class="text-capitalize text-left" style="font-size: 12px;"><strong><span style="text-decoration: underline;">Weapons</span></strong></label><button onclick="addWeapon(1)" add-weapon-btn class="btn btn-primary btn-sm text-success border-white" type="button" style="background-color: rgb(255,255,255);"><i class="fa fa-plus-circle"></i></button></div>
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">RM</span></strong></label></div>
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">THF</span></strong></label></div>
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">EVA</span></strong></label></div>
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 11px;"><strong><span style="text-decoration: underline;">DV</span></strong></label></div>
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">PVR</span></strong></label></div>
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">DT</span></strong></label></div>
+                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">Rch</span></strong></label></div>
+                    <div class="col text-center" id="Col-Button-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">Delete</span></strong></label></div>
+                </div>
+                <div id="weapon-container">
+                    <div class="row" weapon-id="1">
+                        <div class="col-2 text-left" id="Col-Input1"><input onclick="attack(1)" type="text" class="form-control" minlength="3" maxlength="15" style="width: 110px;height: 20px;" weapon-name value="test" /></div>
+                        <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" weapon-rm="" value="0"></div>
+                        <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" weapon-thf="" value="10"></div>
+                        <div class="col"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" weapon-eva="" value="0"></div>
+                        <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" dv="" value="5"></div>
+                        <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" pvr="" value="3"></div>
+                        <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" damage-type="" value="test"></div>
+                        <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" reach="" value="0"></div>
+                        <div class="col text-center" id="Col-Button1"><button onclick="deleteRow(this)" class="btn btn-primary btn-sm border-white" type="button" style="background-color: rgb(255,255,255);width: 30px;height: 29px;"><i class="fa fa-times-circle" style="width: 17px;height: 14px;background-color: #ffffff;color: rgb(255,0,0);"></i></button></div>
+                    </div>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-sm" data-toggle="collapse" aria-expanded="true" aria-controls="acollapse-1" href="#acollapse-1" role="button" a-col-btn="">ATT</a>
+                    <div class="collapse show" id="acollapse-1" a-col-show="">
+                        <div class="row">
+                            <div class="col-1" id="Col-Container-Roll">
+                                <div class="row" id="Row-Label1">
+                                    <div class="col text-center" id="Col-Label"><label class="col-form-label text-capitalize text-center" style="font-size: 12px;"><strong><span style="text-decoration: underline;">Roll</span></strong></label></div>
+                                </div>
+                                <div class="row" id="Input1">
+                                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" maxlength="2" style="/*width: 36px;*/height: 20px;text-align: center;" roll="" value="2"></div>
+                                </div>
+                            </div>
+                            <div class="col" id="Col-Container-Targets">
+                                <div class="row" id="Row-Label1">
+                                    <div class="col text-left" id="Col-Label"><label class="col-form-label text-capitalize text-center"><strong><span style="text-decoration: underline;">Targets</span></strong></label></div>
+                                </div>
+                                <div class="row" id="Input1">
+                                    <div class="col text-center" id="Col-Input1"><input type="text" class="form-control" style="height: 20px;" readonly="" targeted=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="position: absolute; bottom: 0; right: 0;">
+
+    <!-- Then put toasts within -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img style="width: 20px; height: 20px;" src="assets/img/UB_Logo2.png" class="rounded mr-2" alt="logo">
+            <strong class="mr-auto">Combat</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img style="width: 20px; height: 20px;" src="assets/img/UB_Logo2.png" class="rounded mr-2" alt="logo">
+            <strong class="mr-auto">Combat</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img style="width: 20px; height: 20px;" src="assets/img/UB_Logo2.png" class="rounded mr-2" alt="logo">
+            <strong class="mr-auto">Combat</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img style="width: 20px; height: 20px;" src="assets/img/UB_Logo2.png" class="rounded mr-2" alt="logo">
+            <strong class="mr-auto">Combat</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_CombatCalculatorScriptsPartial");}
+}

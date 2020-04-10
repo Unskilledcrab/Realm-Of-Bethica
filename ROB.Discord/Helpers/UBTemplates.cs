@@ -28,6 +28,26 @@ namespace ROB.Discord.Helpers
             return commands;
         }
 
+        public static string GetMessageFromCommand(string commandString)
+        {
+            var commands = ParseCommand(commandString);
+
+            string message = "";
+
+            for (int i = 0; i < commands.Length; i++)
+            {
+                var command = commands[i].Split(':');
+
+                if (command.Length == 1)
+                    throw new Exception($"The command {commands[i]} is not formatted correctly you must use \":\" colons to seperate the field and text");
+
+                var section = command[0].Trim();
+                var text = command[1].Trim();
+                if (section == CommandParameters.Message) message = text;
+            }
+            return message;
+        }
+
         public static EmbedBuilder CreateEmbedFromCommand(string commandString)
         {
             var embed = GetEmbedTemplate();
@@ -44,14 +64,14 @@ namespace ROB.Discord.Helpers
                 var command = commands[i].Split(':');
 
                 if (command.Length == 1)
-                    throw new Exception("The command is not formatted correctly you must use \":\" colons to seperate the field and text");
+                    throw new Exception($"The command {commands[i]} is not formatted correctly you must use \":\" colons to seperate the field and text");
 
                 var section = command[0].Trim();
                 var text = command[1].Trim();
-                if (section == "title") title = text;
-                else if (section == "desc") description = text;
-                else if (section == "fieldTitle") fieldTitle.Add(text);
-                else if (section == "fieldDesc") fieldDesc.Add(text);
+                if (section == CommandParameters.Title) title = text;
+                else if (section == CommandParameters.Description) description = text;
+                else if (section == CommandParameters.FieldTitle) fieldTitle.Add(text);
+                else if (section == CommandParameters.FieldDescription) fieldDesc.Add(text);
             }
 
             if (title != "")
@@ -80,10 +100,10 @@ namespace ROB.Discord.Helpers
                 var command = commands[i].Split(':');
 
                 var section = command[0].Trim();
-                if (section == "roles")
+                if (section == CommandParameters.Roles)
                 {
                     if (command.Length == 1)
-                        throw new Exception("The command is not formatted correctly you must use \":\" colons to seperate the field and text");
+                        throw new Exception($"The command {commands[i]} is not formatted correctly you must use \":\" colons to seperate the field and text");
 
                     var roles = command[1].Trim().Split(" ");
                     foreach (var role in roles)
@@ -112,10 +132,10 @@ namespace ROB.Discord.Helpers
                             rolePings.Append($" <@&{DiscordSecrets.Developers}>");
                         else if (text.Equals(nameof(DiscordSecrets.Founders), StringComparison.InvariantCultureIgnoreCase))
                             rolePings.Append($" <@&{DiscordSecrets.Founders}>");
-                        else if (text.Equals(nameof(DiscordSecrets.Realm_Creator), StringComparison.InvariantCultureIgnoreCase))
-                            rolePings.Append($" <@&{DiscordSecrets.Realm_Creator}>");
+                        else if (text.Equals(nameof(DiscordSecrets.Realm_Creators), StringComparison.InvariantCultureIgnoreCase))
+                            rolePings.Append($" <@&{DiscordSecrets.Realm_Creators}>");
                         else
-                            throw new Exception($"The role {role} either can not be pinged or is not formatted correctly. \nMake sure there are no spaces in the role name");
+                            throw new Exception($"The role {role} either can not be pinged or is not formatted correctly.\nUse a \";\" to seperate commands. \nMake sure there are no spaces in the role name");
                     }
                 }
             }
@@ -131,10 +151,10 @@ namespace ROB.Discord.Helpers
                 var command = commands[i].Split(':');
 
                 var section = command[0].Trim();
-                if (section == "channel")
+                if (section == CommandParameters.Channel)
                 {
                     if (command.Length == 1)
-                        throw new Exception("The command is not formatted correctly you must use \":\" colons to seperate the field and text");
+                        throw new Exception($"The command {commands[i]} is not formatted correctly you must use \":\" colons to seperate the field and text");
 
                     var channel = command[1].Trim().ToLower();
                     if (channel.Equals(nameof(DiscordSecrets.AnnouncementChannel), StringComparison.InvariantCultureIgnoreCase))
@@ -146,7 +166,7 @@ namespace ROB.Discord.Helpers
                     else if (channel.Equals(nameof(DiscordSecrets.BotTestChannel), StringComparison.InvariantCultureIgnoreCase))
                         return DiscordSecrets.BotTestChannel;
                     else
-                        throw new Exception($"The channel {channel} either does not exist or is not formatted correctly. \nBe sure to remove all \"-\"s and place \"channel\" at the end of the channel name");
+                        throw new Exception($"The channel {channel} either does not exist or is not formatted correctly.\nUse a \";\" to seperate commands. \nBe sure to remove all \"-\"s and place \"channel\" at the end of the channel name");
 
                 }
             }

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ROBaspCore\ROBaspCore.csproj" />
+    <ProjectReference Include="..\ROBaspCore\ROB.Web.csproj" />
   </ItemGroup>
 
 </Project>

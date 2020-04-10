@@ -18,13 +18,14 @@ namespace ROB.Discord.Secrets
         #region Community
         public static readonly ulong GeneralChannel = 665251221275148300;
         public static readonly ulong AnnouncementChannel = 594217500665839782;
+        public static readonly ulong FeedbackChannel = 697567252349976616;
         #endregion
         
         #endregion
 
         #region roles
         public static readonly ulong Everyone = 593969560684593172;
-        public static readonly ulong Realm_Creator = 697209069848756334;
+        public static readonly ulong Realm_Creators = 697209069848756334;
         public static readonly ulong Moderators = 677570614227238924;
         public static readonly ulong Recruits = 688095303269875822;
         public static readonly ulong Alpha_Testers = 685947684066033712;

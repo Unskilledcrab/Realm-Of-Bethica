@@ -1,0 +1,90 @@
+﻿@model ROB.Web.Models.WeaponModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WeaponModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Handed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Handed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RateOfAttack)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RateOfAttack)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DamageValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DamageValue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DamageFactor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DamageFactor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReactionModifier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReactionModifier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PenetrationValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PenetrationValue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Range)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Range)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Evasion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Evasion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

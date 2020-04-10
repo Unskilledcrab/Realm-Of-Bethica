@@ -1,0 +1,51 @@
+.body1 {
+  font-size: 20px;
+  font-weight: 400!important;
+}
+
+.col-race-img {
+  padding-top: 241px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.row-race-margin {
+  margin-bottom: 10px;
+}
+
+.row-gender-margin-top {
+  padding-top: 28px;
+}
+
+.select-race {
+  padding-top: 30px;
+}
+
+.container-hgt-1331 {
+  border: groove;
+  border-width: 5px;
+  border-color: #ffffff;
+  /*height: 1331px;*/
+  background-color: rgba(0,0,0,0.5);
+}
+
+.row-hgt-1247 {
+  /*height: 1247px;*/
+}
+
+.div-padding-top-215 {
+  padding-top: 215px;
+}
+
+.BG-Image-2 {
+  background: url(../../images/_BStudio/BG/BG-Priest-1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /*height: 1331px;*/
+  padding-top: 90px;
+  padding-bottom: 100px;
+  background-attachment: fixed;
+}
+

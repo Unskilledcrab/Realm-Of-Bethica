@@ -102,16 +102,16 @@ namespace ROBaspCore
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/chatHub");
                 endpoints.MapControllers();
-                endpoints.MapAreaControllerRoute(
-                    "Identity",
-                    "Identity",
-                    "Identity/{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapAreaControllerRoute(
+                //    "Identity",
+                //    "Identity",
+                //    "Identity/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

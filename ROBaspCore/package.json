@@ -6,6 +6,5 @@
     "@popperjs/core": "2.1.1",
     "tippy.js": "6.1.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
