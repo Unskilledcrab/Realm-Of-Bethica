@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewComponents\**" />
+    <Content Remove="ViewComponents\**" />
+    <EmbeddedResource Remove="ViewComponents\**" />
+    <None Remove="ViewComponents\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Data\Migrations\20190721192331_techniqueModel.cs" />
     <Compile Remove="Data\Migrations\20190721192331_techniqueModel.Designer.cs" />
     <Compile Remove="Data\Migrations\20190721192702_techniqueModel.cs" />
@@ -99,7 +106,6 @@
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="CodeTemplates\" />
-    <Folder Include="ViewComponents\" />
     <Folder Include="wwwroot\characters\warren\" />
     <Folder Include="wwwroot\images\pregens\" />
     <Folder Include="wwwroot\images\_BStudio\" />
