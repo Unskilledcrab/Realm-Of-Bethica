@@ -1,7 +1,7 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
-using ROB.Discord.Models.Secrets;
+using ROB.Discord.Secrets;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +20,7 @@ namespace ROB.Discord.API
 
         public async Task AnnouncementAsync(Embed embed)
         {
-            ulong announcementChannelId = DiscordSecrets.AnnouncementChannelId;
+            ulong announcementChannelId = DiscordSecrets.AnnouncementChannel;
             var channel = _discord.GetChannel(announcementChannelId) as IMessageChannel;
             await channel.SendMessageAsync(embed: embed);
         }

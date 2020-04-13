@@ -1,0 +1,54 @@
+﻿@model ROB.Web.Models.ModifierModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ModifierModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EffectAllParentSkills)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EffectAllParentSkills)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EffectAllTrainedParentSkills)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EffectAllTrainedParentSkills)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MultiplyByLevel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MultiplyByLevel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalModifiers)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalModifiers)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Modifier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Modifier)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

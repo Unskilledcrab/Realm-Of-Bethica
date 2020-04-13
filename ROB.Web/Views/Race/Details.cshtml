@@ -1,0 +1,108 @@
+﻿@model ROB.Web.Models.RaceModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RaceModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionBrief)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionBrief)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HeightInches)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HeightInches)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WeightLBS)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WeightLBS)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LifeSpanYears)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LifeSpanYears)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Walk)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Walk)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tactical)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tactical)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sprint)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sprint)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Luck)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Luck)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstModifiedAttribute)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstModifiedAttribute.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstAttributeModifier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstAttributeModifier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondModifiedAttribute)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SecondModifiedAttribute.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondAttributeModifier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SecondAttributeModifier)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

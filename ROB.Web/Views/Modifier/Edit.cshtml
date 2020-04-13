@@ -1,0 +1,169 @@
+﻿@model ROB.Web.Models.ModifierModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>ModifierModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ChildSkillToModify" class="control-label"></label>
+                <select asp-for="ChildSkillToModifyId" onchange="filterGroups(this.value)" class="form-control" asp-items="ViewBag.ChildSkillGroup">
+                    <option value="">Select Child Skill To Modify</option>
+                </select>
+                <span asp-validation-for="ChildSkillToModifyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParentSkillToModify" class="control-label"></label>
+                <select asp-for="ParentSkillToModifyId" onchange="filterGroups(this.value)" class="form-control" asp-items="ViewBag.ParentSkillGroup">
+                    <option value="">Select Parent Skill To Modify</option>
+                </select>
+                <span asp-validation-for="ParentSkillToModifyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttributeToModify" class="control-label"></label>
+                <select asp-for="AttributeToModifyId" onchange="filterGroups(this.value)" class="form-control" asp-items="ViewBag.AttributeGroup">
+                    <option value="">Select Attribute To Modify</option>
+                </select>
+                <span asp-validation-for="AttributeToModifyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="EffectAllParentSkills" /> @Html.DisplayNameFor(model => model.EffectAllParentSkills)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="EffectAllTrainedParentSkills" /> @Html.DisplayNameFor(model => model.EffectAllTrainedParentSkills)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="MultiplyByLevel" /> @Html.DisplayNameFor(model => model.MultiplyByLevel)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsStatic" /> @Html.DisplayNameFor(model => model.IsStatic)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="StaticSkillToModify" class="control-label"></label>
+                <textarea asp-for="StaticSkillToModify" class="form-control"></textarea>
+                <span asp-validation-for="StaticSkillToModify" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StaticSkillSufix" class="control-label"></label>
+                <textarea asp-for="StaticSkillSufix" class="form-control"></textarea>
+                <span asp-validation-for="StaticSkillSufix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Modifier" class="control-label"></label>
+                <input asp-for="Modifier" class="form-control" />
+                <span asp-validation-for="Modifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalModifiers" class="control-label"></label>
+                <input asp-for="AdditionalModifiers" class="form-control" />
+                <span asp-validation-for="AdditionalModifiers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <h2><label class="control-label">Assigned Races</label></h2>
+                <table>
+                    <tr>
+                        @{
+                            var cnt = 0;
+                            List<ROB.Web.ViewModels.ModifierAssignedRacesData> AssignedRaces = ViewBag.AssignedRaces;
+
+                            foreach (var race in AssignedRaces)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                @:</tr><tr>
+                                }
+                                @:<td style="display: block">
+                                    <input type="checkbox"
+                                           name="assignedRaces"
+                                           value="@race.RaceId"
+                                           @(Html.Raw(race.IsAssigned ? "checked=\"checked\"" : "")) />
+                                    <a class="btn btn-primary" data-toggle="collapse" href="#raceCollapse_@race.RaceId" role="button" aria-expanded="false" aria-controls="collapseExample">@race.Name</a>
+
+                                    <div class="collapse" id="raceCollapse_@race.RaceId">
+                                        <div class="card card-body">
+                                            @race.Description
+                                        </div>
+                                    </div>
+                                @:</td>
+                            }
+                        @:</tr>
+                        }
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <h2><label class="control-label">Assigned Techniques</label></h2>
+                    <table>
+                        <tr>
+                            @{
+                                cnt = 0;
+                                List<ROB.Web.ViewModels.ModifierAssignedTechniquesData> AssignedTechniques = ViewBag.AssignedTechniques;
+
+                                foreach (var Technique in AssignedTechniques)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                    @:</tr><tr>
+                                    }
+                                    @:<td style="display: block">
+                                        <input type="checkbox"
+                                               name="assignedTechnqiues"
+                                               value="@Technique.TechniqueId"
+                                               @(Html.Raw(Technique.IsAssigned ? "checked=\"checked\"" : "")) />
+                                        <a class="btn btn-primary" data-toggle="collapse" href="#TechniqueCollapse_@Technique.TechniqueId" role="button" aria-expanded="false" aria-controls="collapseExample">@Technique.Name</a>
+
+                                        <div class="collapse" id="TechniqueCollapse_@Technique.TechniqueId">
+                                            <div class="card card-body">
+                                                @Technique.Description
+                                            </div>
+                                        </div>
+                                    @:</td>
+                                }
+                            @:</tr>
+                            }
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

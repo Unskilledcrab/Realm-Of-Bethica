@@ -1,0 +1,147 @@
+﻿@model ROB.Web.Models.PregenProfessionArchetypeModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>PregenProfessionArchetypeModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Upload Pregen Picture / GIF</label>
+                <input type="file" name="file" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <h2><label class="control-label">Selected Trained Parent Skills</label></h2>
+                <table>
+                    <tr>
+                        @{
+                            var cnt = 0;
+                            List<ROB.Web.ViewModels.PregenAssignedTrainedSkillsData> parentSkillPrerequisites = ViewBag.AssignedParentSkills;
+
+                            foreach (var parentSkill in parentSkillPrerequisites)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                @:</tr><tr>
+                                }
+                                @:<td style="display: block">
+                                    <input type="checkbox"
+                                           name="assignedParentSkills"
+                                           value="@parentSkill.ParentSkillId"
+                                           @(Html.Raw(parentSkill.IsAssigned ? "checked=\"checked\"" : "")) />
+                                    @parentSkill.ParentSkillName
+                                @:</td>
+                            }
+                        @:</tr>
+                        }
+                    </table>
+                </div>
+                <div class="form-group">
+                    <h2><label class="control-label">Selected Child Skills</label></h2>
+                    <table>
+                        <tr>
+                            @{
+                                cnt = 0;
+                                List<ROB.Web.ViewModels.PregenAssignedChildSkillsData> childSkillPrerequisites = ViewBag.AssignedChildSkills;
+
+                                foreach (var childSkill in childSkillPrerequisites)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                    @:</tr><tr>
+                                    }
+                                    @:<td style="display: block">
+                                        <input type="checkbox"
+                                               name="assignedChildSkills"
+                                               value="@childSkill.ChildSkillId"
+                                               @(Html.Raw(childSkill.IsAssigned ? "checked=\"checked\"" : "")) />
+                                        @childSkill.ChildSkillName
+                                    @:</td>
+                                }
+                            @:</tr>
+                            }
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <h2><label class="control-label">Selected Techniques</label></h2>
+                        <table>
+                            <tr>
+                                @{
+                                    cnt = 0;
+                                    List<ROB.Web.ViewModels.PregenAssignedTechniquesData> techniquePrerequisites = ViewBag.AssignedTechniques;
+
+                                    foreach (var technique in techniquePrerequisites)
+                                    {
+                                        if (cnt++ % 3 == 0)
+                                        {
+                                        @:</tr><tr>
+                                        }
+                                        @:<td style="display: block">
+                                            <input type="checkbox"
+                                                   name="assignedTechniques"
+                                                   value="@technique.TechniqueId"
+                                                   @(Html.Raw(technique.IsAssigned ? "checked=\"checked\"" : "")) />
+                                            @technique.TechniqueName
+                                        @:</td>
+                                    }
+                                @:</tr>
+                                }
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <h2><label class="control-label">Selected Talents</label></h2>
+                            <table>
+                                <tr>
+                                    @{
+                                        cnt = 0;
+                                        List<ROB.Web.ViewModels.PregenAssignedTalentsData> talentPrerequisites = ViewBag.AssignedTalents;
+
+                                        foreach (var talent in talentPrerequisites)
+                                        {
+                                            if (cnt++ % 3 == 0)
+                                            {
+                                            @:</tr><tr>
+                                            }
+                                            @:<td style="display: block">
+                                                <input type="checkbox"
+                                                       name="assignedTalents"
+                                                       value="@talent.TalentId"
+                                                       @(Html.Raw(talent.IsAssigned ? "checked=\"checked\"" : "")) />
+                                                @talent.TalentName
+                                            @:</td>
+                                        }
+                                    @:</tr>
+                                    }
+                                </table>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+
+                @section Scripts {
+                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                }

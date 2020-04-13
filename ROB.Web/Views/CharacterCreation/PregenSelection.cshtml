@@ -1,0 +1,82 @@
+﻿@model ROB.Web.ViewModels.PregenSelection
+@using System.Text.RegularExpressions;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Pregenerated Professional Archetype Selection</h2>
+
+<div id="accordion">
+
+    @foreach (var item in Model.Pregens)
+    {
+        <form asp-action="PregenSelection" asp-route-id="@Model.CharacterSheetId">
+            <input type="hidden" value="@item.Id" name="PregenId" />
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#pregen-@item.Id">
+                        <strong>@item.Name</strong>
+                    </a>
+                </div>
+                <div id="pregen-@item.Id" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <img src="/api/images/pregen/?id=@item.Id" class="d-block w-100 {max-height: 500px;}" alt="@item.Name picture">
+                                <br />
+                                <h4>@item.Name</h4>
+                                <br />
+                                <p><h5>Description:</h5> </p>
+                                <p id="tab-once">@item.Description</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                @if (item.TrainedParentSkills != null)
+                                {
+                                    <p><h5>Trained Parent Skills:</h5></p>
+                                    @foreach (var skill in item.TrainedParentSkills)
+                                    {
+                                        <p id="tab-once">@skill.ParentSkill.Name</p>
+                                    }
+                                }
+
+                                @if (item.ChildSkills != null)
+                                {
+                                    <p><h5>Bonus Child Skills:</h5></p>
+                                    @foreach (var skill in item.ChildSkills)
+                                    {
+                                        <p id="tab-once">@skill.ChildSkill.Name</p>
+                                    }
+                                }
+
+                                @if (item.Techniques != null)
+                                {
+                                    <p><h5>Special Techniques:</h5></p>
+                                    @foreach (var skill in item.Techniques)
+                                    {
+                                        <p id="tab-once">@skill.Technique.TechniqueName</p>
+                                    }
+                                }
+
+                                @if (item.Talents != null)
+                                {
+                                    <p><h5>Special Talents:</h5></p>
+                                    @foreach (var skill in item.Talents)
+                                    {
+                                        <p id="tab-once">@skill.Talent.Name</p>
+                                    }
+                                }
+                                <br>
+                                <br>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Select" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+</div>

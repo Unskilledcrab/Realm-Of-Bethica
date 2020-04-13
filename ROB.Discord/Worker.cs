@@ -9,14 +9,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using ROB.Discord.Models.Secrets;
+using ROB.Discord.Secrets;
 using ROB.Discord.Services;
 
 namespace ROB.Discord
 {
     public class Worker : BackgroundService
     {
-
+        public static IServiceProvider Services;
         private readonly ILogger<Worker> _logger;
         private DiscordSocketClient _client;
         private IConfiguration _configuration { get; }
@@ -29,22 +29,22 @@ namespace ROB.Discord
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            using (var services = ConfigureServices())
+            using (var Services = ConfigureServices())
             {
-                _client = services.GetRequiredService<DiscordSocketClient>(); 
+                _client = Services.GetRequiredService<DiscordSocketClient>(); 
 
                 _client.Log += LogAsync;
-                services.GetRequiredService<CommandService>().Log += LogAsync;
+                Services.GetRequiredService<CommandService>().Log += LogAsync;
 
                 // Setup globally used secrets
-                _configuration.GetSection("UB").Get<DiscordSecrets>();
+                //_configuration.GetSection("UB").Get<DiscordSecrets>();
                 _configuration.GetSection("Trello").Get<TrelloSecrets>();
 
                 // Start up the bot
                 await _client.LoginAsync(TokenType.Bot, _configuration["DiscordToken"]);
                 await _client.StartAsync();
 
-                await services.GetRequiredService<CommandHandlingService>().InitializeAsync();
+                await Services.GetRequiredService<CommandHandlingService>().InitializeAsync();
                 
                 // Block this task until the program is closed.
                 await Task.Delay(-1);
@@ -59,6 +59,7 @@ namespace ROB.Discord
                 .AddSingleton<CommandHandlingService>()
                 .AddSingleton<HttpClient>()
                 .AddSingleton<PictureService>()
+                .AddSingleton<TrelloService>()
                 .BuildServiceProvider();
         }
 
