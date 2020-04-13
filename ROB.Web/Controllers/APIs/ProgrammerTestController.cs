@@ -26,7 +26,30 @@ namespace ROB.Web.Controllers
             {
                 if (other == null) return false;
 
-                return this.Characters.Equals(other.Characters) &&
+                bool charactersEqual = true;
+
+                if (other.Characters.Count != this.Characters.Count)
+                    return false;
+
+                foreach (var character in other.Characters)
+                {
+                    bool found = false;
+                    foreach (var _character in this.Characters)
+                    {
+                        if (character.Equals(_character))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found == false)
+                    {
+                        charactersEqual = false;
+                        break;
+                    }
+                }
+
+                return charactersEqual &&
                     this.Version.Equals(other.Version) &&
                     this.Message.Equals(other.Message) &&
                     this.Key.Equals(other.Key);
