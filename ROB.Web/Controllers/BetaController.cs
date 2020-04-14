@@ -26,12 +26,12 @@ namespace ROB.Web.Controllers
         /// This will be a page that links to all of the beta testing utilities
         /// </summary>
         /// <returns></returns>
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }
 
-        public async Task<IActionResult> CombatCalculator()
+        public IActionResult CombatCalculator()
         {
             return View();
         }

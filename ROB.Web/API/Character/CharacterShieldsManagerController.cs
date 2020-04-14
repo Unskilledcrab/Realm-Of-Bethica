@@ -5,23 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ROB.Web.API;
 using ROB.Web.Attributes;
 using ROB.Web.Data;
 using ROB.Web.Models;
 using ROB.Web.ViewModels;
 
-namespace ROB.Web.Controllers
+namespace ROB.Web.API
 {
-    /// <summary>
-    /// For the character sheets all of them will use these type of APIs
-    /// 
-    /// They will not have the ability to update anything they are only
-    /// getting the bound data and adding or removing the data
-    /// </summary>
-    [ServiceFilter(typeof(AuthorizeSheetOwnerAttribute))]
-    [Route("api/{characterSheetId}/[controller]")]
-    [ApiController]
-    public class CharacterShieldsManagerController : ControllerBase
+    public class CharacterShieldsManagerController : ApiOwnerControllerBase
     {
         private readonly ApplicationDbContext _context;
 
@@ -32,7 +24,7 @@ namespace ROB.Web.Controllers
 
         [HttpGet]
         public async Task<ActionResult<List<ShieldModel>>> GetAsync(string characterSheetId)
-        {            
+        {
             try
             {
                 var Shields = await _context.ShieldModel
@@ -65,7 +57,7 @@ namespace ROB.Web.Controllers
         }
 
         [HttpPost()]
-        public async Task<IActionResult> Post(string characterSheetId,[FromBody] ApiIdViewModel id)
+        public async Task<IActionResult> Post(string characterSheetId, [FromBody] ApiIdViewModel id)
         {
             try
             {
@@ -84,7 +76,7 @@ namespace ROB.Web.Controllers
         public async Task<IActionResult> Delete(string characterSheetId, int id)
         {
             try
-            {                
+            {
                 var sheet = await _context.CharacterSheetModel
                     .Include(c => c.Shields)
                     .FirstOrDefaultAsync(c => c.Id == int.Parse(characterSheetId)).ConfigureAwait(false);// Get the sheet we want to update                

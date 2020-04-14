@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ROB.Web.API;
 using ROB.Web.Attributes;
 using ROB.Web.Data;
 using ROB.Web.Models;
 
-namespace ROB.Web.Controllers
+namespace ROB.Web.API
 {
-    [ServiceFilter(typeof(AuthorizeSheetOwnerAttribute))]
-    [Route("api/{characterSheetId}/[controller]")]
-    [ApiController]
-    public class WorldController : ControllerBase
+    public class WorldController : ApiOwnerControllerBase
     {
         private readonly ApplicationDbContext _context;
 
