@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ROB.Discord.Secrets
+﻿namespace ROB.Discord.Secrets
 {
     class TrelloSecrets
     {

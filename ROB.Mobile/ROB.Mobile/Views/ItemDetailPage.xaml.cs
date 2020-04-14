@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 using ROB.Mobile.Models;
 using ROB.Mobile.ViewModels;

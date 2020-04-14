@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -39,7 +35,7 @@ namespace ROB.Web.Controllers
         public async Task<int> SetSitePicture(string folder, string id, IFormFile file)
         {
             var path = Resources.SiteImages + "/" + folder + "/";
-            return await Resources.SetSitePicture(path, id, ".gif", file).ConfigureAwait(false);            
-        }        
+            return await Resources.SetSitePicture(path, id, ".gif", file).ConfigureAwait(false);
+        }
     }
 }

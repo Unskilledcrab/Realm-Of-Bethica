@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ROB.Discord.Helpers
+﻿namespace ROB.Discord.Helpers
 {
     public class CommandParameters
     {

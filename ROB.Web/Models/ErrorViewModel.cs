@@ -1,5 +1,3 @@
-using System;
-
 namespace ROB.Web.Models
 {
     public class ErrorViewModel

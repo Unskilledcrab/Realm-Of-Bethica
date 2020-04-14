@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ROB.Discord.Helpers
+﻿namespace ROB.Discord.Helpers
 {
     /// <summary>
     /// This class should be used with ALL commands so that we can statically reference them throughout the project

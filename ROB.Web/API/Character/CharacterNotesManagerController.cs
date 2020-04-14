@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ROB.Web.API;
-using ROB.Web.Attributes;
 using ROB.Web.Data;
-using ROB.Web.Models;
 using ROB.Web.ViewModels;
 
 namespace ROB.Web.API

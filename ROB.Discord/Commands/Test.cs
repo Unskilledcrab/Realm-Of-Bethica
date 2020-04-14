@@ -1,13 +1,9 @@
 ﻿using Discord;
 using Discord.Commands;
-using Discord.WebSocket;
 using ROB.Discord.Helpers;
 using ROB.Discord.Secrets;
 using ROB.Discord.Preconditions;
 using ROB.Discord.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ROB.Discord.Commands

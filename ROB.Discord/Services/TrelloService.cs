@@ -1,13 +1,9 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
-using ROB.Core;
 using ROB.Discord.Secrets;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ROB.Discord.Services

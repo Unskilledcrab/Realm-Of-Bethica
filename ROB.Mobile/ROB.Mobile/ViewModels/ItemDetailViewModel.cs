@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using ROB.Mobile.Models;
 
 namespace ROB.Mobile.ViewModels

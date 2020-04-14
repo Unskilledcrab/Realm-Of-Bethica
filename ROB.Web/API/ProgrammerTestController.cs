@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ROB.Web.Controllers
+namespace ROB.Web.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProgrammerTestController : ControllerBase
+    public class ProgrammerTestController : ApiControllerBase
     {
         public class TestClass : IEquatable<TestClass>
         {
@@ -91,7 +85,7 @@ namespace ROB.Web.Controllers
 
         [HttpGet("SubmitAnswer")]
         public ActionResult<string> TrySecretCode(TestClass attempt)
-        {            
+        {
             if (test.Equals(attempt))
                 return Ok("you will need this for the next part of the test...  <test-helper name='Titan' attribute='Tough'/>");
             else
