@@ -14,21 +14,6 @@ namespace ROB.Discord.Commands
         [Command("testPing")]
         public Task PingAsync() => ReplyAsync("pong!");
 
-        [Command("testEmbed")]
-        public Task TestEmbed()
-        {
-            var embed = new EmbedBuilder()
-                .WithTitle("Test Title")
-                .WithDescription("Test Description")
-                .AddField("Trello Board", "Click [here](https://trello.com/developers78278598) to go to trello home")
-                .WithAuthor(Context.Client.CurrentUser)
-                .WithFooter(footer => footer.Text = "UB Unlimited")
-                .WithCurrentTimestamp()
-                .Build();
-
-            return ReplyAsync(embed: embed);
-        }
-
         [Command(nameof(UBCommands.MeetingReminder))]
         public Task MeetingReminder(string meetingAgendaURL)
         {
