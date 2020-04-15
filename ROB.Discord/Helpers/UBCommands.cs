@@ -14,5 +14,9 @@
         // Role Management Commands
         public static readonly string RealmCreator = "RealmCreator";
         public static readonly string Simpleton = "Simpleton";
+
+        // Staff Commands
+        public static readonly string Absent = "Absent";
+
     }
 }

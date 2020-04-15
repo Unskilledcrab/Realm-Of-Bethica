@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ROB.Web.API
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class ProgrammerTestController : ApiControllerBase
     {
         public class TestClass : IEquatable<TestClass>
@@ -64,7 +62,7 @@ namespace ROB.Web.API
             }
         }
 
-        public static TestClass test { get; set; } = new TestClass
+        public static TestClass Test => new TestClass
         {
             Version = "3.2.0.A",
             Message = "You're a wizard",
@@ -80,13 +78,13 @@ namespace ROB.Web.API
         [HttpGet]
         public ActionResult<TestClass> GetSecretCode()
         {
-            return Ok(test);
+            return Ok(Test);
         }
 
         [HttpGet("SubmitAnswer")]
         public ActionResult<string> TrySecretCode(TestClass attempt)
         {
-            if (test.Equals(attempt))
+            if (Test.Equals(attempt))
                 return Ok("you will need this for the next part of the test...  <test-helper name='Titan' attribute='Tough'/>");
             else
                 return NotFound("Try again :)");
