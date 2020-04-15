@@ -93,7 +93,7 @@ namespace ROB.Web
             {
                 OnPrepareResponse = ctx =>
                 {
-                    const int durationInSeconds = 60 * 60 * 24;
+                    const int durationInSeconds = 60 * 60 * 24; // 24 hour cache
                     ctx.Context.Response.Headers[HeaderNames.CacheControl] =
                         "public,max-age=" + durationInSeconds;
                 }
