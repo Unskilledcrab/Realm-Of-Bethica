@@ -24,13 +24,13 @@ namespace ROB.Web
         /// <param name="file"></param>
         /// <returns></returns>
         public static async Task<int> SetSitePicture(string staticPath, string id, string ext, IFormFile file)
-        {            
+        {
             try
             {
                 if (file != null && file.Length > 0)
                 {
                     var path = staticPath + "/" + id + ext;
-                    if (System.IO.File.Exists(path)) 
+                    if (System.IO.File.Exists(path))
                         System.IO.File.Delete(path); // if picture already exists delete it
                     using (var stream = new FileStream(path, FileMode.Create)) // upload new picture
                     {
@@ -43,10 +43,9 @@ namespace ROB.Web
                     return 1;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                
-                return -1;
+                throw new Exception($"Unable to upload file {file.FileName}", ex);
             }
         }
         public static int DeleteSitePicture(string staticPath, string id, string ext)
@@ -59,7 +58,7 @@ namespace ROB.Web
             }
             catch (Exception ex)
             {
-                return -1;
+                throw new Exception($"Unable to delete file {staticPath + id + ext}", ex);
             }
         }
     }

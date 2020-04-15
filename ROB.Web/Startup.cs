@@ -12,6 +12,7 @@ using ROB.Web.Services;
 using ROB.Web.Attributes;
 using AutoMapper;
 using ROB.Web.Hubs;
+using Microsoft.Net.Http.Headers;
 
 namespace ROB.Web
 {
@@ -88,7 +89,16 @@ namespace ROB.Web
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    const int durationInSeconds = 60 * 60 * 24; // 24 hour cache
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=" + durationInSeconds;
+                }
+            });
+
             app.UseCookiePolicy();
             app.UseRouting();
 
