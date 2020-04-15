@@ -80,4 +80,23 @@ namespace ROB.Discord.Commands
                 return ReplyAsync(rolePings + message, embed: embed.Build());
         }
     }
+
+    [RequireRole(nameof(DiscordSecrets.Everyone))]
+    public class Test2 : ModuleBase<SocketCommandContext>
+    {
+        [Command("socials")]
+        public Task Socials()
+        {
+            var embed = new EmbedBuilder()
+                .WithTitle("Socials")
+                .WithDescription("Follow us on our social media accounts!")
+                .AddField("Trello Board", "")
+                .WithAuthor(Context.Client.CurrentUser)
+                .WithFooter(footer => footer.Text = "UB Unlimited")
+                .WithCurrentTimestamp()
+                .Build();
+
+            return ReplyAsync(embed: embed);
+        }
+    }
 }
