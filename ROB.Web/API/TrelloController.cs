@@ -42,8 +42,7 @@ namespace ROB.Web.API
             }
         }
 
-        [HttpGet]
-        [Route("status/{statusCode}")]
+        [HttpGet("status/{statusCode}")]
         public async Task<ActionResult<List<TrelloSuggestionModel>>> GetPendingSuggestions(SuggestionStatus suggestionStatus)
         {
             try
@@ -61,8 +60,7 @@ namespace ROB.Web.API
             }
         }
 
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<TrelloSuggestionModel>> GetSuggestionById(int id)
         {
             try
@@ -79,8 +77,7 @@ namespace ROB.Web.API
             }
         }
 
-        [HttpGet]
-        [Route("user/{mention}")]
+        [HttpGet("user/{mention}")]
         public async Task<ActionResult<List<TrelloSuggestionModel>>> GetSuggestionsByUserMention(string mention)
         {
             try
@@ -114,8 +111,7 @@ namespace ROB.Web.API
             }
         }
 
-        [HttpPost]
-        [Route("update")]
+        [HttpPost("update")]
         public async Task<IActionResult> UpdateSuggestion([FromBody] SuggestionUpdate suggestionUpdate)
         {
             try
