@@ -17,6 +17,7 @@ namespace ROB.Web.Models
     {
         Pending,
         Accepted,
-        Rejected
+        Rejected,
+        Committed
     }
 }

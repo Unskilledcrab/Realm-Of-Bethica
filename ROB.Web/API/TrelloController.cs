@@ -19,6 +19,12 @@ namespace ROB.Web.API
             this.context = context;
         }
 
+        public class SuggestionUpdate
+        {
+            public int SuggestionId { get; set; }
+            public SuggestionStatus StatusUpdate { get; set; }
+        }
+
         [HttpGet]
         public async Task<ActionResult<List<TrelloSuggestionModel>>> GetSuggestions()
         {
@@ -33,6 +39,25 @@ namespace ROB.Web.API
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Could not retrieve trello suggestions");
+            }
+        }
+
+        [HttpGet]
+        [Route("status/{statusCode}")]
+        public async Task<ActionResult<List<TrelloSuggestionModel>>> GetPendingSuggestions(SuggestionStatus suggestionStatus)
+        {
+            try
+            {
+                var suggestions = await context
+                    .TrelloSuggestionModel
+                    .Where(t => t.Status == suggestionStatus)
+                    .ToListAsync()
+                    .ConfigureAwait(false);
+                return Ok(suggestions);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Could not retrieve trello suggestions with status code {suggestionStatus}");
             }
         }
 
@@ -89,24 +114,22 @@ namespace ROB.Web.API
             }
         }
 
-        public class
-
         [HttpPost]
         [Route("update")]
-        public async Task<IActionResult> UpdateSuggestion([FromBody] int suggestionId, SuggestionStatus status)
+        public async Task<IActionResult> UpdateSuggestion([FromBody] SuggestionUpdate suggestionUpdate)
         {
             try
             {
                 var suggestion = await context
                     .TrelloSuggestionModel
-                    .FirstOrDefaultAsync(s => s.Id == suggestionId);
-                suggestion.Status = status;
+                    .FirstOrDefaultAsync(s => s.Id == suggestionUpdate.SuggestionId);
+                suggestion.Status = suggestionUpdate.StatusUpdate;
                 await context.SaveChangesAsync().ConfigureAwait(false);
                 return Ok();
             }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Could not update trello suggestion {suggestionId}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Could not update trello suggestion {suggestionUpdate.SuggestionId}");
             }
         }
     }
