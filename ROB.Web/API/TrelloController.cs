@@ -32,7 +32,8 @@ namespace ROB.Web.API
             {
                 var suggestions = await context
                     .TrelloSuggestionModel
-                    .Take(10)                    
+                    .OrderByDescending(s => s.Id)
+                    .Take(10)    
                     .ToListAsync()
                     .ConfigureAwait(false);
                 return Ok(suggestions);
@@ -51,6 +52,7 @@ namespace ROB.Web.API
                 var suggestions = await context
                     .TrelloSuggestionModel
                     .Where(t => t.Status == suggestionStatus)
+                    .OrderByDescending(s => s.Id)
                     .Take(10) 
                     .ToListAsync()
                     .ConfigureAwait(false);
@@ -87,6 +89,7 @@ namespace ROB.Web.API
                 var suggestions = await context
                     .TrelloSuggestionModel
                     .Where(s => s.Sender == mention)
+                    .OrderByDescending(s => s.Id)
                     .Take(10)
                     .ToListAsync()
                     .ConfigureAwait(false);
