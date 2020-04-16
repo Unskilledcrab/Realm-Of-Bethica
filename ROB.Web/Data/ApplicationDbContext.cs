@@ -69,31 +69,31 @@ namespace ROB.Web.Data
                 .HasMany<WorldModel>(p => p.CreatedWorlds)
                 .WithOne(c => c.Creator)
                 .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<TownModel>(p => p.CreatedTowns)
                 .WithOne(c => c.Creator)
                 .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<BuildingModel>(p => p.CreatedBuildings)
                 .WithOne(c => c.Creator)
                 .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<CharacterSheetModel>(p => p.CreatedCharacterSheets)
                 .WithOne(c => c.Creator)
                 .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<QuestGroupModel>(p => p.CreatedQuestGroups)
                 .WithOne(c => c.Creator)
                 .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
             #endregion
 
             #region Quest Group
@@ -854,5 +854,6 @@ namespace ROB.Web.Data
         public DbSet<ROB.Web.Models.ArmorModel> ArmorModel { get; set; }
         public DbSet<ROB.Web.Models.WorldModel> WorldModel { get; set; }
         public DbSet<ROB.Web.Models.ItemPackModel> ItemPackModel { get; set; }
+        public DbSet<TrelloSuggestionModel> TrelloSuggestionModel { get; set; }
     }
 }
