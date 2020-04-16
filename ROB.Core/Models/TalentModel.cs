@@ -1,20 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ROB.Core.Models
 {
     public class TalentModel
     {
         public int Id { get; set; }
-        [Display(Name = "Talent Group")]
         public int TalentGroupId { get; set; }
         public TalentGroupTypeModel TalentGroup { get; set; }
-        [MaxLength(50, ErrorMessage = "Can not be more than 50 characters")]
         public string Name { get; set; }
         public string Description { get; set; }
         public string Benefit { get; set; }
-
-        [MaxLength(500, ErrorMessage = "Can not be more than 500 characters")]
         public string Notes { get; set; }
         public int Cost { get; set; } = 1;
 

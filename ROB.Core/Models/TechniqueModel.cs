@@ -1,30 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ROB.Core.Models
 {
     public class TechniqueModel
     {
         public int Id { get; set; }
-
-        [Display(Name = "Technique Group Type")]
         public int TechniqueGroupTypeId { get; set; }
-        [Display(Name = "Technique Group Type")]
         public TechniqueGroupTypeModel TechniqueGroupType { get; set; }
-
-        [Display(Name = "Technique Name")]
-        [MaxLength(50, ErrorMessage = "Can not be more than 50 characters")]
         public string TechniqueName { get; set; }
-
         public string Description { get; set; }
-
-        [Display(Name = "Duration Type")]
         public DurationLengthType DurationLengthType { get; set; }
-
-        [Display(Name = "Duration")]
         public int Duration { get; set; }
-
-        [MaxLength(200, ErrorMessage = "Can not be more than 200 characters")]
         public string Notes { get; set; }
         public int Cost { get; set; } = 2;
         public int MinimumLevelRequirement { get; set; } = 0;

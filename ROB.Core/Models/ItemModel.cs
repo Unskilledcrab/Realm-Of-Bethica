@@ -1,18 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ROB.Core.Models
 {
     public class ItemModel
     {
         public int Id { get; set; }
-        [MaxLength(50, ErrorMessage = "Can not be more than 50 characters")]
         public string Name { get; set; }
         public string Description { get; set; }
         public double Weight { get; set; }
-        [Display(Name = "Cost in Copper (cp)")]
         public double Cost { get; set; }
-        [Display(Name = "Resell Value")]
         public double ResellValue { get; set; }
         public int CategoryId { get; set; }
         public ItemCategoryModel Category { get; set; }

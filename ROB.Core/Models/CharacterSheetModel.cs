@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ROB.Core.Models
 {
     public class CharacterSheetModel
     {
         public int Id { get; set; }
-        [MaxLength(50, ErrorMessage = "Can not be more than 50 characters")]
         public string Name { get; set; }
         public int? RaceId { get; set; }
         public RaceModel Race { get; set; }
@@ -33,20 +31,10 @@ namespace ROB.Core.Models
         #region Description
         public string Background { get; set; }
         public Alignment Alignment { get; set; }
-
-        [MaxLength(25, ErrorMessage = "Can not be more than 25 characters")]
         public string Gender { get; set; }
-
-        [MaxLength(500, ErrorMessage = "Can not be more than 500 characters")]
         public string Faith { get; set; }
-
-        [MaxLength(15, ErrorMessage = "Can not be more than 15 characters")]
         public string EyeColor { get; set; }
-
-        [MaxLength(15, ErrorMessage = "Can not be more than 15 characters")]
         public string HairColor { get; set; }
-
-        [MaxLength(15, ErrorMessage = "Can not be more than 15 characters")]
         public string SkinColor { get; set; }
         public int Age { get; set; }
         public int Weight { get; set; }
@@ -60,7 +48,6 @@ namespace ROB.Core.Models
         public string Backstory { get; set; }
         #endregion
 
-        [Display(Name = "Is Public")]
         public bool IsPublic { get; set; }
         public string CreatorId { get; set; }
         public ApplicationUser Creator { get; set; }

@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ROB.Core.Models
 {
     public class QuestTagModel
     {
         public int Id { get; set; }
-        [MaxLength(10, ErrorMessage = "Can not be more than 10 characters")]
         public string Title { get; set; }
         public string Description { get; set; }
         /// <summary>

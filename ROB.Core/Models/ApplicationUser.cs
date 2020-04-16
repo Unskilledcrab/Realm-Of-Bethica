@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-using ROB.Web.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 
-namespace ROB.Web
+namespace ROB.Core.Models
 {
     public class ApplicationUser : IdentityUser
     {

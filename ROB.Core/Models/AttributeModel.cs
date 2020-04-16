@@ -1,14 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ROB.Core.Models
+﻿namespace ROB.Core.Models
 {
     public class AttributeModel
     {
         public int Id { get; set; }
-
-        [Display(Name = "Attribute Type")]
         public AttributeTypeModel AttributeType { get; set; }
-
         public string Description { get; set; }
     }
 

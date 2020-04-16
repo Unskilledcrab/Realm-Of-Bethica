@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ROB.Core.Models
+﻿namespace ROB.Core.Models
 {
     public class BuildingSpecialtyModel
     {
@@ -9,7 +7,6 @@ namespace ROB.Core.Models
         /// All, None, Weapons, Items, Tomes, Armor, Shields, Poisons
         /// making a class incase we ever want to add more
         /// </summary>
-        [MaxLength(15, ErrorMessage = "Can not be more than 15 characters")]
         public string Specialty { get; set; }
         /// <summary>
         /// This will explain what the specialty does

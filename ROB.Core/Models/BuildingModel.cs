@@ -1,26 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ROB.Core.Models
 {
     public class BuildingModel
     {
         public int Id { get; set; }
-        [MaxLength(25, ErrorMessage = "Can not be more than 25 characters")]
         public string Name { get; set; }
         public string Description { get; set; }
         public int? OwnerId { get; set; }
         public CharacterSheetModel BuildingOwner { get; set; }
         public int BuildingRatingId { get; set; }
-
-        [Display(Name = "Building Rating")]
         public BuildingRatingModel BuildingRating { get; set; }
-
-        [Display(Name = "Is Public")]
         public bool IsPublic { get; set; }
-
-        [Display(Name = "Picture Path")]
         public string PicturePath { get; set; }
         public string CreatorId { get; set; }
         public ApplicationUser Creator { get; set; }
