@@ -18,5 +18,8 @@
         // Staff Commands
         public static readonly string Absent = "Absent";
 
+        // Everyone Commands
+        public static readonly string Socials = "Socials";
+
     }
 }
