@@ -17,9 +17,12 @@
 
         // Staff Commands
         public static readonly string Absent = "Absent";
+        public static readonly string Vote = "Vote";
+        public static readonly string GetSuggestions = "GetSuggestions";
 
         // Everyone Commands
         public static readonly string Socials = "Socials";
+        public static readonly string Suggest = "Suggest";
 
     }
 }

@@ -63,4 +63,22 @@ namespace ROB.Discord.Commands
                 return ReplyAsync(rolePings + message, embed: embed.Build());
         }
     }
+    [RequireRole(nameof(DiscordSecrets.Managers))]
+    public class ManagerCommands : ModuleBase<SocketCommandContext>
+    {
+        [Command(nameof(UBCommands.Vote))]
+        public Task Vote([Remainder] string vote)
+        {
+            var embed = UBTemplates.GetEmbedTemplate()
+                .WithTitle("Suggestion")
+                .AddField("My Suggestion is:", $"{vote}")
+                .WithAuthor(Context.User.Username)
+                .WithCurrentTimestamp()
+                .Build();
+
+            return Context.Guild
+                .GetTextChannel(DiscordSecrets.MarketingChatChannel)
+                .SendMessageAsync($"<@&{DiscordSecrets.Managers}>", embed: embed);
+        }
+    }
 }
