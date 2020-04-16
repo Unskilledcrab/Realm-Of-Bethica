@@ -31,11 +31,9 @@ namespace ROB.Discord.Commands
         [Command(nameof(UBCommands.Suggest))]
         public async Task Suggest([Remainder] string suggestion)
         {
-            var stream = await TrelloService.GetSuggestionsAsync();
-
             var embed = UBTemplates.GetEmbedTemplate()
                 .WithTitle("Suggestion")
-                .AddField("My Suggestion is:", $"{suggestion}")
+                .WithDescription(suggestion)
                 .WithAuthor(Context.User.Username)
                 .WithCurrentTimestamp()
                 .Build();
@@ -52,28 +50,22 @@ namespace ROB.Discord.Commands
                 .GetTextChannel(DiscordSecrets.MarketingChatChannel)
                 .SendMessageAsync($"<@&{DiscordSecrets.Managers}>", embed: embed);
                 */
-            /*
-            return Context.Guild
-                .GetTextChannel(DiscordSecrets.MarketingChatChannel)
-                .SendMessageAsync($"<@&{DiscordSecrets.Managers}>", embed: embed);
-                */
         }
-        [Command(nameof(UBCommands.GetSuggestions))]
-        public async Task GetSuggestions()
+        [Command(nameof(UBCommands.GetSuggestionsByUserMention))]
+        public async Task GetSuggestionsByUserMention(string mention)
         {
-            var suggestions = await TrelloService.GetSuggestionsAsync();
+            var suggestions = await TrelloService.GetSuggestionsByUserMention(mention);
 
             var embed = UBTemplates.GetEmbedTemplate()
-                .WithTitle("All Suggestions")
+                .WithTitle("Suggestions for User: ")
                 .WithAuthor(Context.User.Username)
                 .WithCurrentTimestamp();
 
             foreach (var suggestion in suggestions)
-            {
-                embed.AddField("Suggestion ID: " + suggestion.Id.ToString(), suggestion.Sender + suggestion.Suggestion);
-            }
+                embed.AddField("Suggestion ID: " + suggestion.Id.ToString(), $"{suggestion.Sender} {suggestion.Suggestion} \n***Status: {suggestion.Status}***");
 
-            await ReplyAsync("Data received", embed: embed.Build());
+            await ReplyAsync(embed: embed.Build());
         }
+
     }
 }

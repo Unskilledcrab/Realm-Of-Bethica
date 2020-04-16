@@ -19,6 +19,11 @@
         public static readonly string Absent = "Absent";
         public static readonly string Vote = "Vote";
         public static readonly string GetSuggestions = "GetSuggestions";
+        public static readonly string GetSenderSuggestions = "GetSenderSuggestions";
+        public static readonly string GetPendingSuggestions = "GetPendingSuggestions";
+        public static readonly string GetSuggestionById = "GetSuggestionById";
+        public static readonly string GetSuggestionsByUserMention = "GetSuggestionsByUserMention";
+        public static readonly string UpdateSuggestion = "UpdateSuggestion";
 
         // Everyone Commands
         public static readonly string Socials = "Socials";

@@ -5,6 +5,8 @@ using ROB.Discord.Secrets;
 using ROB.Discord.Preconditions;
 using ROB.Discord.Services;
 using System.Threading.Tasks;
+using ROB.Web.Models;
+using static ROB.Discord.Services.TrelloService;
 
 namespace ROB.Discord.Commands
 {
@@ -62,23 +64,83 @@ namespace ROB.Discord.Commands
             else
                 return ReplyAsync(rolePings + message, embed: embed.Build());
         }
+
     }
     [RequireRole(nameof(DiscordSecrets.Managers))]
     public class ManagerCommands : ModuleBase<SocketCommandContext>
     {
-        [Command(nameof(UBCommands.Vote))]
-        public Task Vote([Remainder] string vote)
+        public TrelloService TrelloService { get; set; }
+
+        [Command(nameof(UBCommands.UpdateSuggestion))]
+        public async Task UpdateSuggestion(int id, SuggestionStatus status)
         {
             var embed = UBTemplates.GetEmbedTemplate()
-                .WithTitle("Suggestion")
-                .AddField("My Suggestion is:", $"{vote}")
+                .WithTitle("Suggestion Updated!")
+                .WithDescription("Suggestion status is now set to: " + status)
                 .WithAuthor(Context.User.Username)
                 .WithCurrentTimestamp()
                 .Build();
 
-            return Context.Guild
+            var suggest = new SuggestionUpdate();
+            suggest.SuggestionId = id;
+            suggest.StatusUpdate = status;
+
+            var result = await TrelloService.UpdateSuggestion(suggest);
+
+            await ReplyAsync(embed: embed);
+            /*
+            await Context.Guild
                 .GetTextChannel(DiscordSecrets.MarketingChatChannel)
                 .SendMessageAsync($"<@&{DiscordSecrets.Managers}>", embed: embed);
+                */
+        }
+        [Command(nameof(UBCommands.GetSuggestions))]
+        public async Task GetSuggestions()
+        {
+            var suggestions = await TrelloService.GetSuggestionsAsync();
+
+            var embed = UBTemplates.GetEmbedTemplate()
+                .WithTitle("All Suggestions")
+                .WithAuthor(Context.User.Username)
+                .WithCurrentTimestamp();
+
+            foreach (var suggestion in suggestions)
+            {
+                embed.AddField("Suggestion ID: " + suggestion.Id.ToString(), $"{suggestion.Sender} {suggestion.Suggestion} \n***Status: {suggestion.Status}***");
+            }
+
+            await ReplyAsync(embed: embed.Build());
+        }
+        [Command(nameof(UBCommands.GetPendingSuggestions))]
+        public async Task GetPendingSuggestions()
+        {
+            var suggestions = await TrelloService.GetPendingSuggestions();
+
+            var embed = UBTemplates.GetEmbedTemplate()
+                .WithTitle("Suggestions Pending:")
+                .WithAuthor(Context.User.Username)
+                .WithCurrentTimestamp();
+
+            foreach (var suggestion in suggestions)
+            {
+                embed.AddField("Suggestion ID: " + suggestion.Id.ToString(), $"{suggestion.Sender} {suggestion.Suggestion} \n***Status: {suggestion.Status}***");
+            }
+
+            await ReplyAsync(embed: embed.Build());
+        }
+        [Command(nameof(UBCommands.GetSuggestionById))]
+        public async Task GetSuggestionById(int id)
+        {
+            var suggestion = await TrelloService.GetSuggestionById(id);
+
+            var embed = UBTemplates.GetEmbedTemplate()
+                .WithTitle("Suggestion with ID: " + id)
+                .WithAuthor(Context.User.Username)
+                .WithCurrentTimestamp();
+
+            embed.AddField("Suggestion ID: " + suggestion.Id.ToString(), $"{suggestion.Sender} {suggestion.Suggestion} \n***Status: {suggestion.Status}***");
+
+            await ReplyAsync(embed: embed.Build());
         }
     }
 }

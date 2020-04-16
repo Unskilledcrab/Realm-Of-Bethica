@@ -21,6 +21,12 @@ namespace ROB.Discord.Services
         public TrelloService(HttpClient http)
             => _http = http;
 
+        public class SuggestionUpdate
+        {
+            public int SuggestionId { get; set; }
+            public SuggestionStatus StatusUpdate { get; set; }
+        }
+
         public async Task<List<TrelloSuggestionModel>> GetSuggestionsAsync()
         {
             var resp = await _http.GetAsync(BaseURI);
@@ -28,6 +34,42 @@ namespace ROB.Discord.Services
 
             return DownloadJsonData<List<TrelloSuggestionModel>>(output);
         }
+
+        public async Task<List<TrelloSuggestionModel>> GetPendingSuggestions()
+        {
+            var resp = await _http.GetAsync(BaseURI + "/status/0");
+            var output = await resp.Content.ReadAsStringAsync();
+
+            return DownloadJsonData<List<TrelloSuggestionModel>>(output);
+        }
+
+        public async Task<TrelloSuggestionModel> GetSuggestionById(int id)
+        {
+            var resp = await _http.GetAsync(BaseURI + "/" + id);
+            var output = await resp.Content.ReadAsStringAsync();
+
+            return DownloadJsonData<TrelloSuggestionModel>(output);
+        }
+
+        public async Task<List<TrelloSuggestionModel>> GetSuggestionsByUserMention(string mention)
+        {
+            var resp = await _http.GetAsync(BaseURI + "/user/" + mention);
+            var output = await resp.Content.ReadAsStringAsync();
+
+            return DownloadJsonData<List<TrelloSuggestionModel>>(output);
+        }
+
+        public async Task<TrelloSuggestionModel> UpdateSuggestion(SuggestionUpdate suggestionUpdate)
+        {
+            var json = JsonConvert.SerializeObject(suggestionUpdate);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _http.PostAsync(BaseURI + "/update", data);
+            string result = response.Content.ReadAsStringAsync().Result;
+            
+            return DownloadJsonData<TrelloSuggestionModel>(result);
+        }
+
         public async Task<TrelloSuggestionModel> SendSuggestion(TrelloSuggestionModel suggestion)
         {
             var json = JsonConvert.SerializeObject(suggestion);
@@ -38,6 +80,7 @@ namespace ROB.Discord.Services
 
             return DownloadJsonData<TrelloSuggestionModel>(result);
         }
+
         public static T DownloadJsonData<T>(string json_data) where T : new()
         {
             // if string with JSON data is not empty, deserialize it to class and return its instance 
