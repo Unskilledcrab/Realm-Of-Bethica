@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Item Repo Interface</Title>
+      <Author>Unskilled</Author>
+      <Description>Creates an item repo interface</Description>
+      <Shortcut>ROBCoreItem</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>model</ID>
+          <ToolTip>the model class</ToolTip>
+          <Default>ModelClassName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        public interface I$model$Repository : IItemRepository<$model$Model> {}
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Base Repo Interface</Title>
+      <Author>Unskilled</Author>
+      <Description>Creates a base item repo interface</Description>
+      <Shortcut>ROBCoreBase</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>model</ID>
+          <ToolTip>the model class</ToolTip>
+          <Default>ModelClassName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        public interface I$model$Repository : IRepository<$model$Model> {}
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

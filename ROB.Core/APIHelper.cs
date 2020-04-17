@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace ROB.Core
 {
+    /// <summary>
+    /// DEPRECIATED.. This will be moving out of the core project
+    /// </summary>
     public static class APIHelper
     {
         public static T DownloadJsonData<T>(string url) where T : new()

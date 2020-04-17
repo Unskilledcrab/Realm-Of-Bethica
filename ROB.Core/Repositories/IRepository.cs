@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace ROB.Core.Repositories
 {
+    /// <summary>
+    /// Base Repository
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public interface IRepository<TEntity> where TEntity : class
     {
         ValueTask<TEntity> GetByIdAsync(int id);

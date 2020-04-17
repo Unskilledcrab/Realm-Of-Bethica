@@ -42,14 +42,14 @@ namespace ROB.Web.Attributes
                 .Select(c => c.Id)
                 .FirstOrDefaultAsync().ConfigureAwait(false);
             
-            if (sheet == null) // check if this is the sheet owner
+            if (sheet == null) // if sheet is null then this is not the sheet owner
             {
                 var viewer = await _context.CharacterSheetModel
                     .Where(c => c.Id == sheetId)
                     .Include(c => c.PermissionViewers.Where(p => p.ApplicationUserId == userId))
                     .Select(c => c.Id)
                     .FirstOrDefaultAsync().ConfigureAwait(false);
-                if (viewer == null) // check if this person is in the viewing permissions list
+                if (viewer == null) //if viewer is null then this person is not in the viewing permissions list
                 {
                     filterContext.Result = new BadRequestObjectResult("You can not view this sheet");
                     return;
