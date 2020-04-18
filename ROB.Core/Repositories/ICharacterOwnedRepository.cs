@@ -9,9 +9,9 @@ namespace ROB.Core.Repositories
     /// <typeparam name="TEntity"></typeparam>
     public interface ICharacterOwnedRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        ValueTask<TEntity> GetByIdWithPlayerByIdAsync(string playerId, int entityId);
-        Task<IEnumerable<TEntity>> GetWithPlayerByIdAsync(string playerId);
-        Task AddToPlayerByIdAsync(string playerId, TEntity entity);
-        void RemoveFromPlayerById(string playerId, TEntity entity);
+        ValueTask<TEntity> GetByIdWithPlayerByIdAsync<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class;
+        Task<IEnumerable<TEntity>> GetWithPlayerByIdAsync<TLinkEntity>(int characterSheetId) where TLinkEntity : class;
+        Task AddToPlayerByIdAsync<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class;
+        void RemoveFromPlayerById<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class;   
     }
 }
