@@ -8,31 +8,6 @@ using System.Threading.Tasks;
 
 namespace ROB.Data.Repositories
 {
-    public abstract class BaseCharacterOwnedRepository<TEntity> : BaseRepository<TEntity>, ICharacterOwnedRepository<TEntity> where TEntity : class
-    {
-        protected readonly DbContext Context;
-        public BaseCharacterOwnedRepository(DbContext context) : base(context) { }
-
-        public async Task AddToPlayerByIdAsync<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class
-        {
-            await Context.Set<TLinkEntity>().AddAsync(linkEntity);
-        }
-
-        public ValueTask<TEntity> GetByIdWithPlayerByIdAsync<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<TEntity>> GetWithPlayerByIdAsync<TLinkEntity>(int characterSheetId) where TLinkEntity : class
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveFromPlayerById<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class
-        {
-            throw new NotImplementedException();
-        }
-    }
     public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext Context;
@@ -67,17 +42,44 @@ namespace ROB.Data.Repositories
             return await Context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<TEntity>> GetPageByRecent(int pageIndex = 0, int pageSize = 10, bool orderByRecent = true)
+        /// <summary>
+        /// Returns a page (set number) of IEnuerable<typeparamref name="TEntity"/> used to page through the entities in the database
+        /// </summary>
+        /// <typeparam name="TKey">The property you want to order by</typeparam>
+        /// <param name="pageIndex">The page you would like to see</param>
+        /// <param name="pageSize">The page size</param>
+        /// <param name="wherePredicate">The "where" expression</param>
+        /// <param name="orderByPredicate">The "order by" expression</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<TEntity>> GetPage<TKey>(int pageIndex = 1, int pageSize = 10, Expression<Func<TEntity, bool>> wherePredicate = null, Expression<Func<TEntity, TKey>> orderByPredicate = null)
         {
-            return await Context.Set<TEntity>()
-                .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            pageIndex = pageIndex < 1 ? 1 : pageIndex;
+
+            var query = Context.Set<TEntity>();
+
+            if (wherePredicate != null)
+                query.Where(wherePredicate);
+
+            if (orderByPredicate != null)
+                query.OrderBy(orderByPredicate);
+                
+            query.Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize);
+
+            return await query.ToListAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> GetTop(int count, bool orderByRecent = true)
+        /// <summary>
+        /// Returns the top <paramref name="count"/> of <typeparamref name="TEntity"/> from the database
+        /// </summary>
+        /// <typeparam name="TKey">The property you want to order by</typeparam>
+        /// <param name="count">The amount of <typeparamref name="TEntity"/> you want to return</param>
+        /// <param name="wherePredicate">The "where" expression</param>
+        /// <param name="orderByPredicate">The "order by" expression</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<TEntity>> GetTop<TKey>(int count, Expression<Func<TEntity, bool>> wherePredicate = null, Expression<Func<TEntity, TKey>> orderByPredicate = null)
         {
-            throw new NotImplementedException();
+            return await GetPage(pageSize: count, wherePredicate: wherePredicate, orderByPredicate: orderByPredicate);
         }
 
         public void Remove(TEntity entity)
