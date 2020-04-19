@@ -34,6 +34,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "code snippets", "code snippets", "{55C97602-629A-4695-80CF-14D3277514FD}"
 	ProjectSection(SolutionItems) = preProject
 		ROBCoreSnippets.snippet = ROBCoreSnippets.snippet
+		ROBDataSnippets.snippet = ROBDataSnippets.snippet
 	EndProjectSection
 EndProject
 Global

@@ -204,7 +204,7 @@ namespace ROB.Web.Data
                 .HasOne<QuestTagModel>(tm => tm.QuestTag)
                 .WithMany(tmm => tmm.Quests)
                 .HasForeignKey(tm => tm.QuestTagId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
             #endregion
 
             #region Building

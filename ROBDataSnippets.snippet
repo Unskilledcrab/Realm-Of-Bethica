@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Many to Many Template Configuration</Title>
+      <Author>Unskilled</Author>
+      <Description>This is a the default many to many configuration</Description>
+      <Shortcut>ROBDataManyToMany</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Class1</ID>
+          <ToolTip>the 1st link model class</ToolTip>
+          <Default>Class1</Default>
+        </Literal>
+        <Literal>
+          <ID>Class2</ID>
+          <ToolTip>the 2nd link model class</ToolTip>
+          <Default>Class2</Default>
+        </Literal>
+        <Literal>
+          <ID>defaultBehavior</ID>
+          <ToolTip>What happens on deleting this relationship</ToolTip>
+          <Default>NoAction</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        builder
+            .HasKey(link => new { link.$Class1$Id, link.$Class2$Id });
+
+        builder
+            .HasOne(link => link.$Class1$)
+            .WithMany(classOne => classOne.$Class2$s)
+            .HasForeignKey(link => link.$Class1$Id)
+            .OnDelete(DeleteBehavior.$defaultBehavior$);
+
+        builder
+            .HasOne(link => link.$Class2$)
+            .WithMany(classTwo => classTwo.$Class1$s)
+            .HasForeignKey(link => link.$Class2$Id)
+            .OnDelete(DeleteBehavior.$defaultBehavior$);
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>One to Many Template Configuration</Title>
+      <Author>Unskilled</Author>
+      <Description>This is the default one to many configuration</Description>
+      <Shortcut>ROBDataOneToMany</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ClassOne</ID>
+          <ToolTip>the model class with one that has many of the other class</ToolTip>
+          <Default>ClassOne</Default>
+        </Literal>
+        <Literal>
+          <ID>ClassMany</ID>
+          <ToolTip>the model class with many that has one of the other class</ToolTip>
+          <Default>ClassMany</Default>
+        </Literal>
+        <Literal>
+          <ID>defaultBehavior</ID>
+          <ToolTip>What happens on deleting this relationship</ToolTip>
+          <Default>ClientSetNull</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        builder
+            .HasMany(p => p.$ClassMany$s)
+            .WithOne(c => c.$ClassOne$)
+            .HasForeignKey(c => c.$ClassOne$Id)            
+            .OnDelete(DeleteBehavior.$defaultBehavior$);
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
