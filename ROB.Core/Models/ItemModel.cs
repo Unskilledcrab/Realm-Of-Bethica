@@ -2,7 +2,7 @@
 
 namespace ROB.Core.Models
 {
-    public class ItemModel
+    public class ItemModel : ICharacterOwnable<CharacterSheet_Item_Link>
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ROB.Core.Models;
 using ROB.Core.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace ROB.Data.Repositories
@@ -11,24 +14,24 @@ namespace ROB.Data.Repositories
         protected readonly DbContext Context;
         public BaseCharacterOwnedRepository(DbContext context) : base(context) { }
 
-        public async Task AddToPlayerByIdAsync<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class
+        public async Task AddRangeToCharacterAsync<TLinkEntity>(IEnumerable<TLinkEntity> linkEntities) where TLinkEntity : class
+        {
+            await Context.Set<TLinkEntity>().AddRangeAsync(linkEntities);
+        }
+
+        public async Task AddToCharacterAsync<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class
         {
             await Context.Set<TLinkEntity>().AddAsync(linkEntity);
         }
 
-        public ValueTask<TEntity> GetByIdWithPlayerByIdAsync<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class
+        public void RemoveFromCharacter<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class
         {
-            throw new NotImplementedException();
+            Context.Set<TLinkEntity>().Remove(linkEntity);
         }
 
-        public async Task<IEnumerable<TEntity>> GetWithPlayerByIdAsync<TLinkEntity>(int characterSheetId) where TLinkEntity : class
+        public void RemoveRangeFromCharacter<TLinkEntity>(IEnumerable<TLinkEntity> linkEntities) where TLinkEntity : class
         {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveFromPlayerById<TLinkEntity>(TLinkEntity linkEntity) where TLinkEntity : class
-        {
-            throw new NotImplementedException();
+            Context.Set<TLinkEntity>().RemoveRange(linkEntities);
         }
     }
 }

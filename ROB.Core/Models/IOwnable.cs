@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ROB.Core.Models
 {
@@ -9,6 +11,11 @@ namespace ROB.Core.Models
         ApplicationUser Creator { get; set; }
         DateTime CreationDateTime { get; set; }
         DateTime LastUpdate { get; set; }
+    }
+
+    public interface ICharacterOwnable<TLink> where TLink : class
+    {
+        ICollection<TLink> CharacterSheets { get; set; }
     }
 
     public abstract class OwnableBase : IOwnable
