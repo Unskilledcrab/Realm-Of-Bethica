@@ -19,7 +19,11 @@ namespace ROB.Core.Repositories
         Task AddRangeAsync(IEnumerable<TEntity> entities);
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
-        Task<IEnumerable<TEntity>> GetTop<TKey>(int count, Expression<Func<TEntity, bool>> wherePredicate = null, Expression<Func<TEntity, TKey>> orderByPredicate = null);
-        Task<IEnumerable<TEntity>> GetPage<TKey>(int pageIndex = 1, int pageSize = 10, Expression<Func<TEntity, bool>> wherePredicate = null, Expression<Func<TEntity, TKey>> orderByPredicate = null);
+        Task<IEnumerable<TEntity>> GetTop(int count);
+        Task<IEnumerable<TEntity>> GetTop(int count, Expression<Func<TEntity, bool>> wherePredicate);
+        Task<IEnumerable<TEntity>> GetTop<TKey>(int count, Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TKey>> orderByPredicate);
+        Task<IEnumerable<TEntity>> GetPage(int pageIndex = 1, int pageSize = 10);
+        Task<IEnumerable<TEntity>> GetPage(Expression<Func<TEntity, bool>> wherePredicate, int pageIndex = 1, int pageSize = 10);
+        Task<IEnumerable<TEntity>> GetPage<TKey>(Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TKey>> orderByPredicate, int pageIndex = 1, int pageSize = 10);
     }
 }

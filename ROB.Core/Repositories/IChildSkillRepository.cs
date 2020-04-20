@@ -2,6 +2,6 @@
 
 namespace ROB.Core.Repositories
 {
-    public interface IChildSkillRepository : ICharacterOwnedRepository<ChildSkillModel> { }
+    public interface IChildSkillRepository : ILinkRepository<ChildSkillModel> { }
 
 }

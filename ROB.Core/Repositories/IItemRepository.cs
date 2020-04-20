@@ -2,6 +2,6 @@
 
 namespace ROB.Core.Repositories
 {
-    public interface IItemRepository : ICharacterOwnedRepository<ItemModel> { }
+    public interface IItemRepository : ILinkRepository<ItemModel> { }
 
 }

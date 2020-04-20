@@ -42,6 +42,16 @@ namespace ROB.Data.Repositories
             return await Context.Set<TEntity>().FindAsync(id);
         }
 
+        public async Task<IEnumerable<TEntity>> GetPage(int pageIndex = 1, int pageSize = 10)
+        {
+            return await GetPage(null, pageIndex, pageSize);
+        }
+
+        public async Task<IEnumerable<TEntity>> GetPage(Expression<Func<TEntity, bool>> wherePredicate, int pageIndex = 1, int pageSize = 10)
+        {
+            return await GetPage<object>(wherePredicate, null, pageIndex, pageSize);
+        }
+
         /// <summary>
         /// Returns a page (set number) of IEnuerable<typeparamref name="TEntity"/> used to page through the entities in the database
         /// </summary>
@@ -50,8 +60,8 @@ namespace ROB.Data.Repositories
         /// <param name="pageSize">The page size</param>
         /// <param name="wherePredicate">The "where" expression</param>
         /// <param name="orderByPredicate">The "order by" expression</param>
-        /// <returns></returns>
-        public async Task<IEnumerable<TEntity>> GetPage<TKey>(int pageIndex = 1, int pageSize = 10, Expression<Func<TEntity, bool>> wherePredicate = null, Expression<Func<TEntity, TKey>> orderByPredicate = null)
+        /// <returns><paramref name="pageSize"/> of IEnumerable <typeparamref name="TEntity"/></returns>
+        public async Task<IEnumerable<TEntity>> GetPage<TKey>(Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TKey>> orderByPredicate, int pageIndex = 1, int pageSize = 10)
         {
             pageIndex = pageIndex < 1 ? 1 : pageIndex;
 
@@ -69,6 +79,16 @@ namespace ROB.Data.Repositories
             return await query.ToListAsync();
         }
 
+        public async Task<IEnumerable<TEntity>> GetTop(int count)
+        {
+            return await GetTop(count, null);
+        }
+
+        public async Task<IEnumerable<TEntity>> GetTop(int count, Expression<Func<TEntity, bool>> wherePredicate)
+        {
+            return await GetTop<object>(count, wherePredicate, null);
+        }
+
         /// <summary>
         /// Returns the top <paramref name="count"/> of <typeparamref name="TEntity"/> from the database
         /// </summary>
@@ -76,8 +96,8 @@ namespace ROB.Data.Repositories
         /// <param name="count">The amount of <typeparamref name="TEntity"/> you want to return</param>
         /// <param name="wherePredicate">The "where" expression</param>
         /// <param name="orderByPredicate">The "order by" expression</param>
-        /// <returns></returns>
-        public async Task<IEnumerable<TEntity>> GetTop<TKey>(int count, Expression<Func<TEntity, bool>> wherePredicate = null, Expression<Func<TEntity, TKey>> orderByPredicate = null)
+        /// <returns><paramref name="count"/> of IEnumerable <typeparamref name="TEntity"/></returns>
+        public async Task<IEnumerable<TEntity>> GetTop<TKey>(int count, Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TKey>> orderByPredicate)
         {
             return await GetPage(pageSize: count, wherePredicate: wherePredicate, orderByPredicate: orderByPredicate);
         }

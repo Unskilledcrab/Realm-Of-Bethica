@@ -2,5 +2,5 @@
 
 namespace ROB.Core.Repositories
 {
-    public interface IArmorRepository : ICharacterOwnedRepository<ArmorModel> { }
+    public interface IArmorRepository : ILinkRepository<ArmorModel> { }
 }
