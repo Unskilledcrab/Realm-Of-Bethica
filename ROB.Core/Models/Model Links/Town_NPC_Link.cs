@@ -2,9 +2,9 @@
 {
     public class Town_NPC_Link
     {
-        public int CharacterSheetId { get; set; }
-        public CharacterSheetModel CharacterSheet { get; set; }
-        public int TownId { get; set; }
-        public TownModel Town { get; set; }
+        public int NPCId { get; set; }
+        public CharacterSheetModel NPC { get; set; }
+        public int NPCTownId { get; set; }
+        public TownModel NPCTown { get; set; }
     }
 }

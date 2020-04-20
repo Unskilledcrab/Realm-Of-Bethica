@@ -15,12 +15,12 @@ namespace ROB.Core.Models
         public int Cost { get; set; } = 2;
         public int MinimumLevelRequirement { get; set; } = 0;
 
-        public ICollection<TechniquePrerequisiteLink> TechniquePrerequisites { get; set; } = new List<TechniquePrerequisiteLink>();
-        public ICollection<TechniquePrerequisiteLink> TechniqueBases { get; set; } = new List<TechniquePrerequisiteLink>();
-        public ICollection<TechniqueTalentPrerequisiteLink> TalentPrerequisites { get; set; } = new List<TechniqueTalentPrerequisiteLink>();
+        public ICollection<TechniqueBase_TechniquePrerequisite_Link> TechniquePrerequisites { get; set; } = new List<TechniqueBase_TechniquePrerequisite_Link>();
+        public ICollection<TechniqueBase_TechniquePrerequisite_Link> TechniqueBases { get; set; } = new List<TechniqueBase_TechniquePrerequisite_Link>();
+        public ICollection<TechniqueBase_TalentPrerequisite_Link> TalentPrerequisites { get; set; } = new List<TechniqueBase_TalentPrerequisite_Link>();
         public ICollection<Modifier_Technique_Link> Modifiers { get; set; } = new List<Modifier_Technique_Link>();
         public ICollection<CharacterSheet_Technique_Link> CharacterSheets { get; set; } = new List<CharacterSheet_Technique_Link>();
-        public ICollection<PregenProfessionArchetype_Technique_LinkModel> PregenProfessionArchetypeLink { get; set; } = new List<PregenProfessionArchetype_Technique_LinkModel>();
+        public ICollection<PregenProfessionArchetype_Technique_Link> PregenProfessionArchetypes { get; set; } = new List<PregenProfessionArchetype_Technique_Link>();
     }
 
     public enum DurationLengthType

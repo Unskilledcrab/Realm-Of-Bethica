@@ -12,6 +12,6 @@ namespace ROB.Core.Models
         public int Cost { get; set; } = 1;
 
         public ICollection<CharacterSheet_ChildSkill_Link> CharacterSheets { get; set; } = new List<CharacterSheet_ChildSkill_Link>();
-        public ICollection<PregenProfessionArchetype_ChildSkill_LinkModel> PregenProfessionArchetypeLink { get; set; } = new List<PregenProfessionArchetype_ChildSkill_LinkModel>();
+        public ICollection<PregenProfessionArchetype_ChildSkill_Link> PregenProfessionArchetypes { get; set; } = new List<PregenProfessionArchetype_ChildSkill_Link>();
     }
 }

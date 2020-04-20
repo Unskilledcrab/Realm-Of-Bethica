@@ -15,6 +15,6 @@ namespace ROB.Core.Models
         public DateTime CreationDateTime { get; set; } = DateTime.Now;
         public DateTime LastUpdate { get; set; }
         public ICollection<TownModel> Towns { get; set; } = new List<TownModel>();
-        public ICollection<PermissionViewer_World_Link> PermissionViewers { get; set; } = new List<PermissionViewer_World_Link>();
+        public ICollection<PermissionViewer_ViewableWorld_Link> PermissionViewers { get; set; } = new List<PermissionViewer_ViewableWorld_Link>();
     }
 }

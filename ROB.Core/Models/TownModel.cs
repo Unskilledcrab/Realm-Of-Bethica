@@ -19,7 +19,7 @@ namespace ROB.Core.Models
         /// <summary>
         /// This is a list of permissions and the users in this list have access to see this
         /// </summary>
-        public ICollection<PermissionViewer_Town_Link> PermissionViewers { get; set; } = new List<PermissionViewer_Town_Link>();
+        public ICollection<PermissionViewer_ViewableTown_Link> PermissionViewers { get; set; } = new List<PermissionViewer_ViewableTown_Link>();
         public ICollection<Town_Building_Link> Buildings { get; set; } = new List<Town_Building_Link>();
         public ICollection<Town_NPC_Link> NPCs { get; set; } = new List<Town_NPC_Link>();
     }

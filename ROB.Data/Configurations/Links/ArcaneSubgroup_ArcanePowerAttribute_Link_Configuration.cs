@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ROB.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ROB.Data.Configurations.Links
 {
@@ -18,13 +15,13 @@ namespace ROB.Data.Configurations.Links
                 .HasOne(link => link.ArcaneSubgroup)
                 .WithMany(classOne => classOne.ElementsUsedIn)
                 .HasForeignKey(link => link.ArcaneSubgroupId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(link => link.ArcanePowerAttribute)
                 .WithMany(classTwo => classTwo.RequiredArcaneSubgroups)
                 .HasForeignKey(link => link.ArcanePowerAttributeId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

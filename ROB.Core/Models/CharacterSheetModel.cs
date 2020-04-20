@@ -65,7 +65,7 @@ namespace ROB.Core.Models
         public ICollection<CharacterSheet_QuestGroup_Link> QuestGroups { get; set; } = new List<CharacterSheet_QuestGroup_Link>();
         public ICollection<CharacterSheet_Quest_Link> Quests { get; set; } = new List<CharacterSheet_Quest_Link>();
         public ICollection<Town_NPC_Link> NPCTowns { get; set; } = new List<Town_NPC_Link>();
-        public ICollection<PermissionViewer_CharacterSheet_Link> PermissionViewers { get; set; } = new List<PermissionViewer_CharacterSheet_Link>();
+        public ICollection<PermissionViewer_ViewableCharacterSheet_Link> PermissionViewers { get; set; } = new List<PermissionViewer_ViewableCharacterSheet_Link>();
         public ICollection<CharacterSheet_Armor_Link> Armors { get; set; } = new List<CharacterSheet_Armor_Link>();
         public ICollection<CharacterSheet_Shield_Link> Shields { get; set; } = new List<CharacterSheet_Shield_Link>();
     }

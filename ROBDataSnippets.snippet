@@ -19,34 +19,29 @@
           <ToolTip>the 2nd link model class</ToolTip>
           <Default>Class2</Default>
         </Literal>
-        <Literal>
-          <ID>defaultBehavior</ID>
-          <ToolTip>What happens on deleting this relationship</ToolTip>
-          <Default>NoAction</Default>
-        </Literal>
       </Declarations>
       <Code Language="csharp">
         <![CDATA[
-  public class $Class1$_$Class2$_Link_Configuration : IEntityTypeConfiguration<$Class1$_$Class2$_Link>
-  {
-      public void Configure(EntityTypeBuilder<$Class1$_$Class2$_Link> builder)
-      { 
-        builder
-            .HasKey(link => new { link.$Class1$Id, link.$Class2$Id });
+        public class $Class1$_$Class2$_Link_Configuration : IEntityTypeConfiguration<$Class1$_$Class2$_Link>
+        {
+            public void Configure(EntityTypeBuilder<$Class1$_$Class2$_Link> builder)
+            { 
+              builder
+                  .HasKey(link => new { link.$Class1$Id, link.$Class2$Id });
 
-        builder
-            .HasOne(link => link.$Class1$)
-            .WithMany(classOne => classOne.$Class2$s)
-            .HasForeignKey(link => link.$Class1$Id)
-            .OnDelete(DeleteBehavior.$defaultBehavior$);
+              builder
+                  .HasOne(link => link.$Class1$)
+                  .WithMany(classOne => classOne.$Class2$s)
+                  .HasForeignKey(link => link.$Class1$Id)
+                  .OnDelete(DeleteBehavior.Cascade);
 
-        builder
-            .HasOne(link => link.$Class2$)
-            .WithMany(classTwo => classTwo.$Class1$s)
-            .HasForeignKey(link => link.$Class2$Id)
-            .OnDelete(DeleteBehavior.$defaultBehavior$);
-      }
-  }
+              builder
+                  .HasOne(link => link.$Class2$)
+                  .WithMany(classTwo => classTwo.$Class1$s)
+                  .HasForeignKey(link => link.$Class2$Id)
+                  .OnDelete(DeleteBehavior.Cascade);
+            }
+        }
         ]]>
       </Code>
     </Snippet>
@@ -73,7 +68,7 @@
         </Literal>
         <Literal>
           <ID>defaultBehavior</ID>
-          <ToolTip>What happens on deleting this relationship</ToolTip>
+          <ToolTip>What happens on deleting this relationship (default ClientSetNull)</ToolTip>
           <Default>ClientSetNull</Default>
         </Literal>
       </Declarations>

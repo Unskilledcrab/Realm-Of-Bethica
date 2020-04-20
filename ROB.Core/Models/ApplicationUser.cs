@@ -8,12 +8,12 @@ namespace ROB.Core.Models
         public string Guild { get; set; }
 
         #region Viewing Permissions
-        public ICollection<PermissionViewer_Town_Link> ViewableTowns { get; set; } = new List<PermissionViewer_Town_Link>();
-        public ICollection<PermissionViewer_QuestGroup_Link> ViewableQuestGroups { get; set; } = new List<PermissionViewer_QuestGroup_Link>();
-        public ICollection<PermissionViewer_Quest_Link> ViewableQuests { get; set; } = new List<PermissionViewer_Quest_Link>();
-        public ICollection<PermissionViewer_World_Link> ViewableWorlds { get; set; } = new List<PermissionViewer_World_Link>();
-        public ICollection<PermissionViewer_Building_Link> ViewableBuildings { get; set; } = new List<PermissionViewer_Building_Link>();
-        public ICollection<PermissionViewer_CharacterSheet_Link> ViewableCharacterSheets { get; set; } = new List<PermissionViewer_CharacterSheet_Link>();
+        public ICollection<PermissionViewer_ViewableTown_Link> ViewableTowns { get; set; } = new List<PermissionViewer_ViewableTown_Link>();
+        public ICollection<PermissionViewer_ViewableQuestGroup_Link> ViewableQuestGroups { get; set; } = new List<PermissionViewer_ViewableQuestGroup_Link>();
+        public ICollection<PermissionViewer_ViewableQuest_Link> ViewableQuests { get; set; } = new List<PermissionViewer_ViewableQuest_Link>();
+        public ICollection<PermissionViewer_ViewableWorld_Link> ViewableWorlds { get; set; } = new List<PermissionViewer_ViewableWorld_Link>();
+        public ICollection<PermissionViewer_ViewableBuilding_Link> ViewableBuildings { get; set; } = new List<PermissionViewer_ViewableBuilding_Link>();
+        public ICollection<PermissionViewer_ViewableCharacterSheet_Link> ViewableCharacterSheets { get; set; } = new List<PermissionViewer_ViewableCharacterSheet_Link>();
         #endregion
 
         #region Created By

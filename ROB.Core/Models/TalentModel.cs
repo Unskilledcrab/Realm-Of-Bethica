@@ -13,10 +13,10 @@ namespace ROB.Core.Models
         public string Notes { get; set; }
         public int Cost { get; set; } = 1;
 
-        public ICollection<TalentPrerequisiteLink> TalentPrerequisites { get; set; } = new List<TalentPrerequisiteLink>();
-        public ICollection<TalentPrerequisiteLink> TalentBases { get; set; } = new List<TalentPrerequisiteLink>();
-        public ICollection<TechniqueTalentPrerequisiteLink> TechniqueConnection { get; set; } = new List<TechniqueTalentPrerequisiteLink>();
-        public ICollection<PregenProfessionArchetype_Talent_LinkModel> PregenProfessionArchetypeLink { get; set; } = new List<PregenProfessionArchetype_Talent_LinkModel>();
+        public ICollection<TalentBase_TalentPrerequisite_Link> TalentPrerequisites { get; set; } = new List<TalentBase_TalentPrerequisite_Link>();
+        public ICollection<TalentBase_TalentPrerequisite_Link> TalentBases { get; set; } = new List<TalentBase_TalentPrerequisite_Link>();
+        public ICollection<TechniqueBase_TalentPrerequisite_Link> TechniqueBases { get; set; } = new List<TechniqueBase_TalentPrerequisite_Link>();
+        public ICollection<PregenProfessionArchetype_Talent_Link> PregenProfessionArchetypes { get; set; } = new List<PregenProfessionArchetype_Talent_Link>();
         public ICollection<CharacterSheet_Talent_Link> CharacterSheets { get; set; } = new List<CharacterSheet_Talent_Link>();
 
     }

@@ -11,7 +11,7 @@ namespace ROB.Core.Models
         public AttributeModel SecondAttribute { get; set; }
         public int Cost { get; set; } = 3;
         public ICollection<ChildSkillModel> ChildSkills { get; set; }
-        public ICollection<PregenProfessionArchetype_ParentSkill_LinkModel> PregenProfessionArchetypeLink { get; set; } = new List<PregenProfessionArchetype_ParentSkill_LinkModel>();
+        public ICollection<PregenProfessionArchetype_ParentSkill_Link> PregenProfessionArchetypes { get; set; } = new List<PregenProfessionArchetype_ParentSkill_Link>();
         public ICollection<CharacterSheet_ParentSkill_Link> CharacterSheets { get; set; } = new List<CharacterSheet_ParentSkill_Link>();
 
     }

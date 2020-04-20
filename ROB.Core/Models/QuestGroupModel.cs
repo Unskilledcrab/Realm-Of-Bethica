@@ -23,6 +23,6 @@ namespace ROB.Core.Models
         /// <summary>
         /// This is a list of permissions and the users in this list have access to see this quest
         /// </summary>
-        public ICollection<PermissionViewer_QuestGroup_Link> PermissionViewers { get; set; } = new List<PermissionViewer_QuestGroup_Link>();
+        public ICollection<PermissionViewer_ViewableQuestGroup_Link> PermissionViewers { get; set; } = new List<PermissionViewer_ViewableQuestGroup_Link>();
     }
 }
