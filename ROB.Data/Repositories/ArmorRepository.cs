@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace ROB.Data.Repositories
 {
@@ -11,21 +12,39 @@ namespace ROB.Data.Repositories
     {
         private RealmDbContext RealmDbContext { get { return Context as RealmDbContext; } }
         public ArmorRepository(RealmDbContext context) : base(context) { }
-    }
 
-    public class test
-    {
-        private readonly RealmDbContext context;
-
-        public test(RealmDbContext context)
+        public async Task<IEnumerable<ArmorModel>> GetWithArmorRestorationAndRestrictionsAsync()
         {
-            this.context = context;
+            return await RealmDbContext.Armor
+                .Include(a => a.ArmorRestoration)
+                .Include(a => a.ArmorRestriction)
+                .ToListAsync();
         }
-        public async void test2()
+
+        public async Task<IEnumerable<ArmorModel>> GetWithArmorRestorationAndRestrictionsByRestorationIdAsync(int id)
         {
-            var test = new ArmorRepository(context);
-            var th = await test.GetPage();
-            test.RemoveLink(new CharacterSheet_Armor_Link { ArmorId = 1, CharacterSheetId = 1 });
+            return await RealmDbContext.Armor
+                .Include(a => a.ArmorRestoration)
+                .Include(a => a.ArmorRestriction)
+                .Where(a => a.ArmorRestorationId == id)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<ArmorModel>> GetWithArmorRestorationAndRestrictionsByRestrictionIdAsync(int id)
+        {
+            return await RealmDbContext.Armor
+                .Include(a => a.ArmorRestoration)
+                .Include(a => a.ArmorRestriction)
+                .Where(a => a.ArmorRestrictionId == id)
+                .ToListAsync();
+        }
+
+        public async Task<ArmorModel> GetWithArmorRestorationAndRestrictionsByIdAsync(int id)
+        {
+            return await RealmDbContext.Armor
+                .Include(a => a.ArmorRestoration)
+                .Include(a => a.ArmorRestriction)
+                .SingleOrDefaultAsync(a => a.Id == id);
         }
     }
 }

@@ -27,6 +27,10 @@
       </Declarations>
       <Code Language="csharp">
         <![CDATA[
+  public class $Class1$_$Class2$_Link_Configuration : IEntityTypeConfiguration<$Class1$_$Class2$_Link>
+  {
+      public void Configure(EntityTypeBuilder<$Class1$_$Class2$_Link> builder)
+      { 
         builder
             .HasKey(link => new { link.$Class1$Id, link.$Class2$Id });
 
@@ -41,6 +45,8 @@
             .WithMany(classTwo => classTwo.$Class1$s)
             .HasForeignKey(link => link.$Class2$Id)
             .OnDelete(DeleteBehavior.$defaultBehavior$);
+      }
+  }
         ]]>
       </Code>
     </Snippet>
