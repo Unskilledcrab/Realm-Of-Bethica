@@ -2,10 +2,10 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>Item Repo Interface</Title>
+      <Title>ILinkedRepo</Title>
       <Author>Unskilled</Author>
-      <Description>Creates an item repo interface</Description>
-      <Shortcut>ROBCoreItem</Shortcut>
+      <Description>Creates a linked repo interface (repo with a many to many relationship)</Description>
+      <Shortcut>ROBCoreILinkRepo</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
@@ -17,7 +17,7 @@
       </Declarations>
       <Code Language="csharp">
         <![CDATA[
-        public interface I$model$Repository : IItemRepository<$model$Model> {}
+        public interface I$model$Repository : ILinkRepository<$model$Model> {}
         ]]>
       </Code>
     </Snippet>
@@ -25,10 +25,10 @@
 
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>Base Repo Interface</Title>
+      <Title>IBaseRepo</Title>
       <Author>Unskilled</Author>
       <Description>Creates a base item repo interface</Description>
-      <Shortcut>ROBCoreBase</Shortcut>
+      <Shortcut>ROBCoreIBaseRepo</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
