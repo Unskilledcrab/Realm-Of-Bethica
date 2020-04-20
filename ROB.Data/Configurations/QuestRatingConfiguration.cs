@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ROB.Data.Configurations
 {
-    class QuestRatingConfiguration : IEntityTypeConfiguration<QuestRatingModel>
+    public class QuestRatingConfiguration : IEntityTypeConfiguration<QuestRatingModel>
     {
         public void Configure(EntityTypeBuilder<QuestRatingModel> builder)
         {

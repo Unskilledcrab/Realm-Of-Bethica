@@ -8,7 +8,7 @@ namespace ROB.Core.Models
         public string Type { get; set; }
         public int Tier { get; set; }
         public int ArcaneValue { get; set; }
-        public int? DamageTypeId { get; set; }
+        public int DamageTypeId { get; set; }
         public DamageTypeModel DamageType { get; set; }
         public string Effects { get; set; }
         public string Description { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ROB.Core.Models
 {
-    public interface IOwnable
+    public interface ICreatable
     {
         bool IsPublic { get; set; }
         string CreatorId { get; set; }
@@ -12,10 +12,4 @@ namespace ROB.Core.Models
         DateTime CreationDateTime { get; set; }
         DateTime LastUpdate { get; set; }
     }
-
-    public interface ICharacterOwnable<TLink> where TLink : class
-    {
-        ICollection<TLink> CharacterSheets { get; set; }
-    }
-
 }

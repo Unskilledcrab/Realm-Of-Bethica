@@ -51,7 +51,7 @@
     <Header>
       <Title>One to Many Template Configuration</Title>
       <Author>Unskilled</Author>
-      <Description>This is the default one to many configuration</Description>
+      <Description>This is the default one to many configuration. Note: Please place this configuration inside the "One" class not the "Many"</Description>
       <Shortcut>ROBDataOneToMany</Shortcut>
     </Header>
     <Snippet>
@@ -79,6 +79,64 @@
             .WithOne(c => c.$ClassOne$)
             .HasForeignKey(c => c.$ClassOne$Id)            
             .OnDelete(DeleteBehavior.$defaultBehavior$);
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+  
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Repository Template Configuration</Title>
+      <Author>Unskilled</Author>
+      <Description>This is the default repository configuration</Description>
+      <Shortcut>ROBDataModelConfig</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Class</ID>
+          <ToolTip>the model class</ToolTip>
+          <Default>Class</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        public class $Class$Configuration : IEntityTypeConfiguration<$Class$Model>
+        {
+            public void Configure(EntityTypeBuilder<$Class$Model> builder)
+            {
+                builder
+                    .HasKey(b => b.Id);
+
+                builder
+                    .Property(b => b.Id)
+                    .UseIdentityColumn();
+                    
+            }
+        }
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>DbSet Template Configuration</Title>
+      <Author>Unskilled</Author>
+      <Description>This is the default DbSet configuration</Description>
+      <Shortcut>ROBDataAddDbSet</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Class</ID>
+          <ToolTip>the model class</ToolTip>
+          <Default>Class</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        public DbSet<$Class$Model> $Class$ { get; set; }
         ]]>
       </Code>
     </Snippet>

@@ -1,5 +1,6 @@
 ﻿namespace ROB.Core.Models
 {
+    // This isn't ready yet. Seperate this into different files when done
     public interface IModifiable
     {
         int GameId { get; set; }

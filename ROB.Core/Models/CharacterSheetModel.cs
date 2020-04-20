@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace ROB.Core.Models
 {
-    public class CharacterSheetModel
+    public class CharacterSheetModel : CreatableBase
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int? RaceId { get; set; }
+        public int RaceId { get; set; }
         public RaceModel Race { get; set; }
         public int Strong { get; set; } = 0;
         public int StrongModifier { get; set; }
@@ -25,7 +25,7 @@ namespace ROB.Core.Models
         public int CharismaticModifier { get; set; }
         public int Attractive { get; set; } = 0;
         public int AttractiveModifier { get; set; }
-        public bool AreAttributesPublic { get; set; }
+        public bool AreAttributesPublic { get; set; } = true;
         public int Level { get; set; } = 1;
 
         #region Description
@@ -47,12 +47,6 @@ namespace ROB.Core.Models
         public string PrivateNotes { get; set; }
         public string Backstory { get; set; }
         #endregion
-
-        public bool IsPublic { get; set; }
-        public string CreatorId { get; set; }
-        public ApplicationUser Creator { get; set; }
-        public DateTime CreationDateTime { get; set; } = DateTime.Now;
-        public DateTime LastUpdate { get; set; }
 
         public ICollection<CharacterSheet_ParentSkill_Link> ParentSkills { get; set; } = new List<CharacterSheet_ParentSkill_Link>();
         public ICollection<CharacterSheet_ChildSkill_Link> ChildSkills { get; set; } = new List<CharacterSheet_ChildSkill_Link>();

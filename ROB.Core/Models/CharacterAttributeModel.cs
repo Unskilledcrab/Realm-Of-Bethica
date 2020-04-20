@@ -2,7 +2,7 @@
 
 namespace ROB.Core.Models
 {
-    public class CharacterAttributeModel : IOwnable, IModifiable
+    public class CharacterAttributeModel : ICreatable, IModifiable
     {
         public int Id { get; set; }
         public int AttributeId { get; set; }

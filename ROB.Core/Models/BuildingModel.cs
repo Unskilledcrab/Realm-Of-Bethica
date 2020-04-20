@@ -3,21 +3,16 @@ using System.Collections.Generic;
 
 namespace ROB.Core.Models
 {
-    public class BuildingModel
+    public class BuildingModel : CreatableBase
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int? OwnerId { get; set; }
+        public int? OwnerId { get; set; } // The building does not need an owner
         public CharacterSheetModel BuildingOwner { get; set; }
         public int BuildingRatingId { get; set; }
         public BuildingRatingModel BuildingRating { get; set; }
-        public bool IsPublic { get; set; }
         public string PicturePath { get; set; }
-        public string CreatorId { get; set; }
-        public ApplicationUser Creator { get; set; }
-        public DateTime CreationDateTime { get; set; }
-        public DateTime LastUpdate { get; set; }
 
         /// <summary>
         /// This is a list of permissions and the users in this list have access to see this
