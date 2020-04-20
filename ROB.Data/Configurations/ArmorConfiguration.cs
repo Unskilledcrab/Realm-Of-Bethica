@@ -146,19 +146,4 @@ namespace ROB.Data.Configurations
 
         }
     }
-
-    public class BaseConfiguration<TModel> : IEntityTypeConfiguration<TModel> where TModel : class
-    {
-        public void Configure(EntityTypeBuilder<TModel> builder)
-        {
-            builder
-                .HasKey(b => b.Id);
-
-            builder
-                .Property(b => b.Id)
-                .UseIdentityColumn();
-
-        }
-    }
-
 }

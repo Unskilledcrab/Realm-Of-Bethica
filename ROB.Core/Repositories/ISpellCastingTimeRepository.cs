@@ -2,6 +2,6 @@
 
 namespace ROB.Core.Repositories
 {
-    public interface ISpellCastingTimeRepository : ILinkRepository<SpellCastingTimeModel> { }
+    public interface ISpellCastingTimeRepository : IRepository<SpellCastingTimeModel> { }
 
 }

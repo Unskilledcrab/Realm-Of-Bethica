@@ -2,6 +2,6 @@
 
 namespace ROB.Core.Repositories
 {
-    public interface ISpellSizeLimitRepository : ILinkRepository<SpellSizeLimitModel> { }
+    public interface ISpellSizeLimitRepository : IRepository<SpellSizeLimitModel> { }
 
 }

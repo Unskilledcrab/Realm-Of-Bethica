@@ -11,9 +11,6 @@ namespace ROB.Data
     public class UnitOfWork : IUnitOfWork
     {
         private readonly RealmDbContext context;
-        private ArmorRepository armorRepository;
-
-        public IArmorRepository Armor => armorRepository = armorRepository ?? new ArmorRepository(context);
 
         public UnitOfWork(RealmDbContext context)
         {
@@ -29,5 +26,8 @@ namespace ROB.Data
         {
             context.Dispose();
         }
+
+        private ArmorRepository _ArmorRepository;
+        public IArmorRepository Armor => _ArmorRepository = _ArmorRepository ?? new ArmorRepository(context);
     }
 }

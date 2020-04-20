@@ -2,6 +2,6 @@
 
 namespace ROB.Core.Repositories
 {
-    public interface ISpellDurationRepository : ILinkRepository<SpellDurationModel> { }
+    public interface ISpellDurationRepository : IRepository<SpellDurationModel> { }
 
 }

@@ -2,6 +2,6 @@
 
 namespace ROB.Core.Repositories
 {
-    public interface IQuestRatingRepository : ILinkRepository<QuestRatingModel> { }
+    public interface IQuestRatingRepository : IRepository<QuestRatingModel> { }
 
 }

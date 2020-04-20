@@ -2,6 +2,6 @@
 
 namespace ROB.Core.Repositories
 {
-    public interface ISpellRangeRepository : ILinkRepository<SpellRangeModel> { }
+    public interface ISpellRangeRepository : IRepository<SpellRangeModel> { }
 
 }

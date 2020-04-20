@@ -141,4 +141,60 @@
       </Code>
     </Snippet>
   </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Repo Template</Title>
+      <Author>Unskilled</Author>
+      <Description>This is the default repo template</Description>
+      <Shortcut>ROBDataRepo</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Class</ID>
+          <ToolTip>the model class</ToolTip>
+          <Default>Class</Default>
+        </Literal>
+        <Literal>
+          <ID>Link</ID>
+          <ToolTip>If this needs to derive from the BaseLinkRepository</ToolTip>
+          <Default>Link</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        public class $Class$Repository : Base$Link$Repository<$Class$Model>, I$Class$Repository
+        {
+            private RealmDbContext RealmDbContext { get { return Context as RealmDbContext; } }
+            public $Class$Repository(RealmDbContext context) : base(context) { }
+        }
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Unit Repo Template</Title>
+      <Author>Unskilled</Author>
+      <Description>This is the default unit repo template</Description>
+      <Shortcut>ROBDataUnitRepo</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Class</ID>
+          <ToolTip>the model class</ToolTip>
+          <Default>Class</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        private $Class$Repository _$Class$Repository;
+        public I$Class$Repository $Class$ => _$Class$Repository = _$Class$Repository ?? new $Class$Repository(context);
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
 </CodeSnippets>

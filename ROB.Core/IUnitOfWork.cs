@@ -6,7 +6,12 @@ namespace ROB.Core
 {
     public interface IUnitOfWork : IDisposable
     {
+        IApplicationUserRepository User { get; }
+
+        IArcanePowerAttributeRepository ArcanePowerAttribute { get; }
+
         IArmorRepository Armor { get; }
+
         Task<int> CommitAsync();
     }
 }
