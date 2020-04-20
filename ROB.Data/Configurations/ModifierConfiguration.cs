@@ -4,9 +4,9 @@ using ROB.Core.Models;
 
 namespace ROB.Data.Configurations
 {
-    public class ArmorConfiguration : IEntityTypeConfiguration<ArmorModel>
+    public class ModifierConfiguration : IEntityTypeConfiguration<ModifierModel>
     {
-        public void Configure(EntityTypeBuilder<ArmorModel> builder)
+        public void Configure(EntityTypeBuilder<ModifierModel> builder)
         {
             builder
                 .HasKey(b => b.Id);
@@ -15,9 +15,7 @@ namespace ROB.Data.Configurations
                 .Property(b => b.Id)
                 .UseIdentityColumn();
 
-            builder
-                .Property(b => b.Name)
-                .HasMaxLength(100);
         }
     }
+
 }

@@ -4,9 +4,9 @@ using ROB.Core.Models;
 
 namespace ROB.Data.Configurations
 {
-    public class ArmorConfiguration : IEntityTypeConfiguration<ArmorModel>
+    public class SpellRangeConfiguration : IEntityTypeConfiguration<SpellRangeModel>
     {
-        public void Configure(EntityTypeBuilder<ArmorModel> builder)
+        public void Configure(EntityTypeBuilder<SpellRangeModel> builder)
         {
             builder
                 .HasKey(b => b.Id);
@@ -16,8 +16,12 @@ namespace ROB.Data.Configurations
                 .UseIdentityColumn();
 
             builder
-                .Property(b => b.Name)
-                .HasMaxLength(100);
+                .HasMany(p => p.Spells)
+                .WithOne(c => c.Range)
+                .HasForeignKey(c => c.RangeId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
         }
     }
+
 }

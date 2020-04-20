@@ -4,9 +4,9 @@ using ROB.Core.Models;
 
 namespace ROB.Data.Configurations
 {
-    public class ArmorConfiguration : IEntityTypeConfiguration<ArmorModel>
+    public class TalentGroupTypeConfiguration : IEntityTypeConfiguration<TalentGroupTypeModel>
     {
-        public void Configure(EntityTypeBuilder<ArmorModel> builder)
+        public void Configure(EntityTypeBuilder<TalentGroupTypeModel> builder)
         {
             builder
                 .HasKey(b => b.Id);
@@ -16,8 +16,9 @@ namespace ROB.Data.Configurations
                 .UseIdentityColumn();
 
             builder
-                .Property(b => b.Name)
-                .HasMaxLength(100);
+                .Property(b => b.GroupName)
+                .HasMaxLength(75);
         }
     }
+
 }

@@ -4,9 +4,9 @@ using ROB.Core.Models;
 
 namespace ROB.Data.Configurations
 {
-    public class ArmorConfiguration : IEntityTypeConfiguration<ArmorModel>
+    public class ArcanePowerAttributeConfiguration : IEntityTypeConfiguration<ArcanePowerAttributeModel>
     {
-        public void Configure(EntityTypeBuilder<ArmorModel> builder)
+        public void Configure(EntityTypeBuilder<ArcanePowerAttributeModel> builder)
         {
             builder
                 .HasKey(b => b.Id);
@@ -18,6 +18,15 @@ namespace ROB.Data.Configurations
             builder
                 .Property(b => b.Name)
                 .HasMaxLength(100);
+            
+            builder
+                .Property(b => b.Type)
+                .HasMaxLength(100);
+            
+            builder
+                .Property(b => b.Effects)
+                .HasMaxLength(200);
         }
     }
+
 }

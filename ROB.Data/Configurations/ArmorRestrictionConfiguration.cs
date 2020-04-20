@@ -4,9 +4,9 @@ using ROB.Core.Models;
 
 namespace ROB.Data.Configurations
 {
-    public class ArmorConfiguration : IEntityTypeConfiguration<ArmorModel>
+    public class ArmorRestrictionConfiguration : IEntityTypeConfiguration<ArmorRestrictionModel>
     {
-        public void Configure(EntityTypeBuilder<ArmorModel> builder)
+        public void Configure(EntityTypeBuilder<ArmorRestrictionModel> builder)
         {
             builder
                 .HasKey(b => b.Id);
@@ -20,4 +20,5 @@ namespace ROB.Data.Configurations
                 .HasMaxLength(100);
         }
     }
+
 }

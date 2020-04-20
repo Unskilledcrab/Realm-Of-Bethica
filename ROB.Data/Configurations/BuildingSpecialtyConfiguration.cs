@@ -4,9 +4,9 @@ using ROB.Core.Models;
 
 namespace ROB.Data.Configurations
 {
-    public class ArmorConfiguration : IEntityTypeConfiguration<ArmorModel>
+    public class BuildingSpecialtyConfiguration : IEntityTypeConfiguration<BuildingSpecialtyModel>
     {
-        public void Configure(EntityTypeBuilder<ArmorModel> builder)
+        public void Configure(EntityTypeBuilder<BuildingSpecialtyModel> builder)
         {
             builder
                 .HasKey(b => b.Id);
@@ -16,8 +16,9 @@ namespace ROB.Data.Configurations
                 .UseIdentityColumn();
 
             builder
-                .Property(b => b.Name)
-                .HasMaxLength(100);
+                .Property(b => b.Specialty)
+                .HasMaxLength(50);
         }
     }
+
 }

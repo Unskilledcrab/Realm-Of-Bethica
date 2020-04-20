@@ -4,9 +4,9 @@ using ROB.Core.Models;
 
 namespace ROB.Data.Configurations
 {
-    public class ArmorConfiguration : IEntityTypeConfiguration<ArmorModel>
+    public class PoisonConfiguration : IEntityTypeConfiguration<PoisonModel>
     {
-        public void Configure(EntityTypeBuilder<ArmorModel> builder)
+        public void Configure(EntityTypeBuilder<PoisonModel> builder)
         {
             builder
                 .HasKey(b => b.Id);
@@ -17,7 +17,12 @@ namespace ROB.Data.Configurations
 
             builder
                 .Property(b => b.Name)
-                .HasMaxLength(100);
+                .HasMaxLength(75);
+
+            builder
+                .Property(b => b.Effect)
+                .HasMaxLength(75);
         }
     }
+
 }
