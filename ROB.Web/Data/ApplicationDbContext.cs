@@ -66,34 +66,34 @@ namespace ROB.Web.Data
 
             #region Application User
             builder.Entity<ApplicationUser>()
+                .HasMany<PUBConGameModel>(p => p.PUBConGMGames)
+                .WithOne(c => c.Creator)
+                .HasForeignKey(c => c.CreatorId);
+
+            builder.Entity<ApplicationUser>()
                 .HasMany<WorldModel>(p => p.CreatedWorlds)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(c => c.CreatorId);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<TownModel>(p => p.CreatedTowns)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(c => c.CreatorId);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<BuildingModel>(p => p.CreatedBuildings)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(c => c.CreatorId);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<CharacterSheetModel>(p => p.CreatedCharacterSheets)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(c => c.CreatorId);
 
             builder.Entity<ApplicationUser>()
                 .HasMany<QuestGroupModel>(p => p.CreatedQuestGroups)
                 .WithOne(c => c.Creator)
-                .HasForeignKey(c => c.CreatorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(c => c.CreatorId);
             #endregion
 
             #region Quest Group
@@ -188,6 +188,24 @@ namespace ROB.Web.Data
                 .OnDelete(DeleteBehavior.Cascade);
             #endregion
             */
+            #endregion
+
+
+            #region PUBConGame
+            builder.Entity<User_PUBConGame_Link>()
+                .HasKey(ttp => new { ttp.PUBConGameId, ttp.UserId });
+
+            builder.Entity<User_PUBConGame_Link>()
+                .HasOne<PUBConGameModel>(tm => tm.PUBConGame)
+                .WithMany(tpp => tpp.Players)
+                .HasForeignKey(tm => tm.PUBConGameId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<User_PUBConGame_Link>()
+                .HasOne<ApplicationUser>(tm => tm.User)
+                .WithMany(tmm => tmm.PUBConGames)
+                .HasForeignKey(tm => tm.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
             #endregion
 
             #region Quest
@@ -854,5 +872,6 @@ namespace ROB.Web.Data
         public DbSet<ROB.Web.Models.ArmorModel> ArmorModel { get; set; }
         public DbSet<ROB.Web.Models.WorldModel> WorldModel { get; set; }
         public DbSet<ROB.Web.Models.ItemPackModel> ItemPackModel { get; set; }
+        public DbSet<ROB.Web.Models.PUBConGameModel> PUBConGameModel { get; set; }
     }
 }

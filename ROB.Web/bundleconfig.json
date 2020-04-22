@@ -41,6 +41,31 @@
     "sourceMap": false
   },
   // Page Specific Files
+
+  // PUG Con
+  {
+    "outputFileName": "wwwroot/css/_BStudio/PUGCon/styles.min.css",
+    "inputFiles": [
+      "wwwroot/css/_BStudio/PUGCon/styles.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/_BStudio/PUGCon/script.min.js",
+    "inputFiles": [
+      "wwwroot/js/_BStudio/PUGCon/script.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
   {
     "outputFileName": "wwwroot/js/attribute.min.js",
     "inputFiles": [

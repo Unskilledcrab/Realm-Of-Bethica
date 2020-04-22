@@ -8,6 +8,10 @@ namespace ROB.Web
     {
         public string Guild { get; set; }
 
+        public ICollection<User_PUBConGame_Link> PUBConGames { get; set; } = new List<User_PUBConGame_Link>();
+        public ICollection<PUBConGameModel> PUBConGMGames { get; set; } = new List<PUBConGameModel>();
+
+
         #region Viewing Permissions
         public ICollection<PermissionViewer_Town_Link> ViewableTowns { get; set; } = new List<PermissionViewer_Town_Link>();
         public ICollection<PermissionViewer_QuestGroup_Link> ViewableQuestGroups { get; set; } = new List<PermissionViewer_QuestGroup_Link>();

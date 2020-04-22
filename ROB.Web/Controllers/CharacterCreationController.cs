@@ -26,12 +26,14 @@ namespace ROB.Web.Controllers
             this.userManager = userManager;
         }
 
-        public IActionResult CharacterSheetManager()
+        public async Task<IActionResult> CharacterSheetManager()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var characterSheets = _context.CharacterSheetModel
+            var characterSheets = await _context.CharacterSheetModel
                 .Include(c => c.Race)
-                .Where(c => c.CreatorId == userId);
+                .Where(c => c.CreatorId == userId)
+                .AsNoTracking()
+                .ToListAsync();
 
             return View(characterSheets);
         }
