@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+## All website image files should be kept in the google drive
+wwwroot/images/*
+
 # User-specific files
 *.rsuser
 *.suo
