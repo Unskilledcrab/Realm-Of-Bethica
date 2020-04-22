@@ -46,7 +46,7 @@ namespace ROB.Web.Controllers
             return RedirectToAction(nameof(CharacterSheetManager));
         }
 
-        public async Task<IActionResult> NewCharacter()
+        public IActionResult NewCharacter()
         {
             return View();
         }
@@ -275,7 +275,7 @@ namespace ROB.Web.Controllers
             }
         }
 
-        public async Task<IActionResult> AttributeSelection(int id)
+        public IActionResult AttributeSelection(int id)
         {
             return View(id);
         }

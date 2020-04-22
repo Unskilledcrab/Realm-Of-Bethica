@@ -22,14 +22,14 @@ namespace ROB.Web.Controllers
             _context = context;
             this.userManager = userManager;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult CreateGame()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index( PUBConGameModel pubConGameModel)
+        public async Task<IActionResult> CreateGame( PUBConGameModel pubConGameModel)
         {
             if (ModelState.IsValid)
             {
