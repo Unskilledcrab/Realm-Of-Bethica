@@ -9,8 +9,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ROB.Web.Controllers
-{
-    [Authorize]
+{    
     public class PUBConController : Controller
     {
 
@@ -22,6 +21,8 @@ namespace ROB.Web.Controllers
             _context = context;
             this.userManager = userManager;
         }
+
+        [Authorize]
         public IActionResult CreateGame()
         {
             return View();
@@ -29,6 +30,7 @@ namespace ROB.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> CreateGame( PUBConGameModel pubConGameModel)
         {
             if (ModelState.IsValid)
@@ -60,6 +62,7 @@ namespace ROB.Web.Controllers
         }
 
         //[HttpPost]
+        [Authorize]
         public async Task<IActionResult> JoinGame(int id)
         {
 
@@ -88,6 +91,7 @@ namespace ROB.Web.Controllers
             }
         }
 
+        [Authorize]
         public async Task<IActionResult> LeaveGame(int id)
         {
 
@@ -112,6 +116,7 @@ namespace ROB.Web.Controllers
             }
         }
 
+        [Authorize]
         public async Task<IActionResult> DeleteGame(int id)
         {
 

@@ -36,7 +36,7 @@ namespace ROB.Web.Data
              * 
             #region ClassOne
             builder.Entity<ClassOneModel>()
-                .HasMany<ClassManyModel>(p => p.ClassManys)
+                .HasMany(p => p.ClassManys)
                 .WithOne(c => c.ClassOne)
                 .HasForeignKey(c => c.ClassOneId);
             #endregion
@@ -45,7 +45,7 @@ namespace ROB.Web.Data
 
             #region Quest Rating
             builder.Entity<QuestRatingModel>()
-                .HasMany<QuestModel>(p => p.Quests)
+                .HasMany(p => p.Quests)
                 .WithOne(c => c.DifficultyRating)
                 .HasForeignKey(c => c.DifficultyRatingId);
             #endregion
@@ -176,13 +176,13 @@ namespace ROB.Web.Data
                 .HasKey(ttp => new { ttp.Class1Id, ttp.Class2Id });
 
             builder.Entity<Class1_Class2_Link>()
-                .HasOne<Class1Model>(tm => tm.Class1)
+                .HasOne(tm => tm.Class1)
                 .WithMany(tpp => tpp.Class2s)
                 .HasForeignKey(tm => tm.Class1Id)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Class1_Class2_Link>()
-                .HasOne<Class2Model>(tm => tm.Class2)
+                .HasOne(tm => tm.Class2)
                 .WithMany(tmm => tmm.Class1s)
                 .HasForeignKey(tm => tm.Class2Id)
                 .OnDelete(DeleteBehavior.Cascade);
@@ -196,13 +196,13 @@ namespace ROB.Web.Data
                 .HasKey(ttp => new { ttp.PUBConGameId, ttp.UserId });
 
             builder.Entity<User_PUBConGame_Link>()
-                .HasOne<PUBConGameModel>(tm => tm.PUBConGame)
+                .HasOne(tm => tm.PUBConGame)
                 .WithMany(tpp => tpp.Players)
                 .HasForeignKey(tm => tm.PUBConGameId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<User_PUBConGame_Link>()
-                .HasOne<ApplicationUser>(tm => tm.User)
+                .HasOne(tm => tm.User)
                 .WithMany(tmm => tmm.PUBConGames)
                 .HasForeignKey(tm => tm.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
