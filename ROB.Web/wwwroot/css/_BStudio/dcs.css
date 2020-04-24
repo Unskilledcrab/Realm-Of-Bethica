@@ -11,7 +11,6 @@
   height: 1331px;
   background-color: rgba(21,19,18,0.69);
   margin-top: 15px;
-  /*width: 1700px;*/
   max-width: 2286px;
 }
 
@@ -33,7 +32,6 @@
   padding: 0px;
   margin-top: 9px;
   height: 21px;
-  /*background-color: rgba(255,255,255,0);*/
 }
 
 #Movement {
@@ -67,7 +65,6 @@ body {
 }
 
 .container3 {
-  /*height: 1000px;*/
   width: 2180px;
   max-width: 2000px;
   background-color: #000000;
@@ -98,9 +95,6 @@ body {
   font-weight: 400!important;
 }
 
-.c1 {
-}
-
 .hd-c1 {
   margin-bottom: 0px;
   color: #dfa34e;
@@ -123,5 +117,22 @@ body {
   border-width: 5px;
   border-color: #ffffff;
   background-color: rgba(0,0,0,0.85);
+}
+
+.container.bgc-blk1 {
+  border: groove;
+  border-width: 5px;
+  border-color: #ffffff;
+  background-color: rgba(0,0,0,0.85);
+  height: 1473.33px;
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+
+.btn-collapse {
+  font-size: 25px;
+  color: #dfa34e;
+  background-color: rgba(255,255,255,0)!important;
+  border-color: rgba(255,255,255,0);
 }
 

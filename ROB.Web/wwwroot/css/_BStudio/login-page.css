@@ -45,7 +45,7 @@
 
 .Container {
   height: 1331px;
-  /*background-color: rgba(21,19,18,0.63);*/
+  background-color: rgba(21,19,18,0.63);
   margin-top: 15px;
   max-width: 2286px;
 }

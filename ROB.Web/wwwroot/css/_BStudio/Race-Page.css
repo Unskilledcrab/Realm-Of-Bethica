@@ -47,5 +47,15 @@
   padding-top: 90px;
   padding-bottom: 100px;
   background-attachment: fixed;
+  /*font-weight: 400!important;*/
+}
+
+.div-line {
+  background-color: #b8b2ad;
+  height: 3px;
+}
+
+.div-400 {
+  font-weight: 400;
 }
 

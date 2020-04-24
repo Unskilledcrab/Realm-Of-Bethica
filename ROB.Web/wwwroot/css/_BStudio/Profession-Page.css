@@ -1,0 +1,27 @@
+.margin-top-184 {
+  margin-top: 184px;
+}
+
+.separator-1a {
+  height: 30px;
+  background-image: url(../../images/_BStudio/Shared/CharacterCreate_Separator.png);
+  background-size: cover;
+  background-position: center;
+  margin-top: 184px;
+}
+
+.separator-1b {
+  height: 30px;
+  background-image: url(../../images/_BStudio/Shared/CharacterCreate_Separator.png);
+  background-size: cover;
+  background-position: center;
+  margin-top: 70px;
+}
+
+.h20-c1-m0 {
+  font-size: 20px;
+  color: #dfa34e;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+

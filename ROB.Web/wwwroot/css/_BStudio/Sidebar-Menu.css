@@ -1,0 +1,182 @@
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+.width-500 {
+  width: 700px;
+}
+
+/* to view thw side bar You'll also need to find the .Separator-1, #data_container, #sidebar-wrapper_title{ display: none; } CSS block and change the display to block */
+
+.Separator-1, #data_container, #sidebar-wrapper_title {
+  display: none;
+}
+
+/* to view thw side bar #sidebar-wrapper { width: 0; } CSS block and change the width to something visible like 800px. */
+
+#sidebar-wrapper {
+  width: 0;
+}
+
+.c2-24.sidebar-wrapper-innercontainer {
+  margin-left: 10px;
+}
+
+#data_container {
+  padding: 0 10px;
+}
+
+#close_sidebar {
+  display: block;
+  text-align: center;
+}
+
+#close_sidebar:hover {
+  cursor: pointer;
+}
+
+.Separator-1 {
+  max-width: 100%;
+}
+
+.sidebar-wrapper-innercontainer > .Separator-1 > .separator-1 {
+  display: flex !important;
+  margin-left: 15px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Sidebar header font sytle */
+
+#sidebar-wrapper_title {
+  font-size: 24px;
+  font-family: 'Amarante', cursive;
+}
+
+.profession_data_h1 {
+  font-size: 25px;
+  font-family: 'Amarante', cursive;
+  color: #dfa34e;
+}
+
+.profession_data_h1:hover {
+  cursor: pointer;
+}
+
+.profession_checkbox {
+  float: left;
+  margin-top: 8px;
+  margin-right: 6px;
+  width: 14px;
+  height: 14px;
+}
+
+.profession_data_h2 {
+  font-size: 26px;
+  font-family: sans-serif;
+  color: #dfa34e;
+}
+
+.profession_data_h2:hover {
+  cursor: pointer;
+}
+
+.profession_data_p, .profession_data_p_sub {
+  font-size: 24px;
+  font-family: 'Amarante', cursive;
+}
+
+.requisites_data_p, .requisites_data_p_sub {
+  font-size: 24px;
+  font-family: 'Amarante', cursive;
+  color: #dfa34e;
+}
+
+#selected_parentskills_p, #selected_childskills_p, #selected_techniques_p, #selected_talents_p {
+  color: #258427;
+  display: none;
+}
+
+#sidebar_icons {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 7px;
+  font-size: 22px;
+}
+
+#sidebar_icons i {
+  margin: 0 10px;
+}
+
+#sidebar_icons i:hover {
+  cursor: pointer;
+}
+

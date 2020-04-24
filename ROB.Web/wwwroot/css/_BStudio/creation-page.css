@@ -1,3 +1,7 @@
+.width-300 {
+  width: 300px;
+}
+
 .h-30 {
   height: 30px;
 }
@@ -7,7 +11,6 @@
 }
 
 .m-10 {
-  /*margin: 10px;*/
 }
 
 .mb-15 {
@@ -63,7 +66,6 @@
 }
 
 .mt-174 {
-  /*margin-top: 174px;*/
 }
 
 .BG-Image-3 {
@@ -79,5 +81,19 @@
 .div-line2 {
   background-color: #b8b2ad;
   height: 2px;
+}
+
+#prevnext_buttons_container {
+  width: 100%;
+}
+
+#btn-previous {
+  float: left;
+  margin-left: 100px;
+}
+
+#btn-next {
+  float: right;
+  margin-right: 100px;
 }
 

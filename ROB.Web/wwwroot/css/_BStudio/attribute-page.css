@@ -1,8 +1,40 @@
+.top-margin-81 {
+  margin-top: 81px;
+}
+
+.top-margin-46 {
+  margin-top: 46px;
+}
+
+.par20-c2-wt400-indent-50 {
+  font-size: 20px;
+  font-weight: 400;
+  text-indent: 25px;
+  color: #b8b2ad;
+}
+
+.top-margin-45 {
+  margin-top: 45px;
+}
+
+.top-margin-150 {
+  margin-top: 150px;
+}
+
+.padding-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-height: 70px;
+}
+
 .agi-pre1 {
   background-color: rgba(0,0,0,0.75);
   border: groove 1px;
   color: #17a2b8;
   margin-top: 10px;
+  min-height: 142px;
 }
 
 #btn-dexterous:hover {
@@ -26,13 +58,13 @@
   border: groove 1px;
   color: #dc3545;
   margin-top: 10px;
+  min-height: 142px;
 }
 
 .dexterous1 {
   background-color: rgba(0,0,0,0.75);
   border: groove 1px;
   color: #17a2b8;
-  /*margin-left: 5px;*/
   margin-bottom: 10px;
   height: 120px;
 }
@@ -48,7 +80,6 @@
   background-color: rgba(0,0,0,0.75);
   border: groove 1px;
   color: #dc3545;
-  /*margin-left: 5px;*/
   margin-bottom: 10px;
   height: 120px;
 }
@@ -57,7 +88,6 @@
   background-color: rgba(0,0,0,0.75);
   border: groove 1px;
   color: #ffc107;
-  /*margin-left: 5px;*/
   margin-bottom: 10px;
   height: 120px;
 }
@@ -66,14 +96,13 @@
   background-color: rgba(0,0,0,0.75);
   border: groove 1px;
   color: #ffc107;
-  margin-top: 10px;
+  min-height: 142px;
 }
 
 .mighty1 {
   background-color: rgba(0,0,0,0.75);
   border: groove 1px;
   color: #31d93c;
-  /*margin-left: 5px;*/
   margin-bottom: 10px;
   height: 120px;
 }
@@ -82,10 +111,7 @@
   background-color: rgba(0,0,0,0.75);
   border: groove 1px;
   color: #31d93c;
-}
-
-.att-cs-btn-pd-bt-20 {
-  /*padding-bottom: 20px;*/
+  min-height: 142px;
 }
 
 .BG-Image-a2 {
@@ -115,5 +141,23 @@
   background-size: cover;
   background-position: center;
   margin-top: 7px;
+}
+
+#btn-mighty:hover, #btn-strong:hover, #btn-robust:hover, #btn-dexterous:hover, #btn-agile:hover, #btn-precise:hover {
+  cursor: pointer;
+}
+
+.tippy-box[data-theme ="sample_theme1"] {
+  background-color: #000000;
+  color: #dfa34e;
+  font-size: 24px;
+  font-family: serif;
+}
+
+.tippy-box[data-theme ="sample_theme2"] {
+  background-color: #000000;
+  color: #dfa34e;
+  font-size: 24px;
+  font-family: serif;
 }
 

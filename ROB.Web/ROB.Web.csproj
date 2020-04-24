@@ -113,6 +113,7 @@
     <Folder Include="CodeTemplates\" />
     <Folder Include="wwwroot\characters\warren\" />
     <Folder Include="wwwroot\images\site\" />
+    <Folder Include="wwwroot\images\_BStudio\" />
     <Folder Include="wwwroot\js\api\" />
   </ItemGroup>
 

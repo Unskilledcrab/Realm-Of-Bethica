@@ -1,3 +1,35 @@
+.padding-bot-20 {
+  padding-bottom: 20px;
+}
+
+.padding-top-180 {
+  padding-top: 180px;
+}
+
+.padding-top-51 {
+  padding-top: 51px;
+}
+
+.padding-bot-51 {
+  padding-bottom: 51px;
+}
+
+.padding-top-90 {
+  padding-top: 90px;
+}
+
+.padding-bot-90 {
+  padding-bottom: 90px;
+}
+
+.btn-width-290 {
+  width: 290.656px;
+}
+
+.max-width-457 {
+  max-width: 457px;
+}
+
 .archetype-img {
   margin-top: 20px;
   background-color: rgba(0,0,0,0.75);
@@ -48,13 +80,6 @@
   }
 }
 
-.body-c2 {
-  color: #b8b2ad;
-  font-size: 18px;
-  font-weight: 700;
-  font-family: Amarante, cursive;
-}
-
 .dcs-pd-1 {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -91,7 +116,6 @@
 }
 
 .margin-top-181 {
-  /*margin-top: 180px;*/
 }
 
 .margin-top-27 {
@@ -99,7 +123,6 @@
 }
 
 .margin-top-171 {
-  /*margin-top: 171px;*/
 }
 
 .h18-c1 {
@@ -115,5 +138,9 @@
   padding-top: 90px;
   padding-bottom: 90px;
   background-attachment: fixed;
+}
+
+#priestselect, #fighterselect, #rogueselect {
+  display: none;
 }
 
