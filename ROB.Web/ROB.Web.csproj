@@ -11,12 +11,16 @@
   <ItemGroup>
     <Compile Remove="ViewComponents\**" />
     <Compile Remove="wwwroot\images\pregens\**" />
+    <Compile Remove="wwwroot\js\api\**" />
     <Content Remove="ViewComponents\**" />
     <Content Remove="wwwroot\images\pregens\**" />
+    <Content Remove="wwwroot\js\api\**" />
     <EmbeddedResource Remove="ViewComponents\**" />
     <EmbeddedResource Remove="wwwroot\images\pregens\**" />
+    <EmbeddedResource Remove="wwwroot\js\api\**" />
     <None Remove="ViewComponents\**" />
     <None Remove="wwwroot\images\pregens\**" />
+    <None Remove="wwwroot\js\api\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -114,7 +118,6 @@
     <Folder Include="wwwroot\characters\warren\" />
     <Folder Include="wwwroot\images\site\" />
     <Folder Include="wwwroot\images\_BStudio\" />
-    <Folder Include="wwwroot\js\api\" />
   </ItemGroup>
 
   <ItemGroup>
