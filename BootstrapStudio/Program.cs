@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace BootstrapStudio
+namespace ROB.BootstrapStudio
 {
     class Program
     {
