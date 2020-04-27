@@ -66,30 +66,18 @@ $(document).ready(function(){
             $("#sidebar-wrapper").css({"width": "90%", "padding": "15px"});
         }
         parentSkill.forEach(function(value1, index1){
-            $("#data_container").append("<div id='parentSkill" + index1 + "'>
-</div>");
+            $("#data_container").append("<div id='parentSkill" + index1 + "'></div>");
             value1[1].forEach(function(value2, index2){
-                $("#parentSkill" + index1).append("<div>
-<input type='checkbox' class='profession_checkbox parentskills_checkbox' name='" + value2[0] + "' value='" + value2[0] + "'/>
-<h2 class='profession_data_h2'>" + value2[0] + "</h2>
-<p class='profession_data_p_sub'>" + value2[2] + "</p>
-</div>"); 
+                $("#parentSkill" + index1).append("<div><input type='checkbox' class='profession_checkbox parentskills_checkbox' name='" + value2[0] + "' value='" + value2[0] + "'/><h2 class='profession_data_h2'>" + value2[0] + "</h2><p class='profession_data_p_sub'>" + value2[2] + "</p></div>"); 
             });
         });
         $("#sidebar-wrapper_title").text("Parent");
         $(".profession_data_p_sub").css("display", "none");
-        $("body").append("<div id='sidebar-wrapper-open' style='width:100%;height:" + originalBodyHeight + ";z-index:1000;position:absolute;top:0;left:0;'>
-</div>");
+        $("body").append("<div id='sidebar-wrapper-open' style='width:100%;height:" + originalBodyHeight + ";z-index:1000;position:absolute;top:0;left:0;'></div>");
         $("#sidebar-wrapper").css("z-index", 2000);
         $("#sidebar-wrapper_title, #data_container").css("display", "block");
         $(".Separator-1").css("display", "flex");
-        $(".sidebar-wrapper-innercontainer").append("<span id='close_sidebar'>Close&times;</span>
-<div id='sidebar_icons'>
-<i id='reset_icon' class='fa fa-undo'>
-</i>
-<i id='close_icon' class='fa fa-times'>
-</i>
-</div>");
+        $(".sidebar-wrapper-innercontainer").append("<span id='close_sidebar'>Close&times;</span><div id='sidebar_icons'><i id='reset_icon' class='fa fa-undo'></i><i id='close_icon' class='fa fa-times'></i></div>");
         var selected_parentskills_Array = selected_parentskills.split(", ");
         selected_parentskills_Array.forEach(function(value){
             $(".parentskills_checkbox[value='" + value + "']").prop("checked", true);
@@ -107,31 +95,18 @@ $(document).ready(function(){
             $("#sidebar-wrapper").css({"width": "90%", "padding": "15px"});
         }
         childSkill.forEach(function(value1, index1){
-            $("#data_container").append("<div id='childSkill" + index1 + "'>
-<h1 class='profession_data_h1'>" + value1[0] + "</h1>
-</div>");
+            $("#data_container").append("<div id='childSkill" + index1 + "'><h1 class='profession_data_h1'>" + value1[0] + "</h1></div>");
             value1[1].forEach(function(value2, index2){
-                $("#childSkill" + index1).append("<div>
-<input type='checkbox' class='profession_checkbox childskills_checkbox' name='" + value2[0] + "' value='" + value2[0] + "'/>
-<h2 class='profession_data_h2'>" + value2[0] + "</h2>
-<p class='profession_data_p_sub'>" + value2[2] + "</p>
-</div>"); 
+                $("#childSkill" + index1).append("<div><input type='checkbox' class='profession_checkbox childskills_checkbox' name='" + value2[0] + "' value='" + value2[0] + "'/><h2 class='profession_data_h2'>" + value2[0] + "</h2><p class='profession_data_p_sub'>" + value2[2] + "</p></div>"); 
             });
         });
         $("#sidebar-wrapper_title").text("Child-Skills");
         $(".profession_data_h2, .profession_checkbox, .profession_data_p_sub").css("display", "none");
-        $("body").append("<div id='sidebar-wrapper-open' style='width:100%;height:" + originalBodyHeight + ";z-index:1000;position:absolute;top:0;left:0;'>
-</div>");
+        $("body").append("<div id='sidebar-wrapper-open' style='width:100%;height:" + originalBodyHeight + ";z-index:1000;position:absolute;top:0;left:0;'></div>");
         $("#sidebar-wrapper").css("z-index", 2000);
         $("#sidebar-wrapper_title, #data_container").css("display", "block");
         $(".Separator-1").css("display", "flex");
-        $(".sidebar-wrapper-innercontainer").append("<span id='close_sidebar'>Close&times;</span>
-<div id='sidebar_icons'>
-<i id='reset_icon' class='fa fa-undo'>
-</i>
-<i id='close_icon' class='fa fa-times'>
-</i>
-</div>");
+        $(".sidebar-wrapper-innercontainer").append("<span id='close_sidebar'>Close&times;</span><div id='sidebar_icons'><i id='reset_icon' class='fa fa-undo'></i><i id='close_icon' class='fa fa-times'></i></div>");
         var selected_childskills_Array = selected_childskills.split(", ");
         selected_childskills_Array.forEach(function(value){
             $(".childskills_checkbox[value='" + value + "']").prop("checked", true);
@@ -149,32 +124,18 @@ $(document).ready(function(){
             $("#sidebar-wrapper").css({"width": "90%", "padding": "15px"});
         }
         techniques.forEach(function(value1, index1){
-            $("#data_container").append("<div id='techniques" + index1 + "'>
-<h1 class='profession_data_h1'>" + value1[0] + "</h1>
-</div>");
+            $("#data_container").append("<div id='techniques" + index1 + "'><h1 class='profession_data_h1'>" + value1[0] + "</h1></div>");
             value1[1].forEach(function(value2, index2){
-                $("#techniques" + index1).append("<div>
-<input type='checkbox' class='profession_checkbox techniques_checkbox' name='" + value2[0] + "' value='" + value2[0] + "'/>
-<h2 class='profession_data_h2'>" + value2[0] + "</h2>
-<p class='requisites_data_p_sub'>" + value2[1] + "</p>
-<p class='profession_data_p_sub'>" + value2[2] + "</p>
-</div>"); 
+                $("#techniques" + index1).append("<div><input type='checkbox' class='profession_checkbox techniques_checkbox' name='" + value2[0] + "' value='" + value2[0] + "'/><h2 class='profession_data_h2'>" + value2[0] + "</h2><p class='requisites_data_p_sub'>" + value2[1] + "</p><p class='profession_data_p_sub'>" + value2[2] + "</p></div>"); 
             });
         });
         $("#sidebar-wrapper_title").text("Techniques");
         $(".profession_data_h2, .profession_checkbox, .requisites_data_p_sub, .profession_data_p_sub").css("display", "none");
-        $("body").append("<div id='sidebar-wrapper-open' style='width:100%;height:" + originalBodyHeight + ";z-index:1000;position:absolute;top:0;left:0;'>
-</div>");
+        $("body").append("<div id='sidebar-wrapper-open' style='width:100%;height:" + originalBodyHeight + ";z-index:1000;position:absolute;top:0;left:0;'></div>");
         $("#sidebar-wrapper").css("z-index", 2000);
         $("#sidebar-wrapper_title, #data_container").css("display", "block");
         $(".Separator-1").css("display", "flex");
-        $(".sidebar-wrapper-innercontainer").append("<span id='close_sidebar'>Close&times;</span>
-<div id='sidebar_icons'>
-<i id='reset_icon' class='fa fa-undo'>
-</i>
-<i id='close_icon' class='fa fa-times'>
-</i>
-</div>");
+        $(".sidebar-wrapper-innercontainer").append("<span id='close_sidebar'>Close&times;</span><div id='sidebar_icons'><i id='reset_icon' class='fa fa-undo'></i><i id='close_icon' class='fa fa-times'></i></div>");
         var selected_techniques_Array = selected_techniques.split(", ");
         selected_techniques_Array.forEach(function(value){
             $(".techniques_checkbox[value='" + value + "']").prop("checked", true);
@@ -192,32 +153,18 @@ $(document).ready(function(){
             $("#sidebar-wrapper").css({"width": "90%", "padding": "15px"});
         }
         talents.forEach(function(value1, index1){
-            $("#data_container").append("<div id='talents" + index1 + "'>
-<h1 class='profession_data_h1'>" + value1[0] + "</h1>
-</div>");
+            $("#data_container").append("<div id='talents" + index1 + "'><h1 class='profession_data_h1'>" + value1[0] + "</h1></div>");
             value1[1].forEach(function(value2, index2){
-                $("#talents" + index1).append("<div>
-<input type='checkbox' class='profession_checkbox talents_checkbox' name='" + value2[0] + "' value='" + value2[0] + "'/>
-<h2 class='profession_data_h2'>" + value2[0] + "</h2>
-<p class='requisites_data_p_sub'>" + value2[1] + "</p>
-<p class='profession_data_p_sub'>" + value2[2] + "</p>
-</div>"); 
+                $("#talents" + index1).append("<div><input type='checkbox' class='profession_checkbox talents_checkbox' name='" + value2[0] + "' value='" + value2[0] + "'/><h2 class='profession_data_h2'>" + value2[0] + "</h2><p class='requisites_data_p_sub'>" + value2[1] + "</p><p class='profession_data_p_sub'>" + value2[2] + "</p></div>"); 
             });
         });
         $("#sidebar-wrapper_title").text("Talents");
         $(".profession_data_h2, .profession_checkbox, .requisites_data_p_sub, .profession_data_p_sub").css("display", "none");
-        $("body").append("<div id='sidebar-wrapper-open' style='width:100%;height:" + originalBodyHeight + ";z-index:1000;position:absolute;top:0;left:0;'>
-</div>");
+        $("body").append("<div id='sidebar-wrapper-open' style='width:100%;height:" + originalBodyHeight + ";z-index:1000;position:absolute;top:0;left:0;'></div>");
         $("#sidebar-wrapper").css("z-index", 2000);
         $("#sidebar-wrapper_title, #data_container").css("display", "block");
         $(".Separator-1").css("display", "flex");
-        $(".sidebar-wrapper-innercontainer").append("<span id='close_sidebar'>Close&times;</span>
-<div id='sidebar_icons'>
-<i id='reset_icon' class='fa fa-undo'>
-</i>
-<i id='close_icon' class='fa fa-times'>
-</i>
-</div>");
+        $(".sidebar-wrapper-innercontainer").append("<span id='close_sidebar'>Close&times;</span><div id='sidebar_icons'><i id='reset_icon' class='fa fa-undo'></i><i id='close_icon' class='fa fa-times'></i></div>");
         var selected_talents_Array = selected_talents.split(", ");
         selected_talents_Array.forEach(function(value){
             $(".talents_checkbox[value='" + value + "']").prop("checked", true);

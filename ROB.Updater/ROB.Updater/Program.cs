@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 
 namespace ROB.Updater
@@ -32,7 +33,26 @@ namespace ROB.Updater
                 studioPath = ConfigurationManager.AppSettings[keyStudioPath];
             }
 
-            Formatter.FormatBootstrapStudioFiles(studioPath);
+            Console.WriteLine("Would you like to get the updated project? [Y/N]");
+            var input = Console.ReadLine();
+            if (input.ToUpper() == "Y")
+            {
+                Console.WriteLine("Resetting Project...");
+                RunGit("reset", studioPath);
+                Console.WriteLine("Reverting formatting...");
+                RunGit("checkout .", studioPath);
+                Console.WriteLine("Pulling in changes...");
+                RunGit("pull", studioPath);
+            }
+
+            Console.WriteLine("Would you like to format the bootstrap studio directory files? [Y/N]");
+            input = Console.ReadLine();
+            if (input.ToUpper() == "Y")
+            {
+                var formatter = new Formatter(studioPath);
+                formatter.FormatBootstrapStudioFiles(studioPath);
+                Console.WriteLine("Formatting Completed");
+            }
 
             var ROBcssPath = Path.Combine(ROBPath, cssPath);
             var ROBjsPath = Path.Combine(ROBPath, jsPath);
@@ -42,13 +62,38 @@ namespace ROB.Updater
             var StudiojsPath = Path.Combine(studioPath, studioJSPath);
             var StudioimagesPath = Path.Combine(studioPath, studioImagesPath);
 
-            DeleteDirectory(ROBcssPath);
-            DeleteDirectory(ROBjsPath);
-            DeleteDirectory(ROBimagesPath);
 
-            Copy(StudiocssPath, ROBcssPath);
-            Copy(StudiojsPath, ROBjsPath);
-            Copy(StudioimagesPath, ROBimagesPath);
+            Console.WriteLine("Would you like to delete old files? [Y/N]");
+            input = Console.ReadLine();
+            if (input.ToUpper() == "Y")
+            {
+                DeleteDirectory(ROBcssPath);
+                DeleteDirectory(ROBjsPath);
+                DeleteDirectory(ROBimagesPath);
+                Console.WriteLine("Deletion Completed");
+            }
+
+            Console.WriteLine("Would you like to copy files into ROB.Web? [Y/N]");
+            input = Console.ReadLine();
+            if (input.ToUpper() == "Y")
+            {
+                Copy(StudiocssPath, ROBcssPath);
+                Copy(StudiojsPath, ROBjsPath);
+                Copy(StudioimagesPath, ROBimagesPath);
+                Console.WriteLine("Copy Completed");
+            }
+        }
+
+        static void RunGit(string arguments, string bootstrapStudioPath)
+        {
+            var baseDirectory = bootstrapStudioPath.Replace("Exports", "");
+            Process process = new Process();
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.Arguments = arguments;
+            process.StartInfo.WorkingDirectory = baseDirectory;
+            process.StartInfo.FileName = "git";
+            process.Start();
+            process.WaitForExit();
         }
 
         private static void Copy(string sourceDirectory, string targetDirectory)
@@ -66,7 +111,6 @@ namespace ROB.Updater
             // Copy each file into the new directory.
             foreach (FileInfo fi in source.GetFiles())
             {
-                Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
                 fi.CopyTo(Path.Combine(target.FullName, fi.Name), true);
             }
  
