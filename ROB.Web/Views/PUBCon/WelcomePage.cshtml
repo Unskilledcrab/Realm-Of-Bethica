@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Welcome Page";
+}
+
+@section Styles {
+    @{await Html.RenderPartialAsync("_PUGConStylesPartial");}
+}
+
+<div class="features-clean" style="background-color: rgb(0,0,0);">
+    <div class="container container-announcement1">
+        <div id="intro_info" class="intro">
+            <h2 class="text-center sans-serif-font2b">F.G. PUGCon Event</h2>
+            <p class="text-center sans-serif-font2aa">May 16th, 2020 First Game Starts</p>
+            <p class="text-center sans-serif-font2aa">Starts a noon Est (New York)</p>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-12 col-md-10 col-lg-7 col-xl-6">
+                <div id="announcement1_paragraphs_container" class="box-border5">
+                    <p class="text-justify announcment1" id="announcement1_paragraph1" style="font-family: Adamina, serif;">
+                        The dice have summoned you here today for mischief and mayhem, for adventure and glory or just to have a good time! Come along to start your brand-new adventure as we go on to fight goblins raiding an innocent village. Take on
+                        a fearsome war mongering orc encampment or dare to brave a dragon of chromatic scale and claw. Come along and band together with your new party in order to take part in this wonderous adventure. Join us as we aim to save the
+                        kingdom from the dangerous clutches of a black scales winged beast that haunts the night sky and terrifies the natives. Will you dare to go against acidic breath that melts armour in seconds? Perhaps you can be the one to slay
+                        the beast and save the kingdom!&nbsp;
+                    </p>
+                    <p class="text-justify announcment1" id="announcement1_paragraph2" style="font-family: Adamina, serif;">
+                        F.G. PUG will be having an all-day Saturday event where GM and player can meet to play D&amp;D5e. There will be six-sessions each with two-hours of playtime. Depending on the number of GMs we can have multiple games going on per
+                        gaming session.
+                    </p>
+                    <p class="text-justify announcment1" id="announcement1_paragraph3">
+                        If you are a gamemaster who is interested in running a game or two we would love to have you on-board. Just click the event dashboard button below this will take you to the PUG Game Day Con Dashboard, from there just click create.
+                    </p>
+                    <p class="text-justify announcment1" id="announcement1_paragraph4">
+                        If you are a player looking for an adventure, or two or three, also click the event dashboard button below to browse the list of games that you would be interested in. Once you find a game you like just hit the sign up button and
+                        your adventure awaits you.
+                    </p>
+                    <p class="text-justify announcment1" id="announcement1_paragraph5">
+                        Note: You will need to register first if you are planning on GMing or playing games. Good luck and may the dice be with you!<br>
+                    </p>
+                </div>
+                <div class="row justify-content-center pad-top-20">
+                    <div class="col-12 text-center">
+                        <a class="" asp-action="GameDashboard">Event Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="background_smallimage_1" class="background_smallimage">
+</div>
+<div id="background_smallimage_2" class="background_smallimage">
+</div>
+<div id="background_smallimage_3" class="background_smallimage">
+</div>
+<div id="background_smallimage_4" class="background_smallimage">
+</div>
+<div id="background_smallimage_5" class="background_smallimage">
+</div>
+<div id="background_smallimage_6" class="background_smallimage">
+</div>
+<div id="background_smallimage_7" class="background_smallimage">
+</div>
+<div id="background_smallimage_8" class="background_smallimage">
+</div>
+<div class="body1 pug-bg">
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_PUGConScriptPartial");}
+}

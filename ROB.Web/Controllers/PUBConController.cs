@@ -152,5 +152,10 @@ namespace ROB.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult WelcomePage()
+        {
+            return View();
+        }
     }
 }
