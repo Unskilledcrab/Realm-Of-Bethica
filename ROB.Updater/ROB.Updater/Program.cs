@@ -34,6 +34,7 @@ namespace ROB.Updater
             }
 
             Console.WriteLine("Would you like to get the updated project? [Y/N]");
+            Console.WriteLine("NOTE: This will pull the latest changes from the rob-bootstrap repo AND revert any formatting or changes made locally.");
             var input = Console.ReadLine();
             if (input.ToUpper() == "Y")
             {
@@ -64,6 +65,7 @@ namespace ROB.Updater
 
 
             Console.WriteLine("Would you like to delete old files? [Y/N]");
+            Console.WriteLine("NOTE: This will delete all files in _BStudio folder in the CSS, js, images folders.");
             input = Console.ReadLine();
             if (input.ToUpper() == "Y")
             {
@@ -74,6 +76,7 @@ namespace ROB.Updater
             }
 
             Console.WriteLine("Would you like to copy files into ROB.Web? [Y/N]");
+            Console.WriteLine("NOTE: This will copy all files from the rob-bootstrap project into the _BStudio folders in the CSS, js, images folders.");
             input = Console.ReadLine();
             if (input.ToUpper() == "Y")
             {
