@@ -6,6 +6,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <LangVersion>8.0</LangVersion>
     <SignAssembly>false</SignAssembly>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -117,7 +118,6 @@
     <Folder Include="CodeTemplates\" />
     <Folder Include="wwwroot\characters\warren\" />
     <Folder Include="wwwroot\images\site\" />
-    <Folder Include="wwwroot\images\_BStudio\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -44,13 +44,15 @@
 
     <!-- Internal -->
     <environment include="Development">
-        @*<link rel="stylesheet" href="~/css/site.css" />
-            <link rel="stylesheet" href="~/css/characterSheet.css" />*@
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/characterSheet.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+
+    <partial name="_BStudioStylesPartial" />
 
     @RenderSection("Styles", required: false)
 </head>

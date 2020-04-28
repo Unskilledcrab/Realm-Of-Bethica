@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ROB.Web.Data;
 using ROB.Web.Models;
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -42,6 +43,41 @@ namespace ROB.Web.Controllers
                 return RedirectToAction(nameof(GameDashboard));
             }
             return View(pubConGameModel);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var pubConGame = await _context.PUBConGameModel.FindAsync(id);
+            if (pubConGame == null)
+            {
+                return NotFound();
+            }
+            return View(pubConGame);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, PUBConGameModel pubConGame)
+        {
+            if (id != pubConGame.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(pubConGame);
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                return RedirectToAction(nameof(GameDetails));
+            }
+            return View(pubConGame);
         }
 
         public async Task<IActionResult> GameDetails(int? id)
