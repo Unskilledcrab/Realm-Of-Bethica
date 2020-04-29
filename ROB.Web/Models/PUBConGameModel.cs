@@ -18,8 +18,8 @@ namespace ROB.Web.Models
         public double EventDuration { get; set; }
         public string MessageToPlayers { get; set; }
         public string GameMaster { get; set; }
-        public string GameMasterDiscordName { get; set; }
         public string DiscordChannel { get; set; }
+        public string GameMasterDiscordName { get; set; }
 
         [Display(Name = "Is Public")]
         public bool IsPublic { get; set; }

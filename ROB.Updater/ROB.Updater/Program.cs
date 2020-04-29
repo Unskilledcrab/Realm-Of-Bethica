@@ -64,10 +64,10 @@ namespace ROB.Updater
             var StudioimagesPath = Path.Combine(studioPath, studioImagesPath);
 
 
-            Console.WriteLine("Would you like to delete old files? [Y/N]");
+            Console.WriteLine("Would you like to delete old files? [Type 'DELETE' if yes otherwise]");
             Console.WriteLine("NOTE: This will delete all files in _BStudio folder in the CSS, js, images folders.");
             input = Console.ReadLine();
-            if (input.ToUpper() == "Y")
+            if (input == "DELETE")
             {
                 DeleteDirectory(ROBcssPath);
                 DeleteDirectory(ROBjsPath);

@@ -45,7 +45,7 @@ namespace ROB.Web.Controllers
             return View(pubConGameModel);
         }
 
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> EditGame(int id)
         {
             var pubConGame = await _context.PUBConGameModel.FindAsync(id);
             if (pubConGame == null)
@@ -57,7 +57,7 @@ namespace ROB.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, PUBConGameModel pubConGame)
+        public async Task<IActionResult> EditGame(int id, PUBConGameModel pubConGame)
         {
             if (id != pubConGame.Id)
             {
@@ -75,7 +75,7 @@ namespace ROB.Web.Controllers
                 {
                     throw;
                 }
-                return RedirectToAction(nameof(GameDetails));
+                return RedirectToAction(nameof(GameDashboard));
             }
             return View(pubConGame);
         }
