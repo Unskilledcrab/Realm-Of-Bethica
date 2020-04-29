@@ -10,8 +10,8 @@ namespace ROB.Discord.Commands
     [RequireRole(nameof(DiscordSecrets.Staff))]
     public class StaffCommands : ModuleBase<SocketCommandContext>
     {
-        [Command(nameof(UBCommands.Absent))]
-        public Task MakeEmbed(string cardURL, [Remainder] string helpRequired)
+        [Command(nameof(Absent))]
+        public Task Absent(string cardURL, [Remainder] string helpRequired)
         {
             var embed = new EmbedBuilder()
                 .WithColor(Color.Blue)

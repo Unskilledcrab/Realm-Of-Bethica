@@ -13,7 +13,7 @@ namespace ROB.Web.Models
         public RaceModel Race { get; set; }
         public int Strong { get; set; } = 0;
         public int StrongModifier { get; set; }
-        public int Robust { get; set; } = 0;
+        public int Robust { get; set; } = 0; 
         public int RobustModifier { get; set; }
         public int Agile { get; set; } = 0;
         public int AgileModifier { get; set; }
