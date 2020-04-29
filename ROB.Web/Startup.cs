@@ -37,7 +37,7 @@ namespace ROB.Web
 
             services.AddDbContextPool<ApplicationDbContext>(options =>
                     options.UseSqlServer(
-                        Configuration.GetConnectionString("DefaultConnection")));
+                        Configuration.GetConnectionString("DevelopmentConnection")));
 
             services.AddSignalR();
             services.AddAutoMapper(typeof(Startup));
