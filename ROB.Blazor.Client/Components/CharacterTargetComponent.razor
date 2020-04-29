@@ -1,0 +1,68 @@
+﻿@using ROB.Blazor.Client.ViewModels
+@implements IDisposable
+
+<div class="main-stats-targets" hidden="@Hidden">
+    <div class="target-wrapper">
+        <span class="oi oi-target" style="color:@(Character.GetFactionColor(Hidden))"></span>
+        <div class="sheet-wrapper">
+            <CharacterListableItemComponent Title="Targets" ListedItems="@TargetNames()" Actionable="true" Icon="oi oi-x" ActionClicked="RemoveTarget" />
+        </div>
+    </div>
+</div>
+
+<style>
+    .target-wrapper {
+        margin-top: .5rem;
+        padding-top: .5rem;
+        padding-left: 1rem;
+        border-top: solid 2px;
+        display: grid;
+        grid-template-columns: 1rem auto;
+        align-items: start;
+        justify-items: start;
+        column-gap: 5px;
+    }
+
+        .target-wrapper .sheet-wrapper {
+            padding: 3px;
+            display: grid;
+            border: solid 1px;
+            width: 100%;
+            padding-left: 20px;
+        }
+</style>
+
+@code {
+    [CascadingParameter(Name = "Character")]
+    protected CharacterViewModel Character { get; set; }
+
+    [Parameter]
+    public bool Hidden { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Character.TargetListChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        Character.TargetListChanged -= StateHasChanged;
+    }
+
+    private List<string> TargetNames()
+    {
+        List<string> names = new List<string>();
+
+        foreach (CharacterViewModel character in Character.Targets)
+            names.Add(character.Name);
+
+        return names;
+    }
+
+    private void RemoveTarget(string charName)
+    {
+        CharacterViewModel character = Character.Targets.Where(x => x.Name == charName).FirstOrDefault();
+        Character.RemoveTarget(character);
+        StateHasChanged();
+    }
+}

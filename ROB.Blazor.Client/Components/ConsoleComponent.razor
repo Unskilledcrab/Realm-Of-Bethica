@@ -1,0 +1,19 @@
+﻿<div class="console">
+    <h3>Console</h3>
+    <div class="console-wrapper">
+        @foreach (string statement in ConsoleStatements)
+        {
+            <h5>@statement</h5>
+        }
+    </div>
+</div>
+
+@code {
+    private List<string> ConsoleStatements = new List<string>();
+
+    public void WriteToConsole(string message)
+    {        
+        ConsoleStatements.Add(message);
+        this.StateHasChanged();
+    }
+}

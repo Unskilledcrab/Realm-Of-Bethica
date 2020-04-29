@@ -1,0 +1,68 @@
+﻿@using ROB.Blazor.Client.ViewModels
+
+<div class="item-wrapper">
+    <span>@Title</span>
+    <div class="list-wrapper">
+        @if (ListedItems.Count > 0)
+        {
+            @foreach (string str in ListedItems)
+            {
+                <span @onclick="(()=>ClickAction(str))" class="@(Icon)"></span><span class="item">@str</span>
+            }
+        }
+        else
+        {
+            <span></span><span class="item"></span> <!--This is to provide a blank line when there are no items-->
+        }
+    </div>
+</div>
+
+<style>
+    .item-wrapper {
+        display: grid;
+        grid-template-columns: 5rem auto;
+        margin-bottom: 15px;
+    }
+
+        .item-wrapper .list-wrapper {
+            display: grid;
+            grid-template-columns: 2rem auto;
+        }
+
+        .item-wrapper .item {
+            border-bottom: solid 1px;
+            width: 100%;
+            padding-top: 5px;
+        }
+
+        .item-wrapper .oi {
+            justify-self: center;
+            align-self: center;
+        }
+</style>
+
+@code {
+    [CascadingParameter]
+    public CharacterViewModel Character { get; set; }
+
+    [Parameter]
+    public List<string> ListedItems { get; set; }
+
+    [Parameter]
+    public bool Actionable { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Icon { get; set; }
+
+    [Parameter]
+    public Action<string> ActionClicked { get; set; }
+
+    private void ClickAction(string str)
+    {
+        if (Actionable)
+            ActionClicked?.Invoke(str);
+    }
+}

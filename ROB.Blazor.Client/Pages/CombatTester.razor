@@ -1,0 +1,27 @@
+﻿@page "/combattester"
+@using ROB.Blazor.Client.Components
+@inject HttpClient Http
+
+<div class="combat-page-wrapper">
+    <CombatTrackerComponent LogAction="WriteToConsole"></CombatTrackerComponent>
+    <ConsoleComponent @ref="_console"></ConsoleComponent>
+</div>
+
+@code {
+    private ConsoleComponent _console;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _console.WriteToConsole("Loading game...");
+            await Task.Delay(2000);
+            _console.WriteToConsole("Loading complete");
+        }
+    }
+
+    private void WriteToConsole(string message)
+    {
+        _console.WriteToConsole(message);
+    }
+}

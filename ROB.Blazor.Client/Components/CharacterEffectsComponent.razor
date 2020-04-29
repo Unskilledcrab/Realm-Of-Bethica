@@ -1,0 +1,41 @@
+﻿@using ROB.Blazor.Client.ViewModels
+
+<div class="main-stats-effects" hidden="@Hidden">
+    <div class="effects-wrapper">
+        <span class="oi oi-pulse" style="color:@(Character.GetFactionColor(Hidden))"></span>
+        <div class="sheet-wrapper">
+            <CharacterListableItemComponent Title="Effects" ListedItems="Character.Effects" Actionable="false"></CharacterListableItemComponent>
+        </div>
+    </div>
+</div>
+
+<style>
+    .effects-wrapper {
+        margin-top: .5rem;
+        padding-top: .5rem;
+        padding-left: 1rem;
+        border-top: solid 2px;
+        display: grid;
+        grid-template-columns: 1rem auto;
+        align-items: start;
+        justify-items: start;
+        column-gap: 5px;
+    }
+
+        .effects-wrapper .sheet-wrapper {
+            padding: 3px;
+            display: grid;
+            border: solid 1px;
+            width: 100%;
+            padding-left: 20px;
+        }
+</style>
+
+@code {
+    [CascadingParameter(Name = "Character")]
+    protected CharacterViewModel Character { get; set; }
+
+    [Parameter]
+    public bool Hidden { get; set; }
+
+}
