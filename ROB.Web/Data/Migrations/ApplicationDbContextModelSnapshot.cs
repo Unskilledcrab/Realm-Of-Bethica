@@ -2167,27 +2167,6 @@ namespace ROB.Web.Data.Migrations
                     b.ToTable("Town_NPC_Link");
                 });
 
-            modelBuilder.Entity("ROB.Web.Models.TrelloSuggestionModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Sender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Suggestion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TrelloSuggestionModel");
-                });
-
             modelBuilder.Entity("ROB.Web.Models.User_PUBConGame_Link", b =>
                 {
                     b.Property<int>("PUBConGameId")
@@ -2461,8 +2440,7 @@ namespace ROB.Web.Data.Migrations
 
                     b.HasOne("ROB.Web.ApplicationUser", "Creator")
                         .WithMany("CreatedBuildings")
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("CreatorId");
                 });
 
             modelBuilder.Entity("ROB.Web.Models.Building_Armor_Link", b =>
@@ -2544,8 +2522,7 @@ namespace ROB.Web.Data.Migrations
                 {
                     b.HasOne("ROB.Web.ApplicationUser", "Creator")
                         .WithMany("CreatedCharacterSheets")
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("CreatorId");
 
                     b.HasOne("ROB.Web.Models.RaceModel", "Race")
                         .WithMany()
@@ -3006,8 +2983,7 @@ namespace ROB.Web.Data.Migrations
                 {
                     b.HasOne("ROB.Web.ApplicationUser", "Creator")
                         .WithMany("CreatedQuestGroups")
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("CreatorId");
                 });
 
             modelBuilder.Entity("ROB.Web.Models.QuestModel", b =>
@@ -3182,8 +3158,7 @@ namespace ROB.Web.Data.Migrations
                 {
                     b.HasOne("ROB.Web.ApplicationUser", "Creator")
                         .WithMany("CreatedTowns")
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("CreatorId");
 
                     b.HasOne("ROB.Web.Models.WorldModel", "World")
                         .WithMany("Towns")
@@ -3262,8 +3237,7 @@ namespace ROB.Web.Data.Migrations
                 {
                     b.HasOne("ROB.Web.ApplicationUser", "Creator")
                         .WithMany("CreatedWorlds")
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("CreatorId");
                 });
 #pragma warning restore 612, 618
         }

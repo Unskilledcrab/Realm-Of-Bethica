@@ -91,6 +91,8 @@
     <Compile Remove="Data\Migrations\20200416021644_trelloSuggestions.Designer.cs" />
     <Compile Remove="Data\Migrations\20200416022920_trelloSuggestions.cs" />
     <Compile Remove="Data\Migrations\20200416022920_trelloSuggestions.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200430190134_mergeWithSuggestion.cs" />
+    <Compile Remove="Data\Migrations\20200430190134_mergeWithSuggestion.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@ using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using ROB.Discord.Secrets;
-using ROB.Web.Models;
+using ROB.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;

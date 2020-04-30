@@ -4,7 +4,7 @@ using ROB.Discord.Helpers;
 using ROB.Discord.Preconditions;
 using ROB.Discord.Secrets;
 using ROB.Discord.Services;
-using ROB.Web.Models;
+using ROB.Core.Models;
 using System.Net.Security;
 using System.Threading.Tasks;
 
@@ -14,7 +14,7 @@ namespace ROB.Discord.Commands
     {
         public TrelloService TrelloService { get; set; }
 
-        [Command(nameof(UBCommands.Socials))]
+        [Command(nameof(Socials))]
         public Task Socials()
         {
             var embed = new EmbedBuilder()
@@ -28,7 +28,8 @@ namespace ROB.Discord.Commands
 
             return ReplyAsync(embed: embed);
         }
-        [Command(nameof(UBCommands.Suggest))]
+
+        [Command(nameof(Suggest))]
         public async Task Suggest([Remainder] string suggestion)
         {
             var embed = UBTemplates.GetEmbedTemplate()
@@ -45,13 +46,9 @@ namespace ROB.Discord.Commands
             suggest = await TrelloService.SendSuggestion(suggest);
 
             await ReplyAsync($"{suggest.Sender} your suggestion has been recorded!", embed: embed);
-            /*
-            await Context.Guild
-                .GetTextChannel(DiscordSecrets.MarketingChatChannel)
-                .SendMessageAsync($"<@&{DiscordSecrets.Managers}>", embed: embed);
-                */
         }
-        [Command(nameof(UBCommands.GetSuggestionsByUserMention))]
+
+        [Command(nameof(GetSuggestionsByUserMention))]
         public async Task GetSuggestionsByUserMention(string mention)
         {
             var suggestions = await TrelloService.GetSuggestionsByUserMention(mention);
@@ -66,6 +63,5 @@ namespace ROB.Discord.Commands
 
             await ReplyAsync(embed: embed.Build());
         }
-
     }
 }
