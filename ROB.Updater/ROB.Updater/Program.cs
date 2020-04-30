@@ -132,10 +132,18 @@ namespace ROB.Updater
 
 		    DirectoryInfo directory = new DirectoryInfo(path);
 
-		    foreach (FileInfo file in directory.GetFiles())
-		    {
-			    file.Delete();
-		    }
+            try
+            {
+                foreach (FileInfo file in directory.GetFiles())
+                {
+                    file.Delete();
+                }
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 		
 		    foreach (DirectoryInfo dir in directory.GetDirectories())
 		    {

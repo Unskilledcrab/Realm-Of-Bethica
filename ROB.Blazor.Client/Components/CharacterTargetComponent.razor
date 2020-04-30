@@ -1,7 +1,7 @@
 ﻿@using ROB.Blazor.Client.ViewModels
 @implements IDisposable
 
-<div class="main-stats-targets" hidden="@Hidden">
+<div class="main-stats-targets @GetCollapsedState()" style="height: 5rem;">
     <div class="target-wrapper">
         <span class="oi oi-target" style="color:@(Character.GetFactionColor(Hidden))"></span>
         <div class="sheet-wrapper">
@@ -38,6 +38,14 @@
 
     [Parameter]
     public bool Hidden { get; set; }
+
+    private string GetCollapsedState()
+    {
+        if (Hidden)
+            return "transition-height-scale collapsed";
+        else
+            return "transition-height-scale";
+    }
 
     protected override async Task OnInitializedAsync()
     {

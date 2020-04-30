@@ -2,7 +2,7 @@
 
 namespace ROB.Blazor.Client.ViewModels
 {
-    public class WeaponViewModel : Weapon
+    public class WeaponViewModel
     {
     }
 }

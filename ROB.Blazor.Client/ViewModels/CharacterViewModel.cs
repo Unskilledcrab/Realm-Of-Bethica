@@ -12,7 +12,7 @@ namespace ROB.Blazor.Client.ViewModels
         public event Action StatsChanged;
         public event Action<CharacterViewModel, CharacterViewModel, string> ActionPerformed;
 
-        public List<Weapon> Weapons { get; set; } = new List<Weapon>();
+        //public List<Weapon> Weapons { get; set; } = new List<Weapon>();
         public List<string> Reactions { get; set; } = new List<string>();
         public List<string> Traits { get; set; } = new List<string>();
         public List<string> Actions { get; set; } = new List<string>();

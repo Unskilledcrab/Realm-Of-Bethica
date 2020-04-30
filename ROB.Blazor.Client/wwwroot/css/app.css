@@ -383,6 +383,15 @@ button:focus {
     line-height: 25px;
 }
 
+.transition-height-scale {
+    transition: width 1s, height .5s;
+    overflow: hidden;
+}
+
+.transition-height-scale.collapsed {
+    height: 0;
+}
+
 @media (max-width: 767.98px) {
     .main .top-row:not(.auth) {
         display: none;

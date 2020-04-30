@@ -195,18 +195,18 @@
             Reach = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Reach", Name = "Reach", Value = 10 }
         });
 
-        Weapons.Add(new WeaponViewModel()
-        {
-            Id = 0,
-            Name = "Swordhalla",
-            EVA = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "EVA", Name = "Evasion", Value = 4 },
-            DT = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "DT", Name = "Damage Type", Value = 2 },
-            DV = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "DV", Name = "Damage Value", Value = 5 },
-            PVR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "PVR", Name = "Penetration Value Rating", Value = 2 },
-            Rch = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Rch", Name = "Reach", Value = 1 },
-            RM = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "RM", Name = "Reaction Modifier", Value = 10 },
-            THF = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "THF", Name = "To Hit Feat", Value = 4 }
-        });
+        //Weapons.Add(new WeaponViewModel()
+        //{
+        //    Id = 0,
+        //    Name = "Swordhalla",
+        //    EVA = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "EVA", Name = "Evasion", Value = 4 },
+        //    DT = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "DT", Name = "Damage Type", Value = 2 },
+        //    DV = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "DV", Name = "Damage Value", Value = 5 },
+        //    PVR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "PVR", Name = "Penetration Value Rating", Value = 2 },
+        //    Rch = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Rch", Name = "Reach", Value = 1 },
+        //    RM = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "RM", Name = "Reaction Modifier", Value = 10 },
+        //    THF = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "THF", Name = "To Hit Feat", Value = 4 }
+        //});
 
         foreach (CharacterViewModel character in Characters)
             character.ActionPerformed += OnActionPerformed;
