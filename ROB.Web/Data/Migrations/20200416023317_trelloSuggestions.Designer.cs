@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ROB.Web.Data;
 
 namespace ROB.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200416023317_trelloSuggestions")]
+    partial class trelloSuggestions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1150,65 +1152,6 @@ namespace ROB.Web.Data.Migrations
                     b.ToTable("Modifier_Technique_Link");
                 });
 
-            modelBuilder.Entity("ROB.Web.Models.PUBConGameModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreationDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DiscordChannel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EventDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("EventDuration")
-                        .HasColumnType("float");
-
-                    b.Property<string>("EventTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GameMaster")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GameMasterDiscordName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GameType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsPublic")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("LastUpdate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MaximumPlayers")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MessageToPlayers")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MinimumPlayers")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatorId");
-
-                    b.ToTable("PUBConGameModel");
-                });
-
             modelBuilder.Entity("ROB.Web.Models.ParentSkillModel", b =>
                 {
                     b.Property<int>("Id")
@@ -2188,21 +2131,6 @@ namespace ROB.Web.Data.Migrations
                     b.ToTable("TrelloSuggestionModel");
                 });
 
-            modelBuilder.Entity("ROB.Web.Models.User_PUBConGame_Link", b =>
-                {
-                    b.Property<int>("PUBConGameId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("PUBConGameId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("User_PUBConGame_Link");
-                });
-
             modelBuilder.Entity("ROB.Web.Models.WeaponModel", b =>
                 {
                     b.Property<int>("Id")
@@ -2819,13 +2747,6 @@ namespace ROB.Web.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ROB.Web.Models.PUBConGameModel", b =>
-                {
-                    b.HasOne("ROB.Web.ApplicationUser", "Creator")
-                        .WithMany("PUBConGMGames")
-                        .HasForeignKey("CreatorId");
-                });
-
             modelBuilder.Entity("ROB.Web.Models.ParentSkillModel", b =>
                 {
                     b.HasOne("ROB.Web.Models.AttributeModel", "FirstAttribute")
@@ -3218,21 +3139,6 @@ namespace ROB.Web.Data.Migrations
                     b.HasOne("ROB.Web.Models.TownModel", "Town")
                         .WithMany("NPCs")
                         .HasForeignKey("TownId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ROB.Web.Models.User_PUBConGame_Link", b =>
-                {
-                    b.HasOne("ROB.Web.Models.PUBConGameModel", "PUBConGame")
-                        .WithMany("Players")
-                        .HasForeignKey("PUBConGameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ROB.Web.ApplicationUser", "User")
-                        .WithMany("PUBConGames")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
