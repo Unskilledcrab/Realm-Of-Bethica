@@ -63,6 +63,7 @@ namespace ROB.Updater
             var StudiojsPath = Path.Combine(studioPath, studioJSPath);
             var StudioimagesPath = Path.Combine(studioPath, studioImagesPath);
 
+            Directory.CreateDirectory(ROBimagesPath);
 
             Console.WriteLine("Would you like to delete old files? [Type 'DELETE' if yes otherwise]");
             Console.WriteLine("NOTE: This will delete all files in _BStudio folder in the CSS, js, images folders.");
