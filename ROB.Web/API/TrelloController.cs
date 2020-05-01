@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ROB.Web.Data;
-using ROB.Web.Models;
+using ROB.Core.Models;
 
 namespace ROB.Web.API
 {

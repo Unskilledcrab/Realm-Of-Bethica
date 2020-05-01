@@ -93,6 +93,10 @@
     <Compile Remove="Data\Migrations\20200416022920_trelloSuggestions.Designer.cs" />
     <Compile Remove="Data\Migrations\20200430190134_mergeWithSuggestion.cs" />
     <Compile Remove="Data\Migrations\20200430190134_mergeWithSuggestion.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200501163014_testCoreModel.cs" />
+    <Compile Remove="Data\Migrations\20200501163014_testCoreModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200501163505_testCoreModel.cs" />
+    <Compile Remove="Data\Migrations\20200501163505_testCoreModel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -135,6 +139,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ROB.Core\ROB.Core.csproj" />
     <ProjectReference Include="..\ROB.Discord\ROB.Discord.csproj" />
   </ItemGroup>
 

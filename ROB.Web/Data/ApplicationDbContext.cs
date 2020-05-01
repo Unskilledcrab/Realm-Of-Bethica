@@ -873,6 +873,6 @@ namespace ROB.Web.Data
         public DbSet<ROB.Web.Models.WorldModel> WorldModel { get; set; }
         public DbSet<ROB.Web.Models.ItemPackModel> ItemPackModel { get; set; }
         public DbSet<ROB.Web.Models.PUBConGameModel> PUBConGameModel { get; set; }
-        public DbSet<TrelloSuggestionModel> TrelloSuggestionModel { get; set; }
+        public DbSet<ROB.Core.Models.TrelloSuggestionModel> TrelloSuggestionModel { get; set; }
     }
 }
