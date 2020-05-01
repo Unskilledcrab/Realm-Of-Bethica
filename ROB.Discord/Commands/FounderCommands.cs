@@ -3,7 +3,6 @@ using Discord.Commands;
 using ROB.Discord.Helpers;
 using ROB.Discord.Secrets;
 using ROB.Discord.Preconditions;
-using ROB.Discord.Services;
 using System.Threading.Tasks;
 
 namespace ROB.Discord.Commands
