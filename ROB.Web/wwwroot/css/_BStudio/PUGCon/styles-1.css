@@ -38,8 +38,8 @@ h1 {
 }
 
 .timer-area {
-  background: transparent url('../image/timer-area-pattern.png') left top;
-  text-align: center;
+    background: transparent url('../../../images/_BStudio/timer-area-pattern.png') left top;
+    text-align: center;
 }
 
 .timer-area h1 {
@@ -109,11 +109,11 @@ footer#main-footer p {
 /* ---------- TIMER ---------- */
 
 ul#countdown li {
-  display: inline-block;
-  background: transparent url('../timer-piece.png') no-repeat left top;
-  width: 104px;
-  margin-bottom: 4em;
-  text-align: center;
+    display: inline-block;
+    background: transparent url('../../../images/_BStudio/timer-piece.png') no-repeat left top;
+    width: 104px;
+    margin-bottom: 4em;
+    text-align: center;
 }
 
 ul#countdown li span {
