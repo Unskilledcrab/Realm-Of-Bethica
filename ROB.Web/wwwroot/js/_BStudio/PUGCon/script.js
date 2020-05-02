@@ -156,3 +156,22 @@ $(document).ready(function(){
         // callback function
     });
 });
+
+tippy('#gameDesc', {
+	content: `<div class="container">
+    <div class="rob-card">
+        <div class="col-sm-6 col-md-4 rob-jumbotron2">
+            <h3 class="text-left">Event Title<br /></h3>
+            <p class="text-justify">The Great City is attacked by a mysterious serial killer who uses magic to bypass locks and defenses, brutally slaying his victims in the night. Attempts to resurrect the victims have failed, and when speak with dead has been cast the victims
+                have only said “the tree” and “Orpheus.” The PCs must quickly take one of the corpses across the kingdom so that an expert necromancer may attempt to extract more information about the killer.<br /></p>
+        </div>
+    </div>
+</div>`,
+	placement: 'top',
+	arrow: false,
+    maxWidth: 500,
+    allowHTML: true,
+	animateFill: true,
+	theme: "dark", 
+    duration: 100
+});	

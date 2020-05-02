@@ -24,16 +24,7 @@ p a:hover {
   color: #dfa34e;
 }
 
-h1, h2 {
-  font-family: Georgia, serif;
-}
-
 h1 {
-  font-size: 2em;
-  line-height: 2em;
-}
-
-h2 {
   font-size: 1.2em;
   line-height: 1.5em;
 }
@@ -49,8 +40,6 @@ h2 {
 .timer-area {
   background: transparent url('../image/timer-area-pattern.png') left top;
   text-align: center;
-  padding-top: 2em;
-  margin-bottom: 4em;
 }
 
 .timer-area h1 {
@@ -83,34 +72,6 @@ input[type="email"] {
   width: 19em;
 }
 
-input[type="submit"] {
-  float: right;
-  border: none;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background-color: #2a9ccc;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#2a9ccc), to(#217ca2));
-  background-image: -webkit-linear-gradient(top, #2a9ccc, #217ca2);
-  background-image: -moz-linear-gradient(top, #2a9ccc, #217ca2);
-  background-image: -o-linear-gradient(top, #2a9ccc, #217ca2);
-  background-image: linear-gradient(to bottom, #2a9ccc, #217ca2);
-  color: white;
-  -webkit-box-shadow: inset 0 2px 2px #217ca2;
-  box-shadow: inset 0 2px 2px #217ca2;
-  padding: 1em;
-  font-size: 1em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #2da2d4;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#2da2d4), to(#2382aa));
-  background-image: -webkit-linear-gradient(top, #2da2d4, #2382aa);
-  background-image: -moz-linear-gradient(top, #2da2d4, #2382aa);
-  background-image: -o-linear-gradient(top, #2da2d4, #2382aa);
-  background-image: linear-gradient(to bottom, #2da2d4, #2382aa);
-}
 
 /* ---------- FOOTER ---------- */
 

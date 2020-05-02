@@ -8,58 +8,57 @@
 }
 
 <div class="body4 pug-bg"></div>
-<div class="container">
-    <div class="sans-serif-font1">
+<div class="container pad-top-bottom-20">
+    <div class="rob-card">
         <div class="row pad-top-20">
             <div class="col-6">
-                <p class="sans-serif-font2">F.G. PUGCon Event</p>
+                <h1 class="border rounded bg-black-50">F.G. PUGCon Event</h1>
             </div>
-            <div class="col-6 text-right"><a class="btn btn-info" asp-action="GameDashBoard">Event Dashboard</a></div>
+            <div class="col-6 text-right">
+
+                <!-- UPDATE REQUIRED (LINK) -->
+                <a class="btn btn-info" asp-action="GameDashBoard">Event Dashboard</a>
+            </div>
             <div class="col-12">
-                <p class="text-center sans-serif-font2"><strong><span style="text-decoration: underline;">Terms of Conduct</span></strong></p>
+                <h1 class="border rounded-circle bg-black-50">
+                    <strong>
+                        <span style="text-decoration: underline;">Terms of Conduct</span>
+                    </strong>
+                </h1>
             </div>
         </div>
         <div class="row">
             <div class="col box-border4">
-                <h1 class="sans-serif-font2">Code of Conduct</h1>
-                <p class="text-justify sans-serif-font1b">
+                <h1 class="rob-h3 rob-gold-100">Code of Conduct</h1>
+                <p class="text-justify">
                     All participants should treat each other with civility and manners at all times. This is a hobby and one that many people invest a great deal of effort, energy and passion into. It is also a hobby that many people choose to experience
                     in different ways.&nbsp;
                 </p>
-                <p class="text-justify sans-serif-font1b">
+                <p class="text-justify">
                     &nbsp;During a convention game session the GM is the final arbiter of all decisions. If you have a query as to the interpretation or implementation of a rule or of the result of the dice you may query it politely one time during the
                     game and then you must abide by the GMs decision. If you believe a ruling to be incorrect or unfair or other keep things in perspective – it is only a game, it is only a one shot that lasts for a handful of hours, it is a learning
                     experience. If a game style or GM style doesnt suit your style make a note of it and choose other games at the next PUGCon. Do not get into an argument at the table and it is best if you continue to participate in a co-operative
                     manner so that the group as a whole does not suffer.&nbsp;
                 </p>
-                <p class="text-justify sans-serif-font1b">Sometimes a game will not live up to your expectations – that happens for many reasons. Mark experience and move forward.</p>
-                <h1 class="sans-serif-font2">Anti-Harassment Policy</h1>
-                <p class="text-justify sans-serif-font1b">
+                <p class="text-justify">Sometimes a game will not live up to your expectations – that happens for many reasons. Mark experience and move forward.</p>
+                <h1>Anti-Harassment Policy</h1>
+                <p class="text-justify">
                     PUGCon is a community event run by the community and for the community. Discrimination or harassment of other attendees whether they are players or GMs is unwelcome behaviour and may result in your exclusion from the event. This is
                     an online event and as such the participants will likely be unaware of many aspects of their fellow participants. Language used should always be appropriate for young teenagers and older. Discriminatory or abusive language is unacceptable.
                     Overly sexualised language or images are not acceptable. All participants should work together to ensure that everyone at the virtual table is welcomed and included in the sessions activities.&nbsp;
                 </p>
-                <p class="text-justify sans-serif-font1b">
+                <p class="text-justify">
                     As this is an online event visual clues of discomfit are not evident to the other participants. If you feel that a conversation has strayed into realms that make you uncomfortable please address the issue with the table immediately.
                     If the issue is not resolved satisfactorily at the table you may email&nbsp;<br>support@ubunlimited.com&nbsp;with as much information as possible and your report will be investigated. This online event runs over 12 continuous hours
                     and is run by volunteers. As such we will respond as soon as possible.<br>
                 </p>
-                <p class="text-justify sans-serif-font1b">&nbsp;GMs may choose not to approve a booking from a player without explanation. This is not harassment or discrimination.<br></p>
+                <p class="text-justify">
+                    &nbsp;GMs may choose not to approve a booking from a player without explanation. This is not harassment or discrimination.<br>
+                </p>
             </div>
         </div>
     </div>
-    <div class="text-center box-border2">
-        <div class="row justify-content-center align-items-center pad-top-20">
-            <div class="col-12">
-                <p style="margin-bottom: 0px;">Fantasy Ground Pickup Game VTT Con&nbsp;</p>
-                <p style="margin-bottom: 0px;">Sponsered by:</p>
-            </div>
-            @*<div class="col text-center"><img class="img-fluid" src="~/images/_BStudio/PUGCon/PUG-Logo.png"></div>*@
-            <div class="col text-center"><img class="img-fluid" src="~/images/_BStudio/PUGCon/UB_Logo2.png"></div>
-            <div class="col text-center"><img class="img-fluid" src="~/images/_BStudio/PUGCon/Bethica_logo_edited_final.png"></div>
-            <div class="col text-center"><img class="img-fluid" src="~/images/_BStudio/PUGCon/UB Unlimited-02.png"></div>
-        </div>
-    </div>
+    <partial name="_PUGSponsorFooter" />
 </div>
 
 @section Scripts {

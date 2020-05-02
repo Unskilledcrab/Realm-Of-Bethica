@@ -14,12 +14,13 @@ namespace ROB.Web.Models
         public string GameType { get; set; }
         public int MinimumPlayers { get; set; }
         public int MaximumPlayers { get; set; }
-        public DateTime EventDate { get; set; }
+        public string EventStartTime { get; set; }
         public double EventDuration { get; set; }
         public string MessageToPlayers { get; set; }
         public string GameMaster { get; set; }
         public string DiscordChannel { get; set; }
         public string GameMasterDiscordName { get; set; }
+        public string GameLinks { get; set; }
 
         [Display(Name = "Is Public")]
         public bool IsPublic { get; set; }

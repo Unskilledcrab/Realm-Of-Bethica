@@ -7,17 +7,18 @@
     @{await Html.RenderPartialAsync("_PUGConStylesPartial");}
 }
 
-<div class="features-clean" style="background-color: rgb(0,0,0);">
+<div class="body1 pug-bg"></div>
+<div>
     <div class="container container-announcement1">
         <div id="intro_info" class="intro">
-            <h2 class="text-center sans-serif-font2b">F.G. PUGCon Event</h2>
-            <p class="text-center sans-serif-font2aa">May 16th, 2020 First Game Starts</p>
-            <p class="text-center sans-serif-font2aa">Starts a noon Est (New York)</p>
+            <h2 class="text-center rob-h1 rob-gold-100">F.G. PUGCon Event</h2>
+            <p class="text-center rob-h1 rob-gold-100">May 16th, 2020 First Game Starts</p>
+            <p class="text-center rob-h1 rob-gold-100">Starts a noon Est (New York)</p>
         </div>
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-12 col-md-10 col-lg-7 col-xl-6">
                 <div id="announcement1_paragraphs_container" class="box-border5">
-                    <p class="text-justify announcment1" id="announcement1_paragraph1" style="font-family: Adamina, serif;">
+                    <p class="text-justify announcment1" id="announcement1_paragraph1">
                         The dice have summoned you here today for mischief and mayhem, for adventure and glory or just to have a good time! Come along to start your brand-new adventure as we go on to fight goblins raiding an innocent village. Take on
                         a fearsome war mongering orc encampment or dare to brave a dragon of chromatic scale and claw. Come along and band together with your new party in order to take part in this wonderous adventure. Join us as we aim to save the
                         kingdom from the dangerous clutches of a black scales winged beast that haunts the night sky and terrifies the natives. Will you dare to go against acidic breath that melts armour in seconds? Perhaps you can be the one to slay
@@ -40,7 +41,7 @@
                 </div>
                 <div class="row justify-content-center pad-top-20">
                     <div class="col-12 text-center">
-                        <a class="" asp-action="GameDashboard">Event Dashboard</a>
+                        <a class="btn btn-success" asp-action="GameDashboard">Event Dashboard</a>
                     </div>
                 </div>
             </div>
@@ -63,9 +64,6 @@
 </div>
 <div id="background_smallimage_8" class="background_smallimage">
 </div>
-<div class="body1 pug-bg">
-</div>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

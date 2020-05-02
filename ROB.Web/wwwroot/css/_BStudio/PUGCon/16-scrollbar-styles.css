@@ -7,7 +7,6 @@ section {
 }
 
 .container {
-  max-height: 200px;
 }
 
 article {
@@ -21,5 +20,4 @@ article {
   background-color: #dfa34e;
   border-width: thick;
 }
-
 

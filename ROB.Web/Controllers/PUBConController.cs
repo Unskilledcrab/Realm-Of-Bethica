@@ -177,8 +177,10 @@ namespace ROB.Web.Controllers
 
         public async Task<IActionResult> GameDashboard()
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var games = await _context.PUBConGameModel
-                .Include(p => p.Players)
+                .Where(p => p.IsPublic == true || p.CreatorId == userId)
+                .Include(p => p.Players)                
                 .AsNoTracking()
                 .ToListAsync();
             return View(games);
