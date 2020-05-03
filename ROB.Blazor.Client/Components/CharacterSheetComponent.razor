@@ -22,154 +22,59 @@ else
             <button class="button-exit" type="button" @onclick="@ToggleHidden">&times;</button>
             <h4 class="character-sheet-title">@Character.Name, @Character.Dem (@Character.Faction.ToString())</h4>
         </div>
-        <div class="character-sheet-body">
-            <EditForm Model="@Character">
-                <div class="character-sheet-row grid-col-1-2 grid-col-gap-20">
+            <EditForm Model="@Character" class="character-sheet-body grid-2-col-equal">
 
-                    <div class="character-sheet-body-portrait" style="background-image:url('@Character.PortraitURL')">
-                        <div class="character-sheet-body-details">
-                            <span class="oi oi-shield stat-bar-tooltip" style="align-self:start;" @onclick=@FactionToggle>
-                                <span class="stat-bar-tooltiptext">@Character.Faction.ToString()</span>
-                            </span><!-- faction -->
-                            <span class="stat-bar-tooltip gender-@Character.Gender.ToString().ToLower()">
-                                @if (Character.Gender == ROB.Blazor.Shared.Models.Character.GenderType.Female)
-                                {
-                                    <svg width="100" height="100">
-                                        <circle cx="50%" cy="40%" r="25%" stroke-width="10%" fill="none" />
-                                        <line x1="35%" y1="82%" x2="65%" y2="82%" stroke-width="10%" stroke-linecap="round" />
-                                        <line x1="50%" y1="65%" x2="50%" y2="95%" stroke-width="10%" stroke-linecap="round" />
-                                        Sorry, your browser does not support inline SVG.
-                                    </svg>
-                                }
-                                else if (Character.Gender == ROB.Blazor.Shared.Models.Character.GenderType.Male)
-                                {
-                                    <svg width="100" height="100">
-                                        <circle cx="40%" cy="60%" r="25%" stroke-width="10%" fill="none" />
-                                        <line x1="57.7%" y1="42.3%" x2="77.7%" y2="22.3%" stroke-width="10%" stroke-linecap="round" />
-                                        <line x1="77.7%" y1="22.3%" x2="55.7%" y2="22.3%" stroke-width="10%" stroke-linecap="round" />
-                                        <line x1="77.7%" y1="22.3%" x2="77.7%" y2="45.3%" stroke-width="10%" stroke-linecap="round" />
-                                        Sorry, your browser does not support inline SVG.
-                                    </svg>
-                                }
-                                else
-                                {
-                                    <svg width="100" height="100" viewBox="0 0 180 180">
-                                        <path fill="none" stroke-width="16" d="M60,67c0-13 1-19 8-26c7-9 18-10 28-8c10,2 22,12 22,26c0,14-11,19-15,22c-7,2-10,6-11,11v20m0,12v16" />
-                                    </svg>
-                                }
-                                <span class="stat-bar-tooltiptext">@Character.Gender.ToString()</span>
-                            </span>
-                        </div>
+                    <div class="portrait" style="background-image:url('@Character.PortraitURL')">
+                        <span class="oi oi-shield tooltip-handle" style="align-self:start;" @onclick=@FactionToggle>
+                            <span class="tooltip-text">@Character.Faction.ToString()</span>
+                        </span><!-- faction -->
+                        <span class="tooltip-handle gender-@Character.Gender.ToString().ToLower()">
+                            @if (Character.Gender == ROB.Blazor.Shared.Models.Character.GenderType.Female)
+                            {
+                                <svg width="100" height="100">
+                                    <circle cx="50%" cy="40%" r="25%" stroke-width="10%" fill="none" />
+                                    <line x1="35%" y1="82%" x2="65%" y2="82%" stroke-width="10%" stroke-linecap="round" />
+                                    <line x1="50%" y1="65%" x2="50%" y2="95%" stroke-width="10%" stroke-linecap="round" />
+                                    Sorry, your browser does not support inline SVG.
+                                </svg>
+                            }
+                            else if (Character.Gender == ROB.Blazor.Shared.Models.Character.GenderType.Male)
+                            {
+                                <svg width="100" height="100">
+                                    <circle cx="40%" cy="60%" r="25%" stroke-width="10%" fill="none" />
+                                    <line x1="57.7%" y1="42.3%" x2="77.7%" y2="22.3%" stroke-width="10%" stroke-linecap="round" />
+                                    <line x1="77.7%" y1="22.3%" x2="55.7%" y2="22.3%" stroke-width="10%" stroke-linecap="round" />
+                                    <line x1="77.7%" y1="22.3%" x2="77.7%" y2="45.3%" stroke-width="10%" stroke-linecap="round" />
+                                    Sorry, your browser does not support inline SVG.
+                                </svg>
+                            }
+                            else
+                            {
+                                <svg width="100" height="100" viewBox="0 0 180 180">
+                                    <path fill="none" stroke-width="16" d="M60,67c0-13 1-19 8-26c7-9 18-10 28-8c10,2 22,12 22,26c0,14-11,19-15,22c-7,2-10,6-11,11v20m0,12v16" />
+                                </svg>
+                            }
+                            <span class="tooltip-text">@Character.Gender.ToString()</span>
+                        </span>
                     </div>
-                    <div class="grid-col-2-equal grid-col-gap-20">
+                    <div class="character-sheet-stats">
                         @foreach (var stat in Character.GetAllStats())
                         {
-                            <div class="character-sheet-stat">
-                                <label>
-                                    @stat.Name
-                                    <InputNumber class="character-stat character-sheet-stat-input" id="@stat.Name" @bind-Value="stat.Value" @onblur="OnStatsChange" />
-                                </label>
-                            </div>
+                        <label>@stat.Abbreviation</label>
+                        <InputNumber id="@stat.Abbreviation" @bind-Value="stat.Value" @onblur="OnStatsChange" />                                
                         }
                     </div>
-                </div>
-                <div class="character-sheet-row">
+                <div class="grid-col-span-2">
                     <CharacterListableItemComponent Title="React?" ListedItems="Character.Reactions" Actionable="false" />
                     <CharacterListableItemComponent Title="Traits" ListedItems="Character.Traits" Actionable="false" />
                     <CharacterListableItemComponent Title="Actions" ListedItems="Character.Actions" Actionable="false" />
                 </div>
             </EditForm>
-        </div>
         <div class="character-sheet-footer">
 
         </div>
     </div>
 }
-
-<style>
-    .character-sheet {
-        position: absolute;
-        top: 100px;
-        left: 400px;
-        width: 800px;
-        height: 700px;
-        padding: 40px;
-        border-radius: 10px;
-    }
-
-    .character-sheet-header {
-        position: relative;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid;
-        margin-top: -10px;
-    }
-
-    .character-sheet-body-details {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 20px;
-    }
-
-        .character-sheet-body-details span:nth-child(1) {
-            justify-self: start;
-        }
-
-        .character-sheet-body-details span:nth-child(2) {
-            justify-self: end;
-        }
-
-        .character-sheet-body-details svg {
-            height: 25px;
-            width: 25px;
-        }
-
-    .character-sheet-stat input {
-        width: 3rem;
-        text-align: center;
-        height: 2rem;
-    }
-
-    .character-sheet-stat label {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-    }
-
-    .grid-col-2-equal {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .grid-col-1-2 {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-    }
-
-    .grid-col-gap-20 {
-        grid-column-gap: 20px;
-    }
-
-    .character-sheet-body-portrait {
-        width: 250px;
-        height: 300px;
-        background-color: rgba(0,0,0,.2);
-        border-radius: 50%;
-        border: 3px solid goldenrod;
-        box-shadow: black 0px 0px 10px;
-        text-align: center;
-        background-size: cover;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-    }
-
-        .character-sheet-body-portrait img {
-            width: 100%;
-        }
-
-    .character-sheet-row {
-        margin-bottom: 10px;
-    }
-</style>
 
 @code {
     private CharacterViewModel Character { get; set; }

@@ -1,4 +1,5 @@
 ﻿using ROB.Blazor.Shared.Interfaces;
+using ROB.Blazor.Shared.Models.CombatEntities;
 using System;
 using System.Collections.Generic;
 
@@ -33,14 +34,14 @@ namespace ROB.Blazor.Shared.Models.Actions
             _random = new Random((int)DateTime.Now.ToOADate());
         }
 
-        public void Process(ICombatEntity source, List<ICombatEntity> targets)
+        public void Process(CombatEntity source, List<CombatEntity> targets)
         {
             LogToConsole?.Invoke(StartMessage);
 
             CalculateHitRoll();
 
             int netReturn = 0;
-            foreach (ICombatEntity entity in targets)
+            foreach (CombatEntity entity in targets)
                 netReturn += ActionProcess(source, entity);
 
             LogToConsole?.Invoke(EndMessage);
@@ -49,7 +50,7 @@ namespace ROB.Blazor.Shared.Models.Actions
                 LogToConsole($"{source.Name} received {netReturn} {(netReturn > 0 ? "damage" : "healing")} from his targets and {(source.Health > 0 ? $"is left with {source.Health} health" : "has died")}.");
         }
 
-        public abstract int ActionProcess(ICombatEntity source, ICombatEntity targets);
+        public abstract int ActionProcess(CombatEntity source, CombatEntity targets);
 
         public int CalculateMagnitude(double modifierStrength)
         {

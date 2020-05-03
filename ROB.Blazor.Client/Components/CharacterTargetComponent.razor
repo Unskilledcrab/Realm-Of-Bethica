@@ -1,36 +1,12 @@
 ﻿@using ROB.Blazor.Client.ViewModels
 @implements IDisposable
 
-<div class="main-stats-targets @GetCollapsedState()" style="height: 5rem;">
-    <div class="target-wrapper">
-        <span class="oi oi-target" style="color:@(Character.GetFactionColor(Hidden))"></span>
-        <div class="sheet-wrapper">
-            <CharacterListableItemComponent Title="Targets" ListedItems="@TargetNames()" Actionable="true" Icon="oi oi-x" ActionClicked="RemoveTarget" />
-        </div>
+<div class="character-details transition-height-scale" style="@GetCollapsedState()">
+    <span class="oi oi-target" style="color:@(Character.GetFactionColor(Hidden))"></span>
+    <div class="list-wrapper">
+        <CharacterListableItemComponent Title="Targets" ListedItems="@TargetNames()" Actionable="true" Icon="oi oi-x" ActionClicked="RemoveTarget" />
     </div>
 </div>
-
-<style>
-    .target-wrapper {
-        margin-top: .5rem;
-        padding-top: .5rem;
-        padding-left: 1rem;
-        border-top: solid 2px;
-        display: grid;
-        grid-template-columns: 1rem auto;
-        align-items: start;
-        justify-items: start;
-        column-gap: 5px;
-    }
-
-        .target-wrapper .sheet-wrapper {
-            padding: 3px;
-            display: grid;
-            border: solid 1px;
-            width: 100%;
-            padding-left: 20px;
-        }
-</style>
 
 @code {
     [CascadingParameter(Name = "Character")]
@@ -41,10 +17,12 @@
 
     private string GetCollapsedState()
     {
+        double itemScale = 2.5;
+        int height = (int)Math.Round(3 + itemScale * Math.Max(TargetNames().Count, 1));
         if (Hidden)
-            return "transition-height-scale collapsed";
+            return "max-height: 0;";
         else
-            return "transition-height-scale";
+            return $"max-height: {height}rem;";
     }
 
     protected override async Task OnInitializedAsync()

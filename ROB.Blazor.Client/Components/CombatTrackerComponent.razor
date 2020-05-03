@@ -1,59 +1,53 @@
 ﻿@using ROB.Blazor.Client.ViewModels
 
-<div class="combat-tracker">
+<div class="combat-tracker-wrapper">
     <h3>Combat Tracker</h3>
-    <div class="combat-tracker-wrapper">
-        <div class="container header">
-            <div class="card">
-                <div class="card-body grid-wrapper">
-                    <div class="main-stats">
-                        <span class="oi oi-eye stat-bar-tooltip" aria-hidden="true">
-                            <span class="stat-bar-tooltiptext">Visibility</span>
-                        </span>
-                        <span class="stat-bar-tooltip">
-                            Name
-                            <span class="stat-bar-tooltiptext">Name and Description</span>
-                        </span>
-                        <span class="stat-bar-tooltip head-character-stat">
-                            Rct
-                            <span class="stat-bar-tooltiptext">Reaction</span>
-                        </span>
-                        <span class="stat-bar-tooltip head-character-stat">
-                            HP
-                            <span class="stat-bar-tooltiptext">Max Health</span>
-                        </span>
-                        <span class="stat-bar-tooltip head-character-stat">
-                            Tmp
-                            <span class="stat-bar-tooltiptext">Temporary Health</span>
-                        </span>
-                        <span class="stat-bar-tooltip head-character-stat">
-                            Wnd
-                            <span class="stat-bar-tooltiptext">Damage Taken</span>
-                        </span>
-                        <span></span><!-- faction -->
-                        <span class="oi oi-target stat-bar-tooltip">
-                            <span class="stat-bar-tooltiptext">Target Control</span>
-                        </span><!-- target -->
-                        <span class="oi oi-list stat-bar-tooltip">
-                            <span class="stat-bar-tooltiptext">Attributes</span>
-                        </span><!-- attributes -->
-                        <span class="oi oi-eyedropper stat-bar-tooltip">
-                            <span class="stat-bar-tooltiptext">Offense</span>
-                        </span><!-- offense -->
-                        <span class="oi oi-crop stat-bar-tooltip">
-                            <span class="stat-bar-tooltiptext">Size and Reach</span>
-                        </span><!-- size and reach -->
-                        <span class="oi oi-pulse stat-bar-tooltip">
-                            <span class="stat-bar-tooltiptext">Effects</span>
-                        </span><!-- effects -->
-                        <span class="oi oi-clipboard stat-bar-tooltip">
-                            <span class="stat-bar-tooltiptext">Character Sheet</span>
-                        </span><!-- open char sheet -->
-                    </div>
-                </div>
-            </div>
+    <div class="combat-tracker">
+        <div class="header dark-bg grid-char-bar">
+            <span class="oi oi-eye tooltip-handle" aria-hidden="true">
+                <span class="tooltip-text">Visibility</span>
+            </span>
+            <span class="tooltip-handle">
+                Name
+                <span class="tooltip-text">Name and Description</span>
+            </span>
+            <span class="tooltip-handle">
+                Rct
+                <span class="tooltip-text">Reaction</span>
+            </span>
+            <span class="tooltip-handle">
+                HP
+                <span class="tooltip-text">Max Health</span>
+            </span>
+            <span class="tooltip-handle">
+                Tmp
+                <span class="tooltip-text">Temporary Health</span>
+            </span>
+            <span class="tooltip-handle">
+                Wnd
+                <span class="tooltip-text">Damage Taken</span>
+            </span>
+            <span></span><!-- faction -->
+            <span class="oi oi-target tooltip-handle">
+                <span class="tooltip-text">Target Control</span>
+            </span><!-- target -->
+            <span class="oi oi-list tooltip-handle">
+                <span class="tooltip-text">Attributes</span>
+            </span><!-- attributes -->
+            <span class="oi oi-eyedropper tooltip-handle">
+                <span class="tooltip-text">Offense</span>
+            </span><!-- offense -->
+            <span class="oi oi-crop tooltip-handle">
+                <span class="tooltip-text">Size and Reach</span>
+            </span><!-- size and reach -->
+            <span class="oi oi-pulse tooltip-handle">
+                <span class="tooltip-text">Effects</span>
+            </span><!-- effects -->
+            <span class="oi oi-clipboard tooltip-handle">
+                <span class="tooltip-text">Character Sheet</span>
+            </span><!-- open char sheet -->
         </div>
-        <div class="container body">
+        <div class="body">
             @foreach (CharacterViewModel character in Characters)
             {
                 <CascadingValue Value="@character" Name="Character">
@@ -63,13 +57,15 @@
                 </CascadingValue>
             }
         </div>
-        <div class="container footer">
+        <div class="footer dark-bg">
             <button @onclick="NextTurn"><span class="oi oi-arrow-thick-right"></span> End Turn</button>
         </div>
     </div>
 
-    <CharacterSheetComponent @ref="@_characterSheet" />
 </div>
+
+<CharacterSheetComponent @ref="@_characterSheet" />
+
 @code {
     private List<CharacterViewModel> Characters;
     private CharacterViewModel _activeCharacter;

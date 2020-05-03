@@ -19,29 +19,7 @@ namespace ROB.Blazor.Shared.Models.CombatEntities
         public int MagicalReflect { get; set; }
         public int PhysicalReflect { get; set; }
 
-        private ICombatEntityActionHandler _actionHandler;
-
-        public int RecieveAction(IAction action)
-        {
-            _actionHandler = CombatEntityActionHandlerFactory.GetHandler(action);
-
-            if (_actionHandler.CalculateAvoidance(this) < action.HitRoll)
-            {
-                double magnitudeModifier = _actionHandler.GetMagnitudeModifier(this);
-                int magnitude = action.CalculateMagnitude(magnitudeModifier);
-                int netDamage = _actionHandler.Mitigate(magnitude, out int netReflect);
-
-                ApplyDamage(netDamage);
-                return netReflect;
-            }
-            else
-            {
-                return 0;
-                //handle logging a miss somehow; maybe returning a ActionResult object instead of just an int.
-            }
-        }
-
-        protected virtual void ApplyDamage(int magnitude)
+        protected virtual void ModifyHealth(int magnitude)
         {
             Health = Math.Max(Math.Min(Health + magnitude, MaxHealth), 0);
             if (Health == 0)

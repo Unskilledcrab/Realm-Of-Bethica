@@ -1,7 +1,27 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+@using ROB.Blazor.Client.Components
+@inject HttpClient Http
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<CombatTrackerComponent LogAction="WriteToConsole"></CombatTrackerComponent>
+<ConsoleComponent @ref="_console"></ConsoleComponent>
+
+@code {
+    private ConsoleComponent _console;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _console.WriteToConsole("Loading game...");
+            await Task.Delay(2000);
+            _console.WriteToConsole("Loading complete");
+        }
+    }
+
+    private void WriteToConsole(string message)
+    {
+        _console.WriteToConsole(message);
+    }
+}

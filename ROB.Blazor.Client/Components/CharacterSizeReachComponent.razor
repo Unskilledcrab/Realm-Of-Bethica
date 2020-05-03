@@ -1,32 +1,18 @@
 ﻿@using ROB.Blazor.Client.ViewModels
 
-<div class="main-stats-size-reach" hidden="@Hidden">
-    <div class="size-reach-wrapper">
+    <div class="character-details transition-height-scale" style="@GetCollapsedState()">
         <span class="oi oi-crop" style="color:@(Character.GetFactionColor(Hidden))"></span>
-        @foreach (ROB.Blazor.Shared.Models.Stat stat in new[] { Character.Size, Character.Reach })
-        {
-            <span class="stat-bar-tooltip head-character-stat">
-                @stat.Abbreviation
-                <span class="stat-bar-tooltiptext">@stat.Name</span>
-            </span>
-            <input class="character-stat" @bind="@stat.Value" readonly />
-        }
+        <div class="grid-stats-4">
+            @foreach (ROB.Blazor.Shared.Models.Stat stat in new[] { Character.Size, Character.Reach })
+            {
+                <span class="tooltip-handle">
+                    @stat.Abbreviation
+                    <span class="tooltip-text">@stat.Name</span>
+                </span>
+                <input @bind="@stat.Value" readonly />
+            }
+        </div>
     </div>
-</div>
-
-<style>
-    .size-reach-wrapper {
-        margin-top: .5rem;
-        padding-top: .5rem;
-        padding-left: 1rem;
-        border-top: solid 2px;
-        display: grid;
-        grid-template-columns: 1rem 4rem 2.5rem 4rem 2.5rem;
-        align-items: center;
-        justify-items: end;
-        column-gap: 5px;
-    }
-</style>
 
 @code {
     [CascadingParameter(Name = "Character")]
@@ -36,6 +22,16 @@
     public bool Hidden { get => _hidden; set { _hidden = value; StateHasChanged(); } }
 
     private bool _hidden;
+
+    private string GetCollapsedState()
+    {
+        double itemScale = 2.5;
+        int height = (int)Math.Round(3 + itemScale);
+        if (Hidden)
+            return "max-height: 0;";
+        else
+            return $"max-height: {height}rem;";
+    }
 
     protected override async Task OnInitializedAsync()
     {

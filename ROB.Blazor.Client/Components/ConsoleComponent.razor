@@ -1,6 +1,8 @@
-﻿<div class="console">
+﻿@inject IJSRuntime JSRuntime;
+
+<div class="console-wrapper">
     <h3>Console</h3>
-    <div class="console-wrapper">
+    <div class="console">
         @foreach (string statement in ConsoleStatements)
         {
             <h5>@statement</h5>
@@ -8,12 +10,19 @@
     </div>
 </div>
 
+
 @code {
     private List<string> ConsoleStatements = new List<string>();
 
     public void WriteToConsole(string message)
-    {        
+    {
         ConsoleStatements.Add(message);
+        ScrollToBottom();
         this.StateHasChanged();
+    }
+
+    private void ScrollToBottom()
+    {
+        JSRuntime.InvokeVoidAsync("setScrollToLoc", 4000);
     }
 }

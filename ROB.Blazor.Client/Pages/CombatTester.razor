@@ -2,13 +2,15 @@
 @using ROB.Blazor.Client.Components
 @inject HttpClient Http
 
-<div class="combat-page-wrapper">
-    <CombatTrackerComponent LogAction="WriteToConsole"></CombatTrackerComponent>
-    <ConsoleComponent @ref="_console"></ConsoleComponent>
-</div>
+<CombatTrackerComponent LogAction="WriteToConsole"></CombatTrackerComponent>
+<ConsoleComponent @ref="_console"></ConsoleComponent>
+
+<p @ref="_element"></p>
 
 @code {
     private ConsoleComponent _console;
+
+    private ElementReference _element;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

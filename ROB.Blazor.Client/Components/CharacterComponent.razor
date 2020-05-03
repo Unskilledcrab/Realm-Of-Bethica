@@ -1,37 +1,33 @@
 ﻿@using ROB.Blazor.Client.ViewModels
 
-<div class="character">
+<div class="character faction-@Character.Faction.ToString().ToLower() @(Character == ActiveCharacter ? $"faction-{Character.Faction.ToString().ToLower()}-active" : "")">
     <div class="character-targeted character-targeted-@Character.Faction.ToString().ToLower()" hidden="@_crosshairHidden"></div>
-    <div class="dropzone can-drop card faction-@Character.Faction.ToString().ToLower() @(Character == ActiveCharacter ? $"faction-{Character.Faction.ToString().ToLower()}-active" : "")">
-        <div class="card-body grid-wrapper">
-            <div class="main-stats">
-                <span class="oi oi-person character-icon stat-bar-tooltip" @onclick="@(()=>TargetEnd(Character))">
-                    <span class="stat-bar-tooltiptext">Target</span>
-                </span>
-                <span class="character-name-desc">@Character.Name (@Character.Dem)</span>
-                @foreach (var stat in Character.GetPrimaryStats())
-                {
-                    <input class="character-stat" @bind="@stat.Value" readonly />
-                }
-                <span class="oi oi-shield stat-bar-tooltip" @onclick=@(()=>FactionToggle(Character))>
-                    <span class="stat-bar-tooltiptext">@Character.Faction.ToString()</span>
-                </span><!-- faction -->
-                <span class="oi oi-target" @onclick="@(() =>ToggleStatSectionVisible("targets"))" style="color:@(Character.GetFactionColor(_targetHidden))"></span><!-- target -->
-                <span class="oi oi-list" @onclick="@(()=>ToggleStatSectionVisible("attributes"))" style="color:@(Character.GetFactionColor(_attrHidden))"></span><!-- attributes -->
-                <span class="oi oi-eyedropper" @onclick="@(()=>ToggleStatSectionVisible("offense"))" style="color:@(Character.GetFactionColor(_offenseHidden))"></span><!-- offense -->
-                <span class="oi oi-crop" @onclick="@(()=>ToggleStatSectionVisible("size-reach"))" style="color:@(Character.GetFactionColor(_sizeReachHidden))"></span><!-- size and reach -->
-                <span class="oi oi-pulse" @onclick="@(()=>ToggleStatSectionVisible("effects"))" style="color:@(Character.GetFactionColor(_effectsHidden))"></span><!-- effects -->
-                <span class="oi oi-clipboard" @onclick="@(()=>CharacterSheetClicked(Character))"></span><!-- open char sheet -->
-            </div>
-
-            <CharacterTargetComponent Hidden="@_targetHidden" />
-            <CharacterAttributesComponent Hidden="@_attrHidden" />
-            <CharacterOffenseComponent Hidden="@_offenseHidden" />
-            <CharacterSizeReachComponent Hidden="@_sizeReachHidden" />
-            <CharacterEffectsComponent Hidden="@_effectsHidden" />
-
-        </div>
+    <div class="grid-char-bar">
+        <span class="oi oi-person tooltip-handle" @onclick="@(()=>TargetEnd(Character))">
+            <span class="tooltip-text">Target</span>
+        </span>
+        <span>@Character.Name (@Character.Dem)</span>
+        @foreach (var stat in Character.GetPrimaryStats())
+        {
+            <input @bind="@stat.Value" readonly />
+        }
+        <span class="oi oi-shield tooltip-handle" @onclick=@(()=>FactionToggle(Character))>
+            <span class="tooltip-text">@Character.Faction.ToString()</span>
+        </span><!-- faction -->
+        <span class="oi oi-target" @onclick="@(() =>ToggleStatSectionVisible("targets"))" style="color:@(Character.GetFactionColor(_targetHidden))"></span><!-- target -->
+        <span class="oi oi-list" @onclick="@(()=>ToggleStatSectionVisible("attributes"))" style="color:@(Character.GetFactionColor(_attrHidden))"></span><!-- attributes -->
+        <span class="oi oi-eyedropper" @onclick="@(()=>ToggleStatSectionVisible("offense"))" style="color:@(Character.GetFactionColor(_offenseHidden))"></span><!-- offense -->
+        <span class="oi oi-crop" @onclick="@(()=>ToggleStatSectionVisible("size-reach"))" style="color:@(Character.GetFactionColor(_sizeReachHidden))"></span><!-- size and reach -->
+        <span class="oi oi-pulse" @onclick="@(()=>ToggleStatSectionVisible("effects"))" style="color:@(Character.GetFactionColor(_effectsHidden))"></span><!-- effects -->
+        <span class="oi oi-clipboard" @onclick="@(()=>CharacterSheetClicked(Character))"></span><!-- open char sheet -->
     </div>
+
+    <CharacterTargetComponent Hidden="@_targetHidden" />
+    <CharacterAttributesComponent Hidden="@_attrHidden" />
+    <CharacterOffenseComponent Hidden="@_offenseHidden" />
+    <CharacterSizeReachComponent Hidden="@_sizeReachHidden" />
+    <CharacterEffectsComponent Hidden="@_effectsHidden" />
+
 </div>
 
 @code {
@@ -116,47 +112,62 @@
         }
     }
 
-    private void ToggleStatSectionVisible(string section)
-    {
+    private async void ToggleStatSectionVisible(string section)
+    {   
+        bool initialState = true;
+
         if (section == "targets")
         {
-            _targetHidden = !_targetHidden;
-            _attrHidden = true;
-            _offenseHidden = true;
-            _sizeReachHidden = true;
-            _effectsHidden = true;
+            initialState = _targetHidden;
         }
         else if (section == "attributes")
         {
-            _targetHidden = true;
-            _attrHidden = !_attrHidden;
-            _offenseHidden = true;
-            _sizeReachHidden = true;
-            _effectsHidden = true;
+            initialState = _attrHidden;
         }
         else if (section == "offense")
         {
-            _targetHidden = true;
-            _attrHidden = true;
-            _offenseHidden = !_offenseHidden;
-            _sizeReachHidden = true;
-            _effectsHidden = true;
+            initialState = _offenseHidden;
         }
         else if (section == "size-reach")
         {
-            _targetHidden = true;
-            _attrHidden = true;
-            _offenseHidden = true;
-            _sizeReachHidden = !_sizeReachHidden;
-            _effectsHidden = true;
+            initialState = _sizeReachHidden;
         }
         else if (section == "effects")
+        {
+            initialState = _effectsHidden;
+        }
+
+        if(!_targetHidden || !_attrHidden || !_offenseHidden || !_sizeReachHidden || !_effectsHidden)
         {
             _targetHidden = true;
             _attrHidden = true;
             _offenseHidden = true;
             _sizeReachHidden = true;
-            _effectsHidden = !_effectsHidden;
+            _effectsHidden = true;
+            
+            await Task.Delay(1000);
+        }
+
+
+        if (section == "targets" && initialState)
+        {
+            _targetHidden = false;
+        }
+        else if (section == "attributes" && initialState)
+        {
+            _attrHidden = false;
+        }
+        else if (section == "offense" && initialState)
+        {
+            _offenseHidden = false;
+        }
+        else if (section == "size-reach" && initialState)
+        {
+            _sizeReachHidden = false;
+        }
+        else if (section == "effects" && initialState)
+        {
+            _effectsHidden = false;
         }
         else
         {
@@ -166,6 +177,8 @@
             _sizeReachHidden = true;
             _effectsHidden = true;
         }
+
+        StateHasChanged();
     }
 
     private void CharacterSheetClicked(CharacterViewModel character)
