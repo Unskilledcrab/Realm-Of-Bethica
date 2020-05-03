@@ -19,7 +19,7 @@
             </div>
             <div class="col-2 text-right"><a class="btn btn-link" asp-action="TermsOfConduct">Code Of Conduct</a></div>
             <div class="col-2 text-right"><a class="btn btn-link">Event Details</a></div>
-            <div class="col-4 text-right"><a class="btn btn-light" asp-action="CreateGame">Create New</a></div>
+            <div class="col-4 text-right"><a class="btn btn-info" asp-action="CreateGame">Create New</a></div>
             <div class="col-8 d-none">
                 <p class="text-uppercase text-center sans-serif-font2"><strong>PUG Game Day CON</strong></p>
                 <p class="text-uppercase text-center sans-serif-font2"><strong>Dashboard</strong></p>
@@ -119,17 +119,17 @@
                         <div class="col">
                             @if (userId == game.CreatorId)
                             {
-                                <a class="btn btn-info btn-lg text-left" asp-action="EditGame" asp-route-id="@game.Id">Edit Game</a>
+                                <a class="btn btn-info text-left" asp-action="EditGame" asp-route-id="@game.Id">Edit Game</a>
                             }
                             else
                             {
                                 @if (isSignedUp)
                                 {
-                                    <a class="btn btn-dark btn-lg text-left" asp-action="LeaveGame" asp-route-id="@game.Id">Leave Game</a>
+                                    <a class="btn btn-dark text-left" asp-action="LeaveGame" asp-route-id="@game.Id">Leave Game</a>
                                 }
                                 else
                                 {
-                                    <a class="btn @btnClass btn-lg text-left" asp-action="JoinGame" asp-route-id="@game.Id">@btnSignUpText</a>
+                                    <a class="btn @btnClass text-left" asp-action="JoinGame" asp-route-id="@game.Id">@btnSignUpText</a>
                                 }
                             }
                         </div>

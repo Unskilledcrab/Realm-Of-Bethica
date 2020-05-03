@@ -23,7 +23,7 @@
                             <div id="formdiv">
                                 <div class="form-row pad-top-24">
                                     <div class="col-md-8 offset-md-1">
-                                        <p class="sans-serif-font2"><strong>Edit Event Form</strong></p>
+                                        <h1 class="sans-serif-font2"><strong>Edit Event Form</strong></h1>
                                     </div>
                                 </div>
                             </div>
@@ -266,14 +266,17 @@
                             <div class="form-group">
                                 <div class="text-center" id="formdiv">
                                     <div class="form-row pad-top-24">
-                                        <div class="col-4 pad-top-20">
-                                            <input value="Clear" class="btn btn-danger btn-lg" type="reset">
+                                        <div class="col pad-top-20">
+                                            <input value="Clear" class="btn btn-danger" type="reset">
                                         </div>
-                                        <div class="col-4 pad-top-20">
-                                            <a class="btn btn-info btn-lg" asp-action="GameDashboard">Event Dashboard</a>
+                                        <div class="col pad-top-20">
+                                            <a class="btn btn-danger" asp-action="DeleteGame" asp-route-id="@Model.Id">Delete Game</a>
                                         </div>
-                                        <div class="col-4 pad-top-20">
-                                            <input type="submit" value="Save" class="btn btn-success btn-lg">
+                                        <div class="col pad-top-20">
+                                            <a class="btn btn-info" asp-action="GameDashboard">Event Dashboard</a>
+                                        </div>
+                                        <div class="col pad-top-20">
+                                            <input type="submit" value="Save" class="btn btn-success">
                                         </div>
                                     </div>
 

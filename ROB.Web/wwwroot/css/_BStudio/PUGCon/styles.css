@@ -102,60 +102,55 @@
 }
 
 .box-border1 {
-  border-radius: 10.2px;
-  box-shadow: 0 0 16px #dfa34e;
-  background-color: rgba(0,0,0,0.8);
-  color: #dfa34e;
-  padding: 20px;
-  margin-top: 50px;
-  margin-left: 20px;
-  max-width: 350px;
-  min-width: 350px;
+    border-radius: 10.2px;
+    box-shadow: 0 0 16px #dfa34e;
+    background-color: rgba(0,0,0,0.8);
+    color: #dfa34e;
+    padding: 20px;
+    margin: 20px;
+    max-width: 350px;
+    min-width: 350px;
 }
 
 .box-border2 {
-  border-radius: 10.2px;
-  box-shadow: 0 0 16px #dfa34e;
-  color: #dfa34e;
-  padding: 20px;
-  margin-top: 50px;
-  margin-left: 20px;
-  font-size: 21px;
-  background-color: rgba(0,0,0,0.6);
+    border-radius: 10.2px;
+    box-shadow: 0 0 16px #dfa34e;
+    color: #dfa34e;
+    padding: 20px;
+    margin: 20px;
+    font-size: 21px;
+    background-color: rgba(0,0,0,0.6);
 }
 
 .box-border3 {
+    margin: 20px;
   border-radius: 10.2px;
   box-shadow: 0 0 16px #dfa34e;
   background-color: rgba(0,0,0,0.8);
   color: #dfa34e;
   padding: 20px;
-  margin-top: 50px;
-  margin-left: 20px;
   max-width: 700px;
   min-width: 330px;
 }
 
 .box-border4 {
-  border-radius: 10.2px;
-  box-shadow: 0 0 16px #dfa34e;
-  background-color: rgba(0,0,0,0.8);
-  color: #dfa34e;
-  padding: 20px;
-  margin-top: 50px;
-  margin-left: 20px;
-  text-indent: 25px;
+    border-radius: 10.2px;
+    box-shadow: 0 0 16px #dfa34e;
+    background-color: rgba(0,0,0,0.8);
+    color: #dfa34e;
+    padding: 20px;
+    margin: 20px;
+    text-indent: 25px;
 }
 
 .box-border5 {
-  border-radius: 10.2px;
-  box-shadow: 0 0 16px #dfa34e;
-  background-color: rgba(0,0,0,0.8);
-  color: #dfa34e;
-  padding: 20px;
-  margin-top: 50px;
-  margin-left: 20px;
-  text-indent: 25px;
+    border-radius: 10.2px;
+    box-shadow: 0 0 16px #dfa34e;
+    background-color: rgba(0,0,0,0.8);
+    color: #dfa34e;
+    padding: 20px;
+    margin: 20px;
+    text-indent: 25px;
 }
 
 .box-img1 {
@@ -549,8 +544,7 @@
   color: #ffffff!important;
   background-color: #000000;
   padding: 20px;
-  margin-top: 50px;
-  margin-left: 20px;
+  margin: 10px;
   max-width: 350px;
   min-width: 350px;
 }
@@ -562,7 +556,7 @@
   padding: 20px;
   /*margin-top: 67px;*/
   /*margin-left: 20px;*/
-  max-width: 400px;
-  min-width: 400px;
+  max-width: 370px;
+  min-width: 370px;
 }
 

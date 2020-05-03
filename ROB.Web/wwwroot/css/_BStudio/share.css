@@ -1,5 +1,5 @@
 .BG-Image-1 {
-  background: url(../../images/_BStudio/DCS/Backcover_final_No_LogoEdit_72dpi_01.jpg);
+  background: url(../../images/_BStudio/Shared/bg-landing-page.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -7,13 +7,7 @@
 }
 
 .BG-Image-1a {
-  background: url(../../images/_BStudio/DCS/Backcover_final_No_LogoEdit_72dpi_01.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  padding-top: 340px;
-  padding-bottom: 340px;
+  background: url(../../images/_BStudio/Shared/bg-landing-page.jpg);
 }
 
 .bgc-c2 {

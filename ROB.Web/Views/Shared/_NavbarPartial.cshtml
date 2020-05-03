@@ -15,12 +15,12 @@
 
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 @*<li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="About">About</a></li>*@
                 @*<li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="PUBCon" asp-action="@nameof(ROB.Web.Controllers.PUBConController.WelcomePage)">PUB Con</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" asp-area="" asp-controller="PUBCon" asp-action="@nameof(ROB.Web.Controllers.PUBConController.WelcomePage)">PUB Con</a></li>
                     @*<li class="nav-item dropdown">
                             <a class="nav-link nav-bar-font dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Hero Sheets

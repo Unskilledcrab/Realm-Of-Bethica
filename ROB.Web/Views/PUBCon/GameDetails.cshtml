@@ -34,23 +34,23 @@
                 </div>
 
                 <h5 class="text-left">
-                    <strong>Game Title: @Model.EventTitle</strong>
+                    <strong>@Model.EventTitle</strong>
                 </h5>
                 <h5 class="text-left">
-                    <strong>Game Type: @Model.GameType</strong>
+                    <strong>@Model.GameType</strong>
                 </h5>
                 <div class="row">
-                    <div class="col-4">
-                        <h4 class="text-left">When</h4>
-                        <p class="text-left d-sm-inline d-md-inline d-lg-inline d-xl-inline">May 16th, 2020</p>
+                    <div class="hidden-sm col-md-4">
+                        <h4 class="text-left d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">When</h4>
+                        <p class="text-left d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">May 16th, 2020</p>
                         <h4 class="text-left">Where</h4>
-                        <p class="text-left d-sm-inline d-md-inline d-lg-inline d-xl-inline">@Model.DiscordChannel</p>
+                        <a href="@Model.DiscordChannel" class="text-left d-sm-inline d-md-inline d-lg-inline d-xl-inline">@Model.DiscordChannel</a>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6 col-md-4">
                         <h4 class="text-left">Start Time</h4>
                         <p class="text-left">@Model.EventStartTime</p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6 col-md-4">
                         <h4 class="text-right">Run Time</h4>
                         <p class="text-right">@Model.EventDuration hours</p>
                     </div>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col">
                         <h4 class="text-right">Links</h4>
-                        <p class="text-right text-primary">@Model.GameLinks</p>
+                        <p class="text-right">@Model.GameLinks</p>
                     </div>
                 </div>
                 <div class="row pad-top-20">
@@ -119,7 +119,7 @@
                                         }
                                         if (isSignedUp)
                                         {
-                                            <a class="btn btn-dark text-left" asp-action="LeaveGame" asp-route-id="@Model.Id">Leave Game</a>
+                                            <a class="btn btn-danger text-left" asp-action="LeaveGame" asp-route-id="@Model.Id">Leave Game</a>
                                         }
                                         else
                                         {
@@ -140,7 +140,7 @@
                                 }
                             </div>
                             <div class="col text-right">
-                                <a class="btn btn-info btn-lg" asp-action="GameDashboard">Event Dashboard</a>
+                                <a class="btn btn-info" asp-action="GameDashboard">Event Dashboard</a>
                             </div>
                         </div>
                     </div>

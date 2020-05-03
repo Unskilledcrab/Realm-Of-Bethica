@@ -36,11 +36,19 @@
 
 .BG-Image {
   background: url(../../images/_BStudio/BG/3Body-BG.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 1331px;
-  background-attachment: fixed;
+}
+
+.pug-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: contain;
+    z-index: -1000;
+    transition: opacity 2s;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .Container {

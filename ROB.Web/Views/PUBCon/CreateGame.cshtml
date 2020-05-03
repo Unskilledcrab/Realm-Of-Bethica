@@ -21,9 +21,9 @@
                             <div id="formdiv">
                                 <div class="form-row justify-content-start pad-top-24">
                                     <div class="col-md-8 offset-md-1">
-                                        <h6 class="text-left">
+                                        <h1 class="text-left">
                                             <strong>New Event Submission Form</strong>
-                                        </h6>
+                                        </h1>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +202,7 @@
                                         <p class="text-left sans-serif-font2a"><strong>Game Day Discord Channel</strong></p>
                                     </div>
                                     <div class="col-11 col-md-10 col-lg-10 col-xl-10 offset-md-1">
-                                        <textarea asp-for="DiscordChannel" placeholder="GM enter the discord channel you will be running your game from or the invite link!" maxlength="100" class="form-control sans-serif-font3"></textarea>
+                                        <textarea asp-for="DiscordChannel" placeholder="Paste the discord channel invite link!" maxlength="100" class="form-control sans-serif-font3"></textarea>
                                         <span asp-validation-for="DiscordChannel" class="text-danger"></span>
 
                                     </div>
@@ -267,13 +267,13 @@
                                 <div class="text-center" id="formdiv">
                                     <div class="form-row pad-top-24">
                                         <div class="col-4 pad-top-20">
-                                            <input value="Clear" class="btn btn-danger btn-lg" type="reset">
+                                            <input value="Clear" class="btn btn-danger" type="reset">
                                         </div>
                                         <div class="col-4 pad-top-20">
-                                            <a class="btn btn-info btn-lg" asp-action="GameDashboard">Event Dashboard</a>
+                                            <a class="btn btn-info" asp-action="GameDashboard">Event Dashboard</a>
                                         </div>
                                         <div class="col-4 pad-top-20">
-                                            <input type="submit" value="Save" class="btn btn-success btn-lg">
+                                            <input type="submit" value="Save" class="btn btn-success">
                                         </div>
                                     </div>
 
