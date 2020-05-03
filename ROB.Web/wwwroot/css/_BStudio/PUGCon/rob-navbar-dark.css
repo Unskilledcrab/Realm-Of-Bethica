@@ -1,0 +1,234 @@
+.RB-Logo {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.c1 {
+  color: #dfa34e!important;
+}
+
+.c1 {
+  color: #dfa34e!important;
+  font-family: Amarante, cursive;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.nav-bar-font {
+  font-size: 20px;
+  font-family: Amarante, cursive;
+  color: #dfa34e!important;
+}
+
+.hd-bgc-blk {
+  background-color: #000000;
+}
+
+* {
+  outline: none;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, .btn-simple, a, .td-name, td {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Helvetica Neue","Open Sans",Arial,sans-serif;
+}
+
+a {
+  color: #2CA8FF;
+}
+
+a:hover, a:focus {
+  color: #109CFF;
+  text-decoration: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: #9c27b0;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0a6ebd;
+  text-decoration: underline;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: #9c27b0;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0a6ebd;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline: 0;
+}
+
+a {
+  color: #9c27b0;
+}
+
+a:hover, a:focus {
+  color: #89229b;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0a6ebd;
+  text-decoration: underline;
+}
+
+a:focus, button:focus {
+  outline: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: #9c27b0;
+}
+
+a:focus, a:hover {
+  color: #89229b;
+  text-decoration: none;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, .btn-simple, a, .td-name, td {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Helvetica Neue","Open Sans",Arial,sans-serif;
+}
+
+a {
+  color: #2CA8FF;
+}
+
+a:hover, a:focus {
+  color: #109CFF;
+  text-decoration: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: #9c27b0;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0a6ebd;
+  text-decoration: underline;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: #9c27b0;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0a6ebd;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline: 0;
+}
+
+a {
+  color: #9c27b0;
+}
+
+a:hover, a:focus {
+  color: #89229b;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0a6ebd;
+  text-decoration: underline;
+}
+
+a:focus, button:focus {
+  outline: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: #9c27b0;
+}
+
+a:focus, a:hover {
+  color: #cd201f;
+  text-decoration: none;
+}
+
+form {
+  border-radius: 25px;
+  overflow: hidden;
+}
+

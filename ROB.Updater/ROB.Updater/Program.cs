@@ -48,8 +48,10 @@ namespace ROB.Updater
 
             Console.WriteLine("Would you like to format the bootstrap studio directory files? [Y/N]");
             input = Console.ReadLine();
+            bool hasBeenFormatted = false;
             if (input.ToUpper() == "Y")
             {
+                hasBeenFormatted = true;
                 var formatter = new Formatter(studioPath);
                 formatter.FormatBootstrapStudioFiles(studioPath);
                 Console.WriteLine("Formatting Completed");
@@ -63,6 +65,7 @@ namespace ROB.Updater
             var StudiojsPath = Path.Combine(studioPath, studioJSPath);
             var StudioimagesPath = Path.Combine(studioPath, studioImagesPath);
 
+            Directory.CreateDirectory(ROBimagesPath);
 
             Console.WriteLine("Would you like to delete old files? [Type 'DELETE' if yes otherwise]");
             Console.WriteLine("NOTE: This will delete all files in _BStudio folder in the CSS, js, images folders.");
@@ -85,11 +88,24 @@ namespace ROB.Updater
                 Copy(StudioimagesPath, ROBimagesPath);
                 Console.WriteLine("Copy Completed");
             }
+
+            if (!hasBeenFormatted) return;
+
+            Console.WriteLine("Would you like to revert the formatting? [Y/N]");
+            Console.WriteLine("NOTE: This will allow you to run the studio files in your browser and see the pages as studio exported them and the designer intended.");
+            input = Console.ReadLine();
+            if (input.ToUpper() == "Y")
+            {
+                Console.WriteLine("Resetting Project...");
+                RunGit("reset", studioPath);
+                Console.WriteLine("Reverting formatting...");
+                RunGit("checkout .", studioPath);
+            }
         }
 
         static void RunGit(string arguments, string bootstrapStudioPath)
         {
-            var baseDirectory = bootstrapStudioPath.Replace("Exports", "");
+            var baseDirectory = bootstrapStudioPath.Replace("Exports", ""); // this makes sure it doesn't effect the main ROB project
             Process process = new Process();
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.Arguments = arguments;

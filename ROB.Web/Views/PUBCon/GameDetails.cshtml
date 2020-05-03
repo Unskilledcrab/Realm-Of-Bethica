@@ -9,57 +9,82 @@
 @section Styles {
     @{await Html.RenderPartialAsync("_PUGConStylesPartial");}
 }
-
+    
 <div class="body3 pug-bg" style="background-color: black;"></div>
-<div class="container">
-    <div class="sans-serif-font1">
+<div class="container pad-top-bottom-20">
+    <div class="rob-card1">
         <div class="row pad-top-20">
             <div class="col-12">
-                <p class="text-center sans-serif-font2"><strong><span style="text-decoration: underline;">Game Details</span></strong></p>
+                <h1>
+                    <strong>
+                        <span style="text-decoration: underline;">Game Details</span>
+                    </strong>
+                </h1>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center articles" style="/*margin-top: 200px;*/">
+        <div class="row justify-content-center align-items-center rob-card1">
             <div class="col-12 box-border3">
-                <div class="row align-items-baseline">
-                    <div class="col-1"><img src="assets/img/Ninja_Male_Pog_01.png" style="width: 60px;"></div>
+                <div class="row">
+                    <div class="col-1">
+                        <img src="~/images/_BStudio/PUGCon/Ninja_Male_Pog_01.png" style="width: 60px;">
+                    </div>
                     <div class="col">
-                        <p class="text-left text-indent-25">GM: @Model.GameMaster</p>
+                        <h4 class="text-left">GM: @Model.GameMaster</h4>
                     </div>
                 </div>
-                <p title="Click to show game details!"><strong>@Model.EventTitle</strong></p>
-                <p title="Click to show game details!"><strong>@Model.GameType</strong></p>
+
+                <h5 class="text-left" title="Click to show game details!">
+                    <strong>@Model.EventTitle</strong>
+                </h5>
+                <h5 class="text-left" title="Click to show game details!">
+                    <strong>@Model.GameType</strong>
+                </h5>
                 <div class="row">
                     <div class="col-4">
-                        <p class="no-margin">When</p>
-                        <p class="sans-serif-font1">@Model.EventDate</p>
-                        <p class="no-margin">Where</p>
-                        <p class="sans-serif-font1">@Model.DiscordChannel</p>
+                        <h4 class="text-left">When</h4>
+                        <p class="text-left d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">May 16th, 2020</p>
+                        <h4 class="text-left">Where</h4>
+                        <h4 class="text-left">@Model.DiscordChannel</h4>
                     </div>
-                    <div class="col-5">
-                        <p class="text-right no-margin">Run Time</p>
-                        <p class="text-right sans-serif-font1">@Model.EventDuration hours</p>
+                    <div class="col-4">
+                        <h4 class="text-left">Start Time</h4>
+                        <p class="text-left">@Model.EventStartTime</p>
+                    </div>
+                    <div class="col-4">
+                        <h4 class="text-right">Run Time</h4>
+                        <p class="text-right">@Model.EventDuration hours</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p>Reserved</p>
+                        <h4 class="text-left">Reserved</h4>
                         @foreach (var player in @Model.Players)
                         {
-                            <p class="sans-serif-font1a">@player.User.UserName</p>
+                            <p class="text-left text-success">@player.User.UserName</p>
                         }
                     </div>
                     <div class="col">
-                        <p class="text-right">Links</p>
-                        <p class="text-right sans-serif-font1a">www.discord.com</p>
-                        <p class="text-right sans-serif-font1a">www.universalbattle.com</p>
-                        <p class="text-right sans-serif-font1a">www.ubunlimited.com</p>
+                        <h4 class="text-right">Links</h4>
+                        <p class="text-right text-primary">@Model.GameLinks</p>
                     </div>
                 </div>
                 <div class="row pad-top-20">
                     <div class="col">
-                        <p class="text-break"><span style="text-decoration: underline;">Game Description</span></p>
-                        <p class="text-break text-justify sans-serif-font1c">
+                        <h4 class="text-break">
+                            <span style="text-decoration: underline;">Game Description</span>
+                        </h4>
+                        <p class="text-break text-justify">
                             @Model.Description
+                        </p>
+                    </div>
+                </div>
+                <div class="row pad-top-20">
+                    <div class="col">
+                        <h4 class="text-break">
+                            <span style="text-decoration: underline;">GM Comments To The Players</span>
+                        </h4>
+                        <p class="text-break text-justify">
+                            @Model.MessageToPlayers
                         </p>
                     </div>
                 </div>
@@ -103,7 +128,9 @@
                                     }
                                     else
                                     {
-                                        <a class="btn btn-success text-center" asp-action="EditGame" asp-route-id="@Model.Id">Edit Game</a>
+                                        <div class="col text-center">
+                                            <a class="btn btn-success text-center" asp-action="EditGame" asp-route-id="@Model.Id">Edit Game</a>
+                                        </div>
                                         <div class="col text-center">
                                             <a class="btn btn-danger text-left" asp-action="DeleteGame" asp-route-id="@Model.Id">Delete Game</a>
                                         </div>
@@ -111,7 +138,7 @@
                                 }
                             </div>
                             <div class="col text-right">
-                                <a class="" asp-action="GameDashboard">Event Dashboard</a>
+                                <a class="btn btn-light btn-lg" asp-action="GameDashboard">Event Dashboard</a>
                             </div>
                         </div>
                     </div>
@@ -119,18 +146,7 @@
             </div>
         </div>
     </div>
-    <div class="text-center box-border2">
-        <div class="row justify-content-center align-items-center pad-top-20">
-            <div class="col-12">
-                <p style="margin-bottom: 0px;">Fantasy Ground Pickup Game VTT Con&nbsp;</p>
-                <p style="margin-bottom: 0px;">Sponsered by:</p>
-            </div>
-            @*<div class="col text-center"><img class="img-fluid" src="~/images/_BStudio/PUGCon/PUG-Logo.png"></div>*@
-            <div class="col text-center"><img class="img-fluid" src="~/images/_BStudio/PUGCon/UB_Logo2.png"></div>
-            <div class="col text-center"><img class="img-fluid" src="~/images/_BStudio/PUGCon/Bethica_logo_edited_final.png"></div>
-            <div class="col text-center"><img class="img-fluid" src="~/images/_BStudio/PUGCon/UB Unlimited-02.png"></div>
-        </div>
-    </div>
+    <partial name="_PUGSponsorFooter" />
 </div>
 
 
