@@ -1,4 +1,4 @@
-﻿@using ROB.Blazor.Client.ViewModels
+﻿@using ROB.Blazor.Shared.Interfaces.CombatTracker
 
 <div class="combat-tracker-wrapper">
     <h3>Combat Tracker</h3>
@@ -27,6 +27,14 @@
                 Wnd
                 <span class="tooltip-text">Damage Taken</span>
             </span>
+            <span class="tooltip-handle">
+                Tf
+                <span class="tooltip-text">Toxic Fortitude</span>
+            </span>
+            <span class="tooltip-handle">
+                Pf
+                <span class="tooltip-text">Psychic Fortitude</span>
+            </span>
             <span></span><!-- faction -->
             <span class="oi oi-target tooltip-handle">
                 <span class="tooltip-text">Target Control</span>
@@ -37,9 +45,6 @@
             <span class="oi oi-eyedropper tooltip-handle">
                 <span class="tooltip-text">Offense</span>
             </span><!-- offense -->
-            <span class="oi oi-crop tooltip-handle">
-                <span class="tooltip-text">Size and Reach</span>
-            </span><!-- size and reach -->
             <span class="oi oi-pulse tooltip-handle">
                 <span class="tooltip-text">Effects</span>
             </span><!-- effects -->
@@ -48,12 +53,15 @@
             </span><!-- open char sheet -->
         </div>
         <div class="body">
-            @foreach (CharacterViewModel character in Characters)
+            @if (_loaded)
             {
-                <CascadingValue Value="@character" Name="Character">
-                    <CascadingValue Value="@_activeCharacter" Name="ActiveCharacter">
-                        <CharacterComponent LogAction="LogAction" OpenCharacterSheet="OpenCharacterSheet" />
-                    </CascadingValue>
+                <CascadingValue Value="@_activeCharacter" Name="ActiveCharacter">
+                    @foreach (ICharacter character in _characters)
+                    {
+                        <CascadingValue Value="@character" Name="Character">
+                            <CharacterComponent OpenCharacterSheet="OpenCharacterSheet" LogAction="OnLogEvent" />
+                        </CascadingValue>
+                    }
                 </CascadingValue>
             }
         </div>
@@ -67,168 +75,59 @@
 <CharacterSheetComponent @ref="@_characterSheet" />
 
 @code {
-    private List<CharacterViewModel> Characters;
-    private CharacterViewModel _activeCharacter;
-    private List<WeaponViewModel> Weapons;
+    [Parameter]
+    public int GameId { get; set; }
+
+    private List<ICharacter> _characters = new List<ICharacter>();
+    private ICharacter _activeCharacter;
     private Random rand = new Random();
     private CharacterSheetComponent _characterSheet;
+    private Action<string> OnLogEvent;
+    private bool _loaded = false;
 
-    [Parameter]
-    public Action<string> LogAction { get; set; }
+    private IConsole _console { get; set; }
+    private IGamePackage _gamePackage { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    public async Task LoadGame(IConsole console, IGamePackage package)
     {
-        Characters = new List<CharacterViewModel>();
-        Weapons = new List<WeaponViewModel>();
+        _console = console;
+        OnLogEvent += ((message) => { _console.Log(message); });
+
+        _console.Log("Loading game...");
 
         await Task.Delay(500);
 
-        Characters.Add(new CharacterViewModel()
-        {
-            Id = 0,
-            Name = "John the Doe-stroyer",
-            Dem = "Human",
-            Faction = ROB.Blazor.Shared.Models.Character.FactionType.Friendly,
-            Gender = ROB.Blazor.Shared.Models.Character.GenderType.Male,
-            PortraitURL = "https://us.123rf.com/450wm/lnino87/lnino871710/lnino87171000006/88046593-stock-vector-man-with-beard-and-cap.jpg?ver=6",
+        _characters = package.GetCharacters(GameId);
 
-            Actions = new List<string>() { "Doe-stroy enemy", "Go to mancave" },
-            Traits = new List<string>() { "Mediocre", "Always drunk" },
-            Reactions = new List<string>() { "Belligerent" },
-            Effects = new List<string>() { "Bloated" },
-
-            Rct = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Rct", Name = "Reaction", Value = 4 },
-            AR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "AR", Name = "Armor Rating", Value = 6 },
-            EVA = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "EVA", Name = "Evasion", Value = 4 },
-            HP = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "HP", Name = "Health Points", Value = 10 },
-            PDR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "PDR", Name = "Penetration Defense Rating", Value = 3 },
-            RM = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "RM", Name = "Reaction Modifier", Value = 0 },
-            Tmp = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Tmp", Name = "Temporary Health", Value = 5 },
-            Wnd = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Wnd", Name = "Wound", Value = 7 },
-
-            Size = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Size", Name = "Size", Value = 10 },
-            Reach = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Reach", Name = "Reach", Value = 5 }
-        });
-
-        Characters.Add(new CharacterViewModel()
-        {
-            Id = 1,
-            Name = "John's wife",
-            Dem = "Human",
-            Faction = ROB.Blazor.Shared.Models.Character.FactionType.Hostile,
-            Gender = ROB.Blazor.Shared.Models.Character.GenderType.Female,
-            PortraitURL = @"https://media.istockphoto.com/vectors/female-warrior-vector-id503758620?k=6&m=503758620&s=612x612&w=0&h=Xe2ZS9Ik2t8hm1EPfY1laQfv1FjWr80cMJ7ZB_XMwGI=",
-
-            Actions = new List<string>() { "Nag", "Ignore", "Overreact" },
-            Traits = new List<string>() { "Pretty", "'Smart'", "Hysterical" },
-            Reactions = new List<string>() { "Over-reactive" },
-            Effects = new List<string>() { "Depressed" },
-
-            Rct = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Rct", Name = "Reaction", Value = 7 },
-            AR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "AR", Name = "Armor Rating", Value = 6 },
-            EVA = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "EVA", Name = "Evasion", Value = 4 },
-            HP = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "HP", Name = "Health Points", Value = 10 },
-            PDR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "PDR", Name = "Penetration Defense Rating", Value = 3 },
-            RM = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "RM", Name = "Reaction Modifier", Value = 0 },
-            Tmp = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Tmp", Name = "Temporary Health", Value = 5 },
-            Wnd = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Wnd", Name = "Wound", Value = 7 },
-
-            Size = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Size", Name = "Size", Value = 6 },
-            Reach = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Reach", Name = "Reach", Value = 10 }
-        });
-
-        Characters.Add(new CharacterViewModel()
-        {
-            Id = 2,
-            Name = "John's mother",
-            Dem = "Human",
-            Faction = ROB.Blazor.Shared.Models.Character.FactionType.Neutral,
-            Gender = ROB.Blazor.Shared.Models.Character.GenderType.Female,
-            PortraitURL = "https://media.istockphoto.com/vectors/grandmother-smokes-tobacco-pipe-grandma-smoking-pipe-vector-id1162153675?k=6&m=1162153675&s=612x612&w=0&h=X1HulkLnUOBTbNvIzxw7KREvxbcPObxYprSmZDYR3oA=",
-
-            Actions = new List<string>() { "Underreact", "Pray wrath upon enemies", "Light one up" },
-            Traits = new List<string>() { "Overlooks accomplishments", "Smokey lungs" },
-            Reactions = new List<string>() { "Unresponsive" },
-            Effects = new List<string>() { "Oblivious", "Forgetting" },
-
-            Rct = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Rct", Name = "Reaction", Value = 1 },
-            AR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "AR", Name = "Armor Rating", Value = 6 },
-            EVA = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "EVA", Name = "Evasion", Value = 4 },
-            HP = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "HP", Name = "Health Points", Value = 10 },
-            PDR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "PDR", Name = "Penetration Defense Rating", Value = 3 },
-            RM = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "RM", Name = "Reaction Modifier", Value = 0 },
-            Tmp = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Tmp", Name = "Temporary Health", Value = 5 },
-            Wnd = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Wnd", Name = "Wound", Value = 7 },
-
-            Size = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Size", Name = "Size", Value = 20 },
-            Reach = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Reach", Name = "Reach", Value = 3 }
-        });
-
-        Characters.Add(new CharacterViewModel()
-        {
-            Id = 3,
-            Name = "Bogusaurus Rex",
-            Dem = "A dinosaur, obviously",
-            Faction = ROB.Blazor.Shared.Models.Character.FactionType.Hostile,
-            Gender = ROB.Blazor.Shared.Models.Character.GenderType.Unknown,
-            PortraitURL = "https://thumbs.dreamstime.com/b/funny-cartoon-dinosaur-lizard-isolated-18954697.jpg",
-
-            Actions = new List<string>() { "Chomp", "Haymaker", "Fail to blow fire" },
-            Traits = new List<string>() { "Huge", "Thinks its a dragon", "Hungry" },
-            Reactions = new List<string>() { "Barrell Roll" },
-            Effects = new List<string>() { "Slowed" },
-
-            Rct = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Rct", Name = "Reaction", Value = 2 },
-            AR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "AR", Name = "Armor Rating", Value = 9 },
-            EVA = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "EVA", Name = "Evasion", Value = 2 },
-            HP = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "HP", Name = "Health Points", Value = 25 },
-            PDR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "PDR", Name = "Penetration Defense Rating", Value = 1 },
-            RM = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "RM", Name = "Reaction Modifier", Value = 1 },
-            Tmp = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Tmp", Name = "Temporary Health", Value = 0 },
-            Wnd = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Wnd", Name = "Wound", Value = 6 },
-
-            Size = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Size", Name = "Size", Value = 40 },
-            Reach = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Reach", Name = "Reach", Value = 10 }
-        });
-
-        //Weapons.Add(new WeaponViewModel()
-        //{
-        //    Id = 0,
-        //    Name = "Swordhalla",
-        //    EVA = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "EVA", Name = "Evasion", Value = 4 },
-        //    DT = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "DT", Name = "Damage Type", Value = 2 },
-        //    DV = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "DV", Name = "Damage Value", Value = 5 },
-        //    PVR = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "PVR", Name = "Penetration Value Rating", Value = 2 },
-        //    Rch = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "Rch", Name = "Reach", Value = 1 },
-        //    RM = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "RM", Name = "Reaction Modifier", Value = 10 },
-        //    THF = new ROB.Blazor.Shared.Models.Stat() { Abbreviation = "THF", Name = "To Hit Feat", Value = 4 }
-        //});
-
-        foreach (CharacterViewModel character in Characters)
+        foreach (ICharacter character in _characters)
             character.ActionPerformed += OnActionPerformed;
 
-        Characters = Characters.OrderByDescending(x => x.Rct.Value).ToList();
-        _activeCharacter = Characters[0];
+        _characters = _characters.OrderByDescending(x => x.Rct.Value).ToList();
+        _activeCharacter = _characters[0];
+
+        _console.Log("Loading complete");
+        _loaded = true;
+        StateHasChanged();
     }
 
     private void NextTurn()
     {
-        LogAction?.Invoke($"{_activeCharacter.Name}'s turn has ended.");
+        _console.Log($"{_activeCharacter.Name}'s turn has ended.");
         _activeCharacter.EndTurn();
-        int charIndex = (Characters.IndexOf(_activeCharacter) + 1) % Characters.Count;
-        _activeCharacter = Characters[charIndex];
-        LogAction?.Invoke($"{_activeCharacter.Name}'s turn has begun.");
+        int charIndex = (_characters.IndexOf(_activeCharacter) + 1) % _characters.Count;
+        _activeCharacter = _characters[charIndex];
+        _console.Log($"{_activeCharacter.Name}'s turn has begun.");
     }
 
-    private void OnActionPerformed(CharacterViewModel source, CharacterViewModel target, string action)
+    private void OnActionPerformed(ICharacter source, ICharacter target, string action)
     {
         int damage = rand.Next(0, 5);
         target.Wnd.Value += damage;
-        LogAction?.Invoke($"{source.Name} performed {action} on {target.Name} for {damage}.");
+        _console.Log($"{source.Name} performed {action} on {target.Name} for {damage}.");
         StateHasChanged();
     }
 
-    private void OpenCharacterSheet(CharacterViewModel character)
+    private void OpenCharacterSheet(ICharacter character)
     {
         _characterSheet.LoadCharacter(character);
     }

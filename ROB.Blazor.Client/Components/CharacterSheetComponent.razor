@@ -1,4 +1,4 @@
-﻿@using ROB.Blazor.Client.ViewModels
+﻿@using ROB.Blazor.Shared.Interfaces.CombatTracker
 
 @if (Character == null)
 {
@@ -22,54 +22,54 @@ else
             <button class="button-exit" type="button" @onclick="@ToggleHidden">&times;</button>
             <h4 class="character-sheet-title">@Character.Name, @Character.Dem (@Character.Faction.ToString())</h4>
         </div>
-            <EditForm Model="@Character" class="character-sheet-body grid-2-col-equal">
+        <EditForm Model="@Character" class="character-sheet-body grid-2-col-equal">
 
-                    <div class="portrait" style="background-image:url('@Character.PortraitURL')">
-                        <span class="oi oi-shield tooltip-handle" style="align-self:start;" @onclick=@FactionToggle>
-                            <span class="tooltip-text">@Character.Faction.ToString()</span>
-                        </span><!-- faction -->
-                        <span class="tooltip-handle gender-@Character.Gender.ToString().ToLower()">
-                            @if (Character.Gender == ROB.Blazor.Shared.Models.Character.GenderType.Female)
-                            {
-                                <svg width="100" height="100">
-                                    <circle cx="50%" cy="40%" r="25%" stroke-width="10%" fill="none" />
-                                    <line x1="35%" y1="82%" x2="65%" y2="82%" stroke-width="10%" stroke-linecap="round" />
-                                    <line x1="50%" y1="65%" x2="50%" y2="95%" stroke-width="10%" stroke-linecap="round" />
-                                    Sorry, your browser does not support inline SVG.
-                                </svg>
-                            }
-                            else if (Character.Gender == ROB.Blazor.Shared.Models.Character.GenderType.Male)
-                            {
-                                <svg width="100" height="100">
-                                    <circle cx="40%" cy="60%" r="25%" stroke-width="10%" fill="none" />
-                                    <line x1="57.7%" y1="42.3%" x2="77.7%" y2="22.3%" stroke-width="10%" stroke-linecap="round" />
-                                    <line x1="77.7%" y1="22.3%" x2="55.7%" y2="22.3%" stroke-width="10%" stroke-linecap="round" />
-                                    <line x1="77.7%" y1="22.3%" x2="77.7%" y2="45.3%" stroke-width="10%" stroke-linecap="round" />
-                                    Sorry, your browser does not support inline SVG.
-                                </svg>
-                            }
-                            else
-                            {
-                                <svg width="100" height="100" viewBox="0 0 180 180">
-                                    <path fill="none" stroke-width="16" d="M60,67c0-13 1-19 8-26c7-9 18-10 28-8c10,2 22,12 22,26c0,14-11,19-15,22c-7,2-10,6-11,11v20m0,12v16" />
-                                </svg>
-                            }
-                            <span class="tooltip-text">@Character.Gender.ToString()</span>
-                        </span>
-                    </div>
-                    <div class="character-sheet-stats">
-                        @foreach (var stat in Character.GetAllStats())
-                        {
-                        <label>@stat.Abbreviation</label>
-                        <InputNumber id="@stat.Abbreviation" @bind-Value="stat.Value" @onblur="OnStatsChange" />                                
-                        }
-                    </div>
-                <div class="grid-col-span-2">
-                    <CharacterListableItemComponent Title="React?" ListedItems="Character.Reactions" Actionable="false" />
-                    <CharacterListableItemComponent Title="Traits" ListedItems="Character.Traits" Actionable="false" />
-                    <CharacterListableItemComponent Title="Actions" ListedItems="Character.Actions" Actionable="false" />
-                </div>
-            </EditForm>
+            <div class="portrait" style="background-image:url('@Character.PortraitURL')">
+                <span class="oi oi-shield tooltip-handle" style="align-self:start;" @onclick=@FactionToggle>
+                    <span class="tooltip-text">@Character.Faction.ToString()</span>
+                </span><!-- faction -->
+                <span class="tooltip-handle gender-@Character.Gender.ToString().ToLower()">
+                    @if (Character.Gender == ICharacter.GenderType.Female)
+                    {
+                        <svg width="100" height="100">
+                            <circle cx="50%" cy="40%" r="25%" stroke-width="10%" fill="none" />
+                            <line x1="35%" y1="82%" x2="65%" y2="82%" stroke-width="10%" stroke-linecap="round" />
+                            <line x1="50%" y1="65%" x2="50%" y2="95%" stroke-width="10%" stroke-linecap="round" />
+                            Sorry, your browser does not support inline SVG.
+                        </svg>
+                    }
+                    else if (Character.Gender == ICharacter.GenderType.Male)
+                    {
+                        <svg width="100" height="100">
+                            <circle cx="40%" cy="60%" r="25%" stroke-width="10%" fill="none" />
+                            <line x1="57.7%" y1="42.3%" x2="77.7%" y2="22.3%" stroke-width="10%" stroke-linecap="round" />
+                            <line x1="77.7%" y1="22.3%" x2="55.7%" y2="22.3%" stroke-width="10%" stroke-linecap="round" />
+                            <line x1="77.7%" y1="22.3%" x2="77.7%" y2="45.3%" stroke-width="10%" stroke-linecap="round" />
+                            Sorry, your browser does not support inline SVG.
+                        </svg>
+                    }
+                    else
+                    {
+                        <svg width="100" height="100" viewBox="0 0 180 180">
+                            <path fill="none" stroke-width="16" d="M60,67c0-13 1-19 8-26c7-9 18-10 28-8c10,2 22,12 22,26c0,14-11,19-15,22c-7,2-10,6-11,11v20m0,12v16" />
+                        </svg>
+                    }
+                    <span class="tooltip-text">@Character.Gender.ToString()</span>
+                </span>
+            </div>
+            <div class="character-sheet-stats">
+                @foreach (var stat in Character.GetAllStats())
+                {
+                    <label>@stat.Abbreviation</label>
+                    <InputNumber id="@stat.Abbreviation" @bind-Value="stat.Value" @onblur="OnStatsChange" />
+                }
+            </div>
+            <div class="grid-col-span-2">
+                <CharacterListableItemComponent Title="React?" ListedItems="Character.Reactions" Actionable="false" />
+                <CharacterListableItemComponent Title="Traits" ListedItems="Character.Traits" Actionable="false" />
+                <CharacterListableItemComponent Title="Actions" ListedItems="Character.Actions" Actionable="false" />
+            </div>
+        </EditForm>
         <div class="character-sheet-footer">
 
         </div>
@@ -77,11 +77,11 @@ else
 }
 
 @code {
-    private CharacterViewModel Character { get; set; }
+    private ICharacter Character { get; set; }
 
     private bool hidden = true;
 
-    public void LoadCharacter(CharacterViewModel character)
+    public void LoadCharacter(ICharacter character)
     {
         Character = character;
         hidden = false;
@@ -95,8 +95,8 @@ else
 
     private void FactionToggle()
     {
-        int factionsCount = Enum.GetNames(typeof(ROB.Blazor.Shared.Models.Character.FactionType)).Length;
-        Character.Faction = (ROB.Blazor.Shared.Models.Character.FactionType)((((int)Character.Faction) + 1) % factionsCount);
+        int factionsCount = Enum.GetNames(typeof(ICharacter.FactionType)).Length;
+        Character.Faction = (ICharacter.FactionType)((((int)Character.Faction) + 1) % factionsCount);
         Character.UpdateFaction();
     }
 

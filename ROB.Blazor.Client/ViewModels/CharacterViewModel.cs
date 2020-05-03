@@ -1,67 +1,57 @@
-﻿using ROB.Blazor.Shared.Models;
+﻿using ROB.Blazor.Shared.Interfaces.CombatTracker;
+using ROB.Blazor.Shared.Models;
 using System;
 using System.Collections.Generic;
+using static ROB.Blazor.Shared.Interfaces.CombatTracker.ICharacter;
 
 namespace ROB.Blazor.Client.ViewModels
 {
-    public class CharacterViewModel : Character
+    public class CharacterViewModel : Character, ICharacter
     {
         public event Action TargetListChanged;
         public event Action TargetedStateChanged;
         public event Action FactionChanged;
         public event Action StatsChanged;
-        public event Action<CharacterViewModel, CharacterViewModel, string> ActionPerformed;
+        public event Action<ICharacter, ICharacter, string> ActionPerformed;
 
-        //public List<Weapon> Weapons { get; set; } = new List<Weapon>();
         public List<string> Reactions { get; set; } = new List<string>();
         public List<string> Traits { get; set; } = new List<string>();
         public List<string> Actions { get; set; } = new List<string>();
         public List<string> Effects { get; set; } = new List<string>();
-        public List<CharacterViewModel> Targets { get; private set; } = new List<CharacterViewModel>();
-        public List<Stat> GetStats()
+        public List<ICharacter> Targets { get; set; } = new List<ICharacter>();
+
+        public List<IStat> GetAttrStats()
         {
-            List<Stat> stats = new List<Stat>();
-
-            stats.AddRange(new[]
+            return new List<IStat>()
             {
-                AR, EVA, HP, PDR, RM, Tmp, Wnd
-            });
-
-            return stats;
+                RM, EVA, AR, PDR, Size, Reach
+            };
         }
 
-        public List<Stat> GetPrimaryStats()
+        public List<IStat> GetCharBarStats()
         {
-            List<Stat> stats = new List<Stat>();
-
-            stats.AddRange(new[]
+            return new List<IStat>()
             {
-                Rct, HP, Tmp, Wnd
-            });
-
-            return stats;
+                Rct, HP, Tmp, Wnd, Toxic, Psychic
+            };
         }
 
-        public List<Stat> GetAllStats()
+        public List<IStat> GetAllStats()
         {
-            List<Stat> stats = new List<Stat>();
-
-            stats.AddRange(new[]
+            return new List<IStat>()
             {
                 Rct, AR, EVA, HP, PDR, RM, Tmp, Wnd, Size, Reach
-            });
-
-            return stats;
+            };
         }
 
-        public void AddTarget(CharacterViewModel character)
+        public void AddTarget(ICharacter character)
         {
             Targets.Add(character);
             TargetListChanged?.Invoke();
             character.UpdateTargetedState();
         }
 
-        public void RemoveTarget(CharacterViewModel character)
+        public void RemoveTarget(ICharacter character)
         {
             Targets.Remove(character);
             TargetListChanged?.Invoke();
@@ -99,7 +89,7 @@ namespace ROB.Blazor.Client.ViewModels
 
         public void PerformAction(string str)
         {
-            foreach (CharacterViewModel character in Targets)
+            foreach (ICharacter character in Targets)
             {
                 ActionPerformed?.Invoke(this, character, str);
             }

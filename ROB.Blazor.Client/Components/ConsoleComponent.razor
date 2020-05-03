@@ -1,4 +1,6 @@
 ﻿@inject IJSRuntime JSRuntime;
+@implements IConsole
+@using ROB.Blazor.Shared.Interfaces.CombatTracker
 
 <div class="console-wrapper">
     <h3>Console</h3>
@@ -14,15 +16,20 @@
 @code {
     private List<string> ConsoleStatements = new List<string>();
 
-    public void WriteToConsole(string message)
+    public void Log(string message)
     {
         ConsoleStatements.Add(message);
+
+        while (ConsoleStatements.Count > 50)
+            ConsoleStatements.RemoveAt(0);
+
         ScrollToBottom();
+
         this.StateHasChanged();
     }
 
     private void ScrollToBottom()
     {
-        JSRuntime.InvokeVoidAsync("setScrollToLoc", 4000);
+        JSRuntime.InvokeVoidAsync("setScrollToLoc", 4000); //this doesn't work currently but is supposed to keep the scroll at the bottom
     }
 }

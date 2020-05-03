@@ -1,4 +1,4 @@
-﻿@using ROB.Blazor.Client.ViewModels
+﻿@using ROB.Blazor.Shared.Interfaces.CombatTracker
 
 <div class="character-details transition-height-scale" style="@GetCollapsedState()">
     <span class="oi oi-pulse" style="color:@(Character.GetFactionColor(Hidden))"></span>
@@ -9,7 +9,7 @@
 
 @code {
     [CascadingParameter(Name = "Character")]
-    protected CharacterViewModel Character { get; set; }
+    protected ICharacter Character { get; set; }
 
     [Parameter]
     public bool Hidden { get; set; }

@@ -1,6 +1,8 @@
-﻿namespace ROB.Blazor.Shared.Models
+﻿using ROB.Blazor.Shared.Interfaces.CombatTracker;
+
+namespace ROB.Blazor.Shared.Models
 {
-    public class Stat
+    public class Stat : IStat
     {
         public int Id { get; set; }
         public string Name { get; set; }

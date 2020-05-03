@@ -1,4 +1,4 @@
-﻿@using ROB.Blazor.Client.ViewModels
+﻿@using ROB.Blazor.Shared.Interfaces.CombatTracker
 
 <div class="character faction-@Character.Faction.ToString().ToLower() @(Character == ActiveCharacter ? $"faction-{Character.Faction.ToString().ToLower()}-active" : "")">
     <div class="character-targeted character-targeted-@Character.Faction.ToString().ToLower()" hidden="@_crosshairHidden"></div>
@@ -7,7 +7,7 @@
             <span class="tooltip-text">Target</span>
         </span>
         <span>@Character.Name (@Character.Dem)</span>
-        @foreach (var stat in Character.GetPrimaryStats())
+        @foreach (var stat in Character.GetCharBarStats())
         {
             <input @bind="@stat.Value" readonly />
         }
@@ -17,7 +17,6 @@
         <span class="oi oi-target" @onclick="@(() =>ToggleStatSectionVisible("targets"))" style="color:@(Character.GetFactionColor(_targetHidden))"></span><!-- target -->
         <span class="oi oi-list" @onclick="@(()=>ToggleStatSectionVisible("attributes"))" style="color:@(Character.GetFactionColor(_attrHidden))"></span><!-- attributes -->
         <span class="oi oi-eyedropper" @onclick="@(()=>ToggleStatSectionVisible("offense"))" style="color:@(Character.GetFactionColor(_offenseHidden))"></span><!-- offense -->
-        <span class="oi oi-crop" @onclick="@(()=>ToggleStatSectionVisible("size-reach"))" style="color:@(Character.GetFactionColor(_sizeReachHidden))"></span><!-- size and reach -->
         <span class="oi oi-pulse" @onclick="@(()=>ToggleStatSectionVisible("effects"))" style="color:@(Character.GetFactionColor(_effectsHidden))"></span><!-- effects -->
         <span class="oi oi-clipboard" @onclick="@(()=>CharacterSheetClicked(Character))"></span><!-- open char sheet -->
     </div>
@@ -25,30 +24,28 @@
     <CharacterTargetComponent Hidden="@_targetHidden" />
     <CharacterAttributesComponent Hidden="@_attrHidden" />
     <CharacterOffenseComponent Hidden="@_offenseHidden" />
-    <CharacterSizeReachComponent Hidden="@_sizeReachHidden" />
     <CharacterEffectsComponent Hidden="@_effectsHidden" />
 
 </div>
 
 @code {
     [CascadingParameter(Name = "Character")]
-    protected CharacterViewModel Character { get; set; }
+    protected ICharacter Character { get; set; }
 
     [CascadingParameter(Name = "ActiveCharacter")]
-    protected CharacterViewModel ActiveCharacter { get => _activeCharacter; set { _activeCharacter = value; _crosshairHidden = true; } }
+    protected ICharacter ActiveCharacter { get => _activeCharacter; set { _activeCharacter = value; _crosshairHidden = true; } }
 
-    private CharacterViewModel _activeCharacter;
+    private ICharacter _activeCharacter;
 
     [Parameter]
     public Action<string> LogAction { get; set; }
 
     [Parameter]
-    public Action<CharacterViewModel> OpenCharacterSheet { get; set; }
+    public Action<ICharacter> OpenCharacterSheet { get; set; }
 
     private bool _targetHidden = true;
     private bool _attrHidden = true;
     private bool _offenseHidden = true;
-    private bool _sizeReachHidden = true;
     private bool _effectsHidden = true;
     private bool _crosshairHidden = true;
     private bool _charSheetHidden = true;
@@ -72,13 +69,13 @@
         StateHasChanged();
     }
 
-    private void FactionToggle(CharacterViewModel character)
+    private void FactionToggle(ICharacter character)
     {
-        int factionsCount = Enum.GetNames(typeof(ROB.Blazor.Shared.Models.Character.FactionType)).Length;
-        character.Faction = (ROB.Blazor.Shared.Models.Character.FactionType)((((int)character.Faction) + 1) % factionsCount);
+        int factionsCount = Enum.GetNames(typeof(ICharacter.FactionType)).Length;
+        character.Faction = (ICharacter.FactionType)((((int)character.Faction) + 1) % factionsCount);
     }
 
-    private void TargetEnd(CharacterViewModel targetCharacter)
+    private void TargetEnd(ICharacter targetCharacter)
     {
         if (ActiveCharacter.Targets.Contains(targetCharacter))
         {
@@ -90,7 +87,7 @@
         }
     }
 
-    private bool IsTargeted(CharacterViewModel targetCharacter)
+    private bool IsTargeted(ICharacter targetCharacter)
     {
         if (!ActiveCharacter.Targets.Contains(targetCharacter))
         {
@@ -113,7 +110,7 @@
     }
 
     private async void ToggleStatSectionVisible(string section)
-    {   
+    {
         bool initialState = true;
 
         if (section == "targets")
@@ -128,23 +125,18 @@
         {
             initialState = _offenseHidden;
         }
-        else if (section == "size-reach")
-        {
-            initialState = _sizeReachHidden;
-        }
         else if (section == "effects")
         {
             initialState = _effectsHidden;
         }
 
-        if(!_targetHidden || !_attrHidden || !_offenseHidden || !_sizeReachHidden || !_effectsHidden)
+        if (!_targetHidden || !_attrHidden || !_offenseHidden || !_effectsHidden)
         {
             _targetHidden = true;
             _attrHidden = true;
             _offenseHidden = true;
-            _sizeReachHidden = true;
             _effectsHidden = true;
-            
+
             await Task.Delay(1000);
         }
 
@@ -161,10 +153,6 @@
         {
             _offenseHidden = false;
         }
-        else if (section == "size-reach" && initialState)
-        {
-            _sizeReachHidden = false;
-        }
         else if (section == "effects" && initialState)
         {
             _effectsHidden = false;
@@ -174,14 +162,13 @@
             _targetHidden = true;
             _attrHidden = true;
             _offenseHidden = true;
-            _sizeReachHidden = true;
             _effectsHidden = true;
         }
 
         StateHasChanged();
     }
 
-    private void CharacterSheetClicked(CharacterViewModel character)
+    private void CharacterSheetClicked(ICharacter character)
     {
         OpenCharacterSheet?.Invoke(character);
     }

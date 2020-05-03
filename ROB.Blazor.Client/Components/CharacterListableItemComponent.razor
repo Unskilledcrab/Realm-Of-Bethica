@@ -1,4 +1,4 @@
-﻿@using ROB.Blazor.Client.ViewModels
+﻿@using ROB.Blazor.Shared.Interfaces.CombatTracker
 
 <span>@Title</span>
 <div class="list">
@@ -17,7 +17,7 @@
 
 @code {
     [CascadingParameter]
-    public CharacterViewModel Character { get; set; }
+    public ICharacter Character { get; set; }
 
     [Parameter]
     public List<string> ListedItems { get; set; }
