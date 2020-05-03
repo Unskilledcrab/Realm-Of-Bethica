@@ -69,8 +69,8 @@ namespace ROB.Web
 
             services.AddScoped<AuthorizeSheetOwnerAttribute>();
 
-            services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.AddTransient<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
