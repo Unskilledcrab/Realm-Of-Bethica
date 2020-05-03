@@ -21,7 +21,7 @@ namespace ROB.Discord.Commands
                 .WithDescription($"{announcement}")
                 .AddField("**Meeting Agenda**", $"Click [here]({meetingAgendaURL}) to view the meeting agenda." +
                 $"\nPlease add anything you would like to discuss during the meeting to the agenda" +
-                $"\n\nNOTE: This is an open meeting anyone who would like to join can join")
+                $"\n\nNOTE: This is an **open** meeting anyone who would like to join can join")
                 .Build();
 
             return Context.Guild
@@ -37,7 +37,7 @@ namespace ROB.Discord.Commands
                 .WithDescription($"{announcement}")
                 .AddField("**Meeting Agenda**", $"Click [here]({meetingAgendaURL}) to view the meeting agenda." +
                 $"\nPlease add anything you would like to discuss during the meeting to the agenda" +
-                $"\n\nNOTE: This is a closed meeting if would like to be a part of this meeting or have something to discuss with lead, please DM a project lead")
+                $"\n\nNOTE: This is a **closed** meeting if would like to be a part of this meeting or have something to discuss with lead, please DM a project lead")
                 .Build();
 
             return Context.Guild

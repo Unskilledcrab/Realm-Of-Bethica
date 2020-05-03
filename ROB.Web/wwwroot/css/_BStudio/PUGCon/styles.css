@@ -538,8 +538,7 @@
   box-shadow: 0 0 16px #dfa34e;
   color: #dfa34e;
   padding: 20px;
-  margin-top: 50px;
-  margin-left: 20px;
+  margin: 50px 20px;
   font-size: 21px;
   background-color: rgba(0,0,0,0.6);
 }
