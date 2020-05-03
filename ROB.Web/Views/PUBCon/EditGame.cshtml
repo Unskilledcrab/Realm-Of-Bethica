@@ -47,7 +47,7 @@
                                         </p>
                                     </div>
                                     <div class="col-11 col-sm-11 col-md-10 offset-md-1">
-                                        <input asp-for="EventTitle" placeholder="Your game scenario name" maxlength="30" class="form-control sans-serif-font3" />
+                                        <input asp-for="EventTitle" placeholder="Your game scenario name" maxlength="100" class="form-control sans-serif-font3" />
                                         <span asp-validation-for="EventTitle" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -140,12 +140,23 @@
                                     </div>
                                     <div class="col-11 col-md-10 offset-md-1">
                                         <select asp-for="EventStartTime" class="form-control sans-serif-font3" type="text">
-                                            <option value="12.00 PM (EST)">12.00pm to 2.00pm (EST)/(UTC -5)</option>
-                                            <option value="2.15 PM (EST)" selected="">2.15pm to 4.00pm (EST)/(UTC -5)</option>
-                                            <option value="4.15 PM (EST)">4.15pm to 6.00pm (EST)/(UTC -5)/(UTC -5)</option>
-                                            <option value="6.15 PM (EST)">6.15pm to 8.00pm (EST)/(UTC -5)</option>
-                                            <option value="8.15 PM (EST)">8.15pm to 10.00pm (EST)/(UTC -5)</option>
-                                            <option value="10.15 PM (EST)">10.15pm to 12.00am (EST)/(UTC -5)</option>
+                                            <option value="8:00 (UTC -5)">8:00 (EST UTC -5)</option>
+                                            <option value="9:00 (UTC -5)">9:00 (EST UTC -5)</option>
+                                            <option value="10:00 (UTC -5)">10:00 (EST UTC -5)</option>
+                                            <option value="11:00 (UTC -5)">11:00 (EST UTC -5)</option>
+                                            <option value="12:00 (UTC -5)">12:00 (EST UTC -5)</option>
+                                            <option value="13:00 (UTC -5)">13:00 (EST UTC -5)</option>
+                                            <option value="14:00 (UTC -5)">14:00 (EST UTC -5)</option>
+                                            <option value="15:00 (UTC -5)">15:00 (EST UTC -5)</option>
+                                            <option value="16:00 (UTC -5)">16:00 (EST UTC -5)</option>
+                                            <option value="17:00 (UTC -5)">17:00 (EST UTC -5)</option>
+                                            <option value="18:00 (UTC -5)">18:00 (EST UTC -5)</option>
+                                            <option value="19:00 (UTC -5)">19:00 (EST UTC -5)</option>
+                                            <option value="20:00 (UTC -5)">20:00 (EST UTC -5)</option>
+                                            <option value="21:00 (UTC -5)">21:00 (EST UTC -5)</option>
+                                            <option value="22:00 (UTC -5)">22:00 (EST UTC -5)</option>
+                                            <option value="23:00 (UTC -5)">23:00 (EST UTC -5)</option>
+                                            <option value="00:00 (UTC -5)">00:00 (EST UTC -5)</option>
                                         </select>
                                         <span asp-validation-for="EventStartTime" class="text-danger"></span>
                                     </div>
