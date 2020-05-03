@@ -97,9 +97,6 @@ h6 {
 
 .rob-card1 a {
     font-size: 13px;
-    text-indent: 25px;
-    margin-top: 0px;
-    margin-bottom: 0px;
 }
 
 @media (min-width: 768px) {
@@ -112,10 +109,6 @@ h6 {
 
     .rob-card1 a {
         font-size: 16px;
-        text-indent: 25px;
-        color: #b8b2ad;
-        margin-top: 0px;
-        margin-bottom: 0px;
     }
 }
 
