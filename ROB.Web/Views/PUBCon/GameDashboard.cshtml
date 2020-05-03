@@ -82,11 +82,11 @@
                     btnSignUpText = "Full Party";
                 }
                 <div class="col-sm-6 col-md-4 rob-jumbotron1">
+                    @if (game.IsPublic == false)
+                    {
+                        <p class="alert alert-danger">WARNING: This game can only be seen by you. It has not been released to the public. Edit this game and select check box to release to public.</p>
+                    }
                     <h3 class="text-left">
-                        @if (game.IsPublic == false)
-                        {
-                            <p class="alert alert-danger">WARNING: This game can only be seen by you. It has not been released to the public</p>
-                        }
                         <a asp-action="GameDetails" asp-route-id="@game.Id">@game.EventTitle&nbsp; &nbsp;</a>
                         <i class="fa fa-eye gold" data-bs-hover-animate="flash" id="gameDesc-@game.Id"></i>
 
@@ -107,7 +107,7 @@
                                 animateFill: true,
                                 theme: "dark",
                                 duration: 100
-                            });	
+                            });
                         </script>
                     </h3>
                     <p class="text-left">GM: @game.GameMaster</p>
@@ -117,13 +117,20 @@
                     <p class="text-left">Reserved: @game.Players.Count() / @game.MaximumPlayers</p>
                     <div class="row justify-content-center align-items-center">
                         <div class="col">
-                            @if (isSignedUp)
+                            @if (userId == game.CreatorId)
                             {
-                                <a class="btn btn-dark btn-lg text-left" asp-action="LeaveGame" asp-route-id="@game.Id">Leave Game</a>
+                                <a class="btn btn-info btn-lg text-left" asp-action="EditGame" asp-route-id="@game.Id">Edit Game</a>
                             }
                             else
                             {
-                                <a class="btn @btnClass btn-lg text-left" asp-action="JoinGame" asp-route-id="@game.Id">@btnSignUpText</a>
+                                @if (isSignedUp)
+                                {
+                                    <a class="btn btn-dark btn-lg text-left" asp-action="LeaveGame" asp-route-id="@game.Id">Leave Game</a>
+                                }
+                                else
+                                {
+                                    <a class="btn @btnClass btn-lg text-left" asp-action="JoinGame" asp-route-id="@game.Id">@btnSignUpText</a>
+                                }
                             }
                         </div>
                         <div class="col">

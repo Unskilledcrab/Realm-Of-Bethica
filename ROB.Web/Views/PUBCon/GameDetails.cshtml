@@ -9,7 +9,7 @@
 @section Styles {
     @{await Html.RenderPartialAsync("_PUGConStylesPartial");}
 }
-    
+
 <div class="body3 pug-bg" style="background-color: black;"></div>
 <div class="container pad-top-bottom-20">
     <div class="rob-card1">
@@ -33,18 +33,18 @@
                     </div>
                 </div>
 
-                <h5 class="text-left" title="Click to show game details!">
-                    <strong>@Model.EventTitle</strong>
+                <h5 class="text-left">
+                    <strong>Game Title: @Model.EventTitle</strong>
                 </h5>
-                <h5 class="text-left" title="Click to show game details!">
-                    <strong>@Model.GameType</strong>
+                <h5 class="text-left">
+                    <strong>Game Type: @Model.GameType</strong>
                 </h5>
                 <div class="row">
                     <div class="col-4">
                         <h4 class="text-left">When</h4>
-                        <p class="text-left d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">May 16th, 2020</p>
+                        <p class="text-left d-sm-inline d-md-inline d-lg-inline d-xl-inline">May 16th, 2020</p>
                         <h4 class="text-left">Where</h4>
-                        <h4 class="text-left">@Model.DiscordChannel</h4>
+                        <p class="text-left d-sm-inline d-md-inline d-lg-inline d-xl-inline">@Model.DiscordChannel</p>
                     </div>
                     <div class="col-4">
                         <h4 class="text-left">Start Time</h4>
@@ -128,25 +128,27 @@
                                     }
                                     else
                                     {
-                                        <div class="col text-center">
-                                            <a class="btn btn-success text-center" asp-action="EditGame" asp-route-id="@Model.Id">Edit Game</a>
-                                        </div>
-                                        <div class="col text-center">
-                                            <a class="btn btn-danger text-left" asp-action="DeleteGame" asp-route-id="@Model.Id">Delete Game</a>
+                                        <div class="row">
+                                            <div class="col text-center">
+                                                <a class="btn btn-success text-center" asp-action="EditGame" asp-route-id="@Model.Id">Edit Game</a>
+                                            </div>
+                                            <div class="col text-center">
+                                                <a class="btn btn-danger text-left" asp-action="DeleteGame" asp-route-id="@Model.Id">Delete Game</a>
+                                            </div>
                                         </div>
                                     }
                                 }
                             </div>
                             <div class="col text-right">
-                                <a class="btn btn-light btn-lg" asp-action="GameDashboard">Event Dashboard</a>
+                                <a class="btn btn-info btn-lg" asp-action="GameDashboard">Event Dashboard</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <partial name="_PUGSponsorFooter" />
+    </div>
 </div>
 
 

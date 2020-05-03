@@ -1,5 +1,5 @@
 .body1 {
-    background-image: url("../../../images/_BStudio/PUGCon/Background.png");
+    background-image: url("../../../images/_BStudio/PUGCon/Background.jpg");
 }
 
 .pug-bg {
@@ -16,19 +16,19 @@
 }
 
 .body2 {
-    background-image: url("../../../images/_BStudio/PUGCon/bg-Dragon3.png");
+    background-image: url("../../../images/_BStudio/PUGCon/bg-Dragon3.jpg");
 }
 
 .body3 {
-    background-image: url("../../../images/_BStudio/PUGCon/bg-Templar1.png");
+    background-image: url("../../../images/_BStudio/PUGCon/bg-Templar1.jpg");
 }
 
 .body4 {
-    background-image: url("../../../images/_BStudio/PUGCon/bg-Dwarf2.png");
+    background-image: url("../../../images/_BStudio/PUGCon/bg-Dwarf2.jpg");
 }
 
 .body5 {
-    background-image: url("../../../images/_BStudio/PUGCon/bg-shieldmaiden.png");
+    background-image: url("../../../images/_BStudio/PUGCon/bg-shieldmaiden.jpg");
 }
 
 .section1 {
@@ -406,43 +406,43 @@
 }
 
 #background_smallimage_1 {
-  background-image: URL("DeanSpencer-spotcol-beartrap.png");
-  background-position: 15% 30%;
+    background-image: URL("../../../images/_BStudio/PUGCon/Landing-Page/DeanSpencer-spotcol-dwarfflamepriest.png");
+    background-position: 15% 30%;
 }
 
 #background_smallimage_2 {
-  background-image: URL("DeanSpencer-spotcol-dwarfforge.png");
-  background-position: 0% 100%;
+    background-image: URL("../../../images/_BStudio/PUGCon/Landing-Page/DeanSpencer-spotcol-dwarfforge.png");
+    background-position: 0% 100%;
 }
 
 #background_smallimage_3 {
-  background-image: URL("DeanSpencer-spotcol-elfarcher.png");
-  background-position: 85% 30%;
+    background-image: URL("../../../images/_BStudio/PUGCon/Landing-Page/DeanSpencer-spotcol-elfarcher.png");
+    background-position: 85% 30%;
 }
 
 #background_smallimage_4 {
-  background-image: URL("DeanSpencer-spotcol-elfspellsword.png");
-  background-position: 100% 100%;
+    background-image: URL("../../../images/_BStudio/PUGCon/Landing-Page/DeanSpencer-spotcol-elfspellsword.png");
+    background-position: 100% 100%;
 }
 
 #background_smallimage_5 {
-  background-image: URL("DeanSpencer-spotcol-gnomebard.png");
-  background-position: -2% 50%;
+    background-image: URL("../../../images/_BStudio/PUGCon/Landing-Page/DeanSpencer-spotcol-gnomebard.png");
+    background-position: -2% 50%;
 }
 
 #background_smallimage_6 {
-  background-image: URL("DeanSpencer-spotcol-knightvswerewolf.png");
-  background-position: 16% 80%;
+    background-image: URL("../../../images/_BStudio/PUGCon/Landing-Page/DeanSpencer-spotcol-knightvswerewolf.png");
+    background-position: 16% 80%;
 }
 
 #background_smallimage_7 {
-  background-image: URL("DeanSpencer-spotcol-ogretank.png");
-  background-position: 100% 55%;
+    background-image: URL("../../../images/_BStudio/PUGCon/Landing-Page/DeanSpencer-spotcol-ogretank.png");
+    background-position: 100% 55%;
 }
 
 #background_smallimage_8 {
-  background-image: URL("DeanSpencer-spotcol-spectralhand.png");
-  background-position: 86% 77%;
+    background-image: URL("../../../images/_BStudio/PUGCon/Landing-Page/DeanSpencer-spotcol-spectralhand.png");
+    background-position: 86% 77%;
 }
 
 #intro_info {
