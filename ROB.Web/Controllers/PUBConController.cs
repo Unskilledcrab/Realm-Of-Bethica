@@ -45,6 +45,7 @@ namespace ROB.Web.Controllers
             return View(pubConGameModel);
         }
 
+        [Authorize]
         public async Task<IActionResult> EditGame(int id)
         {
             var pubConGame = await _context.PUBConGameModel.FindAsync(id);
@@ -57,6 +58,7 @@ namespace ROB.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> EditGame(int id, PUBConGameModel pubConGame)
         {
             if (id != pubConGame.Id)
@@ -177,7 +179,7 @@ namespace ROB.Web.Controllers
 
         public async Task<IActionResult> GameDashboard()
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var games = await _context.PUBConGameModel
                 .Where(p => p.IsPublic == true || p.CreatorId == userId)
                 .Include(p => p.Players)                
