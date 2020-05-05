@@ -12,17 +12,17 @@ pipelines:
           name: Build ROB.WEB
           caches:
             - dotnetcore
-          script: # Modify the commands below to build your repository.
-            - export PROJECT_NAME=ROB.Web # - export TEST_NAME=yourTestName
+          script:
+            - export PROJECT_NAME=ROB.Web 
             - dotnet restore
-            - dotnet build $PROJECT_NAME # - dotnet test $TEST_NAME
+            - dotnet build $PROJECT_NAME 
             - pipe: atlassian/ftp-deploy:0.3.1
               variables:
                 USER: $FTP_USERNAME
                 PASSWORD: $FTP_PASSWORD
                 SERVER: $SERVER
                 REMOTE_PATH: $REMOTE_PATH
-              # LOCAL_PATH: '<string>' # Optional
+                LOCAL_PATH: $BUILD_PATH # Optional
+                DELETE_FLAG: 'false' # Optional.
               # DEBUG: '<boolean>' # Optional
-              # EXTRA_ARGS: '<string>' # Optional.
-              # DELETE_FLAG: '<boolean>' # Optional.
+              # EXTRA_ARGS: '<string>' # Optional.                
