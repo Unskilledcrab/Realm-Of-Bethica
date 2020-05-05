@@ -16,12 +16,13 @@ pipelines:
             - export PROJECT_NAME=ROB.Web 
             - dotnet restore
             - dotnet rebuild $PROJECT_NAME # build the minified css and js files
-            - dotnet build --configuration Release $PROJECT_NAME # configure project for release
+            - dotnet build $PROJECT_NAME # configure project for release
+            - dotnet publish $PROJECT_NAME # build a published version from the build
             - pipe: atlassian/ftp-deploy:0.3.1
               variables:
                 USER: $FTP_USERNAME
                 PASSWORD: $FTP_PASSWORD
                 SERVER: $SERVER
                 REMOTE_PATH: './' # remote path is setup on the FTP user access
-                LOCAL_PATH: $BUILD_PATH # directed to the build file from dotnet build stage
+                LOCAL_PATH: $BUILD_PATH # directed to the build file from dotnet publish stage
                 DELETE_FLAG: 'false' # do not delete old any files already in directory
