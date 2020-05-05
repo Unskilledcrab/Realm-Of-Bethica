@@ -14,8 +14,8 @@ pipelines:
             - dotnetcore
           script:
             - export PROJECT_NAME=ROB.Web 
+            - dotnet clean
             - dotnet restore
-            - dotnet rebuild $PROJECT_NAME # build the minified css and js files
             - dotnet build $PROJECT_NAME # configure project for release
             - dotnet publish $PROJECT_NAME # build a published version from the build
             - pipe: atlassian/ftp-deploy:0.3.1
