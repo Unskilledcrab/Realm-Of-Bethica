@@ -51,8 +51,8 @@ namespace ROB.Discord.Commands
             suggestion += $";{CommandParameters.FieldTitle}: \nRealm Creators!";
             suggestion += $";{CommandParameters.FieldDescription}: I'd love to get your input on part of the Realm I'm working on. " +
                 $"\nPlease let me know what you think. " +
-                $"\n\n*Note\nIf you would like to recieve notifications for new updates use the command*\n**!{nameof(RoleManagement.RealmCreator)}**" +
-                $"\n*If you would like to stop recieving notification use the command*\n**!{nameof(RoleManagement.Simpleton)}**";
+                $"\n\n*Note\nIf you would like to receive  notifications for new updates use the command*\n**!{nameof(RoleManagement.RealmCreator)}**" +
+                $"\n*If you would like to stop receiving notification use the command*\n**!{nameof(RoleManagement.Simpleton)}**";
 
             var embed = UBTemplates.CreateEmbedFromCommand(suggestion);
 
