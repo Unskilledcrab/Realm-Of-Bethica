@@ -15,7 +15,7 @@ pipelines:
           script:
             - export PROJECT_NAME=ROB.Web 
             - dotnet restore
-            - dotnet build $PROJECT_NAME 
+            - dotnet build --configuration Release $PROJECT_NAME 
             - pipe: atlassian/ftp-deploy:0.3.1
               variables:
                 USER: $FTP_USERNAME
