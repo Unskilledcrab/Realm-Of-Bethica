@@ -6,7 +6,7 @@
 
 		//array of custom settings
 		var settings = { 
-			'date': null,
+			'date': "16 Saturday 2020 08:00:00",
 			'format': null
 		};
 
