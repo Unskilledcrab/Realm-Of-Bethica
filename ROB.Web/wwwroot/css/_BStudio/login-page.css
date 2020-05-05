@@ -36,16 +36,24 @@
 
 .BG-Image {
   background: url(../../images/_BStudio/BG/3Body-BG.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 1331px;
-  background-attachment: fixed;
+}
+
+.pug-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: contain;
+    z-index: -1000;
+    transition: opacity 2s;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .Container {
   height: 1331px;
-  /*background-color: rgba(21,19,18,0.63);*/
+  background-color: rgba(21,19,18,0.63);
   margin-top: 15px;
   max-width: 2286px;
 }

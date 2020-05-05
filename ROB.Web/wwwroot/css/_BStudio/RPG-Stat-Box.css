@@ -2,13 +2,17 @@
   color: #b8b2ad;
   font-size: 16px;
   font-weight: 700;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .col-sm-6.col-md-4 {
 }
 
 .BG-Image-1 {
-  background: url(../../images/_BStudio/DCS/Backcover_final_No_LogoEdit_72dpi_01.jpg);
+  background: url(../../images/_BStudio/Shared/bg-landing-page.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

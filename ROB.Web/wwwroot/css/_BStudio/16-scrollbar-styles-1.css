@@ -1,5 +1,6 @@
 .sc-overflow {
   overflow-y: auto;
+  height: 339px;
 }
 
 .scstyle-1::-webkit-scrollbar-track {

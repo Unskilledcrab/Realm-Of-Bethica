@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>dotnet-ROB.Discord-4833B327-4455-4A5F-AC24-B3860CE6FCA1</UserSecretsId>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +11,10 @@
     <Content Remove="Models\**" />
     <EmbeddedResource Remove="Models\**" />
     <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Helpers\UBCommands.cs" />
   </ItemGroup>
 
   <ItemGroup>

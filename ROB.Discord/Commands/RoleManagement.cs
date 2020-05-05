@@ -5,7 +5,6 @@ using ROB.Discord.Secrets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ROB.Discord.Commands
@@ -37,16 +36,16 @@ namespace ROB.Discord.Commands
             return RealmCreatorLossComments[selection];
         }
 
-        [Command(nameof(UBCommands.RealmCreator))]
+        [Command(nameof(RealmCreator))]
         public async Task RealmCreator()
         {
             var user = Context.User;
             var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == nameof(DiscordSecrets.Realm_Creators));
             await (user as IGuildUser).AddRoleAsync(role);
-            await ReplyAsync($"{RandomRealmCreatorGainComment()}\nIf you want to neglect your new role and hide from your responsibilies use the command \"!{nameof(UBCommands.Simpleton)}\"");
+            await ReplyAsync($"{RandomRealmCreatorGainComment()}\nIf you want to neglect your new role and hide from your responsibilies use the command \"!{nameof(Simpleton)}\"");
         }
 
-        [Command(nameof(UBCommands.Simpleton))]
+        [Command(nameof(Simpleton))]
         public async Task Simpleton()
         {
             var user = Context.User;

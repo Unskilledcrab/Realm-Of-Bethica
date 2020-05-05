@@ -1,13 +1,13 @@
 .BG-Image-1 {
-  background: url(../../images/_BStudio/DCS/Backcover_final_No_LogoEdit_72dpi_01.jpg);
+  background: url(../../images/_BStudio/Shared/bg-landing-page.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-.bgc-blk {
-  background-color: rgba(0,0,0,0.75);
+.BG-Image-1a {
+  background: url(../../images/_BStudio/Shared/bg-landing-page.jpg);
 }
 
 .bgc-c2 {
@@ -52,6 +52,12 @@
 .c2 {
   color: #b8b2ad!important;
   font-family: Amarante, cursive;
+}
+
+.c2-indent-25 {
+  color: #b8b2ad!important;
+  font-family: Amarante, cursive;
+  text-indent: 25px;
 }
 
 .c2-wt-300 {
@@ -205,10 +211,6 @@
   width: 50px;
 }
 
-.wth-800 {
-  /*width: 800px;*/
-}
-
 .footer-dark {
   padding: 50px 0;
   color: #f0f9ff;
@@ -316,7 +318,7 @@
 }
 
 .nav-bar-font {
-  font-size: 30px;
+  font-size: 20px;
   font-family: Amarante, cursive;
   color: #dfa34e!important;
 }
@@ -327,5 +329,52 @@
 
 .hd-bgc-blk {
   background-color: #000000;
+}
+
+.hd-bgc-clr {
+  background-color: rgba(0,0,0,0);
+}
+
+.max-width-100 {
+  max-width: 100%;
+}
+
+.c1-25 {
+  color: #dfa34e;
+  font-size: 25px;
+}
+
+.c2-24 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #b8b2ad;
+  width: 700px;
+}
+
+.indent-15 {
+  text-indent: 15px;
+}
+
+.indent-25 {
+  text-indent: 25px;
+}
+
+.btn-collapse {
+  font-size: 25px;
+  color: #dfa34e;
+  background-color: rgba(255,255,255,0)!important;
+  border-color: rgba(255,255,255,0);
+}
+
+.separator-1 {
+  height: 30px;
+  background-image: url(../../images/_BStudio/Shared/CharacterCreate_Separator.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.pad-top-30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 

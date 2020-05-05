@@ -1,39 +1,39 @@
 ﻿@page
 @model RegisterModel
-@{
-    ViewData["Title"] = "Register";
-}
 
 <h2>@ViewData["Title"]</h2>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.UserName"></label>
-                <input asp-for="Input.UserName" class="form-control" />
-                <span asp-validation-for="Input.UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+
+<div class="BG-Image-1a pug-bg"></div>
+<div class="container hd-bgc-clr" style="margin-bottom: 60px; margin-top: 60px;">
+    <div class="row">
+        <div class="col">
+            <form class="form-registration" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h1 class="text-center text-white header-c1">Create a new account.</h1>
+                <h6 class="text-center c1-25">For the UB Unlimited Site</h6>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group" style="margin-right:24px;margin-left:24px;margin-bottom:16px;">
+                    <input asp-for="Input.UserName" placeholder="Account Name" class="form-control form-control-sm" style="height: 36px;font-size: 20px;background-color: rgba(0,0,0,0.5);padding: 0px;padding-left: 8px;color: #dfa34e;" />
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-right:24px;margin-left:24px;">
+                    <input asp-for="Input.Email" placeholder="E-mail Address" class="form-control form-control-sm" style="height: 36px;font-size: 20px;background-color: rgba(0,0,0,0.5);padding: 0px;padding-left: 8px;color: #dfa34e;" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-right:24px;margin-left:24px;">
+                    <input asp-for="Input.Password" placeholder="Password" class="form-control form-control-sm" style="height: 36px;font-size: 20px;background-color: rgba(0,0,0,0.5);padding: 0px;padding-left: 8px;color: #dfa34e;" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-right:24px;margin-left:24px;">
+                    <input asp-for="Input.ConfirmPassword" placeholder="Confirm Password" class="form-control form-control-sm" style="height: 36px;font-size: 20px;background-color: rgba(0,0,0,0.5);padding: 0px;padding-left: 8px;color: #dfa34e;" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group mx-auto mx-sm-auto mx-md-auto mx-lg-auto mx-xl-auto" style="width:150px;margin-top:10px;height:34px;margin-bottom:10px;">
+                    <button type="submit" class="btn btn-primary btn-block" style="font-family:lifecraft;font-size:33px;background-color:rgba(55,171,255,0.74);margin-top:0px;width:150px;font-weight:normal;line-height:30px;color:rgb(255,255,255);letter-spacing:1px;padding:0px;">Register</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

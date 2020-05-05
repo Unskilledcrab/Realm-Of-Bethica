@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ROB.Discord.Secrets
+﻿namespace ROB.Discord.Secrets
 {
     class DiscordSecrets
     {
@@ -13,6 +9,8 @@ namespace ROB.Discord.Secrets
         #region Staff
         public static readonly ulong BethicaChatChannel = 594217500665839782;
         public static readonly ulong BotTestChannel = 696888604571467826;
+        public static readonly ulong AbsentUpdateChannel = 688093085237772446;
+        public static readonly ulong MarketingChatChannel = 689967506344902766;
         #endregion
 
         #region Community

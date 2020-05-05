@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using ROB.Web.Data;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -46,14 +42,14 @@ namespace ROB.Web.Attributes
                 .Select(c => c.Id)
                 .FirstOrDefaultAsync().ConfigureAwait(false);
             
-            if (sheet == null) // check if this is the sheet owner
+            if (sheet == null || sheet < 1) // check if this is the sheet owner
             {
-                var viewer = await _context.CharacterSheetModel
-                    .Where(c => c.Id == sheetId)
-                    .Include(c => c.PermissionViewers.Where(p => p.ApplicationUserId == userId))
-                    .Select(c => c.Id)
+                var viewerId = await _context.CharacterSheetModel
+                    .Include(c => c.PermissionViewers)
+                    .Where(c => c.Id == sheetId && c.PermissionViewers.Any(p => p.ApplicationUserId == userId))
+                    .Select(c => c.PermissionViewers.Select(p => p.ApplicationUserId).FirstOrDefault())
                     .FirstOrDefaultAsync().ConfigureAwait(false);
-                if (viewer == null) // check if this person is in the viewing permissions list
+                if (viewerId == null) // check if this person is in the viewing permissions list
                 {
                     filterContext.Result = new BadRequestObjectResult("You can not view this sheet");
                     return;

@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using ROB.Web.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ROB.Web
 {
     public class ApplicationUser : IdentityUser
     {
         public string Guild { get; set; }
+
+        public ICollection<User_PUBConGame_Link> PUBConGames { get; set; } = new List<User_PUBConGame_Link>();
+        public ICollection<PUBConGameModel> PUBConGMGames { get; set; } = new List<PUBConGameModel>();
+
 
         #region Viewing Permissions
         public ICollection<PermissionViewer_Town_Link> ViewableTowns { get; set; } = new List<PermissionViewer_Town_Link>();

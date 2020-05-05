@@ -1,0 +1,150 @@
+﻿@model IEnumerable<ROB.Web.Models.PUBConGameModel>
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    ViewData["Title"] = "Game Dashboard";
+    Layout = "_PUGLayout";
+}
+
+@section Styles {
+    @{await Html.RenderPartialAsync("_PUGConStylesPartial");}
+}
+
+<div class="body2 pug-bg"></div>
+<div class="container">
+    <div class="sans-serif-font1">
+        <div class="row pad-top-20">
+            <div class="col-4">
+                <p class="text-uppercase sans-serif-font2">Upcoming Games</p>
+            </div>
+            <div class="col-2 text-right"><a class="btn btn-link" asp-action="TermsOfConduct">Code Of Conduct</a></div>
+            <div class="col-2 text-right"><a class="btn btn-link">Event Details</a></div>
+            <div class="col-4 text-right"><a class="btn btn-info" asp-action="CreateGame">Create New</a></div>
+            <div class="col-8 d-none">
+                <p class="text-uppercase text-center sans-serif-font2"><strong>PUG Game Day CON</strong></p>
+                <p class="text-uppercase text-center sans-serif-font2"><strong>Dashboard</strong></p>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="color: rgb(0,0,0);">
+
+            <div class="col-5 d-none d-sm-none d-md-none d-lg-none d-xl-inline">
+                <div class="timer-area">
+                    <h1>PUG Game Day Con</h1>
+                    <h1>Dashboard</h1>
+                    <ul id="countdown">
+                        <li>
+                            <span class="days">00</span>
+                            <p class="timeRefDays">days</p>
+                        </li>
+                        <li>
+                            <span class="hours">00</span>
+                            <p class="timeRefHours">hours</p>
+                        </li>
+                        <li>
+                            <span class="minutes">00</span>
+                            <p class="timeRefMinutes">minutes</p>
+                        </li>
+                        <li>
+                            <span class="seconds">00</span>
+                            <p class="timeRefSeconds">seconds</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="row justify-content-center align-items-center">
+            @if (Model.Count() == 0)
+            {
+                <h3>No Games Have Been Created Yet :(</h3>
+            }
+            @foreach (var game in Model)
+            {
+                bool isSignedUp = false;
+                var userId = userManager.GetUserId(User);
+                foreach (var player in game.Players)
+                {
+                    if (player.UserId == userId) isSignedUp = true;
+                }
+
+                var playerCount = game.Players.Count();
+                var maxPlayers = game.MaximumPlayers;
+                var btnClass = "btn-success";
+                var btnSignUpText = "Sign Up";
+                if (playerCount >= (maxPlayers - 2))
+                {
+                    btnClass = "btn-warning";
+                    btnSignUpText = "Sign Up Quick!";
+                }
+                else if (playerCount >= maxPlayers)
+                {
+                    btnClass = "btn-dark disabled";
+                    btnSignUpText = "Full Party";
+                }
+                <div class="col-sm-6 col-md-4 rob-jumbotron1">
+                    @if (game.IsPublic == false)
+                    {
+                        <p class="alert alert-danger">WARNING: This game can only be seen by you. It has not been released to the public. Edit this game and select check box to release to public.</p>
+                    }
+                    <h3 class="text-left">
+                        <a asp-action="GameDetails" asp-route-id="@game.Id">@game.EventTitle&nbsp; &nbsp;</a>
+                        <i class="fa fa-eye gold" data-bs-hover-animate="flash" id="gameDesc-@game.Id"></i>
+
+                        <script>
+                            tippy('#gameDesc-@game.Id', {
+                                content: `<div class="container">
+                                    <div class="rob-card">
+                                        <div class="col-sm-6 col-md-4 rob-jumbotron2">
+                                            <h3 class="text-left">@game.EventTitle<br /></h3>
+                                            <p class="text-justify">@game.Description<br /></p>
+                                        </div>
+                                    </div>
+                                </div>`,
+                                placement: 'top',
+                                arrow: false,
+                                maxWidth: 500,
+                                allowHTML: true,
+                                animateFill: true,
+                                theme: "dark",
+                                duration: 100
+                            });
+                        </script>
+                    </h3>
+                    <p class="text-left">GM: @game.GameMaster</p>
+                    <p class="text-left">Game Type: @game.GameType</p>
+                    <p class="text-left">Date: May 16th, 2020</p>
+                    <p class="text-left">Time: @game.EventStartTime</p>
+                    <p class="text-left">Reserved: @game.Players.Count() / @game.MaximumPlayers</p>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col">
+                            @if (userId == game.CreatorId)
+                            {
+                                <a class="btn btn-info text-left" asp-action="EditGame" asp-route-id="@game.Id">Edit Game</a>
+                            }
+                            else
+                            {
+                                @if (isSignedUp)
+                                {
+                                    <a class="btn btn-dark text-left" asp-action="LeaveGame" asp-route-id="@game.Id">Leave Game</a>
+                                }
+                                else
+                                {
+                                    <a class="btn @btnClass text-left" asp-action="JoinGame" asp-route-id="@game.Id">@btnSignUpText</a>
+                                }
+                            }
+                        </div>
+                        <div class="col">
+                            <img src="~/images/_BStudio/PUGCon/PUG-Logo.png" style="width: 142px;">
+                        </div>
+                    </div>
+                </div>
+            }
+            <partial name="_PUGSponsorFooter" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_PUGConScriptPartial");}
+}

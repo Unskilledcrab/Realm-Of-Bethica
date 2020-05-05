@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ROB.Mobile.Models
+﻿namespace ROB.Mobile.Models
 {
     public enum MenuItemType
     {

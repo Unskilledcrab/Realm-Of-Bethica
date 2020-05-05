@@ -1,0 +1,158 @@
+﻿@model ROB.Web.Models.PUBConGameModel
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    ViewData["Title"] = "Game Details";
+    Layout = "_PUGLayout";
+}
+
+@section Styles {
+    @{await Html.RenderPartialAsync("_PUGConStylesPartial");}
+}
+
+<div class="body3 pug-bg" style="background-color: black;"></div>
+<div class="container pad-top-bottom-20">
+    <div class="rob-card1">
+        <div class="row pad-top-20">
+            <div class="col-12">
+                <h1>
+                    <strong>
+                        <span style="text-decoration: underline;">Game Details</span>
+                    </strong>
+                </h1>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center rob-card1">
+            <div class="col-12 box-border3">
+                <div class="row">
+                    <div class="col-1">
+                        <img src="~/images/_BStudio/PUGCon/Ninja_Male_Pog_01.png" style="width: 60px;">
+                    </div>
+                    <div class="col">
+                        <h4 class="text-left">GM: @Model.GameMaster</h4>
+                    </div>
+                </div>
+
+                <h5 class="text-left">
+                    <strong>@Model.EventTitle</strong>
+                </h5>
+                <h5 class="text-left">
+                    <strong>@Model.GameType</strong>
+                </h5>
+                <div class="row">
+                    <div class="hidden-sm col-md-4">
+                        <h4 class="text-left d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">When</h4>
+                        <p class="text-left d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline">May 16th, 2020</p>
+                        <h4 class="text-left">Where</h4>
+                        <a href="@Model.DiscordChannel" class="text-left d-sm-inline d-md-inline d-lg-inline d-xl-inline">@Model.DiscordChannel</a>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <h4 class="text-left">Start Time</h4>
+                        <p class="text-left">@Model.EventStartTime</p>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <h4 class="text-right">Run Time</h4>
+                        <p class="text-right">@Model.EventDuration hours</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h4 class="text-left">Reserved</h4>
+                        @foreach (var player in @Model.Players)
+                        {
+                            <p class="text-left text-success">@player.User.UserName</p>
+                        }
+                    </div>
+                    <div class="col">
+                        <h4 class="text-right">Links</h4>
+                        <p class="text-right">@Model.GameLinks</p>
+                    </div>
+                </div>
+                <div class="row pad-top-20">
+                    <div class="col">
+                        <h4 class="text-break">
+                            <span style="text-decoration: underline;">Game Description</span>
+                        </h4>
+                        <p class="text-break text-justify">
+                            @Model.Description
+                        </p>
+                    </div>
+                </div>
+                <div class="row pad-top-20">
+                    <div class="col">
+                        <h4 class="text-break">
+                            <span style="text-decoration: underline;">GM Comments To The Players</span>
+                        </h4>
+                        <p class="text-break text-justify">
+                            @Model.MessageToPlayers
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="row text-left pad-top-20">
+                            <div class="col">
+                                @{
+                                    var userId = userManager.GetUserId(User);
+                                    if (Model.CreatorId != userId)
+                                    {
+
+                                        bool isSignedUp = false;
+                                        foreach (var player in Model.Players)
+                                        {
+                                            if (player.UserId == userId) isSignedUp = true;
+                                        }
+
+                                        var playerCount = Model.Players.Count();
+                                        var maxPlayers = Model.MaximumPlayers;
+                                        var btnClass = "btn-success";
+                                        var btnSignUpText = "Sign Up";
+                                        if (playerCount >= (maxPlayers - 2))
+                                        {
+                                            btnClass = "btn-warning";
+                                            btnSignUpText = "Sign Up Quick!";
+                                        }
+                                        else if (playerCount >= maxPlayers)
+                                        {
+                                            btnClass = "btn-dark disabled";
+                                            btnSignUpText = "Full Party";
+                                        }
+                                        if (isSignedUp)
+                                        {
+                                            <a class="btn btn-danger text-left" asp-action="LeaveGame" asp-route-id="@Model.Id">Leave Game</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn @btnClass text-left" asp-action="JoinGame" asp-route-id="@Model.Id">@btnSignUpText</a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="row">
+                                            <div class="col text-center">
+                                                <a class="btn btn-success text-center" asp-action="EditGame" asp-route-id="@Model.Id">Edit Game</a>
+                                            </div>
+                                            <div class="col text-center">
+                                                <a class="btn btn-danger text-left" asp-action="DeleteGame" asp-route-id="@Model.Id">Delete Game</a>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                            <div class="col text-right">
+                                <a class="btn btn-info" asp-action="GameDashboard">Event Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <partial name="_PUGSponsorFooter" />
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_PUGConScriptPartial");}
+}

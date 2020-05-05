@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ROB.Mobile.Models
+﻿namespace ROB.Mobile.Models
 {
     public class Item
     {

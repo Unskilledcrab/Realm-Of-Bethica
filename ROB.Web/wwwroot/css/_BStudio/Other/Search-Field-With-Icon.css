@@ -22,3 +22,37 @@
   color: #919693;
 }
 
+.btn-width-290.656 {
+  width: 290.656px;
+}
+
+.test-indent {
+}
+
+.par16-wt400-indent-50 {
+  font-size: 16px;
+  font-weight: 400;
+  text-indent: 25px;
+}
+
+.min-max-height-864 {
+  min-height: 864px;
+  max-height: 864px;
+}
+
+.body1 {
+}
+
+#sidebar-wrapper {
+}
+
+.container1 {
+  border: groove;
+  border-width: 5px;
+  border-color: #ffffff;
+  background-color: rgba(0,0,0,0.85);
+  height: 1473.33px;
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -27,12 +26,14 @@ namespace ROB.Web.Controllers
             this.userManager = userManager;
         }
 
-        public IActionResult CharacterSheetManager()
+        public async Task<IActionResult> CharacterSheetManager()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var characterSheets = _context.CharacterSheetModel
+            var characterSheets = await _context.CharacterSheetModel
                 .Include(c => c.Race)
-                .Where(c => c.CreatorId == userId);
+                .Where(c => c.CreatorId == userId)
+                .AsNoTracking()
+                .ToListAsync();
 
             return View(characterSheets);
         }
@@ -45,7 +46,7 @@ namespace ROB.Web.Controllers
             return RedirectToAction(nameof(CharacterSheetManager));
         }
 
-        public async Task<IActionResult> NewCharacter()
+        public IActionResult NewCharacter()
         {
             return View();
         }
@@ -274,7 +275,7 @@ namespace ROB.Web.Controllers
             }
         }
 
-        public async Task<IActionResult> AttributeSelection(int id)
+        public IActionResult AttributeSelection(int id)
         {
             return View(id);
         }

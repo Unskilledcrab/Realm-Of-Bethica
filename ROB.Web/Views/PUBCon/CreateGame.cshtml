@@ -1,0 +1,322 @@
+﻿@model ROB.Web.Models.PUBConGameModel
+
+@{
+    ViewData["Title"] = "Create Game";
+    Layout = "_PUGLayout";
+}
+
+@section Styles {
+    @{await Html.RenderPartialAsync("_PUGConStylesPartial");}
+}
+
+<div class="body1 pug-bg"></div>
+<section class="pad-top-110">
+    <div class="container scstyle-1 sc-overflow" id="article1_container" style="max-height: none;">
+        <article id="article1" class="bg-clear hgt-auto">
+            <div class="rob-card2">
+                <form asp-action="CreateGame">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div>
+                        <div class="form-group pad-top-20">
+                            <div id="formdiv">
+                                <div class="form-row justify-content-start pad-top-24">
+                                    <div class="col-md-8 offset-md-1">
+                                        <h1 class="text-left">
+                                            <strong>New Event Submission Form</strong>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 30px;">
+                        <div class="form-group">
+                            <div id="formdiv">
+                                <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                                    <div class="col-md-8 offset-md-1">
+                                        <h1 class="text-left">
+                                            <strong>Event Details</strong>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left">
+                                            <strong>Event Title</strong>
+                                            <br>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-sm-11 col-md-10 offset-md-1">
+                                        <input asp-for="EventTitle" placeholder="Your game scenario name" maxlength="100" class="form-control sans-serif-font3" />
+                                        <span asp-validation-for="EventTitle" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left">
+                                            <strong>Long Description</strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-sm-11 col-md-10 offset-md-1">
+
+                                        <textarea asp-for="Description" class="form-control sans-serif-font3" placeholder="Your game description goes here." minlength="50" maxlength="750"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;margin-top:-16px;">
+                                    <div class="col-10 offset-md-1">
+                                        <p class="text-left">
+                                            <strong>Game Type</strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-sm-11 col-md-10 offset-md-1">
+
+                                        <select asp-for="GameType" class="form-control sans-serif-font3">
+                                            <optgroup label="Select Game Mode">
+                                                <option value="Standard D&D 5e" selected="selected">Standard D&amp;D 5e</option>
+                                                <option value="Adventure League">Adventure League</option>
+                                            </optgroup>
+                                        </select>
+                                        <span asp-validation-for="GameType" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;margin-top:-16px;">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left">
+                                            <strong>Minimum Players</strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-sm-11 col-md-10 offset-md-1">
+
+                                        <select asp-for="MinimumPlayers" class="form-control sans-serif-font3">
+                                            <option value="3" selected="selected">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                        </select>
+                                        <span asp-validation-for="MinimumPlayers" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;margin-top:-16px;">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left">
+                                            <strong>Maximum Players</strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-sm-11 col-md-10 offset-md-1">
+
+                                        <select asp-for="MaximumPlayers" class="form-control sans-serif-font3">
+                                            <option value="3">3</option>
+                                            <option value="4" selected="selected">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                        </select>
+                                        <span asp-validation-for="MaximumPlayers" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pad-top-40">
+                        <div class="form-group">
+                            <div id="formdiv">
+                                <div class="form-row pad-top-24">
+                                    <div class="col-md-8 offset-md-1">
+                                        <h1 class="text-left">
+                                            <strong>Event Date &amp; Time</strong>
+                                            <br>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="form-row pad-top-24">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left">
+                                            <strong>Event Date</strong>
+                                            <br>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-md-10 offset-md-1">
+                                        <select asp-for="EventStartTime" class="form-control sans-serif-font3" type="text">
+                                            <option value="8:00 (UTC -5)">8:00 (EST UTC -5)</option>
+                                            <option value="9:00 (UTC -5)">9:00 (EST UTC -5)</option>
+                                            <option value="10:00 (UTC -5)">10:00 (EST UTC -5)</option>
+                                            <option value="11:00 (UTC -5)">11:00 (EST UTC -5)</option>
+                                            <option value="12:00 (UTC -5)">12:00 (EST UTC -5)</option>
+                                            <option value="13:00 (UTC -5)">13:00 (EST UTC -5)</option>
+                                            <option value="14:00 (UTC -5)">14:00 (EST UTC -5)</option>
+                                            <option value="15:00 (UTC -5)">15:00 (EST UTC -5)</option>
+                                            <option value="16:00 (UTC -5)">16:00 (EST UTC -5)</option>
+                                            <option value="17:00 (UTC -5)">17:00 (EST UTC -5)</option>
+                                            <option value="18:00 (UTC -5)">18:00 (EST UTC -5)</option>
+                                            <option value="19:00 (UTC -5)">19:00 (EST UTC -5)</option>
+                                            <option value="20:00 (UTC -5)">20:00 (EST UTC -5)</option>
+                                            <option value="21:00 (UTC -5)">21:00 (EST UTC -5)</option>
+                                            <option value="22:00 (UTC -5)">22:00 (EST UTC -5)</option>
+                                            <option value="23:00 (UTC -5)">23:00 (EST UTC -5)</option>
+                                            <option value="23:59 (UTC -5)">23:59 (EST UTC -5)</option>
+                                        </select>
+                                        <span asp-validation-for="EventStartTime" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row pad-top-24">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left">
+                                            <strong>Event Duration</strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-sm-11 col-md-10 offset-md-1">
+                                        <select asp-for="EventDuration" class="form-control sans-serif-font3">
+                                            <option value="2" selected="selected">~2 hrs</option>
+                                            <option value="3">~3 hrs</option>
+                                            <option value="4">~4 hrs</option>
+                                        </select>
+                                        <span asp-validation-for="EventDuration" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pad-top-20">
+                        <div class="form-group">
+                            <div id="formdiv">
+                                <div class="form-row pad-top-24">
+                                    <div class="col offset-md-1">
+                                        <h1 class="text-left">
+                                            <strong>Other Information</strong>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="form-row pad-top-24">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left sans-serif-font2a"><strong>Message to players</strong></p>
+                                    </div>
+                                    <div class="col-11 col-sm-11 col-md-10 offset-md-1">
+                                        <textarea asp-for="MessageToPlayers" placeholder="Here you will enter any requests or comments you have for your players!" maxlength="250" class="form-control sans-serif-font3"></textarea>
+                                        <span asp-validation-for="MessageToPlayers" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row pad-top-24">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left sans-serif-font2a"><strong>Gamemaster</strong></p>
+                                    </div>
+                                    <div class="col-11 col-sm-11 col-md-10 offset-md-1">
+
+                                        <textarea asp-for="GameMaster" placeholder="Enter GM name here!" maxlength="50" class="form-control sans-serif-font3"></textarea>
+                                        <span asp-validation-for="GameMaster" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row pad-top-24">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left sans-serif-font2a"><strong>Game Day Discord Channel</strong></p>
+                                    </div>
+                                    <div class="col-11 col-md-10 col-lg-10 col-xl-10 offset-md-1">
+                                        <textarea asp-for="DiscordChannel" placeholder="Paste the discord channel invite link!" maxlength="100" class="form-control sans-serif-font3"></textarea>
+                                        <span asp-validation-for="DiscordChannel" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-row pad-top-24">
+                                    <div class="col-md-8 offset-md-1">
+                                        <p class="text-left sans-serif-font2a">
+                                            <strong>Gamemaster Discord Name</strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-md-10 offset-md-1">
+                                        <input asp-for="GameMasterDiscordName" placeholder="Enter your discord name here!" maxlength="50" class="form-control sans-serif-font3" />
+                                        <span asp-validation-for="GameMasterDiscordName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row pad-top-24">
+                                    <div class="col-11 offset-md-1">
+                                        <p class="text-left sans-serif-font2a">
+                                            <strong>Gamemaster Links</strong>
+                                        </p>
+                                    </div>
+                                    <div class="col-11 col-md-10 offset-md-1">
+                                        <textarea asp-for="GameLinks" placeholder="www.mysite.com" class="form-control sans-serif-font3"></textarea>
+                                        <span asp-validation-for="GameLinks" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                @*<div class="form-row pad-top-24">
+                                        <div class="col">
+                                            <div class="dashed_upload">
+                                                <div class="wrapper">
+                                                    <div class="drop">
+                                                        <div class="cont">
+                                                            <i class="fa fa-cloud-upload">
+                                                            </i>
+                                                            <div class="tit">
+                                                                Drag & Drop
+                                                            </div>
+                                                            <div class="desc">
+                                                                or
+                                                            </div>
+                                                            <div class="browse">
+                                                                click here to browse
+                                                            </div>
+                                                        </div>
+                                                        <output id="list">
+                                                        </output>
+                                                        <input id="files" multiple name="files[]" type="file" />
+                                                    </div>
+                                                </div>
+                                                <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'>
+                                                </script>
+
+                                                <script src="js/index.js">
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="pad-top-20">
+                            <div class="form-group">
+                                <div class="text-center" id="formdiv">
+                                    <div class="form-row pad-top-24">
+                                        <div class="col-4 pad-top-20">
+                                            <input value="Clear" class="btn btn-danger" type="reset">
+                                        </div>
+                                        <div class="col-4 pad-top-20">
+                                            <a class="btn btn-info" asp-action="GameDashboard">Event Dashboard</a>
+                                        </div>
+                                        <div class="col-4 pad-top-20">
+                                            <input type="submit" value="Save" class="btn btn-success">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row pad-top-24">
+                                        <div class="col-11">
+                                            <p class="rob-body rob-gold-100">
+                                                Check box to make game public on the main game dashboard <input asp-for="IsPublic" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </article>
+        <partial name="_PUGSponsorFooter" />
+    </div>
+</section>
+<div id="background_image_1"></div>
+<div id="background_image_2"></div>
+<div id="background_image_3"></div>
+<div id="background_image_4"></div>
+<div id="background_image_5"></div>
+<div id="background_image_6"></div>
+<div id="background_image_7"></div>
+<div id="background_image_8"></div>
+<div id="background_image_9"></div>
+<div id="background_image_10"></div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_PUGConScriptPartial");}
+}

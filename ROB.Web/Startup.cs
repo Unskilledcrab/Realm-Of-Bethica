@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ROB.Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using ROB.Web.Models;
-using Microsoft.AspNetCore.Routing;
-using System.IO;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ROB.Web.Services;
 using ROB.Web.Attributes;
 using AutoMapper;
 using ROB.Web.Hubs;
+using Microsoft.Net.Http.Headers;
 
 namespace ROB.Web
 {
@@ -41,7 +32,7 @@ namespace ROB.Web
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
             });
 
             services.AddDbContextPool<ApplicationDbContext>(options =>
@@ -55,7 +46,7 @@ namespace ROB.Web
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
                     options.User.RequireUniqueEmail = true;
-                    options.SignIn.RequireConfirmedEmail = true;
+                    //options.SignIn.RequireConfirmedEmail = true;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
@@ -78,8 +69,8 @@ namespace ROB.Web
 
             services.AddScoped<AuthorizeSheetOwnerAttribute>();
 
-            services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.AddTransient<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,7 +89,16 @@ namespace ROB.Web
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    const int durationInSeconds = 60 * 60 * 24; // 24 hour cache
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=" + durationInSeconds;
+                }
+            });
+
             app.UseCookiePolicy();
             app.UseRouting();
 

@@ -3,8 +3,6 @@ using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using ROB.Discord.Secrets;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ROB.Discord.API

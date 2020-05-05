@@ -13,6 +13,16 @@
     <meta name="author" content="Jeremy Buentello">
     <title>@ViewData["Title"] - ROB</title>
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- font awesome -->
     <script src="https://kit.fontawesome.com/ba0a8dbb41.js"></script>
 
     <!-- Fonts -->
@@ -34,14 +44,17 @@
 
     <!-- Internal -->
     <environment include="Development">
-        @*<link rel="stylesheet" href="~/css/site.css" />
-            <link rel="stylesheet" href="~/css/characterSheet.css" />*@
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/characterSheet.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 
+
+    <partial name="_BStudioStylesPartial" />
+
+    @RenderSection("Styles", required: false)
 </head>
 <body class="bgc-clr" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
 
@@ -67,95 +80,9 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-light navbar-expand-md hd-bgc-blk">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img class="RB-Logo" src="~/images/_BStudio/Frames/2Logo.png">
-            </a>
-            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="navbar-toggler-icon" style="background-color: #dfa34e;"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link nav-bar-font" data-bs-hover-animate="bounce" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link nav-bar-font dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hero Sheets
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item disabled" asp-area="" asp-controller="Home" asp-action="Index">Create</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="CharacterCreation" asp-action="CharacterSheetManager">My Characters</a>
-                            </div>
-                        </li>
-
-                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link nav-bar-font dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Editor
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Attribute" asp-action="Index">Update Attributes Details</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="LanguageGroupType" asp-action="Index">Language Groups</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Languages" asp-action="Index">Languages</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="TechniqueGroupType" asp-action="Index">Technique Groups</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Technique" asp-action="Index">Techniques</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ParentSkill" asp-action="Index">Parent Skills</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ChildSkill" asp-action="Index">Child Skills</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="TalentGroupType" asp-action="Index">Talent Groups</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Talent" asp-action="Index">Talents</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Race" asp-action="Index">Races</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Modifier" asp-action="Index">Modifiers</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="PregenProfessionArchetype" asp-action="Index">Make Pregen Professional Archetypes</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="WeaponSize" asp-action="Index">Weapon Size</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="WeaponType" asp-action="Index">Weapon Type</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="DamageType" asp-action="Index">Damage Type</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Weapons" asp-action="Index">Weapons</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Shield" asp-action="Index">Shields</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Item" asp-action="Index">Items</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ItemCategory" asp-action="Index">Item Category</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ItemPack" asp-action="Index">Item Packs</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Poison" asp-action="Index">Poisons</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="PoisonType" asp-action="Index">Poison Type</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="PoisonClass" asp-action="Index">Poison Class</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Spell" asp-action="Index">Spells</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ArcaneSphere" asp-action="Index">Arcane Spheres</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SpellRange" asp-action="Index">Spells Range</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SpellArea" asp-action="Index">Spells Area</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SpellDuration" asp-action="Index">Spells Duration</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SpellSave" asp-action="Index">Spells Save</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SpellSizeLimit" asp-action="Index">Spells Size Limit</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SpellCastingTime" asp-action="Index">Spells Casting Time</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Armor" asp-action="Index">Armor</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ArmorRestriction" asp-action="Index">Armor Restriction</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ArmorRestoration" asp-action="Index">Armor Restoration</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link nav-bar-font dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Administration
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="ListUsers">Users</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="ListRoles">User Roles</a>
-                                </div>
-                            </li>
-                            <li class="nav-item active"><a class="nav-link nav-bar-font" asp-area="" asp-controller="Beta" asp-action="Index">Beta Features</a></li>
-                        }
-                    }
-                </ul>
-                <partial name="_LoginPartial" />
-            </div>
-        </div>
-    </nav>
 
     @*<partial name="_CookieConsentPartial" />*@
+    <partial name="_NavbarPartial" />
 
     @RenderBody()
 

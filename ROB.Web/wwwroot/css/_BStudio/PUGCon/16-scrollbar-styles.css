@@ -1,0 +1,23 @@
+.sc-overflow {
+  overflow-y: auto;
+}
+
+section {
+  min-height: 100px;
+}
+
+.container {
+}
+
+article {
+  height: 350px;
+  background: #f4f4f4;
+  padding: 10px;
+}
+
+.div-border1 {
+  border-style: groove;
+  background-color: #dfa34e;
+  border-width: thick;
+}
+

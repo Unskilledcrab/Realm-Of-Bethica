@@ -15,7 +15,7 @@ namespace ROB.Web.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.0")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -149,6 +149,27 @@ namespace ROB.Web.Data.Migrations
 
                     b.ToTable("AspNetUserTokens");
                 });
+
+            modelBuilder.Entity("ROB.Core.Models.TrelloSuggestionModel", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<string>("Sender")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<int>("Status")
+                    .HasColumnType("int");
+
+                b.Property<string>("Suggestion")
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("Id");
+
+                b.ToTable("TrelloSuggestionModel");
+            });
 
             modelBuilder.Entity("ROB.Web.ApplicationUser", b =>
                 {
@@ -1150,6 +1171,68 @@ namespace ROB.Web.Data.Migrations
                     b.ToTable("Modifier_Technique_Link");
                 });
 
+            modelBuilder.Entity("ROB.Web.Models.PUBConGameModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DiscordChannel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("EventDuration")
+                        .HasColumnType("float");
+
+                    b.Property<string>("EventStartTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EventTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameLinks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameMaster")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameMasterDiscordName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MaximumPlayers")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MessageToPlayers")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MinimumPlayers")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.ToTable("PUBConGameModel");
+                });
+
             modelBuilder.Entity("ROB.Web.Models.ParentSkillModel", b =>
                 {
                     b.Property<int>("Id")
@@ -2108,6 +2191,42 @@ namespace ROB.Web.Data.Migrations
                     b.ToTable("Town_NPC_Link");
                 });
 
+            modelBuilder.Entity("ROB.Web.Models.TrelloSuggestionModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Sender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Suggestion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrelloSuggestionModel");
+                });
+
+            modelBuilder.Entity("ROB.Web.Models.User_PUBConGame_Link", b =>
+                {
+                    b.Property<int>("PUBConGameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("PUBConGameId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("User_PUBConGame_Link");
+                });
+
             modelBuilder.Entity("ROB.Web.Models.WeaponModel", b =>
                 {
                     b.Property<int>("Id")
@@ -2722,6 +2841,13 @@ namespace ROB.Web.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ROB.Web.Models.PUBConGameModel", b =>
+                {
+                    b.HasOne("ROB.Web.ApplicationUser", "Creator")
+                        .WithMany("PUBConGMGames")
+                        .HasForeignKey("CreatorId");
+                });
+
             modelBuilder.Entity("ROB.Web.Models.ParentSkillModel", b =>
                 {
                     b.HasOne("ROB.Web.Models.AttributeModel", "FirstAttribute")
@@ -2953,43 +3079,43 @@ namespace ROB.Web.Data.Migrations
             modelBuilder.Entity("ROB.Web.Models.SpellModel", b =>
                 {
                     b.HasOne("ROB.Web.Models.ArcaneSphereModel", "ArcaneSphere")
-                        .WithMany()
+                        .WithMany("Spells")
                         .HasForeignKey("ArcaneSphereId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ROB.Web.Models.SpellAreaModel", "Area")
-                        .WithMany()
+                        .WithMany("Spells")
                         .HasForeignKey("AreaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ROB.Web.Models.SpellCastingTimeModel", "CastingTime")
-                        .WithMany()
+                        .WithMany("Spells")
                         .HasForeignKey("CastingTimeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ROB.Web.Models.SpellDurationModel", "Duration")
-                        .WithMany()
+                        .WithMany("Spells")
                         .HasForeignKey("DurationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ROB.Web.Models.SpellRangeModel", "Range")
-                        .WithMany()
+                        .WithMany("Spells")
                         .HasForeignKey("RangeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ROB.Web.Models.SpellSaveModel", "Save")
-                        .WithMany()
+                        .WithMany("Spells")
                         .HasForeignKey("SaveId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ROB.Web.Models.SpellSizeLimitModel", "SizeLimit")
-                        .WithMany()
+                        .WithMany("Spells")
                         .HasForeignKey("SizeLimitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -3112,6 +3238,21 @@ namespace ROB.Web.Data.Migrations
                     b.HasOne("ROB.Web.Models.TownModel", "Town")
                         .WithMany("NPCs")
                         .HasForeignKey("TownId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ROB.Web.Models.User_PUBConGame_Link", b =>
+                {
+                    b.HasOne("ROB.Web.Models.PUBConGameModel", "PUBConGame")
+                        .WithMany("Players")
+                        .HasForeignKey("PUBConGameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ROB.Web.ApplicationUser", "User")
+                        .WithMany("PUBConGames")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
