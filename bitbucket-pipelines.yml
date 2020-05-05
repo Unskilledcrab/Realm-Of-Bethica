@@ -21,7 +21,7 @@ pipelines:
                 USER: $FTP_USERNAME
                 PASSWORD: $FTP_PASSWORD
                 SERVER: $SERVER
-                REMOTE_PATH: $REMOTE_PATH
+              #  REMOTE_PATH: $REMOTE_PATH
                 LOCAL_PATH: $BUILD_PATH # Optional
                 DELETE_FLAG: 'false' # Optional.
               # DEBUG: '<boolean>' # Optional
