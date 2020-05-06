@@ -107,15 +107,15 @@
                                         var maxPlayers = Model.MaximumPlayers;
                                         var btnClass = "btn-success";
                                         var btnSignUpText = "Sign Up";
-                                        if (playerCount >= (maxPlayers - 2))
-                                        {
-                                            btnClass = "btn-warning";
-                                            btnSignUpText = "Sign Up Quick!";
-                                        }
-                                        else if (playerCount >= maxPlayers)
+                                        if (playerCount >= maxPlayers)
                                         {
                                             btnClass = "btn-dark disabled";
                                             btnSignUpText = "Full Party";
+                                        }
+                                        else if (playerCount >= (maxPlayers - 2))
+                                        {
+                                            btnClass = "btn-warning";
+                                            btnSignUpText = "Sign Up Quick!";
                                         }
                                         if (isSignedUp)
                                         {

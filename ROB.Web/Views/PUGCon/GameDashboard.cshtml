@@ -71,15 +71,15 @@
                 var maxPlayers = game.MaximumPlayers;
                 var btnClass = "btn-success";
                 var btnSignUpText = "Sign Up";
-                if (playerCount >= (maxPlayers - 2))
-                {
-                    btnClass = "btn-warning";
-                    btnSignUpText = "Sign Up Quick!";
-                }
-                else if (playerCount >= maxPlayers)
+                if (playerCount >= maxPlayers)
                 {
                     btnClass = "btn-dark disabled";
                     btnSignUpText = "Full Party";
+                }
+                else if (playerCount >= (maxPlayers - 2))
+                {
+                    btnClass = "btn-warning";
+                    btnSignUpText = "Sign Up Quick!";
                 }
                 <div class="col-sm-6 col-md-4 rob-jumbotron1">
                     @if (game.IsPublic == false)
