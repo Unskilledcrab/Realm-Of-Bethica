@@ -56,7 +56,7 @@
         <div class="row justify-content-center align-items-center">
             @if (Model.Count() == 0)
             {
-                <h3>No Games Have Been Created Yet :(</h3>
+            <h3>No Games Have Been Created Yet :(</h3>
             }
             @foreach (var game in Model.OrderBy(g => g.EventStartTime))
             {
@@ -81,16 +81,16 @@
                     btnClass = "btn-warning";
                     btnSignUpText = "Sign Up Quick!";
                 }
-                <div class="col-sm-6 col-md-4 rob-jumbotron1">
-                    @if (game.IsPublic == false)
+            <div class="col-sm-6 col-md-4 rob-jumbotron1">
+                @if (game.IsPublic == false)
                     {
-                        <p class="alert alert-danger">WARNING: This game can only be seen by you. It has not been released to the public. Edit this game and select check box to release to public.</p>
+                <p class="alert alert-danger">WARNING: This game can only be seen by you. It has not been released to the public. Edit this game and select check box to release to public.</p>
                     }
-                    <h3 class="text-left">
-                        <a asp-action="GameDetails" asp-route-id="@game.Id">@game.EventTitle&nbsp; &nbsp;</a>
-                        <i class="fa fa-eye gold" data-bs-hover-animate="flash" id="gameDesc-@game.Id"></i>
+                <h3 class="text-left">
+                    <a asp-action="GameDetails" asp-route-id="@game.Id">@game.EventTitle&nbsp; &nbsp;</a>
+                    <i class="fa fa-eye gold" data-bs-hover-animate="flash" id="gameDesc-@game.Id"></i>
 
-                        <script>
+                    <script>
                             tippy('#gameDesc-@game.Id', {
                                 content: `<div class="container">
                                     <div class="rob-card">
@@ -108,37 +108,42 @@
                                 theme: "dark",
                                 duration: 100
                             });
-                        </script>
-                    </h3>
-                    <p class="text-left">GM: @game.GameMaster</p>
-                    <p class="text-left">Game Type: @game.GameType</p>
-                    <p class="text-left">Date: May 16th, 2020</p>
-                    <p class="text-left">Time: @game.EventStartTime</p>
-                    <p class="text-left">Run Time: @game.EventDuration hrs</p>
-                    <p class="text-left">Reserved: @game.Players.Count() / @game.MaximumPlayers</p>
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col">
-                            @if (userId == game.CreatorId)
+                    </script>
+                </h3>
+                <p class="text-left">GM: @game.GameMaster</p>
+                <p class="text-left">Game Type: @game.GameType</p>
+
+                @if (!string.IsNullOrWhiteSpace(game.ALCode))
+                {
+                <p class="text-left">AL Code: @game.ALCode</p>
+                }
+                <p class="text-left">Date: May 16th, 2020</p>
+                <p class="text-left">Time: @game.EventStartTime</p>
+                <p class="text-left">Run Time: @game.EventDuration hrs</p>
+                <p class="text-left">Reserved: @game.Players.Count() / @game.MaximumPlayers</p>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col">
+                        @if (userId == game.CreatorId)
                             {
-                                <a class="btn btn-info text-left" asp-action="EditGame" asp-route-id="@game.Id">Edit Game</a>
+                        <a class="btn btn-info text-left" asp-action="EditGame" asp-route-id="@game.Id">Edit Game</a>
                             }
                             else
                             {
-                                @if (isSignedUp)
+                        @if (isSignedUp)
                                 {
-                                    <a class="btn btn-dark text-left" asp-action="LeaveGame" asp-route-id="@game.Id">Leave Game</a>
+                        <a class="btn btn-dark text-left" asp-action="LeaveGame" asp-route-id="@game.Id">Leave Game</a>
                                 }
                                 else
                                 {
-                                    <a class="btn @btnClass text-left" asp-action="JoinGame" asp-route-id="@game.Id">@btnSignUpText</a>
+                        <a class="btn @btnClass text-left" asp-action="JoinGame" asp-route-id="@game.Id">@btnSignUpText</a>
                                 }
                             }
-                        </div>
-                        <div class="col">
-                            <img src="~/images/_BStudio/PUGCon/PUG-Logo.png" style="width: 142px;">
-                        </div>
+                    </div>
+                    <div class="col">
+                        <img src="~/images/_BStudio/PUGCon/PUG-Logo.png" style="width: 142px;">
                     </div>
                 </div>
+            </div>
             }
             <partial name="_PUGSponsorFooter" />
         </div>

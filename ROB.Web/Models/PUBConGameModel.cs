@@ -21,6 +21,7 @@ namespace ROB.Web.Models
         public string DiscordChannel { get; set; }
         public string GameMasterDiscordName { get; set; }
         public string GameLinks { get; set; }
+        public string ALCode { get; set; } // This is adventure league code
 
         [Display(Name = "Is Public")]
         public bool IsPublic { get; set; }
