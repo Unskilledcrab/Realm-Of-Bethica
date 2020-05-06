@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-ROBaspCore-E254A382-AD84-4EA0-A97A-E198F3FC6231</UserSecretsId>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <LangVersion>8.0</LangVersion>
     <SignAssembly>false</SignAssembly>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
@@ -140,7 +140,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ROB.Core\ROB.Core.csproj" />
-    <ProjectReference Include="..\ROB.Discord\ROB.Discord.csproj" />
   </ItemGroup>
 
 </Project>

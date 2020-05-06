@@ -58,7 +58,7 @@
             {
                 <h3>No Games Have Been Created Yet :(</h3>
             }
-            @foreach (var game in Model)
+            @foreach (var game in Model.OrderBy(g => g.EventStartTime))
             {
                 bool isSignedUp = false;
                 var userId = userManager.GetUserId(User);
@@ -114,6 +114,7 @@
                     <p class="text-left">Game Type: @game.GameType</p>
                     <p class="text-left">Date: May 16th, 2020</p>
                     <p class="text-left">Time: @game.EventStartTime</p>
+                    <p class="text-left">Run Time: @game.EventDuration hrs</p>
                     <p class="text-left">Reserved: @game.Players.Count() / @game.MaximumPlayers</p>
                     <div class="row justify-content-center align-items-center">
                         <div class="col">

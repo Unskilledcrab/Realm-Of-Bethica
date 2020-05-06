@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ROB.Discord;
 using System;
 using NLog.Web;
 
@@ -38,10 +37,10 @@ namespace ROB.Web
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .ConfigureServices(services =>
-                {
-                    services.AddHostedService<Worker>();
-                })
+                //.ConfigureServices(services =>
+                //{
+                //    services.AddHostedService<Worker>();
+                //})
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
