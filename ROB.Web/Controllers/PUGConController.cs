@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace ROB.Web.Controllers
 {    
-    public class PUBConController : Controller
+    public class PUGConController : Controller
     {
 
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public PUBConController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public PUGConController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             this.userManager = userManager;
