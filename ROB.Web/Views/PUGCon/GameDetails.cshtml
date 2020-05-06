@@ -107,7 +107,7 @@
                                         var maxPlayers = Model.MaximumPlayers;
                                         var btnClass = "btn-success";
                                         var btnSignUpText = "Sign Up";
-                                        if (playerCount >= (maxPlayers - 2))
+                                        if (playerCount >= (maxPlayers - 2) && playerCount < maxPlayers)
                                         {
                                             btnClass = "btn-warning";
                                             btnSignUpText = "Sign Up Quick!";
