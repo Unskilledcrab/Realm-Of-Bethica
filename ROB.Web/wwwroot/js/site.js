@@ -17,10 +17,10 @@ function confirmDelete(uniqueId, isDeleteClicked) {
     } else {
         $('#' + deleteSpan).show();
         $('#' + confirmDeleteSpan).hide();
-    }    
+    }
 }
 
-function clearSideBar() {    
+function clearSideBar() {
     sideBarTitle.empty();
     sideBarContent.empty();
 }
@@ -81,7 +81,7 @@ function getViewCost(copperCost) {
     return cost + suffix;
 }
 
-var CombatCalculator = function() {
+var CombatCalculator = function () {
     this.DamageValue = 10
     this.HP = 20
     this.EVA = 25
@@ -97,7 +97,7 @@ var CombatCalculator = function() {
     this.IsPenatrationOptional = false; // this is used for swords since they can be slashing or stabbing
     this.IsPenatrationUsed = false;
     this.PenatrationOptionPenalty = 0.5;
-    this.Setup = function(TH, DV, PDV, PDR, EVA, HP, AR, isSpellAttack) {
+    this.Setup = function (TH, DV, PDV, PDR, EVA, HP, AR, isSpellAttack) {
         this.ToHit = TH;
         this.DamageValue = DV;
         this.PenatrationDamageValue = PDV;
@@ -107,7 +107,7 @@ var CombatCalculator = function() {
         this.ArmorRating = AR;
         this.IsSpellAttack = isSpellAttack
     }
-    this.DidHit = function(baseRoll, toHit, evasion) {
+    this.DidHit = function (baseRoll, toHit, evasion) {
         if ((baseRoll + toHit) > evasion) {
             if (!this.IsSpellAttack) {
                 var overflow = (baseRoll + toHit) - evasion;
@@ -124,11 +124,11 @@ var CombatCalculator = function() {
             return true;
         } else { return false; }
     }
-    this.HasPenetration = function(PV, PDR) {
+    this.HasPenetration = function (PV, PDR) {
         if (this.IsPenatrationOptional == true)
             if (this.IsPenatrationUsed == false)
                 return;
-        if (PV > 0) {  
+        if (PV > 0) {
             if (PV > PDR) {
                 this.IsIgnoreArmor = true;
                 console.log("Penetration occured and is ignoring armor");
@@ -142,7 +142,7 @@ var CombatCalculator = function() {
             console.log("the weapon does not have penetration");
         }
     }
-    this.CalculateHit = function(DV, AR) {
+    this.CalculateHit = function (DV, AR) {
         var Damage = (DV * this.DamageFactor);
         if (this.IsPenatrationOptional == true)
             if (this.IsPenatrationUsed == true) {
@@ -168,7 +168,7 @@ var CombatCalculator = function() {
         }
         return console.log("player has " + this.HP + " HP remaining");
     }
-    this.CalculateArmorReduction = function(damage, armorRating) {
+    this.CalculateArmorReduction = function (damage, armorRating) {
         if (damage < (armorRating * 2)) {
             this.ArmorRating--;
             console.log("players armor was reduced by 1 and is " + this.ArmorRating);
@@ -176,10 +176,10 @@ var CombatCalculator = function() {
         }
         var diff = Math.floor(damage / armorRating);
         console.log("players armor was reduced by " + diff + " and is " + this.ArmorRating);
-        this.ArmorRating = this.ArmorRating - diff; 
+        this.ArmorRating = this.ArmorRating - diff;
         if (this.ArmorRating < 0) this.ArmorRating = 0;
     }
-    this.Roll = function(baseRoll) {
+    this.Roll = function (baseRoll) {
         if (this.HP < 0)
             return console.log("Why would you attack a dead person... you ANIMAL!");
         if (this.DidHit(baseRoll, this.ToHit, this.EVA)) {
@@ -190,3 +190,28 @@ var CombatCalculator = function() {
 }
 
 var test = new CombatCalculator();
+
+
+$(document).ready(function () {
+    $("[date-local-convert]").each(function () {
+        $(this)
+        let UTCDate = $(this).text() + " UTC";
+        let localDate = new Date(UTCDate);
+        $(this).text(localDate.toString());
+    });
+
+    let iterator = 0;
+    $("[date-UTC-convert]").each(function () {
+        let id = "date-UTC-covert-" + iterator;
+        let UTCid = "date-converted-" + iterator;
+        $(this).attr("id", id);
+        $(this).change(function () {
+            let localDate = new Date($(this).val());
+            $('#' + UTCid).val(localDate.toUTCString());
+        });
+        $('#' + id).datetimepicker();
+        $(this).clone().attr("id", UTCid).attr("type", "hidden").insertAfter(this);
+        $(this).attr("name", "n/a");
+        iterator++;
+    });    
+});
