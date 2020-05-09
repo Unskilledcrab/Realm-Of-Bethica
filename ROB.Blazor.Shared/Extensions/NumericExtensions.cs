@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ROB.Blazor.Client.Extensions
+namespace ROB.Blazor.Shared.Extensions
 {
     public static class NumericExtensions
     {

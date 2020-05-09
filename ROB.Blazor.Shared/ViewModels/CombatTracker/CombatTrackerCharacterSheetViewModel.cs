@@ -1,11 +1,11 @@
-﻿using ROB.Blazor.Client.Extensions;
+﻿using ROB.Blazor.Shared.Extensions;
 using ROB.Blazor.Shared.Models;
 using ROB.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ROB.Blazor.Client.ViewModels
+namespace ROB.Blazor.Shared.ViewModels
 {
     public class CombatTrackerCharacterSheetViewModel : CharacterSheetModel
     {
@@ -44,7 +44,7 @@ namespace ROB.Blazor.Client.ViewModels
 
             // nothing mentioned about size and reach; necessary?  I made up the size calculation. 6 foot, 150 lbs => size = 5
             Size = new Stat() { Abbreviation = "Size", Name = "Size", Value = ((HeightInches / 12.0 * Weight / 180.0) + ((int)Race.Size + 1) * 3.0).AsStat() };
-            Reach = new Stat() { Abbreviation = "Reach", Name = "Reach", Value = Weapons.Max(x => x.Weapon.Range) };            
+            Reach = new Stat() { Abbreviation = "Reach", Name = "Reach", Value = Weapons.Max(x => x.Weapon.Range) };
         }
         public Stat Rct { get; set; }
         public Stat RM { get; set; }

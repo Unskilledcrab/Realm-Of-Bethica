@@ -1,4 +1,4 @@
-﻿@using ROB.Blazor.Client.ViewModels
+﻿@using ROB.Blazor.Shared.ViewModels
 @using ROB.Blazor.Shared.Interfaces.CombatTracker
 @implements IDisposable
 
@@ -28,7 +28,10 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Character.TargetListChanged += StateHasChanged;
+        await Task.Run(() =>
+        {
+            Character.TargetListChanged += StateHasChanged;
+        });
     }
 
     public void Dispose()

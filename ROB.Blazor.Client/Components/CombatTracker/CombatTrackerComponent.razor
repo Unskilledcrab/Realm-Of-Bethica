@@ -78,7 +78,7 @@
     [Parameter]
     public int GameId { get; set; }
 
-    private List<ICharacter> _characters = new List<ICharacter>();
+    private IEnumerable<ICharacter> _characters = new List<ICharacter>();
     private ICharacter _activeCharacter;
     private Random rand = new Random();
     private CharacterSheetComponent _characterSheet;
@@ -97,13 +97,13 @@
 
         await Task.Delay(500);
 
-        _characters = package.GetCharacters(GameId);
+        _characters = package.Characters;
 
         foreach (ICharacter character in _characters)
             character.ActionPerformed += OnActionPerformed;
 
         _characters = _characters.OrderByDescending(x => x.Rct.Value).ToList();
-        _activeCharacter = _characters[0];
+        _activeCharacter = _characters.ToList()[0];
 
         _console.Log("Loading complete");
         _loaded = true;
@@ -114,8 +114,8 @@
     {
         _console.Log($"{_activeCharacter.Name}'s turn has ended.");
         _activeCharacter.EndTurn();
-        int charIndex = (_characters.IndexOf(_activeCharacter) + 1) % _characters.Count;
-        _activeCharacter = _characters[charIndex];
+        int charIndex = (_characters.ToList().IndexOf(_activeCharacter) + 1) % _characters.Count();
+        _activeCharacter = _characters.ToList()[charIndex];
         _console.Log($"{_activeCharacter.Name}'s turn has begun.");
     }
 

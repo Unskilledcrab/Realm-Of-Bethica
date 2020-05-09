@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using static ROB.Blazor.Shared.Interfaces.CombatTracker.ICharacter;
 
-namespace ROB.Blazor.Client.ViewModels
+namespace ROB.Blazor.Shared.ViewModels
 {
     public class CharacterViewModel : Character, ICharacter
     {
@@ -20,25 +20,25 @@ namespace ROB.Blazor.Client.ViewModels
         public List<string> Effects { get; set; } = new List<string>();
         public List<ICharacter> Targets { get; set; } = new List<ICharacter>();
 
-        public List<IStat> GetAttrStats()
+        public List<Stat> GetAttrStats()
         {
-            return new List<IStat>()
+            return new List<Stat>()
             {
                 RM, EVA, AR, PDR, Size, Reach
             };
         }
 
-        public List<IStat> GetCharBarStats()
+        public List<Stat> GetCharBarStats()
         {
-            return new List<IStat>()
+            return new List<Stat>()
             {
                 Rct, HP, Tmp, Wnd, Toxic, Psychic
             };
         }
 
-        public List<IStat> GetAllStats()
+        public List<Stat> GetAllStats()
         {
-            return new List<IStat>()
+            return new List<Stat>()
             {
                 Rct, AR, EVA, HP, PDR, RM, Tmp, Wnd, Size, Reach
             };

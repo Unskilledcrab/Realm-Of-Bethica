@@ -10,12 +10,16 @@ namespace ROB.Blazor.Client
     {
         public static async Task Main(string[] args)
         {
-            var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+            //AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            builder.RootComponents.Add<App>("app");            
+            builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(@"https://localhost:44374/") });
 
             await builder.Build().RunAsync();
+
         }
     }
 }

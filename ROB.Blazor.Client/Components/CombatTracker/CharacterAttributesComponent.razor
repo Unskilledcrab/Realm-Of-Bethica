@@ -33,6 +33,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Character.StatsChanged += StateHasChanged;
+        await Task.Run(() => { Character.StatsChanged += StateHasChanged; });
     }
 }

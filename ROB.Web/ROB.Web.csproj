@@ -129,6 +129,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ROB.Blazor.Client\ROB.Blazor.Client.csproj" />
+    <ProjectReference Include="..\ROB.Blazor.Shared\ROB.Blazor.Shared.csproj" />
     <ProjectReference Include="..\ROB.Discord\ROB.Discord.csproj" />
   </ItemGroup>
 

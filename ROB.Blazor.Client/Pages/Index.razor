@@ -1,19 +1,28 @@
 ﻿@page "/"
+@using ROB.Blazor.Shared.Models
 @using ROB.Blazor.Shared.Interfaces.CombatTracker
-
-@using ROB.Blazor.Client.Components
+@using ROB.Blazor.Client.Components.CombatTracker
 @inject HttpClient Http
 
 <CombatTrackerComponent @ref="_combatTracker" />
 <ConsoleComponent @ref="_console" />
 
+<h1>@msg</h1>
+
+
 @code {
     private IConsole _console;
     private CombatTrackerComponent _combatTracker;
+    private string msg;
 
-    protected override async Task OnAfterRenderAsync (bool firstRender)
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            await _combatTracker.LoadGame(_console, new MockData.MockGamePackage());        
+        {
+            int campaignNo = 0;
+            var package = await Http.GetFromJsonAsync<GamePackage>($"api/{campaignNo}/campaign");
+            await _combatTracker.LoadGame(_console, package);
+        }
     }
 }

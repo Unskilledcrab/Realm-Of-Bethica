@@ -48,14 +48,15 @@
     private bool _offenseHidden = true;
     private bool _effectsHidden = true;
     private bool _crosshairHidden = true;
-    private bool _charSheetHidden = true;
-    private CharacterTargetComponent _targetComponent;
 
     protected override async Task OnInitializedAsync()
     {
-        Character.TargetedStateChanged += UpdateCrosshair;
-        Character.FactionChanged += StateHasChanged;
-        Character.StatsChanged += StateHasChanged;
+        await Task.Run(() =>
+        {
+            Character.TargetedStateChanged += UpdateCrosshair;
+            Character.FactionChanged += StateHasChanged;
+            Character.StatsChanged += StateHasChanged;
+        });
     }
 
     public void Dispose()

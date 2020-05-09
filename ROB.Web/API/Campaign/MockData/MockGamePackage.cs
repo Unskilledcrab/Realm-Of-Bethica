@@ -1,20 +1,19 @@
-﻿using ROB.Blazor.Client.ViewModels;
-using ROB.Blazor.Shared.Interfaces.CombatTracker;
-using System;
+﻿using ROB.Blazor.Shared.Interfaces.CombatTracker;
+using ROB.Blazor.Shared.Models;
+using ROB.Blazor.Shared.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace ROB.Blazor.Client.MockData
+namespace ROB.Web.API.Campaign
 {
-    public class MockGamePackage : IGamePackage
+    public class MockGamePackageFactory
     {
-        private Dictionary<int, List<ICharacter>> _charactersPackages = new Dictionary<int, List<ICharacter>>();
+        private Dictionary<int, List<CharacterViewModel>> _charactersPackages = new Dictionary<int, List<CharacterViewModel>>();
 
-        public MockGamePackage()
+        public MockGamePackageFactory()
         {
             int index = 0;
-            List<ICharacter> characters = new List<ICharacter>();
+            List<CharacterViewModel> characters = new List<CharacterViewModel>();
 
             characters.Add(new CharacterViewModel()
             {
@@ -135,9 +134,14 @@ namespace ROB.Blazor.Client.MockData
             _charactersPackages[index++] = characters;
         }
 
-        public List<ICharacter> GetCharacters(int gameId)
+        public async Task<GamePackage> GetGamePackage(int campaignId)
         {
-            return _charactersPackages[gameId];
+            GamePackage package = null;
+
+            //this is where the DB could be asked for the game deets
+            await Task.Run(() => { package = new GamePackage() { Characters = _charactersPackages[campaignId] }; });
+
+            return package;
         }
     }
 }

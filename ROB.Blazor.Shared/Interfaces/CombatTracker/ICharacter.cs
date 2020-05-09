@@ -1,7 +1,6 @@
-﻿using System;
+﻿using ROB.Blazor.Shared.Models;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using static ROB.Blazor.Shared.Models.Character;
 
 namespace ROB.Blazor.Shared.Interfaces.CombatTracker
 {
@@ -26,9 +25,9 @@ namespace ROB.Blazor.Shared.Interfaces.CombatTracker
         event Action StatsChanged;
         event Action<ICharacter, ICharacter, string> ActionPerformed;
 
-        List<IStat> GetAttrStats();
-        List<IStat> GetCharBarStats();
-        List<IStat> GetAllStats();
+        List<Stat> GetAttrStats();
+        List<Stat> GetCharBarStats();
+        List<Stat> GetAllStats();
 
         List<string> Reactions { get; set; }
         List<string> Traits { get; set; }
@@ -42,18 +41,18 @@ namespace ROB.Blazor.Shared.Interfaces.CombatTracker
         string Dem { get; set; }
         string PortraitURL { get; set; }
         GenderType Gender { get; set; }
-        IStat Rct { get; set; }
-        IStat RM { get; set; }
-        IStat EVA { get; set; }
-        IStat AR { get; set; }
-        IStat PDR { get; set; }
-        IStat HP { get; set; }
-        IStat Tmp { get; set; }
-        IStat Wnd { get; set; }
-        IStat Size { get; set; }
-        IStat Reach { get; set; }
-        IStat Toxic { get; set; }
-        IStat Psychic { get; set; }
+        Stat Rct { get; set; }
+        Stat RM { get; set; }
+        Stat EVA { get; set; }
+        Stat AR { get; set; }
+        Stat PDR { get; set; }
+        Stat HP { get; set; }
+        Stat Tmp { get; set; }
+        Stat Wnd { get; set; }
+        Stat Size { get; set; }
+        Stat Reach { get; set; }
+        Stat Toxic { get; set; }
+        Stat Psychic { get; set; }
 
         void PerformAction(string str);
         void EndTurn();

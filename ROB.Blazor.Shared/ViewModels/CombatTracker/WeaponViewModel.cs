@@ -1,6 +1,6 @@
 ﻿using ROB.Blazor.Shared.Models;
 
-namespace ROB.Blazor.Client.ViewModels
+namespace ROB.Blazor.Shared.ViewModels
 {
     public class WeaponViewModel
     {
