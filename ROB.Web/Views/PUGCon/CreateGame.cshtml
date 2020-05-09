@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-11 col-sm-11 col-md-10 offset-md-1">
 
-                                        <textarea asp-for="Description" class="form-control sans-serif-font3" placeholder="Your game description goes here." minlength="50" maxlength="750"></textarea>
+                                        <textarea asp-for="Description" class="form-control sans-serif-font3" placeholder="Your game description goes here." minlength="50"></textarea>
                                         <span asp-validation-for="Description" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@
                                         <p class="text-left sans-serif-font2a"><strong>Message to players</strong></p>
                                     </div>
                                     <div class="col-11 col-sm-11 col-md-10 offset-md-1">
-                                        <textarea asp-for="MessageToPlayers" placeholder="Here you will enter any requests or comments you have for your players!" maxlength="250" class="form-control sans-serif-font3"></textarea>
+                                        <textarea asp-for="MessageToPlayers" placeholder="Here you will enter any requests or comments you have for your players!" class="form-control sans-serif-font3"></textarea>
                                         <span asp-validation-for="MessageToPlayers" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -239,7 +239,7 @@
                                         </p>
                                     </div>
                                     <div class="col-11 col-md-10 offset-md-1">
-                                        <input asp-for="GameMasterDiscordName" placeholder="Enter your discord name here!" maxlength="50" class="form-control sans-serif-font3" />
+                                        <input asp-for="GameMasterDiscordName" placeholder="Enter your discord name here!" class="form-control sans-serif-font3" />
                                         <span asp-validation-for="GameMasterDiscordName" class="text-danger"></span>
                                     </div>
                                 </div>
