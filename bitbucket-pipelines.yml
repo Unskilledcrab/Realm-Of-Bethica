@@ -3,6 +3,16 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
+
+#            - pipe: atlassian/ftp-deploy:0.3.1
+#              variables:
+#                USER: $FTP_USERNAME_PROD
+#                PASSWORD: $FTP_PASSWORD_PROD
+#                SERVER: $SERVER
+#                REMOTE_PATH: './' # remote path is setup on the FTP user access
+#                LOCAL_PATH: $BUILD_PATH # directed to the build file from dotnet publish stage
+#                DELETE_FLAG: 'false' # do not delete old any files already in directory
+
 image: mcr.microsoft.com/dotnet/core/sdk:3.1
 
 pipelines:
@@ -16,16 +26,7 @@ pipelines:
             - export PROJECT_NAME=$WEB_PROJECT 
             - dotnet clean $PROJECT_NAME
             - dotnet restore $PROJECT_NAME
-            - dotnet build $PROJECT_NAME # configure project for release
-            - dotnet publish $PROJECT_NAME # build a published version from the build
-            - pipe: atlassian/ftp-deploy:0.3.1
-              variables:
-                USER: $FTP_USERNAME_PROD
-                PASSWORD: $FTP_PASSWORD_PROD
-                SERVER: $SERVER
-                REMOTE_PATH: './' # remote path is setup on the FTP user access
-                LOCAL_PATH: $BUILD_PATH # directed to the build file from dotnet publish stage
-                DELETE_FLAG: 'false' # do not delete old any files already in directory
+            - dotnet build $PROJECT_NAME /p:DeployOnBuild=true /p:PublishProfile=$PROFILE_PROD /p:Password=$WEB_DEPLOY_PASSWORD
     release/*:    
       - step:
           name: Release Canidate Pipeline - $WEB_PROJECT 
@@ -35,15 +36,6 @@ pipelines:
             - export PROJECT_NAME=$WEB_PROJECT  
             - dotnet restore $PROJECT_NAME
             - dotnet build $PROJECT_NAME # configure project for release
-            - dotnet publish $PROJECT_NAME # build a published version from the build
-            - pipe: atlassian/ftp-deploy:0.3.1
-              variables:
-                USER: $FTP_USERNAME
-                PASSWORD: $FTP_PASSWORD
-                SERVER: $SERVER
-                REMOTE_PATH: './' # remote path is setup on the FTP user access
-                LOCAL_PATH: $BUILD_PATH # directed to the build file from dotnet publish stage
-                DELETE_FLAG: 'false' # do not delete old any files already in directory
     development:    
       - step:
           name: Development Build - $WEB_PROJECT 
@@ -52,4 +44,4 @@ pipelines:
           script:
             - export PROJECT_NAME=$WEB_PROJECT 
             - dotnet restore $PROJECT_NAME
-            - dotnet build $PROJECT_NAME # make sure that the development branch builds properly
+            - dotnet build $PROJECT_NAME /p:DeployOnBuild=true /p:PublishProfile=$PROFILE_DEV /p:Password=$WEB_DEPLOY_PASSWORD
