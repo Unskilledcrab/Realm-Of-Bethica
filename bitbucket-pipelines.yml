@@ -44,4 +44,4 @@ pipelines:
           script:
             - export PROJECT_NAME=$WEB_PROJECT 
             - dotnet restore $PROJECT_NAME
-            - dotnet build $PROJECT_NAME /p:DeployOnBuild=true /p:PublishProfile=$PROFILE_DEV /p:Password=$WEB_DEPLOY_PASSWORD
+            - dotnet build $PROJECT_NAME /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=$PROFILE_DEV /p:Password=$WEB_DEPLOY_PASSWORD
