@@ -1,3 +1,3 @@
 # RealmOfBethica
 
-![Home Page](./ROB-Home-Page.PNG)
+![Home Page](./ROB-Home-Page.png)
